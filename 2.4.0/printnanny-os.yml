@@ -1,4 +1,4 @@
-asyncapi: 2.5.0
+asyncapi: 2.4.0
 info:
   title: PrintNanny OS Events
   version: 0.1.0
