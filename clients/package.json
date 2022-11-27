@@ -5,7 +5,8 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "generate:rust": "./node_modules/.bin/ts-node rust.ts generate && cargo build --manifest-path=rust/Cargo.toml"
+    "clean:rust": "rm -rf rust/",
+    "generate:rust": "npm run clean:rust && ./node_modules/.bin/ts-node rust.ts generate && cargo build --manifest-path=rust/Cargo.toml"
   },
   "repository": {
     "type": "git",
