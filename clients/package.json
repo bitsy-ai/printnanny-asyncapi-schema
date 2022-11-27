@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean:rust": "rm -rf rust/",
-    "generate:rust": "npm run clean:rust && ./node_modules/.bin/ts-node rust.ts generate && cargo build --manifest-path=rust/Cargo.toml"
+    "clean:typescript": "rm -rf typescript/src && mkdir typescript/src",
+    "generate:rust": "npm run clean:rust && ./node_modules/.bin/ts-node rust.ts generate && cargo build --manifest-path=rust/Cargo.toml",
+    "generate:typescript": "npm run clean:typescript && ./node_modules/.bin/ts-node typescript.ts generate"
   },
   "repository": {
     "type": "git",
