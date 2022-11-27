@@ -1,0 +1,78 @@
+---
+asyncapi: "2.5.0"
+info:
+  title: PrintNanny OS Events
+  version: 0.1.0
+  description: This service publishes events related to PrintNanny OS
+channels:
+  pi.{pi_id}.command.printnanny_cloud.auth:
+    parameters:
+      pi_id:
+        description: The ID of the PrintNanny Pi/device
+        schema:
+          type: string
+    subscribe:
+      message:
+        name: PrintNannyCloudAuthReply
+        payload:
+          $ref: "#/components/messages/PrintNannyCloudAuthReply"
+    publish:
+      message:
+        name: PrintNannyCloudAuthRequest
+        payload:
+          $ref: "#/components/messages/PrintNannyCloudAuthRequest"
+
+defaultContentType: "application/json"
+
+components:
+  messages:
+    PrintNannyCloudAuthRequest:
+      summary: "Store authentication token obtained through 2fa"
+      description: "Performs device setup and stores PrintNanny Cloud authentication credentials obtained from 2fa challenge: https://api.printnanny.ai/api/schema/redoc/#tag/accounts/operation/accounts_2fa_auth_token_create"
+      payload:
+        $ref: "#/components/schemas/PrintNannyCloudAuth"
+    PrintNannyCloudAuthReply:
+      name: PrintNannyCloudAuthReply
+      summary: "Store authentication token obtained through 2fa"
+      description: "ConnectPrintNannyCloudRequest performs device setup and stores Authentication token obtained by passing 2fa challenge: https://api.printnanny.ai/api/schema/redoc/#tag/accounts/operation/accounts_2fa_auth_token_create"
+      payload:
+        type: object
+        additionalProperties: false
+        properties:
+          request:
+            $ref: "#/components/messages/PrintNannyCloudAuthRequest"
+          detail:
+            type: string
+
+  schemas:
+    PrintNannyCloudAuth:
+      type: object
+      additionalProperties: false
+      properties:
+        email:
+          type: string
+        api_token:
+          type: string
+        api_url:
+          type: string
+      required:
+        - email
+        - api_token
+        - api_url
+
+    CommandReply:
+      type: object
+      additionalProperties: false
+      properties:
+        request:
+          type: object
+          oneOf:
+            - $ref: "#/components/messages/PrintNannyCloudAuthRequest"
+        status_code:
+          type: integer
+        msg:
+          type: string
+      required:
+        - request
+        - status_code
+        - msg
