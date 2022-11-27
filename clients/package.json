@@ -1,0 +1,22 @@
+{
+  "name": "printnanny-asyncapi-models",
+  "version": "0.1.0",
+  "description": "PrintNanny.ai AsyncAPI Generated Models",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bitsy-ai/printnanny-asyncapi-schema.git"
+  },
+  "author": "Leigh Johnson <leigh@printnanny.ai>",
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/bitsy-ai/printnanny-asyncapi-schema/issues"
+  },
+  "homepage": "https://github.com/bitsy-ai/printnanny-asyncapi-schema#readme",
+  "dependencies": {
+    "@asyncapi/modelina": "github:asyncapi/modelina#next"
+  }
+}
