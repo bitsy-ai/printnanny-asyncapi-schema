@@ -1,11 +1,12 @@
----
-asyncapi: "2.5.0"
+asyncapi: 2.5.0
 info:
   title: PrintNanny OS Events
   version: 0.1.0
   description: This service publishes events related to PrintNanny OS
+defaultContentType: "application/json"
+
 channels:
-  pi.{pi_id}.command.printnanny_cloud.auth:
+  pi.{pi_id}.action.printnanny.cloud.auth:
     parameters:
       pi_id:
         description: The ID of the PrintNanny Pi/device
@@ -15,14 +16,63 @@ channels:
       message:
         name: PrintNannyCloudAuthReply
         payload:
-          $ref: "#/components/messages/CommandReply"
+          $ref: "#/components/messages/ActionReply"
     publish:
       message:
         name: PrintNannyCloudAuthRequest
         payload:
           $ref: "#/components/messages/PrintNannyCloudAuthRequest"
 
-defaultContentType: "application/json"
+  pi.{pi_id}.action.dbus.org.freedesktop.systemd1.Manager.DisableUnit:
+    parameters:
+      pi_id:
+        description: The ID of the PrintNanny Pi/device
+        schema:
+          type: string
+    subscribe:
+      message:
+        name: SystemdManagerDisableUnitReply
+        payload:
+          $ref: "#/components/messages/SystemdManagerChangeUnitReply"
+    publish:
+      message:
+        name: SystemdManagerDisableUnitRequest
+        payload:
+          $ref: "#/components/messages/SystemdManagerChangeUnitRequest"
+
+  pi.{pi_id}.action.dbus.org.freedesktop.systemd1.Manager.EnableUnit:
+    parameters:
+      pi_id:
+        description: The ID of the PrintNanny Pi/device
+        schema:
+          type: string
+    subscribe:
+      message:
+        name: SystemdManagerDisableUnitReply
+        payload:
+          $ref: "#/components/messages/SystemdManagerChangeUnitReply"
+    publish:
+      message:
+        name: SystemdManagerDisableUnitRequest
+        payload:
+          $ref: "#/components/messages/SystemdManagerChangeUnitRequest"
+
+  pi.{pi_id}.action.dbus.org.freedesktop.systemd1.Manager.GetUnit:
+    parameters:
+      pi_id:
+        description: The ID of the PrintNanny Pi/device
+        schema:
+          type: string
+    subscribe:
+      message:
+        name: SystemdManagerGetUnitReply
+        payload:
+          $ref: "#/components/messages/SystemdManagerGetUnitReply"
+    publish:
+      message:
+        name: SystemdManagerGetUnitRequest
+        payload:
+          $ref: "#/components/messages/SystemdManagerGetUnitRequest"
 
 components:
   messages:
@@ -31,7 +81,66 @@ components:
       description: "Performs device setup and stores PrintNanny Cloud authentication credentials obtained from 2fa challenge: https://api.printnanny.ai/api/schema/redoc/#tag/accounts/operation/accounts_2fa_auth_token_create"
       payload:
         $ref: "#/components/schemas/PrintNannyCloudAuth"
-    CommandReply:
+
+    SystemdManagerChangeUnitRequest:
+      summary: "Enable/disable one or more systemd unit files"
+      payload:
+        type: object
+        additionalProperties: false
+        properties:
+          files:
+            type: array
+            items:
+              type: string
+        required:
+          - files
+
+    SystemdManagerChangeUnitReply:
+      summary: "Response to SystemdManagerChangeUnitRequest"
+      payload:
+        additionalProperties: false
+        type: object
+        properties:
+          request:
+            type: object
+            oneOf:
+              - $ref: "#/components/messages/SystemdManagerChangeUnitRequest"
+          changes:
+            type: array
+            items:
+              type: string
+            minItems: 3
+            maxitems: 3
+        required:
+          - request
+          - changes
+
+    SystemdManagerGetUnitRequest:
+      summary: "Get systemd unit status/details, equivalent to dbus.org.freedesktop.systemd1.Manager.GetUnit"
+      payload:
+        type: object
+        additionalProperties: false
+        properties:
+          name:
+            type: string
+        required:
+          - name
+
+    SystemdManagerGetUnitReply:
+      summary: "Get systemd unit status/details, equivalent to dbus.org.freedesktop.systemd1.Manager.GetUnit"
+      payload:
+        type: object
+        additionalProperties: false
+        properties:
+          request:
+            $ref: "#/components/messages/SystemdManagerGetUnitRequest"
+          unit:
+            $ref: "#/components/schemas/SystemdUnit"
+        required:
+          - request
+          - unit
+
+    ActionReply:
       payload:
         type: object
         additionalProperties: false
@@ -64,3 +173,42 @@ components:
         - email
         - api_token
         - api_url
+    SystemdUnit:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+        fragment_path:
+          type: string
+        active_state:
+          $ref: "#/components/schemas/SystemdUnitActiveState"
+        load_state:
+          $ref: "#/components/schemas/SystemdUnitLoadState"
+        unit_file_state:
+          $ref: "#/components/schemas/SystemdUnitFileState"
+    SystemdUnitActiveState:
+      type: string
+      enum:
+        - "active"
+        - "activating"
+        - "deactivating"
+        - "inactive"
+        - "reloading"
+        - "loaded"
+    SystemdUnitLoadState:
+      type: string
+      enum:
+        - "loaded"
+        - "error"
+        - "masked"
+    SystemdUnitFileState:
+      type: string
+      enum:
+        - "enabled"
+        - "enabled-runtime"
+        - "linked"
+        - "linked-runtime"
+        - "static"
+        - "disabled"
+        - "invalid"
