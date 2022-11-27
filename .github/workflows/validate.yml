@@ -1,0 +1,17 @@
+name: Validate AsyncAPI Schemas
+
+on:
+  push:
+    branches:
+      - main
+      - devel
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: WaleedAshraf/asyncapi-github-action@v0
+        with:
+          filepath: "2.5.0/printnanny-os.yml"
