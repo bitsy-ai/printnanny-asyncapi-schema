@@ -15,7 +15,7 @@ channels:
       message:
         name: PrintNannyCloudAuthReply
         payload:
-          $ref: "#/components/schemas/CommandReply"
+          $ref: "#/components/messages/CommandReply"
     publish:
       message:
         name: PrintNannyCloudAuthRequest
