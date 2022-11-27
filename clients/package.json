@@ -4,7 +4,8 @@
   "description": "PrintNanny.ai AsyncAPI Generated Models",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate:rust": "./node_modules/.bin/ts-node rust.ts generate && cargo build --manifest-path=rust/Cargo.toml"
   },
   "repository": {
     "type": "git",
@@ -16,7 +17,12 @@
     "url": "https://github.com/bitsy-ai/printnanny-asyncapi-schema/issues"
   },
   "homepage": "https://github.com/bitsy-ai/printnanny-asyncapi-schema#readme",
+  "devDependencies": {
+    "ts-node": "^10.9.1"
+  },
   "dependencies": {
-    "@asyncapi/modelina": "github:asyncapi/modelina#next"
+    "@asyncapi/modelina": "^1.0.0-next.30",
+    "@asyncapi/parser": "^2.0.0-next-major.10",
+    "yaml": "^2.1.3"
   }
 }
