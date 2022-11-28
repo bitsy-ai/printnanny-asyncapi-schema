@@ -56,8 +56,8 @@ pub use self::settings_file::*;
 pub mod settings_load_reply;
 pub use self::settings_load_reply::*;
 
-pub mod reserved_union;
-pub use self::reserved_union::*;
+pub mod settings_reply;
+pub use self::settings_reply::*;
 
 pub mod git_commit;
 pub use self::git_commit::*;
@@ -65,11 +65,5 @@ pub use self::git_commit::*;
 pub mod settings_apply_request;
 pub use self::settings_apply_request::*;
 
-pub mod settings_apply_reply;
-pub use self::settings_apply_reply::*;
-
 pub mod settings_revert_request;
 pub use self::settings_revert_request::*;
-
-pub mod settings_revert_reply;
-pub use self::settings_revert_reply::*;
