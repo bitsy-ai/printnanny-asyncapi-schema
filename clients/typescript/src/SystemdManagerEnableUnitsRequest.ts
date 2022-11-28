@@ -1,5 +1,5 @@
 
-export class SystemdManagerChangeUnitRequest {
+export class SystemdManagerEnableUnitsRequest {
   private _files: string[];
 
   constructor(input: {
