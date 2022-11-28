@@ -82,10 +82,12 @@ channels:
           type: string
     subscribe:
       message:
+        name: SystemdManagerReloadUnitReply
         payload:
           $ref: "#/components/messages/SystemdManagerReloadUnitReply"
     publish:
       message:
+        name: SystemdManagerReloadUnitRequest
         payload:
           $ref: "#/components/messages/SystemdManagerReloadUnitRequest"
 
@@ -97,10 +99,12 @@ channels:
           type: string
     subscribe:
       message:
+        name: SystemdManagerRestartUnitReply
         payload:
           $ref: "#/components/messages/SystemdManagerRestartUnitReply"
     publish:
       message:
+        name: SystemdManagerRestartUnitRequest
         payload:
           $ref: "#/components/messages/SystemdManagerRestartUnitRequest"
 
@@ -112,10 +116,12 @@ channels:
           type: string
     subscribe:
       message:
+        name: SystemdManagerStartUnitReply
         payload:
           $ref: "#/components/messages/SystemdManagerStartUnitReply"
     publish:
       message:
+        name: SystemdManagerStartUnitRequest
         payload:
           $ref: "#/components/messages/SystemdManagerStartUnitRequest"
 
@@ -127,10 +133,12 @@ channels:
           type: string
     subscribe:
       message:
+        name: SystemdManagerStopUnitReply
         payload:
           $ref: "#/components/messages/SystemdManagerStopUnitReply"
     publish:
       message:
+        name: SystemdManagerStopUnitRequest
         payload:
           $ref: "#/components/messages/SystemdManagerStopUnitRequest"
 
@@ -175,41 +183,49 @@ components:
         $ref: "#/components/schemas/SystemdManagerGetUnitReply"
 
     SystemdManagerReloadUnitRequest:
+      messageId: SystemdManagerReloadUnitRequest
       summary: "Reload systemd unit"
       payload:
         $ref: "#/components/schemas/SystemdManagerUnitRequest"
 
     SystemdManagerReloadUnitReply:
+      messageId: SystemdManagerReloadUnitReply
       summary: "Result of reloading systemd unit, returning job id if state changed."
       payload:
         $ref: "#/components/schemas/SystemdManagerUnitJobReply"
 
     SystemdManagerRestartUnitRequest:
+      messageId: SystemdManagerRestartUnitRequest
       summary: "Restart systemd unit"
       payload:
         $ref: "#/components/schemas/SystemdManagerUnitRequest"
 
     SystemdManagerRestartUnitReply:
+      messageId: SystemdManagerRestartUnitReply
       summary: "Result of restarting systemd unit, returning job id if state changed."
       payload:
         $ref: "#/components/schemas/SystemdManagerUnitJobReply"
 
     SystemdManagerStartUnitRequest:
+      messageId: SystemdManagerStartUnitRequest
       summary: "Start systemd unit"
       payload:
         $ref: "#/components/schemas/SystemdManagerUnitRequest"
 
     SystemdManagerStartUnitReply:
+      messageId: SystemdManagerStartUnitReply
       summary: "Result of starting systemd unit, returning job id if state changed."
       payload:
         $ref: "#/components/schemas/SystemdManagerUnitJobReply"
 
     SystemdManagerStopUnitRequest:
+      messageId: SystemdManagerStopUnitRequest
       summary: "Stop systemd unit"
       payload:
         $ref: "#/components/schemas/SystemdManagerUnitRequest"
 
     SystemdManagerStopUnitReply:
+      messageId: SystemdManagerStopUnitReply
       summary: "Result of stopping systemd unit, returning job id if state changed."
       payload:
         $ref: "#/components/schemas/SystemdManagerUnitJobReply"
@@ -334,7 +350,7 @@ components:
       type: object
       additionalProperties: false
       properties:
-        name:
+        unit_name:
           type: string
       required:
         - name
