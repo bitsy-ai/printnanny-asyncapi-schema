@@ -8,7 +8,7 @@ pub struct SystemdManagerChangeUnitRequest {
 impl SystemdManagerChangeUnitRequest {
     pub fn new(files: Vec<String>) -> SystemdManagerChangeUnitRequest {
         SystemdManagerChangeUnitRequest {
-        files,
+            files,
         }
     }
 }

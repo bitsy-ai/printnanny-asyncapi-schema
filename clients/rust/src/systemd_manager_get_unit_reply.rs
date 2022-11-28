@@ -10,8 +10,8 @@ pub struct SystemdManagerGetUnitReply {
 impl SystemdManagerGetUnitReply {
     pub fn new(request: crate::SystemdManagerGetUnitRequest, unit: crate::SystemdUnit) -> SystemdManagerGetUnitReply {
         SystemdManagerGetUnitReply {
-        Box::new(request),
-        Box::new(unit),
+            request: Box::new(request),
+            unit: Box::new(unit),
         }
     }
 }
