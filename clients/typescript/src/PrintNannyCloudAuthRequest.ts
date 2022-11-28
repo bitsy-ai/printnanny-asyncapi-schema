@@ -1,5 +1,5 @@
 
-export class PrintNannyCloudAuth {
+export class PrintNannyCloudAuthRequest {
   private _email: string;
   private _apiToken: string;
   private _apiUrl: string;

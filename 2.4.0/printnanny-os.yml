@@ -16,7 +16,7 @@ channels:
       message:
         name: PrintNannyCloudAuthReply
         payload:
-          $ref: "#/components/messages/ActionReply"
+          $ref: "#/components/messages/PrintNannyCloudAuthReply"
     publish:
       message:
         name: PrintNannyCloudAuthRequest
@@ -81,7 +81,14 @@ components:
       summary: "Store authentication token obtained through 2fa"
       description: "Performs device setup and stores PrintNanny Cloud authentication credentials obtained from 2fa challenge: https://api.printnanny.ai/api/schema/redoc/#tag/accounts/operation/accounts_2fa_auth_token_create"
       payload:
-        $ref: "#/components/schemas/PrintNannyCloudAuth"
+        $ref: "#/components/schemas/PrintNannyCloudAuthRequest"
+
+    PrintNannyCloudAuthReply:
+      messageId: PrintNannyCloudAuthRequest
+      summary: "Store authentication token obtained through 2fa"
+      description: "Performs device setup and stores PrintNanny Cloud authentication credentials obtained from 2fa challenge: https://api.printnanny.ai/api/schema/redoc/#tag/accounts/operation/accounts_2fa_auth_token_create"
+      payload:
+        $ref: "#/components/schemas/PrintNannyCloudAuthReply"
 
     SystemdManagerChangeUnitRequest:
       messageId: SystemdManagerChangeUnitRequest
@@ -107,19 +114,13 @@ components:
       payload:
         $ref: "#/components/schemas/SystemdManagerGetUnitReply"
 
-    ActionReply:
-      payload:
-        $ref: "#/components/schemas/ActionReply"
-
   schemas:
-    ActionReply:
+    PrintNannyCloudAuthReply:
       type: object
       additionalProperties: false
       properties:
         request:
-          type: object
-          oneOf:
-            - $ref: "#/components/messages/PrintNannyCloudAuthRequest"
+          $ref: "#/components/schemas/PrintNannyCloudAuthRequest"
         status_code:
           type: integer
         msg:
@@ -129,7 +130,7 @@ components:
         - status_code
         - msg
 
-    PrintNannyCloudAuth:
+    PrintNannyCloudAuthRequest:
       type: object
       additionalProperties: false
       properties:
@@ -219,9 +220,7 @@ components:
       type: object
       properties:
         request:
-          type: object
-          oneOf:
-            - $ref: "#/components/messages/SystemdManagerChangeUnitRequest"
+          $ref: "#/components/schemas/SystemdManagerChangeUnitRequest"
         changes:
           type: array
           items:

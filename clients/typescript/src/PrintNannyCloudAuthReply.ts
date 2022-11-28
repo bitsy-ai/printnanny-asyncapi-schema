@@ -1,11 +1,11 @@
-import {AnonymousSchema_17} from './AnonymousSchema_17';
-export class ActionReply {
-  private _request: AnonymousSchema_17;
+import {PrintNannyCloudAuthRequest} from './PrintNannyCloudAuthRequest';
+export class PrintNannyCloudAuthReply {
+  private _request: PrintNannyCloudAuthRequest;
   private _statusCode: number;
   private _msg: string;
 
   constructor(input: {
-    request: AnonymousSchema_17,
+    request: PrintNannyCloudAuthRequest,
     statusCode: number,
     msg: string,
   }) {
@@ -14,8 +14,8 @@ export class ActionReply {
     this._msg = input.msg;
   }
 
-  get request(): AnonymousSchema_17 { return this._request; }
-  set request(request: AnonymousSchema_17) { this._request = request; }
+  get request(): PrintNannyCloudAuthRequest { return this._request; }
+  set request(request: PrintNannyCloudAuthRequest) { this._request = request; }
 
   get statusCode(): number { return this._statusCode; }
   set statusCode(statusCode: number) { this._statusCode = statusCode; }

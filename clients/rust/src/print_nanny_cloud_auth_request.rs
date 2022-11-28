@@ -1,6 +1,6 @@
-// PrintNannyCloudAuth represents a PrintNannyCloudAuth model.
+// PrintNannyCloudAuthRequest represents a PrintNannyCloudAuthRequest model.
 #[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
-pub struct PrintNannyCloudAuth {
+pub struct PrintNannyCloudAuthRequest {
     #[serde(rename="email")]
     email: String,
     #[serde(rename="api_token")]
@@ -9,9 +9,9 @@ pub struct PrintNannyCloudAuth {
     api_url: String,
 }
 
-impl PrintNannyCloudAuth {
-    pub fn new(email: String, api_token: String, api_url: String) -> PrintNannyCloudAuth {
-        PrintNannyCloudAuth {
+impl PrintNannyCloudAuthRequest {
+    pub fn new(email: String, api_token: String, api_url: String) -> PrintNannyCloudAuthRequest {
+        PrintNannyCloudAuthRequest {
         email,
         api_token,
         api_url,
