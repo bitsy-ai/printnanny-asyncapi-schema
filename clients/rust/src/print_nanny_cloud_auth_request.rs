@@ -2,11 +2,11 @@
 #[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
 pub struct PrintNannyCloudAuthRequest {
     #[serde(rename="email")]
-    email: String,
+    pub email: String,
     #[serde(rename="api_token")]
-    api_token: String,
+    pub api_token: String,
     #[serde(rename="api_url")]
-    api_url: String,
+    pub api_url: String,
 }
 
 impl PrintNannyCloudAuthRequest {

@@ -2,7 +2,7 @@
 #[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
 pub struct SystemdManagerDisableUnitsRequest {
     #[serde(rename="files")]
-    files: Vec<String>,
+    pub files: Vec<String>,
 }
 
 impl SystemdManagerDisableUnitsRequest {

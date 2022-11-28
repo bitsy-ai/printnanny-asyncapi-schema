@@ -2,9 +2,9 @@
 #[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
 pub struct SettingsLoadRequest {
     #[serde(rename="format")]
-    format: Box<crate::SettingsFormat>,
+    pub format: Box<crate::SettingsFormat>,
     #[serde(rename="filename")]
-    filename: Box<crate::SettingsFile>,
+    pub filename: Box<crate::SettingsFile>,
 }
 
 impl SettingsLoadRequest {

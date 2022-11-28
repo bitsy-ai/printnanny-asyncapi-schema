@@ -2,9 +2,9 @@
 #[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
 pub struct SystemdManagerUnitJobReply {
     #[serde(rename="job")]
-    job: String,
+    pub job: String,
     #[serde(rename="unit")]
-    unit: Box<crate::SystemdUnit>,
+    pub unit: Box<crate::SystemdUnit>,
 }
 
 impl SystemdManagerUnitJobReply {

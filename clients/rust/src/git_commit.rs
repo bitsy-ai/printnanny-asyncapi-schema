@@ -2,13 +2,13 @@
 #[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
 pub struct GitCommit {
     #[serde(rename="oid")]
-    oid: String,
+    pub oid: String,
     #[serde(rename="header")]
-    header: String,
+    pub header: String,
     #[serde(rename="message")]
-    message: String,
+    pub message: String,
     #[serde(rename="ts")]
-    ts: i32,
+    pub ts: i32,
 }
 
 impl GitCommit {
