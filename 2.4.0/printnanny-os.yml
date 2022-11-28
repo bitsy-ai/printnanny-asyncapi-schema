@@ -512,6 +512,7 @@ components:
     GitCommit:
       name: GitHistory
       type: object
+      additionalProperties: false
       properties:
         oid:
           type: string
