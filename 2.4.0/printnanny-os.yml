@@ -148,6 +148,7 @@ components:
       messageId: PrintNannyCloudAuthRequest
       summary: "Store authentication token obtained through 2fa"
       description: "Performs device setup and stores PrintNanny Cloud authentication credentials obtained from 2fa challenge: https://api.printnanny.ai/api/schema/redoc/#tag/accounts/operation/accounts_2fa_auth_token_create"
+      x-parser-schema-id: PrintNannyCloudAuthRequest
       payload:
         $ref: "#/components/schemas/PrintNannyCloudAuthRequest"
 
@@ -155,22 +156,27 @@ components:
       messageId: PrintNannyCloudAuthRequest
       summary: "Store authentication token obtained through 2fa"
       description: "Performs device setup and stores PrintNanny Cloud authentication credentials obtained from 2fa challenge: https://api.printnanny.ai/api/schema/redoc/#tag/accounts/operation/accounts_2fa_auth_token_create"
+      x-parser-schema-id: PrintNannyCloudAuthReply
       payload:
         $ref: "#/components/schemas/PrintNannyCloudAuthReply"
 
     SystemdManagerEnableUnitsRequest:
       messageId: SystemdManagerEnableUnitsRequest
+      x-parser-schema-id: SystemdManagerEnableUnitsRequest
       summary: "Enable/disable one or more systemd unit files"
       payload:
         $ref: "#/components/schemas/SystemdManagerEnableUnitsRequest"
 
     SystemdManagerEnableUnitsReply:
+      messageId: SystemdManagerEnableUnitsReply
+      x-parser-schema-id: SystemdManagerEnableUnitsReply
       summary: "Response to SystemdManagerEnableUnitsRequest"
       payload:
         $ref: "#/components/schemas/SystemdManagerEnableUnitsReply"
 
     SystemdManagerGetUnitRequest:
       messageId: SystemdManagerUnitRequest
+      x-parser-schema-id: SystemdManagerUnitRequest
       name: SystemdManagerUnitRequest
       summary: "Get systemd unit status/details, equivalent to dbus.org.freedesktop.systemd1.Manager.GetUnit"
       payload:
@@ -178,60 +184,70 @@ components:
 
     SystemdManagerGetUnitReply:
       messageId: SystemdManagerGetUnitReply
+      x-parser-schema-id: SystemdManagerGetUnitReply
       summary: "Get systemd unit status/details, equivalent to dbus.org.freedesktop.systemd1.Manager.GetUnit"
       payload:
         $ref: "#/components/schemas/SystemdManagerGetUnitReply"
 
     SystemdManagerReloadUnitRequest:
       messageId: SystemdManagerReloadUnitRequest
+      x-parser-schema-id: SystemdManagerUnitRequest
       summary: "Reload systemd unit"
       payload:
         $ref: "#/components/schemas/SystemdManagerUnitRequest"
 
     SystemdManagerReloadUnitReply:
       messageId: SystemdManagerReloadUnitReply
+      x-parser-schema-id: SystemdManagerUnitJobReply
       summary: "Result of reloading systemd unit, returning job id if state changed."
       payload:
         $ref: "#/components/schemas/SystemdManagerUnitJobReply"
 
     SystemdManagerRestartUnitRequest:
       messageId: SystemdManagerRestartUnitRequest
+      x-parser-schema-id: SystemdManagerUnitRequest
       summary: "Restart systemd unit"
       payload:
         $ref: "#/components/schemas/SystemdManagerUnitRequest"
 
     SystemdManagerRestartUnitReply:
       messageId: SystemdManagerRestartUnitReply
+      x-parser-schema-id: SystemdManagerUnitJobReply
       summary: "Result of restarting systemd unit, returning job id if state changed."
       payload:
         $ref: "#/components/schemas/SystemdManagerUnitJobReply"
 
     SystemdManagerStartUnitRequest:
       messageId: SystemdManagerStartUnitRequest
+      x-parser-schema-id: SystemdManagerUnitRequest
       summary: "Start systemd unit"
       payload:
         $ref: "#/components/schemas/SystemdManagerUnitRequest"
 
     SystemdManagerStartUnitReply:
       messageId: SystemdManagerStartUnitReply
+      x-parser-schema-id: SystemdManagerUnitJobReply
       summary: "Result of starting systemd unit, returning job id if state changed."
       payload:
         $ref: "#/components/schemas/SystemdManagerUnitJobReply"
 
     SystemdManagerStopUnitRequest:
       messageId: SystemdManagerStopUnitRequest
+      x-parser-schema-id: SystemdManagerUnitRequest
       summary: "Stop systemd unit"
       payload:
         $ref: "#/components/schemas/SystemdManagerUnitRequest"
 
     SystemdManagerStopUnitReply:
       messageId: SystemdManagerStopUnitReply
+      x-parser-schema-id: SystemdManagerUnitJobReply
       summary: "Result of stopping systemd unit, returning job id if state changed."
       payload:
         $ref: "#/components/schemas/SystemdManagerUnitJobReply"
 
   schemas:
     PrintNannyCloudAuthReply:
+      name: PrintNannyCloudAuthReply
       type: object
       additionalProperties: false
       properties:
@@ -260,6 +276,7 @@ components:
         - email
         - api_token
         - api_url
+
     SystemdUnit:
       type: object
       additionalProperties: false
