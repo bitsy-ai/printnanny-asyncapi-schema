@@ -377,35 +377,35 @@ components:
     SettingsLoadReply:
       messageId: SettingsLoadReply
       summary: "Load a settings file for browser editor"
-      x-parser-schema-id: SettingsLoadReply
+      x-parser-schema-id: SettingsReply
       payload:
         $ref: "#/components/schemas/SettingsReply"
 
     SettingsApplyRequest:
       messageId: SettingsApplyRequest
       summary: "Apply changes to a settings file and run pre/post save hooks"
-      x-parser-schema-id: SettingsLoadRequest
+      x-parser-schema-id: SettingsReply
       payload:
         $ref: "#/components/schemas/SettingsApplyRequest"
 
     SettingsApplyReply:
-      messageId: SettingsApplyRequest
+      messageId: SettingsApplyReply
       summary: "Apply changes to a settings file and run pre/post save hooks"
-      x-parser-schema-id: SettingsLoadRequest
+      x-parser-schema-id: SettingsReply
       payload:
         $ref: "#/components/schemas/SettingsReply"
 
     SettingsRevertRequest:
-      messageId: SettingsApplyRequest
+      messageId: SettingsRevertRequest
       summary: "Revert changes to a settings file and run pre/post save hooks"
-      x-parser-schema-id: SettingsLoadRequest
+      x-parser-schema-id: SettingsReply
       payload:
         $ref: "#/components/schemas/SettingsRevertRequest"
 
     SettingsRevertReply:
-      messageId: SettingsRevertRepl
+      messageId: SettingsRevertReply
       summary: "Revert changes to a settings file and run pre/post save hooks"
-      x-parser-schema-id: SettingsLoadRequest
+      x-parser-schema-id: SettingsReply
       payload:
         $ref: "#/components/schemas/SettingsReply"
 
