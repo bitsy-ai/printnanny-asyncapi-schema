@@ -33,12 +33,12 @@ channels:
       message:
         name: SystemdManagerDisableUnitReply
         payload:
-          $ref: "#/components/messages/SystemdManagerChangeUnitReply"
+          $ref: "#/components/messages/SystemdManagerEnableUnitsReply"
     publish:
       message:
         name: SystemdManagerDisableUnitRequest
         payload:
-          $ref: "#/components/messages/SystemdManagerChangeUnitRequest"
+          $ref: "#/components/messages/SystemdManagerEnableUnitsRequest"
 
   pi.{pi_id}.action.dbus.org.freedesktop.systemd1.Manager.EnableUnit:
     parameters:
@@ -50,12 +50,12 @@ channels:
       message:
         name: SystemdManagerDisableUnitReply
         payload:
-          $ref: "#/components/messages/SystemdManagerChangeUnitReply"
+          $ref: "#/components/messages/SystemdManagerEnableUnitsReply"
     publish:
       message:
         name: SystemdManagerDisableUnitRequest
         payload:
-          $ref: "#/components/messages/SystemdManagerChangeUnitRequest"
+          $ref: "#/components/messages/SystemdManagerEnableUnitsRequest"
 
   pi.{pi_id}.action.dbus.org.freedesktop.systemd1.Manager.GetUnit:
     parameters:
@@ -74,6 +74,66 @@ channels:
         payload:
           $ref: "#/components/messages/SystemdManagerGetUnitRequest"
 
+  pi.{pi_id}.action.dbus.org.freedesktop.systemd1.Manager.ReloadUnit:
+    parameters:
+      pi_id:
+        description: The ID of the PrintNanny Pi/device
+        schema:
+          type: string
+    subscribe:
+      message:
+        payload:
+          $ref: "#/components/messages/SystemdManagerReloadUnitReply"
+    publish:
+      message:
+        payload:
+          $ref: "#/components/messages/SystemdManagerReloadUnitRequest"
+
+  pi.{pi_id}.action.dbus.org.freedesktop.systemd1.Manager.RestartUnit:
+    parameters:
+      pi_id:
+        description: The ID of the PrintNanny Pi/device
+        schema:
+          type: string
+    subscribe:
+      message:
+        payload:
+          $ref: "#/components/messages/SystemdManagerRestartUnitReply"
+    publish:
+      message:
+        payload:
+          $ref: "#/components/messages/SystemdManagerRestartUnitRequest"
+
+  pi.{pi_id}.action.dbus.org.freedesktop.systemd1.Manager.StartUnit:
+    parameters:
+      pi_id:
+        description: The ID of the PrintNanny Pi/device
+        schema:
+          type: string
+    subscribe:
+      message:
+        payload:
+          $ref: "#/components/messages/SystemdManagerStartUnitReply"
+    publish:
+      message:
+        payload:
+          $ref: "#/components/messages/SystemdManagerStartUnitRequest"
+
+  pi.{pi_id}.action.dbus.org.freedesktop.systemd1.Manager.StoptUnit:
+    parameters:
+      pi_id:
+        description: The ID of the PrintNanny Pi/device
+        schema:
+          type: string
+    subscribe:
+      message:
+        payload:
+          $ref: "#/components/messages/SystemdManagerStopUnitReply"
+    publish:
+      message:
+        payload:
+          $ref: "#/components/messages/SystemdManagerStopUnitRequest"
+
 components:
   messages:
     PrintNannyCloudAuthRequest:
@@ -90,29 +150,69 @@ components:
       payload:
         $ref: "#/components/schemas/PrintNannyCloudAuthReply"
 
-    SystemdManagerChangeUnitRequest:
-      messageId: SystemdManagerChangeUnitRequest
+    SystemdManagerEnableUnitsRequest:
+      messageId: SystemdManagerEnableUnitsRequest
       summary: "Enable/disable one or more systemd unit files"
       payload:
-        $ref: "#/components/schemas/SystemdManagerChangeUnitRequest"
+        $ref: "#/components/schemas/SystemdManagerEnableUnitsRequest"
 
-    SystemdManagerChangeUnitReply:
-      summary: "Response to SystemdManagerChangeUnitRequest"
+    SystemdManagerEnableUnitsReply:
+      summary: "Response to SystemdManagerEnableUnitsRequest"
       payload:
-        $ref: "#/components/schemas/SystemdManagerChangeUnitReply"
+        $ref: "#/components/schemas/SystemdManagerEnableUnitsReply"
 
     SystemdManagerGetUnitRequest:
-      messageId: SystemdManagerGetUnitRequest
-      name: SystemdManagerGetUnitRequest
+      messageId: SystemdManagerUnitRequest
+      name: SystemdManagerUnitRequest
       summary: "Get systemd unit status/details, equivalent to dbus.org.freedesktop.systemd1.Manager.GetUnit"
       payload:
-        $ref: "#/components/schemas/SystemdManagerGetUnitRequest"
+        $ref: "#/components/schemas/SystemdManagerUnitRequest"
 
     SystemdManagerGetUnitReply:
       messageId: SystemdManagerGetUnitReply
       summary: "Get systemd unit status/details, equivalent to dbus.org.freedesktop.systemd1.Manager.GetUnit"
       payload:
         $ref: "#/components/schemas/SystemdManagerGetUnitReply"
+
+    SystemdManagerReloadUnitRequest:
+      summary: "Reload systemd unit"
+      payload:
+        $ref: "#/components/schemas/SystemdManagerUnitRequest"
+
+    SystemdManagerReloadUnitReply:
+      summary: "Result of reloading systemd unit, returning job id if state changed."
+      payload:
+        $ref: "#/components/schemas/SystemdManagerUnitJobReply"
+
+    SystemdManagerRestartUnitRequest:
+      summary: "Restart systemd unit"
+      payload:
+        $ref: "#/components/schemas/SystemdManagerUnitRequest"
+
+    SystemdManagerRestartUnitReply:
+      summary: "Result of restarting systemd unit, returning job id if state changed."
+      payload:
+        $ref: "#/components/schemas/SystemdManagerUnitJobReply"
+
+    SystemdManagerStartUnitRequest:
+      summary: "Start systemd unit"
+      payload:
+        $ref: "#/components/schemas/SystemdManagerUnitRequest"
+
+    SystemdManagerStartUnitReply:
+      summary: "Result of starting systemd unit, returning job id if state changed."
+      payload:
+        $ref: "#/components/schemas/SystemdManagerUnitJobReply"
+
+    SystemdManagerStopUnitRequest:
+      summary: "Stop systemd unit"
+      payload:
+        $ref: "#/components/schemas/SystemdManagerUnitRequest"
+
+    SystemdManagerStopUnitReply:
+      summary: "Result of stopping systemd unit, returning job id if state changed."
+      payload:
+        $ref: "#/components/schemas/SystemdManagerUnitJobReply"
 
   schemas:
     PrintNannyCloudAuthReply:
@@ -203,7 +303,7 @@ components:
         - file
         - destination
 
-    SystemdManagerChangeUnitRequest:
+    SystemdManagerEnableUnitsRequest:
       type: object
       additionalProperties: false
       properties:
@@ -215,12 +315,12 @@ components:
       required:
         - files
 
-    SystemdManagerChangeUnitReply:
+    SystemdManagerEnableUnitsReply:
       additionalProperties: false
       type: object
       properties:
         request:
-          $ref: "#/components/schemas/SystemdManagerChangeUnitRequest"
+          $ref: "#/components/schemas/SystemdManagerEnableUnitsRequest"
         changes:
           type: array
           items:
@@ -230,7 +330,7 @@ components:
         - request
         - changes
 
-    SystemdManagerGetUnitRequest:
+    SystemdManagerUnitRequest:
       type: object
       additionalProperties: false
       properties:
@@ -239,14 +339,23 @@ components:
       required:
         - name
 
+    SystemdManagerUnitJobReply:
+      type: object
+      additionalProperties: false
+      properties:
+        job:
+          type: string
+        unit:
+          $ref: "#/components/schemas/SystemdUnit"
+      required:
+        - job
+        - unit
+
     SystemdManagerGetUnitReply:
       type: object
       additionalProperties: false
       properties:
-        request:
-          $ref: "#/components/schemas/SystemdManagerGetUnitRequest"
         unit:
           $ref: "#/components/schemas/SystemdUnit"
       required:
-        - request
         - unit
