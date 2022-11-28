@@ -521,6 +521,11 @@ components:
           type: string
         ts:
           type: integer
+      required:
+        - oid
+        - header
+        - message
+        - ts
 
     PrintNannyCloudAuthReply:
       name: PrintNannyCloudAuthReply
@@ -581,6 +586,11 @@ components:
           type: string
         head_git_commit:
           type: string
+      required:
+        - format
+        - filename
+        - content
+        - head_git_commit
 
     SettingsRevertRequest:
       type: object
@@ -588,6 +598,8 @@ components:
       properties:
         git_commit:
           type: string
+      required:
+        - git_commit
 
     SettingsLoadRequest:
       type: object
@@ -597,6 +609,10 @@ components:
           $ref: "#/components/schemas/SettingsFormat"
         filename:
           $ref: "#/components/schemas/SettingsFile"
+
+      required:
+        - format
+        - filename
 
     SettingsReply:
       type: object
@@ -616,6 +632,13 @@ components:
           items:
             $ref: "#/components/schemas/GitCommit"
 
+      required:
+        - format
+        - filename
+        - content
+        - head_git_commit
+        - git_history
+
     SystemdUnit:
       type: object
       additionalProperties: false
@@ -630,6 +653,14 @@ components:
           $ref: "#/components/schemas/SystemdUnitLoadState"
         unit_file_state:
           $ref: "#/components/schemas/SystemdUnitFileState"
+
+      required:
+        - id
+        - fragment_path
+        - active_state
+        - load_state
+        - unit_file_state
+
     SystemdUnitActiveState:
       type: string
       additionalProperties: false
