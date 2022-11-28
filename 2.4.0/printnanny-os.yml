@@ -225,6 +225,7 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/SystemdUnitChange"
+          additionalItems: false
       required:
         - request
         - changes
