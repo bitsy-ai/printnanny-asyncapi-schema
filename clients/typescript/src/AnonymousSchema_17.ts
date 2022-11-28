@@ -1,13 +1,13 @@
 
 export class AnonymousSchema_17 {
-  private _reservedName: string;
+  private _additionalProperties?: Map<string, any>;
 
   constructor(input: {
-    reservedName: string,
+    additionalProperties?: Map<string, any>,
   }) {
-    this._reservedName = input.reservedName;
+    this._additionalProperties = input.additionalProperties;
   }
 
-  get reservedName(): string { return this._reservedName; }
-  set reservedName(reservedName: string) { this._reservedName = reservedName; }
+  get additionalProperties(): Map<string, any> | undefined { return this._additionalProperties; }
+  set additionalProperties(additionalProperties: Map<string, any> | undefined) { this._additionalProperties = additionalProperties; }
 }

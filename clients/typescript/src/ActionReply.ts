@@ -1,11 +1,11 @@
-import {AnonymousSchema_23} from './AnonymousSchema_23';
-export class AnonymousSchema_22 {
-  private _request: AnonymousSchema_23;
+import {AnonymousSchema_17} from './AnonymousSchema_17';
+export class ActionReply {
+  private _request: AnonymousSchema_17;
   private _statusCode: number;
   private _msg: string;
 
   constructor(input: {
-    request: AnonymousSchema_23,
+    request: AnonymousSchema_17,
     statusCode: number,
     msg: string,
   }) {
@@ -14,8 +14,8 @@ export class AnonymousSchema_22 {
     this._msg = input.msg;
   }
 
-  get request(): AnonymousSchema_23 { return this._request; }
-  set request(request: AnonymousSchema_23) { this._request = request; }
+  get request(): AnonymousSchema_17 { return this._request; }
+  set request(request: AnonymousSchema_17) { this._request = request; }
 
   get statusCode(): number { return this._statusCode; }
   set statusCode(statusCode: number) { this._statusCode = statusCode; }

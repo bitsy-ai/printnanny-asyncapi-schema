@@ -10,11 +10,11 @@ const outDir = path.join(__dirname, 'rust');
 const data = fs.readFileSync('../2.4.0/printnanny-os.yml').toString();
 const doc = YAML.parse(data)
 const processer = new AsyncAPIInputProcessor();
-const inputModel = await processer.process(doc);
 
 
 
 export async function generate(): Promise<void> {
+  const inputModel = await processer.process(doc);
   const models = await generator.generateToFiles(inputModel, "typescript/src", { exportType: "named" });
   for (const model of models) {
     console.log(model.result);

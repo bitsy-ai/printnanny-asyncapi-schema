@@ -159,6 +159,7 @@ components:
           $ref: "#/components/schemas/SystemdUnitFileState"
     SystemdUnitActiveState:
       type: string
+      additionalProperties: false
       enum:
         - "active"
         - "activating"
@@ -168,12 +169,14 @@ components:
         - "loaded"
     SystemdUnitLoadState:
       type: string
+      additionalProperties: false
       enum:
         - "loaded"
         - "error"
         - "masked"
     SystemdUnitFileState:
       type: string
+      additionalProperties: false
       enum:
         - "enabled"
         - "enabled-runtime"
@@ -184,6 +187,7 @@ components:
         - "invalid"
     SystemdUnitChange:
       type: object
+      additionalProperties: false
       change:
         type: string
         enum:

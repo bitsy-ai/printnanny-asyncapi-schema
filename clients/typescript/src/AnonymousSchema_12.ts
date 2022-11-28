@@ -1,5 +1,5 @@
 
-export class AnonymousSchema_14 {
+export class AnonymousSchema_12 {
   private _additionalProperties?: Map<string, any>;
 
   constructor(input: {
