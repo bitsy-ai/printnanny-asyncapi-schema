@@ -636,6 +636,7 @@ components:
           $ref: "#/components/schemas/SettingsFile"
         git_history:
           type: array
+          additionalItems: false
           items:
             $ref: "#/components/schemas/GitCommit"
         head_git_commit:
