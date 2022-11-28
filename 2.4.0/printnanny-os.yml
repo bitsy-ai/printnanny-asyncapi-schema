@@ -379,7 +379,7 @@ components:
       summary: "Load a settings file for browser editor"
       x-parser-schema-id: SettingsLoadReply
       payload:
-        $ref: "#/components/schemas/SettingsLoadReply"
+        $ref: "#/components/schemas/SettingsReply"
 
     SettingsApplyRequest:
       messageId: SettingsApplyRequest
@@ -393,7 +393,7 @@ components:
       summary: "Apply changes to a settings file and run pre/post save hooks"
       x-parser-schema-id: SettingsLoadRequest
       payload:
-        $ref: "#/components/schemas/SettingsApplyReply"
+        $ref: "#/components/schemas/SettingsReply"
 
     SettingsRevertRequest:
       messageId: SettingsApplyRequest
@@ -407,7 +407,7 @@ components:
       summary: "Revert changes to a settings file and run pre/post save hooks"
       x-parser-schema-id: SettingsLoadRequest
       payload:
-        $ref: "#/components/schemas/SettingsRevertReply"
+        $ref: "#/components/schemas/SettingsReply"
 
     SystemdManagerDisableUnitsRequest:
       messageId: SystemdManagerDisableUnitsRequest
@@ -582,37 +582,11 @@ components:
         head_git_commit:
           type: string
 
-    SettingsApplyReply:
-      type: object
-      additionalProperties: false
-      properties:
-        format:
-          $ref: "#/components/schemas/SettingsFormat"
-        filename:
-          $ref: "#/components/schemas/SettingsFile"
-        content:
-          type: string
-        head_git_commit:
-          type: string
-
     SettingsRevertRequest:
       type: object
       additionalProperties: false
       properties:
         git_commit:
-          type: string
-
-    SettingsRevertReply:
-      type: object
-      additionalProperties: false
-      properties:
-        format:
-          $ref: "#/components/schemas/SettingsFormat"
-        filename:
-          $ref: "#/components/schemas/SettingsFile"
-        content:
-          type: string
-        head_git_commit:
           type: string
 
     SettingsLoadRequest:
@@ -624,23 +598,23 @@ components:
         filename:
           $ref: "#/components/schemas/SettingsFile"
 
-    SettingsLoadReply:
+    SettingsReply:
       type: object
       additionalProperties: false
       properties:
-        content:
-          type: string
         format:
           $ref: "#/components/schemas/SettingsFormat"
         filename:
           $ref: "#/components/schemas/SettingsFile"
+        content:
+          type: string
+        head_git_commit:
+          type: string
         git_history:
           type: array
           additionalItems: false
           items:
             $ref: "#/components/schemas/GitCommit"
-        head_git_commit:
-          type: string
 
     SystemdUnit:
       type: object
