@@ -53,9 +53,6 @@ pub use self::settings_format::*;
 pub mod settings_file;
 pub use self::settings_file::*;
 
-pub mod settings_load_reply;
-pub use self::settings_load_reply::*;
-
 pub mod settings_reply;
 pub use self::settings_reply::*;
 

@@ -1,13 +1,13 @@
 
 export class SettingsRevertRequest {
-  private _gitCommit?: string;
+  private _gitCommit: string;
 
   constructor(input: {
-    gitCommit?: string,
+    gitCommit: string,
   }) {
     this._gitCommit = input.gitCommit;
   }
 
-  get gitCommit(): string | undefined { return this._gitCommit; }
-  set gitCommit(gitCommit: string | undefined) { this._gitCommit = gitCommit; }
+  get gitCommit(): string { return this._gitCommit; }
+  set gitCommit(gitCommit: string) { this._gitCommit = gitCommit; }
 }
