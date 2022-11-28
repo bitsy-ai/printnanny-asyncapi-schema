@@ -1,8 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { RustFileGenerator, RustRenderCompleteModelOptions, RUST_COMMON_PRESET, defaultRustRenderCompleteModelOptions, RustPackageFeatures } from '@asyncapi/modelina';
+import { RustFileGenerator, RustRenderCompleteModelOptions, RUST_COMMON_PRESET, defaultRustRenderCompleteModelOptions, RustPackageFeatures, AsyncAPIInputProcessor } from '@asyncapi/modelina';
 import YAML from 'yaml'
-
 
 export async function generate(): Promise<void> {
   // initialize the generator from a preset
@@ -21,9 +20,12 @@ export async function generate(): Promise<void> {
   const data = fs.readFileSync('../2.4.0/printnanny-os.yml').toString();
   const doc = YAML.parse(data)
 
+  const processer = new AsyncAPIInputProcessor();
+  const inputModel = await processer.process(doc);
+
 
   // Run the file generator with options
-  const models = await generator.generateToPackage(doc as Record<string, any>, outDir, {
+  const models = await generator.generateToPackage(inputModel, outDir, {
     ...defaultRustRenderCompleteModelOptions,
     supportFiles: true, // generate Cargo.toml and lib.rs
     package: {
