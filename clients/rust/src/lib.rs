@@ -32,9 +32,6 @@ pub use self::systemd_manager_change_unit_request::*;
 pub mod systemd_manager_change_unit_reply;
 pub use self::systemd_manager_change_unit_reply::*;
 
-pub mod reserved_union;
-pub use self::reserved_union::*;
-
 pub mod systemd_unit_change;
 pub use self::systemd_unit_change::*;
 

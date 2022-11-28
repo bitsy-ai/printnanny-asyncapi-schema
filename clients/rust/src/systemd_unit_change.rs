@@ -7,7 +7,7 @@ pub struct SystemdUnitChange {
 impl SystemdUnitChange {
     pub fn new() -> SystemdUnitChange {
         SystemdUnitChange {
-    
+        
         }
     }
 }

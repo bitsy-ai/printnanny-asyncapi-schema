@@ -8,7 +8,7 @@ pub struct SystemdManagerGetUnitRequest {
 impl SystemdManagerGetUnitRequest {
     pub fn new(name: String) -> SystemdManagerGetUnitRequest {
         SystemdManagerGetUnitRequest {
-        name,
+            name,
         }
     }
 }

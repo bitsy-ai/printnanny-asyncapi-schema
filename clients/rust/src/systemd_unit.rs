@@ -16,11 +16,11 @@ pub struct SystemdUnit {
 impl SystemdUnit {
     pub fn new(id: Option<String>, fragment_path: Option<String>, active_state: Option<crate::SystemdUnitActiveState>, load_state: Option<crate::SystemdUnitLoadState>, unit_file_state: Option<crate::SystemdUnitFileState>) -> SystemdUnit {
         SystemdUnit {
-        id,
-        fragment_path,
-        active_state: active_state.map(Box::new),
-        load_state: load_state.map(Box::new),
-        unit_file_state: unit_file_state.map(Box::new),
+            id,
+            fragment_path,
+            active_state: active_state.map(Box::new),
+            load_state: load_state.map(Box::new),
+            unit_file_state: unit_file_state.map(Box::new),
         }
     }
 }

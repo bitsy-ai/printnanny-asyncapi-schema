@@ -12,9 +12,9 @@ pub struct PrintNannyCloudAuthReply {
 impl PrintNannyCloudAuthReply {
     pub fn new(request: crate::PrintNannyCloudAuthRequest, status_code: i32, msg: String) -> PrintNannyCloudAuthReply {
         PrintNannyCloudAuthReply {
-        Box::new(request),
-        status_code,
-        msg,
+            request: Box::new(request),
+            status_code,
+            msg,
         }
     }
 }

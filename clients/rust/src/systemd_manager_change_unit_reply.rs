@@ -4,14 +4,14 @@ pub struct SystemdManagerChangeUnitReply {
     #[serde(rename="request")]
     request: Box<crate::SystemdManagerChangeUnitRequest>,
     #[serde(rename="changes")]
-    changes: Vec<crate::ReservedUnion>,
+    changes: Vec<crate::SystemdUnitChange>,
 }
 
 impl SystemdManagerChangeUnitReply {
-    pub fn new(request: crate::SystemdManagerChangeUnitRequest, changes: Vec<crate::ReservedUnion>) -> SystemdManagerChangeUnitReply {
+    pub fn new(request: crate::SystemdManagerChangeUnitRequest, changes: Vec<crate::SystemdUnitChange>) -> SystemdManagerChangeUnitReply {
         SystemdManagerChangeUnitReply {
-        Box::new(request),
-        changes,
+            request: Box::new(request),
+            changes,
         }
     }
 }

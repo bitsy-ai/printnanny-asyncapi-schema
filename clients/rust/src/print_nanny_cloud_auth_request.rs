@@ -12,9 +12,9 @@ pub struct PrintNannyCloudAuthRequest {
 impl PrintNannyCloudAuthRequest {
     pub fn new(email: String, api_token: String, api_url: String) -> PrintNannyCloudAuthRequest {
         PrintNannyCloudAuthRequest {
-        email,
-        api_token,
-        api_url,
+            email,
+            api_token,
+            api_url,
         }
     }
 }
