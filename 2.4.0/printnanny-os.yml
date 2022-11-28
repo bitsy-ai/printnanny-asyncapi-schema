@@ -33,12 +33,12 @@ channels:
       message:
         name: SystemdManagerDisableUnitReply
         payload:
-          $ref: "#/components/messages/SystemdManagerEnableUnitsReply"
+          $ref: "#/components/messages/SystemdManagerDisableUnitsReply"
     publish:
       message:
         name: SystemdManagerDisableUnitRequest
         payload:
-          $ref: "#/components/messages/SystemdManagerEnableUnitsRequest"
+          $ref: "#/components/messages/SystemdManagerDisableUnitsRequest"
 
   pi.{pi_id}.action.dbus.org.freedesktop.systemd1.Manager.EnableUnit:
     parameters:
@@ -160,10 +160,24 @@ components:
       payload:
         $ref: "#/components/schemas/PrintNannyCloudAuthReply"
 
+    SystemdManagerDisableUnitsRequest:
+      messageId: SystemdManagerDisableUnitsRequest
+      x-parser-schema-id: SystemdManagerDisableUnitsRequest
+      summary: "Disable one or more systemd unit files"
+      payload:
+        $ref: "#/components/schemas/SystemdManagerDisableUnitsRequest"
+
+    SystemdManagerDisableUnitsReply:
+      messageId: SystemdManagerDisableUnitsReply
+      x-parser-schema-id: SystemdManagerDisableUnitsReply
+      summary: "Response to SystemdManagerDisableUnitsRequest"
+      payload:
+        $ref: "#/components/schemas/SystemdManagerDisableUnitsReply"
+
     SystemdManagerEnableUnitsRequest:
       messageId: SystemdManagerEnableUnitsRequest
       x-parser-schema-id: SystemdManagerEnableUnitsRequest
-      summary: "Enable/disable one or more systemd unit files"
+      summary: "Enable one or more systemd unit files"
       payload:
         $ref: "#/components/schemas/SystemdManagerEnableUnitsRequest"
 
@@ -354,6 +368,33 @@ components:
       properties:
         request:
           $ref: "#/components/schemas/SystemdManagerEnableUnitsRequest"
+        changes:
+          type: array
+          items:
+            $ref: "#/components/schemas/SystemdUnitChange"
+          additionalItems: false
+      required:
+        - request
+        - changes
+
+    SystemdManagerDisableUnitsRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        files:
+          type: array
+          items:
+            type: string
+          additionalItems: false
+      required:
+        - files
+
+    SystemdManagerDisableUnitsReply:
+      additionalProperties: false
+      type: object
+      properties:
+        request:
+          $ref: "#/components/schemas/SystemdManagerDisableUnitsRequest"
         changes:
           type: array
           items:
