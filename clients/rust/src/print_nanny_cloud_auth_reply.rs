@@ -2,11 +2,11 @@
 #[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
 pub struct PrintNannyCloudAuthReply {
     #[serde(rename="request")]
-    request: Box<crate::PrintNannyCloudAuthRequest>,
+    pub request: Box<crate::PrintNannyCloudAuthRequest>,
     #[serde(rename="status_code")]
-    status_code: i32,
+    pub status_code: i32,
     #[serde(rename="msg")]
-    msg: String,
+    pub msg: String,
 }
 
 impl PrintNannyCloudAuthReply {

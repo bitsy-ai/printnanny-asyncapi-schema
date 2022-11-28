@@ -2,15 +2,15 @@
 #[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
 pub struct SettingsReply {
     #[serde(rename="format")]
-    format: Box<crate::SettingsFormat>,
+    pub format: Box<crate::SettingsFormat>,
     #[serde(rename="filename")]
-    filename: Box<crate::SettingsFile>,
+    pub filename: Box<crate::SettingsFile>,
     #[serde(rename="content")]
-    content: String,
+    pub content: String,
     #[serde(rename="head_git_commit")]
-    head_git_commit: String,
+    pub head_git_commit: String,
     #[serde(rename="git_history")]
-    git_history: Vec<crate::GitCommit>,
+    pub git_history: Vec<crate::GitCommit>,
 }
 
 impl SettingsReply {

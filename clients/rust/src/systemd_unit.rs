@@ -2,15 +2,15 @@
 #[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
 pub struct SystemdUnit {
     #[serde(rename="id")]
-    id: String,
+    pub id: String,
     #[serde(rename="fragment_path")]
-    fragment_path: String,
+    pub fragment_path: String,
     #[serde(rename="active_state")]
-    active_state: Box<crate::SystemdUnitActiveState>,
+    pub active_state: Box<crate::SystemdUnitActiveState>,
     #[serde(rename="load_state")]
-    load_state: Box<crate::SystemdUnitLoadState>,
+    pub load_state: Box<crate::SystemdUnitLoadState>,
     #[serde(rename="unit_file_state")]
-    unit_file_state: Box<crate::SystemdUnitFileState>,
+    pub unit_file_state: Box<crate::SystemdUnitFileState>,
 }
 
 impl SystemdUnit {

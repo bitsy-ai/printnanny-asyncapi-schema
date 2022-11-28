@@ -2,13 +2,13 @@
 #[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
 pub struct SettingsApplyRequest {
     #[serde(rename="format")]
-    format: Box<crate::SettingsFormat>,
+    pub format: Box<crate::SettingsFormat>,
     #[serde(rename="filename")]
-    filename: Box<crate::SettingsFile>,
+    pub filename: Box<crate::SettingsFile>,
     #[serde(rename="content")]
-    content: String,
+    pub content: String,
     #[serde(rename="head_git_commit")]
-    head_git_commit: String,
+    pub head_git_commit: String,
 }
 
 impl SettingsApplyRequest {

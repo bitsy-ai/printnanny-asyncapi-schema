@@ -2,7 +2,7 @@
 #[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
 pub struct SystemdManagerGetUnitReply {
     #[serde(rename="unit")]
-    unit: Box<crate::SystemdUnit>,
+    pub unit: Box<crate::SystemdUnit>,
 }
 
 impl SystemdManagerGetUnitReply {

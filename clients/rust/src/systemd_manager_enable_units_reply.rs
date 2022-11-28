@@ -2,9 +2,9 @@
 #[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
 pub struct SystemdManagerEnableUnitsReply {
     #[serde(rename="request")]
-    request: Box<crate::SystemdManagerEnableUnitsRequest>,
+    pub request: Box<crate::SystemdManagerEnableUnitsRequest>,
     #[serde(rename="changes")]
-    changes: Vec<crate::SystemdUnitChange>,
+    pub changes: Vec<crate::SystemdUnitChange>,
 }
 
 impl SystemdManagerEnableUnitsReply {

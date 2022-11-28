@@ -2,7 +2,7 @@
 #[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
 pub struct SettingsRevertRequest {
     #[serde(rename="git_commit")]
-    git_commit: String,
+    pub git_commit: String,
 }
 
 impl SettingsRevertRequest {
