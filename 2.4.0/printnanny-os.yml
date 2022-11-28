@@ -1,29 +1,13 @@
 asyncapi: 2.4.0
 info:
-  title: PrintNanny OS Events
+  title: PrintNanny OS Action & Command Service
   version: 0.1.0
-  description: This service publishes events related to PrintNanny OS
+  description: PrintNanny OS remote actions and command handler service
 defaultContentType: "application/json"
 
 channels:
-  pi.{pi_id}.action.printnanny.cloud.auth:
-    parameters:
-      pi_id:
-        description: The ID of the PrintNanny Pi/device
-        schema:
-          type: string
-    subscribe:
-      message:
-        name: PrintNannyCloudAuthReply
-        payload:
-          $ref: "#/components/messages/PrintNannyCloudAuthReply"
-    publish:
-      message:
-        name: PrintNannyCloudAuthRequest
-        payload:
-          $ref: "#/components/messages/PrintNannyCloudAuthRequest"
-
-  pi.{pi_id}.action.dbus.org.freedesktop.systemd1.Manager.DisableUnit:
+  # begin dbus API request/reply channels
+  pi.{pi_id}.dbus.org.freedesktop.systemd1.Manager.DisableUnit:
     parameters:
       pi_id:
         description: The ID of the PrintNanny Pi/device
@@ -40,7 +24,7 @@ channels:
         payload:
           $ref: "#/components/messages/SystemdManagerDisableUnitsRequest"
 
-  pi.{pi_id}.action.dbus.org.freedesktop.systemd1.Manager.EnableUnit:
+  pi.{pi_id}.dbus.org.freedesktop.systemd1.Manager.EnableUnit:
     parameters:
       pi_id:
         description: The ID of the PrintNanny Pi/device
@@ -57,7 +41,7 @@ channels:
         payload:
           $ref: "#/components/messages/SystemdManagerEnableUnitsRequest"
 
-  pi.{pi_id}.action.dbus.org.freedesktop.systemd1.Manager.GetUnit:
+  pi.{pi_id}.dbus.org.freedesktop.systemd1.Manager.GetUnit:
     parameters:
       pi_id:
         description: The ID of the PrintNanny Pi/device
@@ -74,7 +58,7 @@ channels:
         payload:
           $ref: "#/components/messages/SystemdManagerGetUnitRequest"
 
-  pi.{pi_id}.action.dbus.org.freedesktop.systemd1.Manager.ReloadUnit:
+  pi.{pi_id}.dbus.org.freedesktop.systemd1.Manager.ReloadUnit:
     parameters:
       pi_id:
         description: The ID of the PrintNanny Pi/device
@@ -91,7 +75,7 @@ channels:
         payload:
           $ref: "#/components/messages/SystemdManagerReloadUnitRequest"
 
-  pi.{pi_id}.action.dbus.org.freedesktop.systemd1.Manager.RestartUnit:
+  pi.{pi_id}.dbus.org.freedesktop.systemd1.Manager.RestartUnit:
     parameters:
       pi_id:
         description: The ID of the PrintNanny Pi/device
@@ -108,7 +92,7 @@ channels:
         payload:
           $ref: "#/components/messages/SystemdManagerRestartUnitRequest"
 
-  pi.{pi_id}.action.dbus.org.freedesktop.systemd1.Manager.StartUnit:
+  pi.{pi_id}.dbus.org.freedesktop.systemd1.Manager.StartUnit:
     parameters:
       pi_id:
         description: The ID of the PrintNanny Pi/device
@@ -125,7 +109,7 @@ channels:
         payload:
           $ref: "#/components/messages/SystemdManagerStartUnitRequest"
 
-  pi.{pi_id}.action.dbus.org.freedesktop.systemd1.Manager.StoptUnit:
+  pi.{pi_id}.dbus.org.freedesktop.systemd1.Manager.StoptUnit:
     parameters:
       pi_id:
         description: The ID of the PrintNanny Pi/device
@@ -141,6 +125,229 @@ channels:
         name: SystemdManagerStopUnitRequest
         payload:
           $ref: "#/components/messages/SystemdManagerStopUnitRequest"
+  # end dbus api request/reply channels
+
+  # begin settings request/reply channels
+  pi.{pi_id}.settings.printnanny.cloud.auth:
+    parameters:
+      pi_id:
+        description: The ID of the PrintNanny Pi/device
+        schema:
+          type: string
+    subscribe:
+      message:
+        name: PrintNannyCloudAuthReply
+        payload:
+          $ref: "#/components/messages/PrintNannyCloudAuthReply"
+    publish:
+      message:
+        name: PrintNannyCloudAuthRequest
+        payload:
+          $ref: "#/components/messages/PrintNannyCloudAuthRequest"
+
+  pi.{pi_id}.settings.printnanny.cam.load:
+    parameters:
+      pi_id:
+        description: The ID of the PrintNanny Pi/device
+        schema:
+          type: string
+    subscribe:
+      message:
+        name: PrintNannyCamSettingsLoadReply
+        payload:
+          $ref: "#/components/messages/SettingsLoadReply"
+    publish:
+      message:
+        name: PrintNannyCamSettingsLoadRequest
+        payload:
+          $ref: "#/components/messages/SettingsLoadRequest"
+
+  pi.{pi_id}.settings.printnanny.cam.apply:
+    parameters:
+      pi_id:
+        description: The ID of the PrintNanny Pi/device
+        schema:
+          type: string
+    subscribe:
+      message:
+        name: PrintNannyCamSettingsApplyReply
+        payload:
+          $ref: "#/components/messages/SettingsApplyReply"
+    publish:
+      message:
+        name: PrintNannyCamSettingsApplyRequest
+        payload:
+          $ref: "#/components/messages/SettingsApplyRequest"
+
+  pi.{pi_id}.settings.printnanny.cam.revert:
+    parameters:
+      pi_id:
+        description: The ID of the PrintNanny Pi/device
+        schema:
+          type: string
+    subscribe:
+      message:
+        name: PrintNannyCamSettingsRevertReply
+        payload:
+          $ref: "#/components/messages/SettingsRevertReply"
+    publish:
+      message:
+        name: PrintNannyCamSettingsRevertRequest
+        payload:
+          $ref: "#/components/messages/SettingsRevertRequest"
+
+  pi.{pi_id}.settings.klipper.load:
+    parameters:
+      pi_id:
+        description: The ID of the PrintNanny Pi/device
+        schema:
+          type: string
+    subscribe:
+      message:
+        name: KlipperSettingsLoadReply
+        payload:
+          $ref: "#/components/messages/SettingsLoadReply"
+    publish:
+      message:
+        name: KlipperSettingsLoadRequest
+        payload:
+          $ref: "#/components/messages/SettingsLoadRequest"
+
+  pi.{pi_id}.settings.klipper.apply:
+    parameters:
+      pi_id:
+        description: The ID of the PrintNanny Pi/device
+        schema:
+          type: string
+    subscribe:
+      message:
+        name: KlipperSettingsApplyReply
+        payload:
+          $ref: "#/components/messages/SettingsApplyReply"
+    publish:
+      message:
+        name: KlipperSettingsApplyRequest
+        payload:
+          $ref: "#/components/messages/SettingsApplyRequest"
+
+  pi.{pi_id}.settings.klipper.revert:
+    parameters:
+      pi_id:
+        description: The ID of the PrintNanny Pi/device
+        schema:
+          type: string
+    subscribe:
+      message:
+        name: KlipperSettingsRevertReply
+        payload:
+          $ref: "#/components/messages/SettingsRevertReply"
+    publish:
+      message:
+        name: KlipperSettingsRevertRequest
+        payload:
+          $ref: "#/components/messages/SettingsRevertRequest"
+
+  pi.{pi_id}.settings.moonraker.load:
+    parameters:
+      pi_id:
+        description: The ID of the PrintNanny Pi/device
+        schema:
+          type: string
+    subscribe:
+      message:
+        name: MoonrakerSettingsLoadReply
+        payload:
+          $ref: "#/components/messages/SettingsLoadReply"
+    publish:
+      message:
+        name: MoonrakerSettingsLoadRequest
+        payload:
+          $ref: "#/components/messages/SettingsLoadRequest"
+
+  pi.{pi_id}.settings.moonraker.apply:
+    parameters:
+      pi_id:
+        description: The ID of the PrintNanny Pi/device
+        schema:
+          type: string
+    subscribe:
+      message:
+        name: MoonrakerSettingsApplyReply
+        payload:
+          $ref: "#/components/messages/SettingsApplyReply"
+    publish:
+      message:
+        name: MoonrakerSettingsApplyRequest
+        payload:
+          $ref: "#/components/messages/SettingsApplyRequest"
+
+  pi.{pi_id}.settings.moonraker.revert:
+    parameters:
+      pi_id:
+        description: The ID of the PrintNanny Pi/device
+        schema:
+          type: string
+    subscribe:
+      message:
+        name: MoonrakerSettingsRevertReply
+        payload:
+          $ref: "#/components/messages/SettingsRevertReply"
+    publish:
+      message:
+        name: MoonrakerSettingsRevertRequest
+        payload:
+          $ref: "#/components/messages/SettingsRevertRequest"
+
+  pi.{pi_id}.settings.octoprint.load:
+    parameters:
+      pi_id:
+        description: The ID of the PrintNanny Pi/device
+        schema:
+          type: string
+    subscribe:
+      message:
+        name: OctoPrintSettingsLoadReply
+        payload:
+          $ref: "#/components/messages/SettingsLoadReply"
+    publish:
+      message:
+        name: OctoPrintSettingsLoadRequest
+        payload:
+          $ref: "#/components/messages/SettingsLoadRequest"
+
+  pi.{pi_id}.settings.octoprint.apply:
+    parameters:
+      pi_id:
+        description: The ID of the PrintNanny Pi/device
+        schema:
+          type: string
+    subscribe:
+      message:
+        name: OctoPrintSettingsApplyReply
+        payload:
+          $ref: "#/components/messages/SettingsApplyReply"
+    publish:
+      message:
+        name: OctoPrintSettingsApplyRequest
+        payload:
+          $ref: "#/components/messages/SettingsApplyRequest"
+
+  pi.{pi_id}.settings.octoprint.revert:
+    parameters:
+      pi_id:
+        description: The ID of the PrintNanny Pi/device
+        schema:
+          type: string
+    subscribe:
+      message:
+        name: OctoPrintSettingsRevertReply
+        payload:
+          $ref: "#/components/messages/SettingsRevertReply"
+    publish:
+      message:
+        name: OctoPrintSettingsRevertRequest
+        payload:
+          $ref: "#/components/messages/SettingsRevertRequest"
 
 components:
   messages:
@@ -159,6 +366,48 @@ components:
       x-parser-schema-id: PrintNannyCloudAuthReply
       payload:
         $ref: "#/components/schemas/PrintNannyCloudAuthReply"
+
+    SettingsLoadRequest:
+      messageId: SettingsLoadRequest
+      summary: "Load a settings file for browser editor"
+      x-parser-schema-id: SettingsLoadRequest
+      payload:
+        $ref: "#/components/schemas/SettingsLoadRequest"
+
+    SettingsLoadReply:
+      messageId: SettingsLoadReply
+      summary: "Load a settings file for browser editor"
+      x-parser-schema-id: SettingsReply
+      payload:
+        $ref: "#/components/schemas/SettingsReply"
+
+    SettingsApplyRequest:
+      messageId: SettingsApplyRequest
+      summary: "Apply changes to a settings file and run pre/post save hooks"
+      x-parser-schema-id: SettingsReply
+      payload:
+        $ref: "#/components/schemas/SettingsApplyRequest"
+
+    SettingsApplyReply:
+      messageId: SettingsApplyReply
+      summary: "Apply changes to a settings file and run pre/post save hooks"
+      x-parser-schema-id: SettingsReply
+      payload:
+        $ref: "#/components/schemas/SettingsReply"
+
+    SettingsRevertRequest:
+      messageId: SettingsRevertRequest
+      summary: "Revert changes to a settings file and run pre/post save hooks"
+      x-parser-schema-id: SettingsReply
+      payload:
+        $ref: "#/components/schemas/SettingsRevertRequest"
+
+    SettingsRevertReply:
+      messageId: SettingsRevertReply
+      summary: "Revert changes to a settings file and run pre/post save hooks"
+      x-parser-schema-id: SettingsReply
+      payload:
+        $ref: "#/components/schemas/SettingsReply"
 
     SystemdManagerDisableUnitsRequest:
       messageId: SystemdManagerDisableUnitsRequest
@@ -260,6 +509,25 @@ components:
         $ref: "#/components/schemas/SystemdManagerUnitJobReply"
 
   schemas:
+    GitCommit:
+      name: GitHistory
+      type: object
+      additionalProperties: false
+      properties:
+        oid:
+          type: string
+        header:
+          type: string
+        message:
+          type: string
+        ts:
+          type: integer
+      required:
+        - oid
+        - header
+        - message
+        - ts
+
     PrintNannyCloudAuthReply:
       name: PrintNannyCloudAuthReply
       type: object
@@ -291,6 +559,87 @@ components:
         - api_token
         - api_url
 
+    SettingsFormat:
+      type: string
+      enum:
+        - json
+        - toml
+        - yaml
+        - ini
+
+    SettingsFile:
+      type: string
+      enum:
+        - octoprint.yaml
+        - klipper.cfg
+        - moonraker.conf
+        - printnanny.toml
+
+    SettingsApplyRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        format:
+          $ref: "#/components/schemas/SettingsFormat"
+        filename:
+          $ref: "#/components/schemas/SettingsFile"
+        content:
+          type: string
+        head_git_commit:
+          type: string
+      required:
+        - format
+        - filename
+        - content
+        - head_git_commit
+
+    SettingsRevertRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        git_commit:
+          type: string
+      required:
+        - git_commit
+
+    SettingsLoadRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        format:
+          $ref: "#/components/schemas/SettingsFormat"
+        filename:
+          $ref: "#/components/schemas/SettingsFile"
+
+      required:
+        - format
+        - filename
+
+    SettingsReply:
+      type: object
+      additionalProperties: false
+      properties:
+        format:
+          $ref: "#/components/schemas/SettingsFormat"
+        filename:
+          $ref: "#/components/schemas/SettingsFile"
+        content:
+          type: string
+        head_git_commit:
+          type: string
+        git_history:
+          type: array
+          additionalItems: false
+          items:
+            $ref: "#/components/schemas/GitCommit"
+
+      required:
+        - format
+        - filename
+        - content
+        - head_git_commit
+        - git_history
+
     SystemdUnit:
       type: object
       additionalProperties: false
@@ -305,6 +654,14 @@ components:
           $ref: "#/components/schemas/SystemdUnitLoadState"
         unit_file_state:
           $ref: "#/components/schemas/SystemdUnitFileState"
+
+      required:
+        - id
+        - fragment_path
+        - active_state
+        - load_state
+        - unit_file_state
+
     SystemdUnitActiveState:
       type: string
       additionalProperties: false
