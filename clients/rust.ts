@@ -25,7 +25,7 @@ export async function generate(): Promise<void> {
     ...defaultRustRenderCompleteModelOptions,
     supportFiles: true, // generate Cargo.toml and lib.rs
     package: {
-      packageName: 'printnanny-asyncapi-models-rs',
+      packageName: 'printnanny-asyncapi-models',
       packageVersion: '0.1.0',
       // set authors, homepage, repository, and license
       authors: ['Leigh Johnson <leigh@printnanny.ai>'],

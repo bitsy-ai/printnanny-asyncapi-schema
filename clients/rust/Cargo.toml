@@ -1,5 +1,5 @@
 [package]
-name = "printnanny-asyncapi-models-rs"
+name = "printnanny-asyncapi-models"
 version = "0.1.0"
 authors = ["Leigh Johnson <leigh@printnanny.ai>"]
 homepage = "https://github.com/bitsy-ai/printnanny-asyncapi-schema"
