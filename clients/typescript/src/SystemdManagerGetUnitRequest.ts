@@ -1,5 +1,5 @@
 
-export class AnonymousSchema_17 {
+export class SystemdManagerGetUnitRequest {
   private _reservedName: string;
 
   constructor(input: {

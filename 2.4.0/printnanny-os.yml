@@ -16,7 +16,7 @@ channels:
       message:
         name: PrintNannyCloudAuthReply
         payload:
-          $ref: "#/components/messages/ActionReply"
+          $ref: "#/components/messages/PrintNannyCloudAuthReply"
     publish:
       message:
         name: PrintNannyCloudAuthRequest
@@ -77,89 +77,60 @@ channels:
 components:
   messages:
     PrintNannyCloudAuthRequest:
+      messageId: PrintNannyCloudAuthRequest
       summary: "Store authentication token obtained through 2fa"
       description: "Performs device setup and stores PrintNanny Cloud authentication credentials obtained from 2fa challenge: https://api.printnanny.ai/api/schema/redoc/#tag/accounts/operation/accounts_2fa_auth_token_create"
       payload:
-        $ref: "#/components/schemas/PrintNannyCloudAuth"
+        $ref: "#/components/schemas/PrintNannyCloudAuthRequest"
+
+    PrintNannyCloudAuthReply:
+      messageId: PrintNannyCloudAuthRequest
+      summary: "Store authentication token obtained through 2fa"
+      description: "Performs device setup and stores PrintNanny Cloud authentication credentials obtained from 2fa challenge: https://api.printnanny.ai/api/schema/redoc/#tag/accounts/operation/accounts_2fa_auth_token_create"
+      payload:
+        $ref: "#/components/schemas/PrintNannyCloudAuthReply"
 
     SystemdManagerChangeUnitRequest:
+      messageId: SystemdManagerChangeUnitRequest
       summary: "Enable/disable one or more systemd unit files"
       payload:
-        type: object
-        additionalProperties: false
-        properties:
-          files:
-            type: array
-            items:
-              type: string
-        required:
-          - files
+        $ref: "#/components/schemas/SystemdManagerChangeUnitRequest"
 
     SystemdManagerChangeUnitReply:
       summary: "Response to SystemdManagerChangeUnitRequest"
       payload:
-        additionalProperties: false
-        type: object
-        properties:
-          request:
-            type: object
-            oneOf:
-              - $ref: "#/components/messages/SystemdManagerChangeUnitRequest"
-          changes:
-            type: array
-            items:
-              type: string
-            minItems: 3
-            maxitems: 3
-        required:
-          - request
-          - changes
+        $ref: "#/components/schemas/SystemdManagerChangeUnitReply"
 
     SystemdManagerGetUnitRequest:
+      messageId: SystemdManagerGetUnitRequest
+      name: SystemdManagerGetUnitRequest
       summary: "Get systemd unit status/details, equivalent to dbus.org.freedesktop.systemd1.Manager.GetUnit"
       payload:
-        type: object
-        additionalProperties: false
-        properties:
-          name:
-            type: string
-        required:
-          - name
+        $ref: "#/components/schemas/SystemdManagerGetUnitRequest"
 
     SystemdManagerGetUnitReply:
+      messageId: SystemdManagerGetUnitReply
       summary: "Get systemd unit status/details, equivalent to dbus.org.freedesktop.systemd1.Manager.GetUnit"
       payload:
-        type: object
-        additionalProperties: false
-        properties:
-          request:
-            $ref: "#/components/messages/SystemdManagerGetUnitRequest"
-          unit:
-            $ref: "#/components/schemas/SystemdUnit"
-        required:
-          - request
-          - unit
-
-    ActionReply:
-      payload:
-        type: object
-        additionalProperties: false
-        properties:
-          request:
-            type: object
-            oneOf:
-              - $ref: "#/components/messages/PrintNannyCloudAuthRequest"
-          status_code:
-            type: integer
-          msg:
-            type: string
-        required:
-          - request
-          - status_code
-          - msg
+        $ref: "#/components/schemas/SystemdManagerGetUnitReply"
 
   schemas:
-    PrintNannyCloudAuth:
+    PrintNannyCloudAuthReply:
+      type: object
+      additionalProperties: false
+      properties:
+        request:
+          $ref: "#/components/schemas/PrintNannyCloudAuthRequest"
+        status_code:
+          type: integer
+        msg:
+          type: string
+      required:
+        - request
+        - status_code
+        - msg
+
+    PrintNannyCloudAuthRequest:
       type: object
       additionalProperties: false
       properties:
@@ -189,6 +160,7 @@ components:
           $ref: "#/components/schemas/SystemdUnitFileState"
     SystemdUnitActiveState:
       type: string
+      additionalProperties: false
       enum:
         - "active"
         - "activating"
@@ -198,12 +170,14 @@ components:
         - "loaded"
     SystemdUnitLoadState:
       type: string
+      additionalProperties: false
       enum:
         - "loaded"
         - "error"
         - "masked"
     SystemdUnitFileState:
       type: string
+      additionalProperties: false
       enum:
         - "enabled"
         - "enabled-runtime"
@@ -212,3 +186,66 @@ components:
         - "static"
         - "disabled"
         - "invalid"
+    SystemdUnitChange:
+      type: object
+      additionalProperties: false
+      change:
+        type: string
+        enum:
+          - "symlink"
+          - "unlink"
+      file:
+        type: string
+      destination:
+        type: string
+      required:
+        - change
+        - file
+        - destination
+
+    SystemdManagerChangeUnitRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        files:
+          type: array
+          items:
+            type: string
+          additionalItems: false
+      required:
+        - files
+
+    SystemdManagerChangeUnitReply:
+      additionalProperties: false
+      type: object
+      properties:
+        request:
+          $ref: "#/components/schemas/SystemdManagerChangeUnitRequest"
+        changes:
+          type: array
+          items:
+            $ref: "#/components/schemas/SystemdUnitChange"
+      required:
+        - request
+        - changes
+
+    SystemdManagerGetUnitRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+      required:
+        - name
+
+    SystemdManagerGetUnitReply:
+      type: object
+      additionalProperties: false
+      properties:
+        request:
+          $ref: "#/components/schemas/SystemdManagerGetUnitRequest"
+        unit:
+          $ref: "#/components/schemas/SystemdUnit"
+      required:
+        - request
+        - unit
