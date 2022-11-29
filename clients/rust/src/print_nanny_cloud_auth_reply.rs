@@ -1,8 +1,6 @@
 // PrintNannyCloudAuthReply represents a PrintNannyCloudAuthReply model.
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
 pub struct PrintNannyCloudAuthReply {
-    #[serde(rename="request")]
-    pub request: serde_json::Value,
     #[serde(rename="status_code")]
     pub status_code: i32,
     #[serde(rename="msg")]
@@ -10,9 +8,8 @@ pub struct PrintNannyCloudAuthReply {
 }
 
 impl PrintNannyCloudAuthReply {
-    pub fn new(request: serde_json::Value, status_code: i32, msg: String) -> PrintNannyCloudAuthReply {
+    pub fn new(status_code: i32, msg: String) -> PrintNannyCloudAuthReply {
         PrintNannyCloudAuthReply {
-            request,
             status_code,
             msg,
         }
