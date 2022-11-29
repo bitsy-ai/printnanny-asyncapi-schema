@@ -272,7 +272,9 @@ channels:
 components:
   messages:
     PrintNannyCloudAuthRequest:
+      name: PrintNannyCloudAuthRequest
       summary: "Store authentication token obtained through 2fa"
+      x-parser-schema-id: PrintNannyCloudAuthRequest
       description: "Performs device setup and stores PrintNanny Cloud authentication credentials obtained from 2fa challenge: https://api.printnanny.ai/api/schema/redoc/#tag/accounts/operation/accounts_2fa_auth_token_create"
       payload:
         x-parser-schema-id: PrintNannyCloudAuthRequest
@@ -291,6 +293,7 @@ components:
           - api_url
 
     PrintNannyCloudAuthReply:
+      name: PrintNannyCloudAuthReply
       summary: "Store authentication token obtained through 2fa"
       description: "Performs device setup and stores PrintNanny Cloud authentication credentials obtained from 2fa challenge: https://api.printnanny.ai/api/schema/redoc/#tag/accounts/operation/accounts_2fa_auth_token_create"
       payload:
@@ -298,8 +301,6 @@ components:
         type: object
         additionalProperties: false
         properties:
-          request:
-            $ref: "#/components/messages/PrintNannyCloudAuthRequest"
           status_code:
             type: integer
           msg:
@@ -457,8 +458,6 @@ components:
         additionalProperties: false
         type: object
         properties:
-          request:
-            $ref: "#/components/messages/SystemdManagerDisableUnitsRequest"
           changes:
             type: array
             items:
@@ -490,8 +489,6 @@ components:
         additionalProperties: false
         type: object
         properties:
-          request:
-            $ref: "#/components/messages/SystemdManagerEnableUnitsRequest"
           changes:
             type: array
             items:
@@ -639,6 +636,21 @@ components:
       schema:
         type: string
   schemas:
+    PrintNannyCloudAuthRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        email:
+          type: string
+        api_token:
+          type: string
+        api_url:
+          type: string
+      required:
+        - email
+        - api_token
+        - api_url
+
     GitCommit:
       name: GitHistory
       type: object
