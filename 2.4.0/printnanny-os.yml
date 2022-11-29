@@ -272,6 +272,7 @@ channels:
 components:
   messages:
     PrintNannyCloudAuthRequest:
+      name: PrintNannyCloudAuthRequest
       summary: "Store authentication token obtained through 2fa"
       description: "Performs device setup and stores PrintNanny Cloud authentication credentials obtained from 2fa challenge: https://api.printnanny.ai/api/schema/redoc/#tag/accounts/operation/accounts_2fa_auth_token_create"
       payload:
@@ -291,6 +292,7 @@ components:
           - api_url
 
     PrintNannyCloudAuthReply:
+      name: PrintNannyCloudAuthReply
       summary: "Store authentication token obtained through 2fa"
       description: "Performs device setup and stores PrintNanny Cloud authentication credentials obtained from 2fa challenge: https://api.printnanny.ai/api/schema/redoc/#tag/accounts/operation/accounts_2fa_auth_token_create"
       payload:
@@ -298,8 +300,6 @@ components:
         type: object
         additionalProperties: false
         properties:
-          request:
-            $ref: "#/components/messages/PrintNannyCloudAuthRequest"
           status_code:
             type: integer
           msg:
@@ -457,8 +457,6 @@ components:
         additionalProperties: false
         type: object
         properties:
-          request:
-            $ref: "#/components/messages/SystemdManagerDisableUnitsRequest"
           changes:
             type: array
             items:
@@ -490,8 +488,6 @@ components:
         additionalProperties: false
         type: object
         properties:
-          request:
-            $ref: "#/components/messages/SystemdManagerEnableUnitsRequest"
           changes:
             type: array
             items:
