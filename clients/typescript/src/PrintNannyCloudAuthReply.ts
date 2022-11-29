@@ -1,11 +1,11 @@
-import {PrintNannyCloudAuthRequest} from './PrintNannyCloudAuthRequest';
+
 export class PrintNannyCloudAuthReply {
-  private _request: PrintNannyCloudAuthRequest;
+  private _request: any;
   private _statusCode: number;
   private _msg: string;
 
   constructor(input: {
-    request: PrintNannyCloudAuthRequest,
+    request: any,
     statusCode: number,
     msg: string,
   }) {
@@ -14,8 +14,8 @@ export class PrintNannyCloudAuthReply {
     this._msg = input.msg;
   }
 
-  get request(): PrintNannyCloudAuthRequest { return this._request; }
-  set request(request: PrintNannyCloudAuthRequest) { this._request = request; }
+  get request(): any { return this._request; }
+  set request(request: any) { this._request = request; }
 
   get statusCode(): number { return this._statusCode; }
   set statusCode(statusCode: number) { this._statusCode = statusCode; }

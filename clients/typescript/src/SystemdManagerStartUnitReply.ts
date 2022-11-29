@@ -1,5 +1,5 @@
 import {SystemdUnit} from './SystemdUnit';
-export class SystemdManagerUnitJobReply {
+export class SystemdManagerStartUnitReply {
   private _job: string;
   private _unit: SystemdUnit;
 

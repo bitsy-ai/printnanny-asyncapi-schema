@@ -1,7 +1,7 @@
 import {SettingsFormat} from './SettingsFormat';
 import {SettingsFile} from './SettingsFile';
 import {GitCommit} from './GitCommit';
-export class SettingsReply {
+export class SettingsLoadReply {
   private _format: SettingsFormat;
   private _filename: SettingsFile;
   private _content: string;

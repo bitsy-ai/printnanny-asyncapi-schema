@@ -1,5 +1,5 @@
 
-export class SystemdManagerUnitRequest {
+export class SystemdManagerReloadUnitRequest {
   private _unitName?: string;
 
   constructor(input: {
