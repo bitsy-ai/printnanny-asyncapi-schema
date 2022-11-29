@@ -1,0 +1,2 @@
+
+export type SettingsLoadReply = any;

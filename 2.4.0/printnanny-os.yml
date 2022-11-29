@@ -357,7 +357,6 @@ components:
       description: "Performs device setup and stores PrintNanny Cloud authentication credentials obtained from 2fa challenge: https://api.printnanny.ai/api/schema/redoc/#tag/accounts/operation/accounts_2fa_auth_token_create"
       x-parser-schema-id: PrintNannyCloudAuthRequest
       payload:
-        x-parser-schema-id: PrintNannyCloudAuthRequest
         $ref: "#/components/schemas/PrintNannyCloudAuthRequest"
 
     PrintNannyCloudAuthReply:
@@ -366,7 +365,6 @@ components:
       description: "Performs device setup and stores PrintNanny Cloud authentication credentials obtained from 2fa challenge: https://api.printnanny.ai/api/schema/redoc/#tag/accounts/operation/accounts_2fa_auth_token_create"
       x-parser-schema-id: PrintNannyCloudAuthReply
       payload:
-        x-parser-schema-id: PrintNannyCloudAuthReply
         $ref: "#/components/schemas/PrintNannyCloudAuthReply"
 
     SettingsLoadRequest:
@@ -374,7 +372,6 @@ components:
       summary: "Load a settings file for browser editor"
       x-parser-schema-id: SettingsLoadRequest
       payload:
-        x-parser-schema-id: SettingsLoadRequest
         $ref: "#/components/schemas/SettingsLoadRequest"
 
     SettingsLoadReply:
@@ -382,7 +379,6 @@ components:
       summary: "Load a settings file for browser editor"
       x-parser-schema-id: SettingsLoadReply
       payload:
-        x-parser-schema-id: SettingsLoadReply
         $ref: "#/components/schemas/SettingsReply"
 
     SettingsApplyRequest:
@@ -390,7 +386,6 @@ components:
       summary: "Apply changes to a settings file and run pre/post save hooks"
       x-parser-schema-id: SettingsApplyRequest
       payload:
-        x-parser-schema-id: SettingsApplyRequest
         $ref: "#/components/schemas/SettingsApplyRequest"
 
     SettingsApplyReply:
@@ -398,7 +393,6 @@ components:
       summary: "Apply changes to a settings file and run pre/post save hooks"
       x-parser-schema-id: SettingsApplyReply
       payload:
-        x-parser-schema-id: SettingsApplyReply
         $ref: "#/components/schemas/SettingsReply"
 
     SettingsRevertRequest:
@@ -406,7 +400,6 @@ components:
       summary: "Revert changes to a settings file and run pre/post save hooks"
       x-parser-schema-id: SettingsRevertRequest
       payload:
-        x-parser-schema-id: SettingsRevertRequest
         $ref: "#/components/schemas/SettingsRevertRequest"
 
     SettingsRevertReply:
@@ -414,7 +407,6 @@ components:
       summary: "Revert changes to a settings file and run pre/post save hooks"
       x-parser-schema-id: SettingsRevertReply
       payload:
-        x-parser-schema-id: SettingsRevertReply
         $ref: "#/components/schemas/SettingsReply"
 
     SystemdManagerDisableUnitsRequest:
@@ -422,7 +414,6 @@ components:
       x-parser-schema-id: SystemdManagerDisableUnitsRequest
       summary: "Disable one or more systemd unit files"
       payload:
-        x-parser-schema-id: SystemdManagerDisableUnitsRequest
         $ref: "#/components/schemas/SystemdManagerDisableUnitsRequest"
 
     SystemdManagerDisableUnitsReply:
@@ -430,7 +421,6 @@ components:
       x-parser-schema-id: SystemdManagerDisableUnitsReply
       summary: "Response to SystemdManagerDisableUnitsRequest"
       payload:
-        x-parser-schema-id: SystemdManagerDisableUnitsReply
         $ref: "#/components/schemas/SystemdManagerDisableUnitsReply"
 
     SystemdManagerEnableUnitsRequest:
@@ -438,7 +428,6 @@ components:
       x-parser-schema-id: SystemdManagerEnableUnitsRequest
       summary: "Enable one or more systemd unit files"
       payload:
-        x-parser-schema-id: SystemdManagerEnableUnitsRequest
         $ref: "#/components/schemas/SystemdManagerEnableUnitsRequest"
 
     SystemdManagerEnableUnitsReply:
@@ -446,7 +435,6 @@ components:
       x-parser-schema-id: SystemdManagerEnableUnitsReply
       summary: "Response to SystemdManagerEnableUnitsRequest"
       payload:
-        x-parser-schema-id: SystemdManagerEnableUnitsReply
         $ref: "#/components/schemas/SystemdManagerEnableUnitsReply"
 
     SystemdManagerGetUnitRequest:
@@ -462,7 +450,6 @@ components:
       x-parser-schema-id: SystemdManagerGetUnitReply
       summary: "Get systemd unit status/details, equivalent to dbus.org.freedesktop.systemd1.Manager.GetUnit"
       payload:
-        x-parser-schema-id: SystemdManagerGetUnitReply
         $ref: "#/components/schemas/SystemdManagerGetUnitReply"
 
     SystemdManagerReloadUnitRequest:
@@ -470,7 +457,6 @@ components:
       x-parser-schema-id: SystemdManagerReloadUnitRequest
       summary: "Reload systemd unit"
       payload:
-        x-parser-schema-id: SystemdManagerReloadUnitRequest
         $ref: "#/components/schemas/SystemdManagerUnitRequest"
 
     SystemdManagerReloadUnitReply:
@@ -478,7 +464,6 @@ components:
       x-parser-schema-id: SystemdManagerReloadUnitReply
       summary: "Result of reloading systemd unit, returning job id if state changed."
       payload:
-        x-parser-schema-id: SystemdManagerReloadUnitReply
         $ref: "#/components/schemas/SystemdManagerUnitJobReply"
 
     SystemdManagerRestartUnitRequest:
@@ -486,7 +471,6 @@ components:
       x-parser-schema-id: SystemdManagerRestartUnitRequest
       summary: "Restart systemd unit"
       payload:
-        x-parser-schema-id: SystemdManagerRestartUnitRequest
         $ref: "#/components/schemas/SystemdManagerUnitRequest"
 
     SystemdManagerRestartUnitReply:
@@ -494,7 +478,6 @@ components:
       x-parser-schema-id: SystemdManagerRestartUnitReply
       summary: "Result of restarting systemd unit, returning job id if state changed."
       payload:
-        x-parser-schema-id: SystemdManagerRestartUnitReply
         $ref: "#/components/schemas/SystemdManagerUnitJobReply"
 
     SystemdManagerStartUnitRequest:
@@ -502,7 +485,6 @@ components:
       x-parser-schema-id: SystemdManagerStartUnitRequest
       summary: "Start systemd unit"
       payload:
-        x-parser-schema-id: SystemdManagerStartUnitRequest
         $ref: "#/components/schemas/SystemdManagerUnitRequest"
 
     SystemdManagerStartUnitReply:
@@ -510,7 +492,6 @@ components:
       x-parser-schema-id: SystemdManagerStartUnitReply
       summary: "Result of starting systemd unit, returning job id if state changed."
       payload:
-        x-parser-schema-id: SystemdManagerStartUnitReply
         $ref: "#/components/schemas/SystemdManagerUnitJobReply"
 
     SystemdManagerStopUnitRequest:
@@ -518,7 +499,6 @@ components:
       x-parser-schema-id: SystemdManagerRestartUnitRequest
       summary: "Stop systemd unit"
       payload:
-        x-parser-schema-id: SystemdManagerRestartUnitRequest
         $ref: "#/components/schemas/SystemdManagerUnitRequest"
 
     SystemdManagerStopUnitReply:
@@ -526,7 +506,6 @@ components:
       x-parser-schema-id: SystemdManagerStopUnitJobReply
       summary: "Result of stopping systemd unit, returning job id if state changed."
       payload:
-        x-parser-schema-id: SystemdManagerStopUnitJobReply
         $ref: "#/components/schemas/SystemdManagerUnitJobReply"
 
   schemas:
