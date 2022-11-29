@@ -355,158 +355,386 @@ components:
       messageId: PrintNannyCloudAuthRequest
       summary: "Store authentication token obtained through 2fa"
       description: "Performs device setup and stores PrintNanny Cloud authentication credentials obtained from 2fa challenge: https://api.printnanny.ai/api/schema/redoc/#tag/accounts/operation/accounts_2fa_auth_token_create"
-      x-parser-schema-id: PrintNannyCloudAuthRequest
       payload:
-        $ref: "#/components/schemas/PrintNannyCloudAuthRequest"
+        name: PrintNannyCloudAuthRequest
+        type: object
+        additionalProperties: false
+        properties:
+          email:
+            type: string
+          api_token:
+            type: string
+          api_url:
+            type: string
+        required:
+          - email
+          - api_token
+          - api_url
 
     PrintNannyCloudAuthReply:
       messageId: PrintNannyCloudAuthRequest
       summary: "Store authentication token obtained through 2fa"
       description: "Performs device setup and stores PrintNanny Cloud authentication credentials obtained from 2fa challenge: https://api.printnanny.ai/api/schema/redoc/#tag/accounts/operation/accounts_2fa_auth_token_create"
-      x-parser-schema-id: PrintNannyCloudAuthReply
       payload:
-        $ref: "#/components/schemas/PrintNannyCloudAuthReply"
+        name: PrintNannyCloudAuthReply
+        type: object
+        additionalProperties: false
+        properties:
+          request:
+            $ref: "#/components/messages/PrintNannyCloudAuthRequest"
+          status_code:
+            type: integer
+          msg:
+            type: string
+        required:
+          - request
+          - status_code
+          - msg
 
     SettingsLoadRequest:
       messageId: SettingsLoadRequest
       summary: "Load a settings file for browser editor"
-      x-parser-schema-id: SettingsLoadRequest
       payload:
-        $ref: "#/components/schemas/SettingsLoadRequest"
+        name: SettingsLoadRequest
+        type: object
+        additionalProperties: false
+        properties:
+          format:
+            $ref: "#/components/schemas/SettingsFormat"
+          filename:
+            $ref: "#/components/schemas/SettingsFile"
 
     SettingsLoadReply:
       messageId: SettingsLoadReply
       summary: "Load a settings file for browser editor"
-      x-parser-schema-id: SettingsLoadReply
       payload:
-        $ref: "#/components/schemas/SettingsReply"
+        name: SettingsLoadReply
+        type: object
+        additionalProperties: false
+        properties:
+          format:
+            $ref: "#/components/schemas/SettingsFormat"
+          filename:
+            $ref: "#/components/schemas/SettingsFile"
+          content:
+            type: string
+          head_git_commit:
+            type: string
+          git_history:
+            type: array
+            additionalItems: false
+            items:
+              $ref: "#/components/schemas/GitCommit"
+        required:
+          - format
+          - filename
+          - content
+          - head_git_commit
+          - git_history
 
     SettingsApplyRequest:
       messageId: SettingsApplyRequest
       summary: "Apply changes to a settings file and run pre/post save hooks"
-      x-parser-schema-id: SettingsApplyRequest
       payload:
-        $ref: "#/components/schemas/SettingsApplyRequest"
+        name: SettingsApplyRequest
+        type: object
+        additionalProperties: false
+        properties:
+          format:
+            $ref: "#/components/schemas/SettingsFormat"
+          filename:
+            $ref: "#/components/schemas/SettingsFile"
+          content:
+            type: string
+          head_git_commit:
+            type: string
+        required:
+          - format
+          - filename
+          - content
+          - head_git_commit
 
     SettingsApplyReply:
       messageId: SettingsApplyReply
       summary: "Apply changes to a settings file and run pre/post save hooks"
-      x-parser-schema-id: SettingsApplyReply
       payload:
-        $ref: "#/components/schemas/SettingsReply"
+        name: SettingsApplyReply
+        type: object
+        additionalProperties: false
+        properties:
+          format:
+            $ref: "#/components/schemas/SettingsFormat"
+          filename:
+            $ref: "#/components/schemas/SettingsFile"
+          content:
+            type: string
+          head_git_commit:
+            type: string
+          git_history:
+            type: array
+            additionalItems: false
+            items:
+              $ref: "#/components/schemas/GitCommit"
+        required:
+          - format
+          - filename
+          - content
+          - head_git_commit
+          - git_history
 
     SettingsRevertRequest:
       messageId: SettingsRevertRequest
       summary: "Revert changes to a settings file and run pre/post save hooks"
-      x-parser-schema-id: SettingsRevertRequest
       payload:
-        $ref: "#/components/schemas/SettingsRevertRequest"
+        name: SettingsRevertRequest
+        type: object
+        additionalProperties: false
+        properties:
+          git_commit:
+            type: string
+        required:
+          - git_commit
 
     SettingsRevertReply:
       messageId: SettingsRevertReply
       summary: "Revert changes to a settings file and run pre/post save hooks"
-      x-parser-schema-id: SettingsRevertReply
       payload:
-        $ref: "#/components/schemas/SettingsReply"
+        name: SettingsRevertReply
+        type: object
+        additionalProperties: false
+        properties:
+          format:
+            $ref: "#/components/schemas/SettingsFormat"
+          filename:
+            $ref: "#/components/schemas/SettingsFile"
+          content:
+            type: string
+          head_git_commit:
+            type: string
+          git_history:
+            type: array
+            additionalItems: false
+            items:
+              $ref: "#/components/schemas/GitCommit"
+        required:
+          - format
+          - filename
+          - content
+          - head_git_commit
+          - git_history
 
     SystemdManagerDisableUnitsRequest:
       messageId: SystemdManagerDisableUnitsRequest
-      x-parser-schema-id: SystemdManagerDisableUnitsRequest
       summary: "Disable one or more systemd unit files"
       payload:
-        $ref: "#/components/schemas/SystemdManagerDisableUnitsRequest"
+        name: SystemdManagerDisableUnitsRequest
+        type: object
+        additionalProperties: false
+        properties:
+          files:
+            type: array
+            items:
+              type: string
+            additionalItems: false
+        required:
+          - files
 
     SystemdManagerDisableUnitsReply:
       messageId: SystemdManagerDisableUnitsReply
-      x-parser-schema-id: SystemdManagerDisableUnitsReply
       summary: "Response to SystemdManagerDisableUnitsRequest"
       payload:
-        $ref: "#/components/schemas/SystemdManagerDisableUnitsReply"
+        name: SystemdManagerDisableUnitsReply
+        additionalProperties: false
+        type: object
+        properties:
+          request:
+            $ref: "#/components/messages/SystemdManagerDisableUnitsRequest"
+          changes:
+            type: array
+            items:
+              $ref: "#/components/schemas/SystemdUnitChange"
+            additionalItems: false
+        required:
+          - request
+          - changes
 
     SystemdManagerEnableUnitsRequest:
       messageId: SystemdManagerEnableUnitsRequest
-      x-parser-schema-id: SystemdManagerEnableUnitsRequest
       summary: "Enable one or more systemd unit files"
       payload:
-        $ref: "#/components/schemas/SystemdManagerEnableUnitsRequest"
+        name: SystemdManagerEnableUnitsRequest
+        type: object
+        additionalProperties: false
+        properties:
+          files:
+            type: array
+            items:
+              type: string
+            additionalItems: false
+        required:
+          - files
 
     SystemdManagerEnableUnitsReply:
       messageId: SystemdManagerEnableUnitsReply
-      x-parser-schema-id: SystemdManagerEnableUnitsReply
       summary: "Response to SystemdManagerEnableUnitsRequest"
       payload:
-        $ref: "#/components/schemas/SystemdManagerEnableUnitsReply"
+        name: SystemdManagerEnableUnitsReply
+        additionalProperties: false
+        type: object
+        properties:
+          request:
+            $ref: "#/components/messages/SystemdManagerEnableUnitsRequest"
+          changes:
+            type: array
+            items:
+              $ref: "#/components/schemas/SystemdUnitChange"
+            additionalItems: false
+        required:
+          - request
+          - changes
 
     SystemdManagerGetUnitRequest:
       messageId: SystemdManagerGetUnitRequest
-      x-parser-schema-id: SystemdManagerGetUnitRequest
       name: SystemdManagerUnitRequest
       summary: "Get systemd unit status/details, equivalent to dbus.org.freedesktop.systemd1.Manager.GetUnit"
       payload:
-        $ref: "#/components/schemas/SystemdManagerUnitRequest"
+        name: SystemdManagerGetUnitRequest
+        type: object
+        additionalProperties: false
+        properties:
+          unit_name:
+            type: string
+        required:
+          - name
 
     SystemdManagerGetUnitReply:
       messageId: SystemdManagerGetUnitReply
-      x-parser-schema-id: SystemdManagerGetUnitReply
       summary: "Get systemd unit status/details, equivalent to dbus.org.freedesktop.systemd1.Manager.GetUnit"
       payload:
-        $ref: "#/components/schemas/SystemdManagerGetUnitReply"
+        name: SystemdManagerGetUnitReply
+        type: object
+        additionalProperties: false
+        properties:
+          unit:
+            $ref: "#/components/schemas/SystemdUnit"
+        required:
+          - unit
 
     SystemdManagerReloadUnitRequest:
       messageId: SystemdManagerReloadUnitRequest
-      x-parser-schema-id: SystemdManagerReloadUnitRequest
       summary: "Reload systemd unit"
       payload:
-        $ref: "#/components/schemas/SystemdManagerUnitRequest"
+        name: SystemdManagerReloadUnitRequest
+        type: object
+        additionalProperties: false
+        properties:
+          unit_name:
+            type: string
+        required:
+          - name
 
     SystemdManagerReloadUnitReply:
       messageId: SystemdManagerReloadUnitReply
-      x-parser-schema-id: SystemdManagerReloadUnitReply
       summary: "Result of reloading systemd unit, returning job id if state changed."
       payload:
-        $ref: "#/components/schemas/SystemdManagerUnitJobReply"
+        name: SystemdManagerReloadUnitReply
+        type: object
+        additionalProperties: false
+        properties:
+          job:
+            type: string
+          unit:
+            $ref: "#/components/schemas/SystemdUnit"
+        required:
+          - job
+          - unit
 
     SystemdManagerRestartUnitRequest:
       messageId: SystemdManagerRestartUnitRequest
-      x-parser-schema-id: SystemdManagerRestartUnitRequest
       summary: "Restart systemd unit"
       payload:
-        $ref: "#/components/schemas/SystemdManagerUnitRequest"
+        name: SystemdManagerRestartUnitRequest
+        type: object
+        additionalProperties: false
+        properties:
+          unit_name:
+            type: string
+        required:
+          - name
 
     SystemdManagerRestartUnitReply:
       messageId: SystemdManagerRestartUnitReply
-      x-parser-schema-id: SystemdManagerRestartUnitReply
       summary: "Result of restarting systemd unit, returning job id if state changed."
       payload:
-        $ref: "#/components/schemas/SystemdManagerUnitJobReply"
+        name: SystemdManagerRestartUnitReply
+        type: object
+        additionalProperties: false
+        properties:
+          job:
+            type: string
+          unit:
+            $ref: "#/components/schemas/SystemdUnit"
+        required:
+          - job
+          - unit
 
     SystemdManagerStartUnitRequest:
       messageId: SystemdManagerStartUnitRequest
-      x-parser-schema-id: SystemdManagerStartUnitRequest
       summary: "Start systemd unit"
       payload:
-        $ref: "#/components/schemas/SystemdManagerUnitRequest"
+        name: SystemdManagerStartUnitRequest
+        type: object
+        additionalProperties: false
+        properties:
+          unit_name:
+            type: string
+        required:
+          - name
 
     SystemdManagerStartUnitReply:
       messageId: SystemdManagerStartUnitReply
-      x-parser-schema-id: SystemdManagerStartUnitReply
       summary: "Result of starting systemd unit, returning job id if state changed."
       payload:
-        $ref: "#/components/schemas/SystemdManagerUnitJobReply"
+        name: SystemdManagerStartUnitReply
+        type: object
+        additionalProperties: false
+        properties:
+          job:
+            type: string
+          unit:
+            $ref: "#/components/schemas/SystemdUnit"
+        required:
+          - job
+          - unit
 
     SystemdManagerStopUnitRequest:
       messageId: SystemdManagerStopUnitRequest
-      x-parser-schema-id: SystemdManagerRestartUnitRequest
       summary: "Stop systemd unit"
       payload:
-        $ref: "#/components/schemas/SystemdManagerUnitRequest"
+        name: SystemdManagerStartUnitRequest
+        type: object
+        additionalProperties: false
+        properties:
+          unit_name:
+            type: string
+        required:
+          - name
 
     SystemdManagerStopUnitReply:
       messageId: SystemdManagerStopUnitReply
-      x-parser-schema-id: SystemdManagerStopUnitJobReply
       summary: "Result of stopping systemd unit, returning job id if state changed."
       payload:
-        $ref: "#/components/schemas/SystemdManagerUnitJobReply"
+        name: SystemdManagerStopUnitReply
+        type: object
+        additionalProperties: false
+        properties:
+          job:
+            type: string
+          unit:
+            $ref: "#/components/schemas/SystemdUnit"
+        required:
+          - job
+          - unit
 
   schemas:
     GitCommit:
@@ -528,37 +756,6 @@ components:
         - message
         - ts
 
-    PrintNannyCloudAuthReply:
-      name: PrintNannyCloudAuthReply
-      type: object
-      additionalProperties: false
-      properties:
-        request:
-          $ref: "#/components/schemas/PrintNannyCloudAuthRequest"
-        status_code:
-          type: integer
-        msg:
-          type: string
-      required:
-        - request
-        - status_code
-        - msg
-
-    PrintNannyCloudAuthRequest:
-      type: object
-      additionalProperties: false
-      properties:
-        email:
-          type: string
-        api_token:
-          type: string
-        api_url:
-          type: string
-      required:
-        - email
-        - api_token
-        - api_url
-
     SettingsFormat:
       type: string
       enum:
@@ -574,71 +771,6 @@ components:
         - klipper.cfg
         - moonraker.conf
         - printnanny.toml
-
-    SettingsApplyRequest:
-      type: object
-      additionalProperties: false
-      properties:
-        format:
-          $ref: "#/components/schemas/SettingsFormat"
-        filename:
-          $ref: "#/components/schemas/SettingsFile"
-        content:
-          type: string
-        head_git_commit:
-          type: string
-      required:
-        - format
-        - filename
-        - content
-        - head_git_commit
-
-    SettingsRevertRequest:
-      type: object
-      additionalProperties: false
-      properties:
-        git_commit:
-          type: string
-      required:
-        - git_commit
-
-    SettingsLoadRequest:
-      type: object
-      additionalProperties: false
-      properties:
-        format:
-          $ref: "#/components/schemas/SettingsFormat"
-        filename:
-          $ref: "#/components/schemas/SettingsFile"
-
-      required:
-        - format
-        - filename
-
-    SettingsReply:
-      type: object
-      additionalProperties: false
-      properties:
-        format:
-          $ref: "#/components/schemas/SettingsFormat"
-        filename:
-          $ref: "#/components/schemas/SettingsFile"
-        content:
-          type: string
-        head_git_commit:
-          type: string
-        git_history:
-          type: array
-          additionalItems: false
-          items:
-            $ref: "#/components/schemas/GitCommit"
-
-      required:
-        - format
-        - filename
-        - content
-        - head_git_commit
-        - git_history
 
     SystemdUnit:
       type: object
@@ -706,87 +838,3 @@ components:
         - change
         - file
         - destination
-
-    SystemdManagerEnableUnitsRequest:
-      type: object
-      additionalProperties: false
-      properties:
-        files:
-          type: array
-          items:
-            type: string
-          additionalItems: false
-      required:
-        - files
-
-    SystemdManagerEnableUnitsReply:
-      additionalProperties: false
-      type: object
-      properties:
-        request:
-          $ref: "#/components/schemas/SystemdManagerEnableUnitsRequest"
-        changes:
-          type: array
-          items:
-            $ref: "#/components/schemas/SystemdUnitChange"
-          additionalItems: false
-      required:
-        - request
-        - changes
-
-    SystemdManagerDisableUnitsRequest:
-      type: object
-      additionalProperties: false
-      properties:
-        files:
-          type: array
-          items:
-            type: string
-          additionalItems: false
-      required:
-        - files
-
-    SystemdManagerDisableUnitsReply:
-      additionalProperties: false
-      type: object
-      properties:
-        request:
-          $ref: "#/components/schemas/SystemdManagerDisableUnitsRequest"
-        changes:
-          type: array
-          items:
-            $ref: "#/components/schemas/SystemdUnitChange"
-          additionalItems: false
-      required:
-        - request
-        - changes
-
-    SystemdManagerUnitRequest:
-      type: object
-      additionalProperties: false
-      properties:
-        unit_name:
-          type: string
-      required:
-        - name
-
-    SystemdManagerUnitJobReply:
-      type: object
-      additionalProperties: false
-      properties:
-        job:
-          type: string
-        unit:
-          $ref: "#/components/schemas/SystemdUnit"
-      required:
-        - job
-        - unit
-
-    SystemdManagerGetUnitReply:
-      type: object
-      additionalProperties: false
-      properties:
-        unit:
-          $ref: "#/components/schemas/SystemdUnit"
-      required:
-        - unit
