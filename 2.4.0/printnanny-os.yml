@@ -12,12 +12,12 @@ channels:
       pi:
         $ref: "#/components/parameters/pi"
     subscribe:
+      operationId: SystemdManagerDisableUnitsReply
       message:
-        messageId: SystemdManagerDisableUnitsReply
         $ref: "#/components/messages/SystemdManagerDisableUnitsReply"
     publish:
+      operationId: SystemdManagerDisableUnitsRequest
       message:
-        messageId: SystemdManagerDisableUnitsRequest
         $ref: "#/components/messages/SystemdManagerDisableUnitsRequest"
 
   pi.{pi}.dbus.org.freedesktop.systemd1.Manager.EnableUnit:
@@ -25,12 +25,12 @@ channels:
       pi:
         $ref: "#/components/parameters/pi"
     subscribe:
+      operationId: SystemdManagerEnableUnitsReply
       message:
-        messageId: SystemdManagerDisableUnitsReply
         $ref: "#/components/messages/SystemdManagerEnableUnitsReply"
     publish:
+      operationId: SystemdManagerEnableUnitsRequest
       message:
-        messageId: SystemdManagerEnableUnitsRequest
         $ref: "#/components/messages/SystemdManagerEnableUnitsRequest"
 
   pi.{pi}.dbus.org.freedesktop.systemd1.Manager.GetUnit:
@@ -38,12 +38,12 @@ channels:
       pi:
         $ref: "#/components/parameters/pi"
     subscribe:
+      operationId: SystemdManagerGetUnitReply
       message:
-        messageId: SystemdManagerGetUnitReply
         $ref: "#/components/messages/SystemdManagerGetUnitReply"
     publish:
+      operationId: SystemdManagerGetUnitRequest
       message:
-        messageId: SystemdManagerReloadUnitRequest
         $ref: "#/components/messages/SystemdManagerGetUnitRequest"
 
   pi.{pi}.dbus.org.freedesktop.systemd1.Manager.ReloadUnit:
@@ -51,12 +51,12 @@ channels:
       pi:
         $ref: "#/components/parameters/pi"
     subscribe:
+      operationId: SystemdManagerReloadUnitReply
       message:
-        messageId: SystemdManagerReloadUnitReply
         $ref: "#/components/messages/SystemdManagerReloadUnitReply"
     publish:
+      operationId: SystemdManagerReloadUnitRequest
       message:
-        messageId: SystemdManagerReloadUnitRequest
         $ref: "#/components/messages/SystemdManagerReloadUnitRequest"
 
   pi.{pi}.dbus.org.freedesktop.systemd1.Manager.RestartUnit:
@@ -64,12 +64,12 @@ channels:
       pi:
         $ref: "#/components/parameters/pi"
     subscribe:
+      operationId: SystemdManagerRestartUnitReply
       message:
-        messageId: SystemdManagerRestartUnitReply
         $ref: "#/components/messages/SystemdManagerRestartUnitReply"
     publish:
+      operationId: SystemdManagerRestartUnitRequest
       message:
-        messageId: SystemdManagerRestartUnitRequest
         $ref: "#/components/messages/SystemdManagerRestartUnitRequest"
 
   pi.{pi}.dbus.org.freedesktop.systemd1.Manager.StartUnit:
@@ -77,12 +77,12 @@ channels:
       pi:
         $ref: "#/components/parameters/pi"
     subscribe:
+      operationId: SystemdManagerStartUnitReply
       message:
-        messageId: SystemdManagerStartUnitReply
         $ref: "#/components/messages/SystemdManagerStartUnitReply"
     publish:
+      operationId: SystemdManagerStartUnitRequest
       message:
-        messageId: SystemdManagerStartUnitRequest
         $ref: "#/components/messages/SystemdManagerStartUnitRequest"
 
   pi.{pi}.dbus.org.freedesktop.systemd1.Manager.StoptUnit:
@@ -90,12 +90,12 @@ channels:
       pi:
         $ref: "#/components/parameters/pi"
     subscribe:
+      operationId: SystemdManagerStopUnitReply
       message:
-        messageId: SystemdManagerStopUnitReply
         $ref: "#/components/messages/SystemdManagerStopUnitReply"
     publish:
+      operationId: SystemdManagerStopUnitRequest
       message:
-        messageId: SystemdManagerStopUnitRequest
         $ref: "#/components/messages/SystemdManagerStopUnitRequest"
   # end dbus api request/reply channels
 
@@ -105,51 +105,51 @@ channels:
       pi:
         $ref: "#/components/parameters/pi"
     subscribe:
+      operationId: PrintNannyCloudAuthReply
       message:
-        messageId: PrintNannyCloudAuthReply
         $ref: "#/components/messages/PrintNannyCloudAuthReply"
     publish:
+      operationId: PrintNannyCloudAuthReques
       message:
-        messageId: PrintNannyCloudAuthRequest
         $ref: "#/components/messages/PrintNannyCloudAuthRequest"
 
-  pi.{pi}.settings.printnanny.cam.load:
+  pi.{pi}.settings.printnanny.load:
     parameters:
       pi:
         $ref: "#/components/parameters/pi"
     subscribe:
+      operationId: PrintNannySettingsLoadReply
       message:
-        messageId: SettingsLoadReply
         $ref: "#/components/messages/SettingsLoadReply"
     publish:
+      operationId: PrintNannySettingsLoadRequest
       message:
-        messageId: SettingsLoadRequest
         $ref: "#/components/messages/SettingsLoadRequest"
 
-  pi.{pi}.settings.printnanny.cam.apply:
+  pi.{pi}.settings.printnanny.apply:
     parameters:
       pi:
         $ref: "#/components/parameters/pi"
     subscribe:
+      operationId: PrintNannySettingsApplyReply
       message:
-        messageId: SettingsApplyReply
         $ref: "#/components/messages/SettingsApplyReply"
     publish:
+      operationId: PrintNannySettingsApplyRequest
       message:
-        messageId: SettingsApplyRequest
         $ref: "#/components/messages/SettingsApplyRequest"
 
-  pi.{pi}.settings.printnanny.cam.revert:
+  pi.{pi}.settings.printnanny.revert:
     parameters:
       pi:
         $ref: "#/components/parameters/pi"
     subscribe:
+      operationId: PrintNannySettingsRevertReply
       message:
-        messageId: SettingsRevertReply"
         $ref: "#/components/messages/SettingsRevertReply"
     publish:
+      operationId: PrintNannySettingsRevertRequest
       message:
-        messageId: SettingsRevertRequest
         $ref: "#/components/messages/SettingsRevertRequest"
 
   pi.{pi}.settings.klipper.load:
@@ -157,12 +157,12 @@ channels:
       pi:
         $ref: "#/components/parameters/pi"
     subscribe:
+      operationId: KlipperSettingsLoadReply
       message:
-        messageId: SettingsLoadReply
         $ref: "#/components/messages/SettingsLoadReply"
     publish:
+      operationId: KlipperSettingsLoadRequest
       message:
-        messageId: SettingsLoadRequest
         $ref: "#/components/messages/SettingsLoadRequest"
 
   pi.{pi}.settings.klipper.apply:
@@ -170,12 +170,12 @@ channels:
       pi:
         $ref: "#/components/parameters/pi"
     subscribe:
+      operationId: KlipperSettingsApplyReply
       message:
-        messageId: SettingsApplyReply
         $ref: "#/components/messages/SettingsApplyReply"
     publish:
+      operationId: KlipperSettingsApplyRequest
       message:
-        messageId: SettingsApplyRequest
         $ref: "#/components/messages/SettingsApplyRequest"
 
   pi.{pi}.settings.klipper.revert:
@@ -183,12 +183,12 @@ channels:
       pi:
         $ref: "#/components/parameters/pi"
     subscribe:
+      operationId: KlipperSettingsRevertReply
       message:
-        messageId: SettingsRevertReply
         $ref: "#/components/messages/SettingsRevertReply"
     publish:
+      operationId: KlipperSettingsRevertRequest
       message:
-        messageId: SettingsRevertRequest
         $ref: "#/components/messages/SettingsRevertRequest"
 
   pi.{pi}.settings.moonraker.load:
@@ -196,12 +196,12 @@ channels:
       pi:
         $ref: "#/components/parameters/pi"
     subscribe:
+      operationId: MoonrakerSettingsLoadReply
       message:
-        messageId: SettingsLoadReply
         $ref: "#/components/messages/SettingsLoadReply"
     publish:
+      operationId: MoonrakerSettingsLoadRequest
       message:
-        messageId: SettingsLoadRequest
         $ref: "#/components/messages/SettingsLoadRequest"
 
   pi.{pi}.settings.moonraker.apply:
@@ -209,24 +209,25 @@ channels:
       pi:
         $ref: "#/components/parameters/pi"
     subscribe:
+      operationId: MoonrakerSettingsApplyReply
       message:
-        messageId: SettingsApplyReply
         $ref: "#/components/messages/SettingsApplyReply"
     publish:
+      operationId: MoonrakerSettingsApplyRequest
       message:
-        messageId: SettingsApplyRequest
         $ref: "#/components/messages/SettingsApplyRequest"
 
   pi.{pi}.settings.moonraker.revert:
     parameters:
-      $ref: "#/components/parameters/pi"
+      pi:
+        $ref: "#/components/parameters/pi"
     subscribe:
+      operationId: MoonrakerSettingsRevertReply
       message:
-        messageId: SettingsRevertReply
         $ref: "#/components/messages/SettingsRevertReply"
     publish:
+      operationId: MoonrakerSettingsRevertRequest
       message:
-        messageId: SettingsRevertRequest
         $ref: "#/components/messages/SettingsRevertRequest"
 
   pi.{pi}.settings.octoprint.load:
@@ -234,12 +235,12 @@ channels:
       pi:
         $ref: "#/components/parameters/pi"
     subscribe:
+      operationId: OctoPrintSettingsLoadReply
       message:
-        messageId: SettingsLoadReply
         $ref: "#/components/messages/SettingsLoadReply"
     publish:
+      operationId: OctoPrintSettingsLoadRequest
       message:
-        messageId: SettingsLoadRequest
         $ref: "#/components/messages/SettingsLoadRequest"
 
   pi.{pi}.settings.octoprint.apply:
@@ -247,12 +248,12 @@ channels:
       pi:
         $ref: "#/components/parameters/pi"
     subscribe:
+      operationId: OctoPrintSettingsApplyReply
       message:
-        messageId: SettingsApplyReply
         $ref: "#/components/messages/SettingsApplyReply"
     publish:
+      operationId: OctoPrintSettingsApplyRequest
       message:
-        messageId: SettingsApplyRequest
         $ref: "#/components/messages/SettingsApplyRequest"
 
   pi.{pi}.settings.octoprint.revert:
@@ -260,12 +261,12 @@ channels:
       pi:
         $ref: "#/components/parameters/pi"
     subscribe:
+      operationId: OctoPrintSettingsRevertReply
       message:
-        messageId: SettingsRevertReply
         $ref: "#/components/messages/SettingsRevertReply"
     publish:
+      operationId: OctoPrintSettingsRevertRequest
       message:
-        messageId: SettingsRevertRequest
         $ref: "#/components/messages/SettingsRevertRequest"
 
 components:
