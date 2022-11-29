@@ -53,8 +53,8 @@ pub use self::systemd_manager_start_unit_request::*;
 pub mod systemd_manager_start_unit_reply;
 pub use self::systemd_manager_start_unit_reply::*;
 
-pub mod systemd_manager_stop_unit_job_reply;
-pub use self::systemd_manager_stop_unit_job_reply::*;
+pub mod systemd_manager_stop_unit_reply;
+pub use self::systemd_manager_stop_unit_reply::*;
 
 pub mod print_nanny_cloud_auth_request;
 pub use self::print_nanny_cloud_auth_request::*;
@@ -74,6 +74,9 @@ pub use self::settings_file::*;
 pub mod settings_load_reply;
 pub use self::settings_load_reply::*;
 
+pub mod git_commit;
+pub use self::git_commit::*;
+
 pub mod settings_apply_request;
 pub use self::settings_apply_request::*;
 
@@ -85,15 +88,3 @@ pub use self::settings_revert_request::*;
 
 pub mod settings_revert_reply;
 pub use self::settings_revert_reply::*;
-
-pub mod settings_reply;
-pub use self::settings_reply::*;
-
-pub mod git_commit;
-pub use self::git_commit::*;
-
-pub mod systemd_manager_unit_request;
-pub use self::systemd_manager_unit_request::*;
-
-pub mod systemd_manager_unit_job_reply;
-pub use self::systemd_manager_unit_job_reply::*;
