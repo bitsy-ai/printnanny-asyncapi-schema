@@ -7,352 +7,270 @@ defaultContentType: "application/json"
 
 channels:
   # begin dbus API request/reply channels
-  pi.{pi_id}.dbus.org.freedesktop.systemd1.Manager.DisableUnit:
+  pi.{pi}.dbus.org.freedesktop.systemd1.Manager.DisableUnit:
     parameters:
-      pi_id:
-        description: The ID of the PrintNanny Pi/device
-        schema:
-          type: string
+      pi:
+        $ref: "#/components/parameters/pi"
     subscribe:
       message:
-        name: SystemdManagerDisableUnitReply
-        payload:
-          $ref: "#/components/messages/SystemdManagerDisableUnitsReply"
+        messageId: SystemdManagerDisableUnitsReply
+        $ref: "#/components/messages/SystemdManagerDisableUnitsReply"
     publish:
       message:
-        name: SystemdManagerDisableUnitRequest
-        payload:
-          $ref: "#/components/messages/SystemdManagerDisableUnitsRequest"
+        messageId: SystemdManagerDisableUnitsRequest
+        $ref: "#/components/messages/SystemdManagerDisableUnitsRequest"
 
-  pi.{pi_id}.dbus.org.freedesktop.systemd1.Manager.EnableUnit:
+  pi.{pi}.dbus.org.freedesktop.systemd1.Manager.EnableUnit:
     parameters:
-      pi_id:
-        description: The ID of the PrintNanny Pi/device
-        schema:
-          type: string
+      pi:
+        $ref: "#/components/parameters/pi"
     subscribe:
       message:
-        name: SystemdManagerDisableUnitReply
-        payload:
-          $ref: "#/components/messages/SystemdManagerEnableUnitsReply"
+        messageId: SystemdManagerDisableUnitsReply
+        $ref: "#/components/messages/SystemdManagerEnableUnitsReply"
     publish:
       message:
-        name: SystemdManagerDisableUnitRequest
-        payload:
-          $ref: "#/components/messages/SystemdManagerEnableUnitsRequest"
+        messageId: SystemdManagerEnableUnitsRequest
+        $ref: "#/components/messages/SystemdManagerEnableUnitsRequest"
 
-  pi.{pi_id}.dbus.org.freedesktop.systemd1.Manager.GetUnit:
+  pi.{pi}.dbus.org.freedesktop.systemd1.Manager.GetUnit:
     parameters:
-      pi_id:
-        description: The ID of the PrintNanny Pi/device
-        schema:
-          type: string
+      pi:
+        $ref: "#/components/parameters/pi"
     subscribe:
       message:
-        name: SystemdManagerGetUnitReply
-        payload:
-          $ref: "#/components/messages/SystemdManagerGetUnitReply"
+        messageId: SystemdManagerGetUnitReply
+        $ref: "#/components/messages/SystemdManagerGetUnitReply"
     publish:
       message:
-        name: SystemdManagerGetUnitRequest
-        payload:
-          $ref: "#/components/messages/SystemdManagerGetUnitRequest"
+        messageId: SystemdManagerReloadUnitRequest
+        $ref: "#/components/messages/SystemdManagerGetUnitRequest"
 
-  pi.{pi_id}.dbus.org.freedesktop.systemd1.Manager.ReloadUnit:
+  pi.{pi}.dbus.org.freedesktop.systemd1.Manager.ReloadUnit:
     parameters:
-      pi_id:
-        description: The ID of the PrintNanny Pi/device
-        schema:
-          type: string
+      pi:
+        $ref: "#/components/parameters/pi"
     subscribe:
       message:
-        name: SystemdManagerReloadUnitReply
-        payload:
-          $ref: "#/components/messages/SystemdManagerReloadUnitReply"
+        messageId: SystemdManagerReloadUnitReply
+        $ref: "#/components/messages/SystemdManagerReloadUnitReply"
     publish:
       message:
-        name: SystemdManagerReloadUnitRequest
-        payload:
-          $ref: "#/components/messages/SystemdManagerReloadUnitRequest"
+        messageId: SystemdManagerReloadUnitRequest
+        $ref: "#/components/messages/SystemdManagerReloadUnitRequest"
 
-  pi.{pi_id}.dbus.org.freedesktop.systemd1.Manager.RestartUnit:
+  pi.{pi}.dbus.org.freedesktop.systemd1.Manager.RestartUnit:
     parameters:
-      pi_id:
-        description: The ID of the PrintNanny Pi/device
-        schema:
-          type: string
+      pi:
+        $ref: "#/components/parameters/pi"
     subscribe:
       message:
-        name: SystemdManagerRestartUnitReply
-        payload:
-          $ref: "#/components/messages/SystemdManagerRestartUnitReply"
+        messageId: SystemdManagerRestartUnitReply
+        $ref: "#/components/messages/SystemdManagerRestartUnitReply"
     publish:
       message:
-        name: SystemdManagerRestartUnitRequest
-        payload:
-          $ref: "#/components/messages/SystemdManagerRestartUnitRequest"
+        messageId: SystemdManagerRestartUnitRequest
+        $ref: "#/components/messages/SystemdManagerRestartUnitRequest"
 
-  pi.{pi_id}.dbus.org.freedesktop.systemd1.Manager.StartUnit:
+  pi.{pi}.dbus.org.freedesktop.systemd1.Manager.StartUnit:
     parameters:
-      pi_id:
-        description: The ID of the PrintNanny Pi/device
-        schema:
-          type: string
+      pi:
+        $ref: "#/components/parameters/pi"
     subscribe:
       message:
-        name: SystemdManagerStartUnitReply
-        payload:
-          $ref: "#/components/messages/SystemdManagerStartUnitReply"
+        messageId: SystemdManagerStartUnitReply
+        $ref: "#/components/messages/SystemdManagerStartUnitReply"
     publish:
       message:
-        name: SystemdManagerStartUnitRequest
-        payload:
-          $ref: "#/components/messages/SystemdManagerStartUnitRequest"
+        messageId: SystemdManagerStartUnitRequest
+        $ref: "#/components/messages/SystemdManagerStartUnitRequest"
 
-  pi.{pi_id}.dbus.org.freedesktop.systemd1.Manager.StoptUnit:
+  pi.{pi}.dbus.org.freedesktop.systemd1.Manager.StoptUnit:
     parameters:
-      pi_id:
-        description: The ID of the PrintNanny Pi/device
-        schema:
-          type: string
+      pi:
+        $ref: "#/components/parameters/pi"
     subscribe:
       message:
-        name: SystemdManagerStopUnitReply
-        payload:
-          $ref: "#/components/messages/SystemdManagerStopUnitReply"
+        messageId: SystemdManagerStopUnitReply
+        $ref: "#/components/messages/SystemdManagerStopUnitReply"
     publish:
       message:
-        name: SystemdManagerStopUnitRequest
-        payload:
-          $ref: "#/components/messages/SystemdManagerStopUnitRequest"
+        messageId: SystemdManagerStopUnitRequest
+        $ref: "#/components/messages/SystemdManagerStopUnitRequest"
   # end dbus api request/reply channels
 
   # begin settings request/reply channels
-  pi.{pi_id}.settings.printnanny.cloud.auth:
+  pi.{pi}.settings.printnanny.cloud.auth:
     parameters:
-      pi_id:
-        description: The ID of the PrintNanny Pi/device
-        schema:
-          type: string
+      pi:
+        $ref: "#/components/parameters/pi"
     subscribe:
       message:
-        name: PrintNannyCloudAuthReply
-        payload:
-          $ref: "#/components/messages/PrintNannyCloudAuthReply"
+        messageId: PrintNannyCloudAuthReply
+        $ref: "#/components/messages/PrintNannyCloudAuthReply"
     publish:
       message:
-        name: PrintNannyCloudAuthRequest
-        payload:
-          $ref: "#/components/messages/PrintNannyCloudAuthRequest"
+        messageId: PrintNannyCloudAuthRequest
+        $ref: "#/components/messages/PrintNannyCloudAuthRequest"
 
-  pi.{pi_id}.settings.printnanny.cam.load:
+  pi.{pi}.settings.printnanny.cam.load:
     parameters:
-      pi_id:
-        description: The ID of the PrintNanny Pi/device
-        schema:
-          type: string
+      pi:
+        $ref: "#/components/parameters/pi"
     subscribe:
       message:
-        name: PrintNannyCamSettingsLoadReply
-        payload:
-          $ref: "#/components/messages/SettingsLoadReply"
+        messageId: SettingsLoadReply
+        $ref: "#/components/messages/SettingsLoadReply"
     publish:
       message:
-        name: PrintNannyCamSettingsLoadRequest
-        payload:
-          $ref: "#/components/messages/SettingsLoadRequest"
+        messageId: SettingsLoadRequest
+        $ref: "#/components/messages/SettingsLoadRequest"
 
-  pi.{pi_id}.settings.printnanny.cam.apply:
+  pi.{pi}.settings.printnanny.cam.apply:
     parameters:
-      pi_id:
-        description: The ID of the PrintNanny Pi/device
-        schema:
-          type: string
+      pi:
+        $ref: "#/components/parameters/pi"
     subscribe:
       message:
-        name: PrintNannyCamSettingsApplyReply
-        payload:
-          $ref: "#/components/messages/SettingsApplyReply"
+        messageId: SettingsApplyReply
+        $ref: "#/components/messages/SettingsApplyReply"
     publish:
       message:
-        name: PrintNannyCamSettingsApplyRequest
-        payload:
-          $ref: "#/components/messages/SettingsApplyRequest"
+        messageId: SettingsApplyRequest
+        $ref: "#/components/messages/SettingsApplyRequest"
 
-  pi.{pi_id}.settings.printnanny.cam.revert:
+  pi.{pi}.settings.printnanny.cam.revert:
     parameters:
-      pi_id:
-        description: The ID of the PrintNanny Pi/device
-        schema:
-          type: string
+      pi:
+        $ref: "#/components/parameters/pi"
     subscribe:
       message:
-        name: PrintNannyCamSettingsRevertReply
-        payload:
-          $ref: "#/components/messages/SettingsRevertReply"
+        messageId: SettingsRevertReply"
+        $ref: "#/components/messages/SettingsRevertReply"
     publish:
       message:
-        name: PrintNannyCamSettingsRevertRequest
-        payload:
-          $ref: "#/components/messages/SettingsRevertRequest"
+        messageId: SettingsRevertRequest
+        $ref: "#/components/messages/SettingsRevertRequest"
 
-  pi.{pi_id}.settings.klipper.load:
+  pi.{pi}.settings.klipper.load:
     parameters:
-      pi_id:
-        description: The ID of the PrintNanny Pi/device
-        schema:
-          type: string
+      pi:
+        $ref: "#/components/parameters/pi"
     subscribe:
       message:
-        name: KlipperSettingsLoadReply
-        payload:
-          $ref: "#/components/messages/SettingsLoadReply"
+        messageId: SettingsLoadReply
+        $ref: "#/components/messages/SettingsLoadReply"
     publish:
       message:
-        name: KlipperSettingsLoadRequest
-        payload:
-          $ref: "#/components/messages/SettingsLoadRequest"
+        messageId: SettingsLoadRequest
+        $ref: "#/components/messages/SettingsLoadRequest"
 
-  pi.{pi_id}.settings.klipper.apply:
+  pi.{pi}.settings.klipper.apply:
     parameters:
-      pi_id:
-        description: The ID of the PrintNanny Pi/device
-        schema:
-          type: string
+      pi:
+        $ref: "#/components/parameters/pi"
     subscribe:
       message:
-        name: KlipperSettingsApplyReply
-        payload:
-          $ref: "#/components/messages/SettingsApplyReply"
+        messageId: SettingsApplyReply
+        $ref: "#/components/messages/SettingsApplyReply"
     publish:
       message:
-        name: KlipperSettingsApplyRequest
-        payload:
-          $ref: "#/components/messages/SettingsApplyRequest"
+        messageId: SettingsApplyRequest
+        $ref: "#/components/messages/SettingsApplyRequest"
 
-  pi.{pi_id}.settings.klipper.revert:
+  pi.{pi}.settings.klipper.revert:
     parameters:
-      pi_id:
-        description: The ID of the PrintNanny Pi/device
-        schema:
-          type: string
+      pi:
+        $ref: "#/components/parameters/pi"
     subscribe:
       message:
-        name: KlipperSettingsRevertReply
-        payload:
-          $ref: "#/components/messages/SettingsRevertReply"
+        messageId: SettingsRevertReply
+        $ref: "#/components/messages/SettingsRevertReply"
     publish:
       message:
-        name: KlipperSettingsRevertRequest
-        payload:
-          $ref: "#/components/messages/SettingsRevertRequest"
+        messageId: SettingsRevertRequest
+        $ref: "#/components/messages/SettingsRevertRequest"
 
-  pi.{pi_id}.settings.moonraker.load:
+  pi.{pi}.settings.moonraker.load:
     parameters:
-      pi_id:
-        description: The ID of the PrintNanny Pi/device
-        schema:
-          type: string
+      pi:
+        $ref: "#/components/parameters/pi"
     subscribe:
       message:
-        name: MoonrakerSettingsLoadReply
-        payload:
-          $ref: "#/components/messages/SettingsLoadReply"
+        messageId: SettingsLoadReply
+        $ref: "#/components/messages/SettingsLoadReply"
     publish:
       message:
-        name: MoonrakerSettingsLoadRequest
-        payload:
-          $ref: "#/components/messages/SettingsLoadRequest"
+        messageId: SettingsLoadRequest
+        $ref: "#/components/messages/SettingsLoadRequest"
 
-  pi.{pi_id}.settings.moonraker.apply:
+  pi.{pi}.settings.moonraker.apply:
     parameters:
-      pi_id:
-        description: The ID of the PrintNanny Pi/device
-        schema:
-          type: string
+      pi:
+        $ref: "#/components/parameters/pi"
     subscribe:
       message:
-        name: MoonrakerSettingsApplyReply
-        payload:
-          $ref: "#/components/messages/SettingsApplyReply"
+        messageId: SettingsApplyReply
+        $ref: "#/components/messages/SettingsApplyReply"
     publish:
       message:
-        name: MoonrakerSettingsApplyRequest
-        payload:
-          $ref: "#/components/messages/SettingsApplyRequest"
+        messageId: SettingsApplyRequest
+        $ref: "#/components/messages/SettingsApplyRequest"
 
-  pi.{pi_id}.settings.moonraker.revert:
+  pi.{pi}.settings.moonraker.revert:
     parameters:
-      pi_id:
-        description: The ID of the PrintNanny Pi/device
-        schema:
-          type: string
+      $ref: "#/components/parameters/pi"
     subscribe:
       message:
-        name: MoonrakerSettingsRevertReply
-        payload:
-          $ref: "#/components/messages/SettingsRevertReply"
+        messageId: SettingsRevertReply
+        $ref: "#/components/messages/SettingsRevertReply"
     publish:
       message:
-        name: MoonrakerSettingsRevertRequest
-        payload:
-          $ref: "#/components/messages/SettingsRevertRequest"
+        messageId: SettingsRevertRequest
+        $ref: "#/components/messages/SettingsRevertRequest"
 
-  pi.{pi_id}.settings.octoprint.load:
+  pi.{pi}.settings.octoprint.load:
     parameters:
-      pi_id:
-        description: The ID of the PrintNanny Pi/device
-        schema:
-          type: string
+      pi:
+        $ref: "#/components/parameters/pi"
     subscribe:
       message:
-        name: OctoPrintSettingsLoadReply
-        payload:
-          $ref: "#/components/messages/SettingsLoadReply"
+        messageId: SettingsLoadReply
+        $ref: "#/components/messages/SettingsLoadReply"
     publish:
       message:
-        name: OctoPrintSettingsLoadRequest
-        payload:
-          $ref: "#/components/messages/SettingsLoadRequest"
+        messageId: SettingsLoadRequest
+        $ref: "#/components/messages/SettingsLoadRequest"
 
-  pi.{pi_id}.settings.octoprint.apply:
+  pi.{pi}.settings.octoprint.apply:
     parameters:
-      pi_id:
-        description: The ID of the PrintNanny Pi/device
-        schema:
-          type: string
+      pi:
+        $ref: "#/components/parameters/pi"
     subscribe:
       message:
-        name: OctoPrintSettingsApplyReply
-        payload:
-          $ref: "#/components/messages/SettingsApplyReply"
+        messageId: SettingsApplyReply
+        $ref: "#/components/messages/SettingsApplyReply"
     publish:
       message:
-        name: OctoPrintSettingsApplyRequest
-        payload:
-          $ref: "#/components/messages/SettingsApplyRequest"
+        messageId: SettingsApplyRequest
+        $ref: "#/components/messages/SettingsApplyRequest"
 
-  pi.{pi_id}.settings.octoprint.revert:
+  pi.{pi}.settings.octoprint.revert:
     parameters:
-      pi_id:
-        description: The ID of the PrintNanny Pi/device
-        schema:
-          type: string
+      pi:
+        $ref: "#/components/parameters/pi"
     subscribe:
       message:
-        name: OctoPrintSettingsRevertReply
-        payload:
-          $ref: "#/components/messages/SettingsRevertReply"
+        messageId: SettingsRevertReply
+        $ref: "#/components/messages/SettingsRevertReply"
     publish:
       message:
-        name: OctoPrintSettingsRevertRequest
-        payload:
-          $ref: "#/components/messages/SettingsRevertRequest"
+        messageId: SettingsRevertRequest
+        $ref: "#/components/messages/SettingsRevertRequest"
 
 components:
   messages:
     PrintNannyCloudAuthRequest:
-      messageId: PrintNannyCloudAuthRequest
       summary: "Store authentication token obtained through 2fa"
       x-parser-schema-id: PrintNannyCloudAuthRequest
       description: "Performs device setup and stores PrintNanny Cloud authentication credentials obtained from 2fa challenge: https://api.printnanny.ai/api/schema/redoc/#tag/accounts/operation/accounts_2fa_auth_token_create"
@@ -373,7 +291,6 @@ components:
           - api_url
 
     PrintNannyCloudAuthReply:
-      messageId: PrintNannyCloudAuthRequest
       summary: "Store authentication token obtained through 2fa"
       x-parser-schema-id: PrintNannyCloudAuthReply
       description: "Performs device setup and stores PrintNanny Cloud authentication credentials obtained from 2fa challenge: https://api.printnanny.ai/api/schema/redoc/#tag/accounts/operation/accounts_2fa_auth_token_create"
@@ -394,7 +311,6 @@ components:
           - msg
 
     SettingsLoadRequest:
-      messageId: SettingsLoadRequest
       summary: "Load a settings file for browser editor"
       x-parser-schema-id: SettingsLoadRequest
       payload:
@@ -408,7 +324,6 @@ components:
             $ref: "#/components/schemas/SettingsFile"
 
     SettingsLoadReply:
-      messageId: SettingsLoadReply
       summary: "Load a settings file for browser editor"
       x-parser-schema-id: SettingsLoadReply
       payload:
@@ -437,7 +352,6 @@ components:
           - git_history
 
     SettingsApplyRequest:
-      messageId: SettingsApplyRequest
       summary: "Apply changes to a settings file and run pre/post save hooks"
       x-parser-schema-id: SettingsApplyRequest
       payload:
@@ -460,7 +374,6 @@ components:
           - head_git_commit
 
     SettingsApplyReply:
-      messageId: SettingsApplyReply
       summary: "Apply changes to a settings file and run pre/post save hooks"
       x-parser-schema-id: SettingsApplyReply
       payload:
@@ -489,7 +402,6 @@ components:
           - git_history
 
     SettingsRevertRequest:
-      messageId: SettingsRevertRequest
       summary: "Revert changes to a settings file and run pre/post save hooks"
       x-parser-schema-id: SettingsRevertRequest
       payload:
@@ -503,7 +415,6 @@ components:
           - git_commit
 
     SettingsRevertReply:
-      messageId: SettingsRevertReply
       summary: "Revert changes to a settings file and run pre/post save hooks"
       x-parser-schema-id: SettingsRevertReply
       payload:
@@ -532,7 +443,6 @@ components:
           - git_history
 
     SystemdManagerDisableUnitsRequest:
-      messageId: SystemdManagerDisableUnitsRequest
       summary: "Disable one or more systemd unit files"
       x-parser-schema-id: SystemdManagerDisableUnitsRequest
       payload:
@@ -569,7 +479,6 @@ components:
           - changes
 
     SystemdManagerEnableUnitsRequest:
-      messageId: SystemdManagerEnableUnitsRequest
       summary: "Enable one or more systemd unit files"
       x-parser-schema-id: SystemdManagerEnableUnitsRequest
       payload:
@@ -586,7 +495,6 @@ components:
           - files
 
     SystemdManagerEnableUnitsReply:
-      messageId: SystemdManagerEnableUnitsReply
       summary: "Response to SystemdManagerEnableUnitsRequest"
       x-parser-schema-id: SystemdManagerEnableUnitsReply
       payload:
@@ -606,7 +514,6 @@ components:
           - changes
 
     SystemdManagerGetUnitRequest:
-      messageId: SystemdManagerGetUnitRequest
       summary: "Get systemd unit status/details, equivalent to dbus.org.freedesktop.systemd1.Manager.GetUnit"
       x-parser-schema-id: SystemdManagerGetUnitRequest
       payload:
@@ -620,7 +527,6 @@ components:
           - name
 
     SystemdManagerGetUnitReply:
-      messageId: SystemdManagerGetUnitReply
       summary: "Get systemd unit status/details, equivalent to dbus.org.freedesktop.systemd1.Manager.GetUnit"
       x-parser-schema-id: SystemdManagerGetUnitReply
       payload:
@@ -634,7 +540,6 @@ components:
           - unit
 
     SystemdManagerReloadUnitRequest:
-      messageId: SystemdManagerReloadUnitRequest
       summary: "Reload systemd unit"
       x-parser-schema-id: SystemdManagerReloadUnitRequest
       payload:
@@ -648,7 +553,6 @@ components:
           - name
 
     SystemdManagerReloadUnitReply:
-      messageId: SystemdManagerReloadUnitReply
       summary: "Result of reloading systemd unit, returning job id if state changed."
       x-parser-schema-id: SystemdManagerReloadUnitReply
       payload:
@@ -665,7 +569,6 @@ components:
           - unit
 
     SystemdManagerRestartUnitRequest:
-      messageId: SystemdManagerRestartUnitRequest
       summary: "Restart systemd unit"
       x-parser-schema-id: SystemdManagerRestartUnitRequest
       payload:
@@ -679,7 +582,6 @@ components:
           - name
 
     SystemdManagerRestartUnitReply:
-      messageId: SystemdManagerRestartUnitReply
       summary: "Result of restarting systemd unit, returning job id if state changed."
       x-parser-schema-id: SystemdManagerRestartUnitReply
       payload:
@@ -696,7 +598,6 @@ components:
           - unit
 
     SystemdManagerStartUnitRequest:
-      messageId: SystemdManagerStartUnitRequest
       summary: "Start systemd unit"
       x-parser-schema-id: SystemdManagerStartUnitRequest
       payload:
@@ -710,7 +611,6 @@ components:
           - name
 
     SystemdManagerStartUnitReply:
-      messageId: SystemdManagerStartUnitReply
       summary: "Result of starting systemd unit, returning job id if state changed."
       x-parser-schema-id: SystemdManagerStartUnitReply
       payload:
@@ -727,7 +627,6 @@ components:
           - unit
 
     SystemdManagerStopUnitRequest:
-      messageId: SystemdManagerStopUnitRequest
       summary: "Stop systemd unit"
       x-parser-schema-id: SystemdManagerStartUnitRequest
       payload:
@@ -741,7 +640,6 @@ components:
           - name
 
     SystemdManagerStopUnitReply:
-      messageId: SystemdManagerStopUnitReply
       summary: "Result of stopping systemd unit, returning job id if state changed."
       x-parser-schema-id: SystemdManagerStopUnitReply
       payload:
@@ -757,6 +655,11 @@ components:
           - job
           - unit
 
+  parameters:
+    pi:
+      description: The ID of the PrintNanny Pi/device
+      schema:
+        type: string
   schemas:
     GitCommit:
       name: GitHistory
