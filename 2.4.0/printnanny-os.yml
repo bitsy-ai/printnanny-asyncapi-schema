@@ -199,13 +199,10 @@ components:
         type: object
         additionalProperties: false
         properties:
-          format:
-            $ref: "#/components/schemas/SettingsFormat"
-          filename:
-            $ref: "#/components/schemas/SettingsFile"
+          app:
+            $ref: "#/components/schemas/SettingsApp"
         required:
-          - format
-          - filename
+          - app
 
     SettingsLoadReply:
       summary: "Load a settings file for browser editor"
@@ -214,12 +211,12 @@ components:
         type: object
         additionalProperties: false
         properties:
-          format:
-            $ref: "#/components/schemas/SettingsFormat"
-          filename:
+          app:
+            $ref: "#/components/schemas/SettingsApp"
+          files:
+            type: array
+            additionalItems: false
             $ref: "#/components/schemas/SettingsFile"
-          content:
-            type: string
           git_head_commit:
             type: string
           git_history:
@@ -228,9 +225,8 @@ components:
             items:
               $ref: "#/components/schemas/GitCommit"
         required:
-          - format
-          - filename
-          - content
+          - app
+          - files
           - git_head_commit
           - git_history
 
@@ -241,20 +237,19 @@ components:
         type: object
         additionalProperties: false
         properties:
-          format:
-            $ref: "#/components/schemas/SettingsFormat"
-          filename:
+          app:
+            $ref: "#/components/schemas/SettingsApp"
+          files:
+            type: array
+            additionalItems: false
             $ref: "#/components/schemas/SettingsFile"
-          content:
-            type: string
           git_head_commit:
             type: string
           git_commit_msg:
             type: string
         required:
-          - format
-          - filename
-          - content
+          - app
+          - files
           - git_head_commit
           - git_commit_msg
 
@@ -265,12 +260,12 @@ components:
         type: object
         additionalProperties: false
         properties:
-          format:
-            $ref: "#/components/schemas/SettingsFormat"
-          filename:
+          app:
+            $ref: "#/components/schemas/SettingsApp"
+          files:
+            type: array
+            additionalItems: false
             $ref: "#/components/schemas/SettingsFile"
-          content:
-            type: string
           git_head_commit:
             type: string
           git_history:
@@ -286,15 +281,23 @@ components:
           - git_history
 
     SettingsRevertRequest:
-      summary: "Revert changes to a settings file and run pre/post save hooks"
+      summary: "Revert git commit and run pre/post save hooks associated with provided settings files."
       payload:
         x-parser-schema-id: SettingsRevertRequest
         type: object
         additionalProperties: false
         properties:
+          app:
+            $ref: "#/components/schemas/SettingsApp"
+          files:
+            type: array
+            additionalItems: false
+            $ref: "#/components/schemas/SettingsFile"
           git_commit:
             type: string
         required:
+          - app
+          - files
           - git_commit
 
     SettingsRevertReply:
@@ -304,12 +307,12 @@ components:
         type: object
         additionalProperties: false
         properties:
-          format:
-            $ref: "#/components/schemas/SettingsFormat"
-          filename:
+          app:
+            $ref: "#/components/schemas/SettingsApp"
+          files:
+            type: array
+            additionalItems: false
             $ref: "#/components/schemas/SettingsFile"
-          content:
-            type: string
           git_head_commit:
             type: string
           git_history:
@@ -318,9 +321,8 @@ components:
             items:
               $ref: "#/components/schemas/GitCommit"
         required:
-          - format
-          - filename
-          - content
+          - app
+          - files
           - git_head_commit
           - git_history
 
@@ -544,6 +546,23 @@ components:
         - message
         - ts
 
+    SettingsFile:
+      summary: "A version controlled file"
+      payload:
+        x-parser-schema-id: SettingsFile
+        type: object
+        additionalProperties: false
+        properties:
+          content:
+            type: string
+          file_name:
+            type: string
+          file_format:
+            type: SettingsFormat
+        required:
+          - content
+          - file_name
+          - file_format
     SettingsFormat:
       type: string
       enum:
@@ -552,13 +571,13 @@ components:
         - yaml
         - ini
 
-    SettingsFile:
+    SettingsApp:
       type: string
       enum:
-        - octoprint.yaml
-        - klipper.cfg
-        - moonraker.conf
-        - printnanny.toml
+        - octoprint
+        - klipper
+        - moonraker
+        - printnanny
 
     SystemdUnit:
       type: object
