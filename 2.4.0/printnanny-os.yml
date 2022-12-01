@@ -647,7 +647,8 @@ components:
         message:
           type: string
         ts:
-          type: int64
+          type: integer
+          format: long
       required:
         - oid
         - header
