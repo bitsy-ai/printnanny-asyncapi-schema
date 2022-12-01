@@ -366,11 +366,14 @@ components:
             type: string
           git_head_commit:
             type: string
+          git_commit_msg:
+            type: string
         required:
           - format
           - filename
           - content
           - git_head_commit
+          - git_commit_msg
 
     SettingsApplyReply:
       summary: "Apply changes to a settings file and run pre/post save hooks"
