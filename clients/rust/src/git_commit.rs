@@ -8,11 +8,11 @@ pub struct GitCommit {
     #[serde(rename="message")]
     pub message: String,
     #[serde(rename="ts")]
-    pub ts: i32,
+    pub ts: i64,
 }
 
 impl GitCommit {
-    pub fn new(oid: String, header: String, message: String, ts: i32) -> GitCommit {
+    pub fn new(oid: String, header: String, message: String, ts: i64) -> GitCommit {
         GitCommit {
             oid,
             header,
