@@ -1,12 +1,10 @@
 // SettingsApplyRequest represents a SettingsApplyRequest model.
-#[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct SettingsApplyRequest {
-    #[serde(rename="format")]
-    pub format: Box<crate::SettingsFormat>,
-    #[serde(rename="filename")]
-    pub filename: Box<crate::SettingsFile>,
-    #[serde(rename="content")]
-    pub content: String,
+    #[serde(rename="app")]
+    pub app: Box<crate::SettingsApp>,
+    #[serde(rename="files")]
+    pub files: serde_json::Value,
     #[serde(rename="git_head_commit")]
     pub git_head_commit: String,
     #[serde(rename="git_commit_msg")]
@@ -14,11 +12,10 @@ pub struct SettingsApplyRequest {
 }
 
 impl SettingsApplyRequest {
-    pub fn new(format: crate::SettingsFormat, filename: crate::SettingsFile, content: String, git_head_commit: String, git_commit_msg: String) -> SettingsApplyRequest {
+    pub fn new(app: crate::SettingsApp, files: serde_json::Value, git_head_commit: String, git_commit_msg: String) -> SettingsApplyRequest {
         SettingsApplyRequest {
-            format: Box::new(format),
-            filename: Box::new(filename),
-            content,
+            app: Box::new(app),
+            files,
             git_head_commit,
             git_commit_msg,
         }

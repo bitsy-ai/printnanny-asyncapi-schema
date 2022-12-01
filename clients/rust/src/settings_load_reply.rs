@@ -1,12 +1,10 @@
 // SettingsLoadReply represents a SettingsLoadReply model.
-#[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct SettingsLoadReply {
-    #[serde(rename="format")]
-    pub format: Box<crate::SettingsFormat>,
-    #[serde(rename="filename")]
-    pub filename: Box<crate::SettingsFile>,
-    #[serde(rename="content")]
-    pub content: String,
+    #[serde(rename="app")]
+    pub app: Box<crate::SettingsApp>,
+    #[serde(rename="files")]
+    pub files: serde_json::Value,
     #[serde(rename="git_head_commit")]
     pub git_head_commit: String,
     #[serde(rename="git_history")]
@@ -14,11 +12,10 @@ pub struct SettingsLoadReply {
 }
 
 impl SettingsLoadReply {
-    pub fn new(format: crate::SettingsFormat, filename: crate::SettingsFile, content: String, git_head_commit: String, git_history: Vec<crate::GitCommit>) -> SettingsLoadReply {
+    pub fn new(app: crate::SettingsApp, files: serde_json::Value, git_head_commit: String, git_history: Vec<crate::GitCommit>) -> SettingsLoadReply {
         SettingsLoadReply {
-            format: Box::new(format),
-            filename: Box::new(filename),
-            content,
+            app: Box::new(app),
+            files,
             git_head_commit,
             git_history,
         }

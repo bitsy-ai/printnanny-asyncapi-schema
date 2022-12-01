@@ -1,17 +1,14 @@
 // SettingsLoadRequest represents a SettingsLoadRequest model.
 #[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
 pub struct SettingsLoadRequest {
-    #[serde(rename="format")]
-    pub format: Box<crate::SettingsFormat>,
-    #[serde(rename="filename")]
-    pub filename: Box<crate::SettingsFile>,
+    #[serde(rename="app")]
+    pub app: Box<crate::SettingsApp>,
 }
 
 impl SettingsLoadRequest {
-    pub fn new(format: crate::SettingsFormat, filename: crate::SettingsFile) -> SettingsLoadRequest {
+    pub fn new(app: crate::SettingsApp) -> SettingsLoadRequest {
         SettingsLoadRequest {
-            format: Box::new(format),
-            filename: Box::new(filename),
+            app: Box::new(app),
         }
     }
 }

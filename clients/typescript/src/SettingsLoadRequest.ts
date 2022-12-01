@@ -1,20 +1,13 @@
-import {SettingsFormat} from './SettingsFormat';
-import {SettingsFile} from './SettingsFile';
+import {SettingsApp} from './SettingsApp';
 export class SettingsLoadRequest {
-  private _format: SettingsFormat;
-  private _filename: SettingsFile;
+  private _app: SettingsApp;
 
   constructor(input: {
-    format: SettingsFormat,
-    filename: SettingsFile,
+    app: SettingsApp,
   }) {
-    this._format = input.format;
-    this._filename = input.filename;
+    this._app = input.app;
   }
 
-  get format(): SettingsFormat { return this._format; }
-  set format(format: SettingsFormat) { this._format = format; }
-
-  get filename(): SettingsFile { return this._filename; }
-  set filename(filename: SettingsFile) { this._filename = filename; }
+  get app(): SettingsApp { return this._app; }
+  set app(app: SettingsApp) { this._app = app; }
 }

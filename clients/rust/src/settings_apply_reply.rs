@@ -1,12 +1,10 @@
 // SettingsApplyReply represents a SettingsApplyReply model.
-#[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct SettingsApplyReply {
-    #[serde(rename="format")]
-    pub format: Box<crate::SettingsFormat>,
-    #[serde(rename="filename")]
-    pub filename: Box<crate::SettingsFile>,
-    #[serde(rename="content")]
-    pub content: String,
+    #[serde(rename="app", skip_serializing_if = "Option::is_none")]
+    pub app: Option<Box<crate::SettingsApp>>,
+    #[serde(rename="files", skip_serializing_if = "Option::is_none")]
+    pub files: Option<serde_json::Value>,
     #[serde(rename="git_head_commit")]
     pub git_head_commit: String,
     #[serde(rename="git_history")]
@@ -14,11 +12,10 @@ pub struct SettingsApplyReply {
 }
 
 impl SettingsApplyReply {
-    pub fn new(format: crate::SettingsFormat, filename: crate::SettingsFile, content: String, git_head_commit: String, git_history: Vec<crate::GitCommit>) -> SettingsApplyReply {
+    pub fn new(app: Option<crate::SettingsApp>, files: Option<serde_json::Value>, git_head_commit: String, git_history: Vec<crate::GitCommit>) -> SettingsApplyReply {
         SettingsApplyReply {
-            format: Box::new(format),
-            filename: Box::new(filename),
-            content,
+            app: app.map(Box::new),
+            files,
             git_head_commit,
             git_history,
         }

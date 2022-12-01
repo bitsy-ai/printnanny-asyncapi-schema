@@ -1,34 +1,27 @@
-import {SettingsFormat} from './SettingsFormat';
-import {SettingsFile} from './SettingsFile';
+import {SettingsApp} from './SettingsApp';
 export class SettingsApplyRequest {
-  private _format: SettingsFormat;
-  private _filename: SettingsFile;
-  private _content: string;
+  private _app: SettingsApp;
+  private _files: any;
   private _gitHeadCommit: string;
   private _gitCommitMsg: string;
 
   constructor(input: {
-    format: SettingsFormat,
-    filename: SettingsFile,
-    content: string,
+    app: SettingsApp,
+    files: any,
     gitHeadCommit: string,
     gitCommitMsg: string,
   }) {
-    this._format = input.format;
-    this._filename = input.filename;
-    this._content = input.content;
+    this._app = input.app;
+    this._files = input.files;
     this._gitHeadCommit = input.gitHeadCommit;
     this._gitCommitMsg = input.gitCommitMsg;
   }
 
-  get format(): SettingsFormat { return this._format; }
-  set format(format: SettingsFormat) { this._format = format; }
+  get app(): SettingsApp { return this._app; }
+  set app(app: SettingsApp) { this._app = app; }
 
-  get filename(): SettingsFile { return this._filename; }
-  set filename(filename: SettingsFile) { this._filename = filename; }
-
-  get content(): string { return this._content; }
-  set content(content: string) { this._content = content; }
+  get files(): any { return this._files; }
+  set files(files: any) { this._files = files; }
 
   get gitHeadCommit(): string { return this._gitHeadCommit; }
   set gitHeadCommit(gitHeadCommit: string) { this._gitHeadCommit = gitHeadCommit; }
