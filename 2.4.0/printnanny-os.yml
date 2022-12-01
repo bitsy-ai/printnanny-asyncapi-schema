@@ -216,7 +216,8 @@ components:
           files:
             type: array
             additionalItems: false
-            $ref: "#/components/schemas/SettingsFile"
+            items:
+              $ref: "#/components/schemas/SettingsFile"
           git_head_commit:
             type: string
           git_history:
@@ -242,7 +243,8 @@ components:
           files:
             type: array
             additionalItems: false
-            $ref: "#/components/schemas/SettingsFile"
+            items:
+              $ref: "#/components/schemas/SettingsFile"
           git_head_commit:
             type: string
           git_commit_msg:
@@ -265,7 +267,8 @@ components:
           files:
             type: array
             additionalItems: false
-            $ref: "#/components/schemas/SettingsFile"
+            items:
+              $ref: "#/components/schemas/SettingsFile"
           git_head_commit:
             type: string
           git_history:
@@ -292,7 +295,8 @@ components:
           files:
             type: array
             additionalItems: false
-            $ref: "#/components/schemas/SettingsFile"
+            items:
+              $ref: "#/components/schemas/SettingsFile"
           git_commit:
             type: string
         required:
@@ -547,22 +551,22 @@ components:
         - ts
 
     SettingsFile:
+      name: SettingsFile
       summary: "A version controlled file"
-      payload:
-        x-parser-schema-id: SettingsFile
-        type: object
-        additionalProperties: false
-        properties:
-          content:
-            type: string
-          file_name:
-            type: string
-          file_format:
-            type: SettingsFormat
-        required:
-          - content
-          - file_name
-          - file_format
+      type: object
+      additionalProperties: false
+      properties:
+        content:
+          type: string
+        file_name:
+          type: string
+        file_format:
+          $ref: "#/components/schemas/SettingsFormat"
+      required:
+        - content
+        - file_name
+        - file_format
+
     SettingsFormat:
       type: string
       enum:
