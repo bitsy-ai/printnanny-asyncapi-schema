@@ -216,7 +216,8 @@ components:
           files:
             type: array
             additionalItems: false
-            $ref: "#/components/schemas/SettingsFile"
+            items:
+              $ref: "#/components/schemas/SettingsFile"
           git_head_commit:
             type: string
           git_history:
@@ -242,7 +243,8 @@ components:
           files:
             type: array
             additionalItems: false
-            $ref: "#/components/schemas/SettingsFile"
+            items:
+              $ref: "#/components/schemas/SettingsFile"
           git_head_commit:
             type: string
           git_commit_msg:
@@ -265,7 +267,8 @@ components:
           files:
             type: array
             additionalItems: false
-            $ref: "#/components/schemas/SettingsFile"
+            items:
+              $ref: "#/components/schemas/SettingsFile"
           git_head_commit:
             type: string
           git_history:
