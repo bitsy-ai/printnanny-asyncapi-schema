@@ -100,7 +100,7 @@ channels:
   # end dbus api request/reply channels
 
   # begin settings request/reply channels
-  pi.{pi}.settings.printnanny.cloud.auth:
+  pi.{pi}.settings.cloud.auth:
     parameters:
       pi:
         $ref: "#/components/parameters/pi"
@@ -113,159 +113,42 @@ channels:
       message:
         $ref: "#/components/messages/PrintNannyCloudAuthRequest"
 
-  pi.{pi}.settings.printnanny.load:
+  pi.{pi}.settings.vcs.load:
     parameters:
       pi:
         $ref: "#/components/parameters/pi"
     subscribe:
-      operationId: PrintNannySettingsLoadReply
+      operationId: VersionControlledSettingsLoadReply
       message:
         $ref: "#/components/messages/SettingsLoadReply"
     publish:
-      operationId: PrintNannySettingsLoadRequest
+      operationId: VersionControlledSettingsRequest
       message:
         $ref: "#/components/messages/SettingsLoadRequest"
 
-  pi.{pi}.settings.printnanny.apply:
+  pi.{pi}.settings.vcs.apply:
     parameters:
       pi:
         $ref: "#/components/parameters/pi"
     subscribe:
-      operationId: PrintNannySettingsApplyReply
+      operationId: VersionControlledSettingsReply
       message:
         $ref: "#/components/messages/SettingsApplyReply"
     publish:
-      operationId: PrintNannySettingsApplyRequest
+      operationId: VersionControlledSettingsyRequest
       message:
         $ref: "#/components/messages/SettingsApplyRequest"
 
-  pi.{pi}.settings.printnanny.revert:
+  pi.{pi}.settings.vcs.revert:
     parameters:
       pi:
         $ref: "#/components/parameters/pi"
     subscribe:
-      operationId: PrintNannySettingsRevertReply
+      operationId: VersionControlledSettingsReply
       message:
         $ref: "#/components/messages/SettingsRevertReply"
     publish:
-      operationId: PrintNannySettingsRevertRequest
-      message:
-        $ref: "#/components/messages/SettingsRevertRequest"
-
-  pi.{pi}.settings.klipper.load:
-    parameters:
-      pi:
-        $ref: "#/components/parameters/pi"
-    subscribe:
-      operationId: KlipperSettingsLoadReply
-      message:
-        $ref: "#/components/messages/SettingsLoadReply"
-    publish:
-      operationId: KlipperSettingsLoadRequest
-      message:
-        $ref: "#/components/messages/SettingsLoadRequest"
-
-  pi.{pi}.settings.klipper.apply:
-    parameters:
-      pi:
-        $ref: "#/components/parameters/pi"
-    subscribe:
-      operationId: KlipperSettingsApplyReply
-      message:
-        $ref: "#/components/messages/SettingsApplyReply"
-    publish:
-      operationId: KlipperSettingsApplyRequest
-      message:
-        $ref: "#/components/messages/SettingsApplyRequest"
-
-  pi.{pi}.settings.klipper.revert:
-    parameters:
-      pi:
-        $ref: "#/components/parameters/pi"
-    subscribe:
-      operationId: KlipperSettingsRevertReply
-      message:
-        $ref: "#/components/messages/SettingsRevertReply"
-    publish:
-      operationId: KlipperSettingsRevertRequest
-      message:
-        $ref: "#/components/messages/SettingsRevertRequest"
-
-  pi.{pi}.settings.moonraker.load:
-    parameters:
-      pi:
-        $ref: "#/components/parameters/pi"
-    subscribe:
-      operationId: MoonrakerSettingsLoadReply
-      message:
-        $ref: "#/components/messages/SettingsLoadReply"
-    publish:
-      operationId: MoonrakerSettingsLoadRequest
-      message:
-        $ref: "#/components/messages/SettingsLoadRequest"
-
-  pi.{pi}.settings.moonraker.apply:
-    parameters:
-      pi:
-        $ref: "#/components/parameters/pi"
-    subscribe:
-      operationId: MoonrakerSettingsApplyReply
-      message:
-        $ref: "#/components/messages/SettingsApplyReply"
-    publish:
-      operationId: MoonrakerSettingsApplyRequest
-      message:
-        $ref: "#/components/messages/SettingsApplyRequest"
-
-  pi.{pi}.settings.moonraker.revert:
-    parameters:
-      pi:
-        $ref: "#/components/parameters/pi"
-    subscribe:
-      operationId: MoonrakerSettingsRevertReply
-      message:
-        $ref: "#/components/messages/SettingsRevertReply"
-    publish:
-      operationId: MoonrakerSettingsRevertRequest
-      message:
-        $ref: "#/components/messages/SettingsRevertRequest"
-
-  pi.{pi}.settings.octoprint.load:
-    parameters:
-      pi:
-        $ref: "#/components/parameters/pi"
-    subscribe:
-      operationId: OctoPrintSettingsLoadReply
-      message:
-        $ref: "#/components/messages/SettingsLoadReply"
-    publish:
-      operationId: OctoPrintSettingsLoadRequest
-      message:
-        $ref: "#/components/messages/SettingsLoadRequest"
-
-  pi.{pi}.settings.octoprint.apply:
-    parameters:
-      pi:
-        $ref: "#/components/parameters/pi"
-    subscribe:
-      operationId: OctoPrintSettingsApplyReply
-      message:
-        $ref: "#/components/messages/SettingsApplyReply"
-    publish:
-      operationId: OctoPrintSettingsApplyRequest
-      message:
-        $ref: "#/components/messages/SettingsApplyRequest"
-
-  pi.{pi}.settings.octoprint.revert:
-    parameters:
-      pi:
-        $ref: "#/components/parameters/pi"
-    subscribe:
-      operationId: OctoPrintSettingsRevertReply
-      message:
-        $ref: "#/components/messages/SettingsRevertReply"
-    publish:
-      operationId: OctoPrintSettingsRevertRequest
+      operationId: VersionControlledSettingsRequest
       message:
         $ref: "#/components/messages/SettingsRevertRequest"
 
