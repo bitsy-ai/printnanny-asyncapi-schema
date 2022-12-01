@@ -7,17 +7,20 @@ pub struct SettingsApplyRequest {
     pub filename: Box<crate::SettingsFile>,
     #[serde(rename="content")]
     pub content: String,
-    #[serde(rename="head_git_commit")]
-    pub head_git_commit: String,
+    #[serde(rename="git_head_commit")]
+    pub git_head_commit: String,
+    #[serde(rename="git_commit_msg")]
+    pub git_commit_msg: String,
 }
 
 impl SettingsApplyRequest {
-    pub fn new(format: crate::SettingsFormat, filename: crate::SettingsFile, content: String, head_git_commit: String) -> SettingsApplyRequest {
+    pub fn new(format: crate::SettingsFormat, filename: crate::SettingsFile, content: String, git_head_commit: String, git_commit_msg: String) -> SettingsApplyRequest {
         SettingsApplyRequest {
             format: Box::new(format),
             filename: Box::new(filename),
             content,
-            head_git_commit,
+            git_head_commit,
+            git_commit_msg,
         }
     }
 }
