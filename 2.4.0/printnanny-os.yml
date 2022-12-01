@@ -131,11 +131,11 @@ channels:
       pi:
         $ref: "#/components/parameters/pi"
     subscribe:
-      operationId: VersionControlledSettingsReply
+      operationId: VersionControlledSettingsApplyReply
       message:
         $ref: "#/components/messages/SettingsApplyReply"
     publish:
-      operationId: VersionControlledSettingsyRequest
+      operationId: VersionControlledSettingsApplyRequest
       message:
         $ref: "#/components/messages/SettingsApplyRequest"
 
@@ -144,11 +144,11 @@ channels:
       pi:
         $ref: "#/components/parameters/pi"
     subscribe:
-      operationId: VersionControlledSettingsReply
+      operationId: VersionControlledSettingsRevertReply
       message:
         $ref: "#/components/messages/SettingsRevertReply"
     publish:
-      operationId: VersionControlledSettingsRequest
+      operationId: VersionControlledSettingsRevertRequest
       message:
         $ref: "#/components/messages/SettingsRevertRequest"
 
