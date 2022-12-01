@@ -1,6 +1,6 @@
 {
   "name": "printnanny-asyncapi-models-ts",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "PrintNanny.ai AsyncAPI Generated Models",
   "main": "index.ts",
   "scripts": {
