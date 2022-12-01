@@ -4,7 +4,7 @@ pub struct SettingsApplyRequest {
     #[serde(rename="app")]
     pub app: Box<crate::SettingsApp>,
     #[serde(rename="files")]
-    pub files: serde_json::Value,
+    pub files: Vec<Serde_json::Value>,
     #[serde(rename="git_head_commit")]
     pub git_head_commit: String,
     #[serde(rename="git_commit_msg")]
@@ -12,7 +12,7 @@ pub struct SettingsApplyRequest {
 }
 
 impl SettingsApplyRequest {
-    pub fn new(app: crate::SettingsApp, files: serde_json::Value, git_head_commit: String, git_commit_msg: String) -> SettingsApplyRequest {
+    pub fn new(app: crate::SettingsApp, files: Vec<Serde_json::Value>, git_head_commit: String, git_commit_msg: String) -> SettingsApplyRequest {
         SettingsApplyRequest {
             app: Box::new(app),
             files,

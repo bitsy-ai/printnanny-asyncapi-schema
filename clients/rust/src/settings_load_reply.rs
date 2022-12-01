@@ -4,7 +4,7 @@ pub struct SettingsLoadReply {
     #[serde(rename="app")]
     pub app: Box<crate::SettingsApp>,
     #[serde(rename="files")]
-    pub files: serde_json::Value,
+    pub files: Vec<Serde_json::Value>,
     #[serde(rename="git_head_commit")]
     pub git_head_commit: String,
     #[serde(rename="git_history")]
@@ -12,7 +12,7 @@ pub struct SettingsLoadReply {
 }
 
 impl SettingsLoadReply {
-    pub fn new(app: crate::SettingsApp, files: serde_json::Value, git_head_commit: String, git_history: Vec<crate::GitCommit>) -> SettingsLoadReply {
+    pub fn new(app: crate::SettingsApp, files: Vec<Serde_json::Value>, git_head_commit: String, git_history: Vec<crate::GitCommit>) -> SettingsLoadReply {
         SettingsLoadReply {
             app: Box::new(app),
             files,
