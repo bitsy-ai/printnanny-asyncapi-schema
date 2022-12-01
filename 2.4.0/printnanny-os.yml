@@ -337,7 +337,7 @@ components:
             $ref: "#/components/schemas/SettingsFile"
           content:
             type: string
-          head_git_commit:
+          git_head_commit:
             type: string
           git_history:
             type: array
@@ -348,7 +348,7 @@ components:
           - format
           - filename
           - content
-          - head_git_commit
+          - git_head_commit
           - git_history
 
     SettingsApplyRequest:
@@ -364,13 +364,16 @@ components:
             $ref: "#/components/schemas/SettingsFile"
           content:
             type: string
-          head_git_commit:
+          git_head_commit:
+            type: string
+          git_commit_msg:
             type: string
         required:
           - format
           - filename
           - content
-          - head_git_commit
+          - git_head_commit
+          - git_commit_msg
 
     SettingsApplyReply:
       summary: "Apply changes to a settings file and run pre/post save hooks"
@@ -385,7 +388,7 @@ components:
             $ref: "#/components/schemas/SettingsFile"
           content:
             type: string
-          head_git_commit:
+          git_head_commit:
             type: string
           git_history:
             type: array
@@ -396,7 +399,7 @@ components:
           - format
           - filename
           - content
-          - head_git_commit
+          - git_head_commit
           - git_history
 
     SettingsRevertRequest:
@@ -424,7 +427,7 @@ components:
             $ref: "#/components/schemas/SettingsFile"
           content:
             type: string
-          head_git_commit:
+          git_head_commit:
             type: string
           git_history:
             type: array
@@ -435,7 +438,7 @@ components:
           - format
           - filename
           - content
-          - head_git_commit
+          - git_head_commit
           - git_history
 
     SystemdManagerDisableUnitsRequest:

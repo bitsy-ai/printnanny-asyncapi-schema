@@ -4,18 +4,21 @@ export class SettingsApplyRequest {
   private _format: SettingsFormat;
   private _filename: SettingsFile;
   private _content: string;
-  private _headGitCommit: string;
+  private _gitHeadCommit: string;
+  private _gitCommitMsg: string;
 
   constructor(input: {
     format: SettingsFormat,
     filename: SettingsFile,
     content: string,
-    headGitCommit: string,
+    gitHeadCommit: string,
+    gitCommitMsg: string,
   }) {
     this._format = input.format;
     this._filename = input.filename;
     this._content = input.content;
-    this._headGitCommit = input.headGitCommit;
+    this._gitHeadCommit = input.gitHeadCommit;
+    this._gitCommitMsg = input.gitCommitMsg;
   }
 
   get format(): SettingsFormat { return this._format; }
@@ -27,6 +30,9 @@ export class SettingsApplyRequest {
   get content(): string { return this._content; }
   set content(content: string) { this._content = content; }
 
-  get headGitCommit(): string { return this._headGitCommit; }
-  set headGitCommit(headGitCommit: string) { this._headGitCommit = headGitCommit; }
+  get gitHeadCommit(): string { return this._gitHeadCommit; }
+  set gitHeadCommit(gitHeadCommit: string) { this._gitHeadCommit = gitHeadCommit; }
+
+  get gitCommitMsg(): string { return this._gitCommitMsg; }
+  set gitCommitMsg(gitCommitMsg: string) { this._gitCommitMsg = gitCommitMsg; }
 }
