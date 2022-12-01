@@ -320,6 +320,9 @@ components:
             $ref: "#/components/schemas/SettingsFormat"
           filename:
             $ref: "#/components/schemas/SettingsFile"
+        required:
+          - format
+          - filename
 
     SettingsLoadReply:
       summary: "Load a settings file for browser editor"
