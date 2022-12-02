@@ -633,18 +633,24 @@ components:
         - "static"
         - "disabled"
         - "invalid"
+
+    SystemdUnitChangeState:
+      type: string
+      additionalProperties: false
+      enum:
+        - "symlink"
+        - "unlink"
+
     SystemdUnitChange:
       type: object
       additionalProperties: false
-      change:
-        type: string
-        enum:
-          - "symlink"
-          - "unlink"
-      file:
-        type: string
-      destination:
-        type: string
+      properties:
+        change:
+          $ref: "#/components/schemas/SystemdUnitChangeState"
+        file:
+          type: string
+        destination:
+          type: string
       required:
         - change
         - file

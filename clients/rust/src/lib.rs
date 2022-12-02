@@ -11,6 +11,9 @@ pub use self::systemd_manager_disable_units_reply::*;
 pub mod systemd_unit_change;
 pub use self::systemd_unit_change::*;
 
+pub mod systemd_unit_change_state;
+pub use self::systemd_unit_change_state::*;
+
 pub mod systemd_manager_enable_units_request;
 pub use self::systemd_manager_enable_units_request::*;
 
