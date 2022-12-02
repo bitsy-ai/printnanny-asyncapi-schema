@@ -4,7 +4,7 @@ pub struct SettingsRevertReply {
     #[serde(rename="app")]
     pub app: Box<crate::SettingsApp>,
     #[serde(rename="files")]
-    pub files: Box<crate::SettingsFile>,
+    pub files: Vec<crate::SettingsFile>,
     #[serde(rename="git_head_commit")]
     pub git_head_commit: String,
     #[serde(rename="git_history")]
@@ -12,10 +12,10 @@ pub struct SettingsRevertReply {
 }
 
 impl SettingsRevertReply {
-    pub fn new(app: crate::SettingsApp, files: crate::SettingsFile, git_head_commit: String, git_history: Vec<crate::GitCommit>) -> SettingsRevertReply {
+    pub fn new(app: crate::SettingsApp, files: Vec<crate::SettingsFile>, git_head_commit: String, git_history: Vec<crate::GitCommit>) -> SettingsRevertReply {
         SettingsRevertReply {
             app: Box::new(app),
-            files: Box::new(files),
+            files,
             git_head_commit,
             git_history,
         }

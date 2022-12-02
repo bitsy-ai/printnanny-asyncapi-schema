@@ -277,9 +277,8 @@ components:
             items:
               $ref: "#/components/schemas/GitCommit"
         required:
-          - format
-          - filename
-          - content
+          - app
+          - files
           - git_head_commit
           - git_history
 
@@ -316,7 +315,8 @@ components:
           files:
             type: array
             additionalItems: false
-            $ref: "#/components/schemas/SettingsFile"
+            items:
+              $ref: "#/components/schemas/SettingsFile"
           git_head_commit:
             type: string
           git_history:
