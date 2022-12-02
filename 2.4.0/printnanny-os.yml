@@ -402,7 +402,7 @@ components:
           unit_name:
             type: string
         required:
-          - name
+          - unit_name
 
     SystemdManagerGetUnitReply:
       summary: "Get systemd unit status/details, equivalent to dbus.org.freedesktop.systemd1.Manager.GetUnit"
