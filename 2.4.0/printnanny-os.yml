@@ -636,15 +636,16 @@ components:
     SystemdUnitChange:
       type: object
       additionalProperties: false
-      change:
-        type: string
-        enum:
-          - "symlink"
-          - "unlink"
-      file:
-        type: string
-      destination:
-        type: string
+      properties:
+        change:
+          type: string
+          enum:
+            - "symlink"
+            - "unlink"
+        file:
+          type: string
+        destination:
+          type: string
       required:
         - change
         - file
