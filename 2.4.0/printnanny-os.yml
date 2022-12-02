@@ -500,7 +500,7 @@ components:
     SystemdManagerStopUnitRequest:
       summary: "Stop systemd unit"
       payload:
-        x-parser-schema-id: SystemdManagerStartUnitRequest
+        x-parser-schema-id: SystemdManagerStopUnitRequest
         type: object
         additionalProperties: false
         properties:
