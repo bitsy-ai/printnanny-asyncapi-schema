@@ -9,6 +9,10 @@ pub enum SystemdUnitFileState {
     Linked,
     #[serde(rename="linked-runtime")]
     LinkedMinusRuntime,
+    #[serde(rename="masked")]
+    Masked,
+    #[serde(rename="masked-runtime")]
+    MaskedMinusRuntime,
     #[serde(rename="static")]
     ReservedStatic,
     #[serde(rename="disabled")]
