@@ -630,6 +630,8 @@ components:
         - "enabled-runtime"
         - "linked"
         - "linked-runtime"
+        - "masked"
+        - "masked-runtime"
         - "static"
         - "disabled"
         - "invalid"
