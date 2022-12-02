@@ -53,6 +53,9 @@ pub use self::systemd_manager_start_unit_request::*;
 pub mod systemd_manager_start_unit_reply;
 pub use self::systemd_manager_start_unit_reply::*;
 
+pub mod systemd_manager_stop_unit_request;
+pub use self::systemd_manager_stop_unit_request::*;
+
 pub mod systemd_manager_stop_unit_reply;
 pub use self::systemd_manager_stop_unit_reply::*;
 
