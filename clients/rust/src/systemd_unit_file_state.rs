@@ -14,7 +14,7 @@ pub enum SystemdUnitFileState {
     #[serde(rename="masked-runtime")]
     MaskedMinusRuntime,
     #[serde(rename="static")]
-    ReservedStatic,
+    Static,
     #[serde(rename="disabled")]
     Disabled,
     #[serde(rename="invalid")]
