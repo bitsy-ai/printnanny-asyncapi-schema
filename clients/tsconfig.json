@@ -1,12 +1,12 @@
 {
     "compilerOptions": {
-        "outDir": "./lib",
-        "baseUrl": "./src",
+        "outDir": "./typescript/dist",
         "declaration": true,
         "target": "esnext",
         "lib": [
             "esnext"
         ],
+        "noImplicitAny": true,
         "sourceMap": true,
         "skipLibCheck": true,
         "esModuleInterop": true,
@@ -16,14 +16,17 @@
         "noFallthroughCasesInSwitch": true,
         "module": "commonjs",
         "moduleResolution": "node",
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+        "typeRoots": [
+            "node_modules/@types"
+        ]
     },
     "include": [
-        "src",
-        "**/*.ts"
+        "typescript/src/**/*.ts",
     ],
     "exclude": [
         "node_modules",
+        "typescript/dist",
         "**/*.spec.ts"
     ]
 }
