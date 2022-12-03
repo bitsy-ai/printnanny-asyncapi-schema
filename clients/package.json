@@ -1,5 +1,5 @@
 {
-  "name": "printnanny-asyncapi-models",
+  "name": "@bitsy-ai/printnanny-asyncapi-models",
   "version": "0.1.15",
   "description": "PrintNanny.ai AsyncAPI Generated Models",
   "scripts": {
