@@ -22,7 +22,7 @@
         ]
     },
     "include": [
-        "typesciprt/src/**/*.ts",
+        "typescript/src/**/*.ts",
     ],
     "exclude": [
         "node_modules",
