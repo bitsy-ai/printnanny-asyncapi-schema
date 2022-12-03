@@ -1,13 +1,13 @@
 
 export class SystemdManagerStartUnitRequest {
-  private _unitName?: string;
+  private _unitName: string;
 
   constructor(input: {
-    unitName?: string,
+    unitName: string,
   }) {
     this._unitName = input.unitName;
   }
 
-  get unitName(): string | undefined { return this._unitName; }
-  set unitName(unitName: string | undefined) { this._unitName = unitName; }
+  get unitName(): string { return this._unitName; }
+  set unitName(unitName: string) { this._unitName = unitName; }
 }
