@@ -426,7 +426,7 @@ components:
           unit_name:
             type: string
         required:
-          - name
+          - unit_name
 
     SystemdManagerReloadUnitReply:
       summary: "Result of reloading systemd unit, returning job id if state changed."
@@ -453,7 +453,7 @@ components:
           unit_name:
             type: string
         required:
-          - name
+          - unit_name
 
     SystemdManagerRestartUnitReply:
       summary: "Result of restarting systemd unit, returning job id if state changed."
@@ -480,7 +480,7 @@ components:
           unit_name:
             type: string
         required:
-          - name
+          - unit_name
 
     SystemdManagerStartUnitReply:
       summary: "Result of starting systemd unit, returning job id if state changed."
@@ -507,7 +507,7 @@ components:
           unit_name:
             type: string
         required:
-          - name
+          - unit_name
 
     SystemdManagerStopUnitReply:
       summary: "Result of stopping systemd unit, returning job id if state changed."
