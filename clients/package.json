@@ -2,18 +2,22 @@
   "name": "printnanny-asyncapi-models",
   "version": "0.1.15",
   "description": "PrintNanny.ai AsyncAPI Generated Models",
-  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean:rust": "rm -rf rust/",
     "clean:typescript": "rm -rf typescript/src && mkdir typescript/src",
     "generate:rust": "npm run clean:rust && ./node_modules/.bin/ts-node rust.ts generate && cargo build --manifest-path=rust/Cargo.toml",
-    "generate:typescript": "npm run clean:typescript && ./node_modules/.bin/ts-node typescript.ts generate"
+    "generate:typescript": "npm run clean:typescript && ./node_modules/.bin/ts-node typescript.ts generate",
+    "build": "npm run generate:typescript && tsc --outDir typescript/dist/",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bitsy-ai/printnanny-asyncapi-schema.git"
   },
+  "main": "./typescript/dist/index.js",
+  "typings": "./typescript/dist/index.d.ts",
+  "types": "./typescript/dist/index.d.ts",
   "author": "Leigh Johnson <leigh@printnanny.ai>",
   "license": "AGPL-3.0-or-later",
   "bugs": {
@@ -21,7 +25,8 @@
   },
   "homepage": "https://github.com/bitsy-ai/printnanny-asyncapi-schema#readme",
   "devDependencies": {
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.3"
   },
   "dependencies": {
     "@asyncapi/modelina": "^1.0.0-next.34",
