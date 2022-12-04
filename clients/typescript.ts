@@ -1,4 +1,4 @@
-import { TypeScriptFileGenerator, TS_COMMON_PRESET, TS_DEFAULT_PRESET, typeScriptDefaultModelNameConstraints, typeScriptDefaultPropertyKeyConstraints } from '@asyncapi/modelina';
+import { TypeScriptFileGenerator, typeScriptDefaultPropertyKeyConstraints } from '@asyncapi/modelina';
 import * as path from 'path';
 import * as fs from 'fs';
 import YAML from 'yaml'
