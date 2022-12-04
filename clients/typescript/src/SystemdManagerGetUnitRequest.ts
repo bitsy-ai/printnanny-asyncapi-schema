@@ -1,4 +1,4 @@
 
 export interface SystemdManagerGetUnitRequest {
-  unitName: string;
+  unit_name: string;
 }

@@ -1,4 +1,4 @@
 
 export interface SystemdManagerStopUnitRequest {
-  unitName: string;
+  unit_name: string;
 }

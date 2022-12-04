@@ -1,4 +1,4 @@
 
 export interface SystemdManagerRestartUnitRequest {
-  unitName: string;
+  unit_name: string;
 }
