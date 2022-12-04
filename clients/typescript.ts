@@ -26,7 +26,8 @@ export async function generate(): Promise<void> {
   });
   let indexContent = "";
   for (const model of models) {
-    indexContent += `export * from "./${model.modelName}"`;
+    indexContent += `export * from "./${model.modelName}";`;
+    indexContent += "\n";
     console.log(model.result);
   }
   fs.writeFileSync("typescript/src/index.ts", indexContent);
