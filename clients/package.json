@@ -30,7 +30,6 @@
     "typescript": "^4.9.3"
   },
   "files": [
-    "index.ts",
     "typescript/"
   ],
   "dependencies": {
