@@ -1,4 +1,4 @@
-asyncapi_id: 2.4.0
+asyncapi: 2.4.0
 info:
   title: PrintNanny OS Action & Command Service
   version: 0.1.18
