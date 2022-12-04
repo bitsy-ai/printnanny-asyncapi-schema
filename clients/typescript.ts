@@ -1,12 +1,22 @@
-import { TypeScriptFileGenerator, AsyncAPIInputProcessor } from '@asyncapi/modelina';
+import { TypeScriptFileGenerator, TS_COMMON_PRESET, TS_DEFAULT_PRESET } from '@asyncapi/modelina';
 import * as path from 'path';
 import * as fs from 'fs';
 import YAML from 'yaml'
 
-const generator = new TypeScriptFileGenerator();
+const generator = new TypeScriptFileGenerator({
+  presets: [
+    {
+      preset: TS_DEFAULT_PRESET,
+      options: {
+        example: true,
+        renderTypes: true,
+        modelType: "interface"
+      }
+    }
+  ]
+});
 
 // Generated files will be written to typescript/src directory
-const outDir = path.join(__dirname, 'rust');
 const data = fs.readFileSync('../2.4.0/printnanny-os.yml').toString();
 const doc = YAML.parse(data)
 
