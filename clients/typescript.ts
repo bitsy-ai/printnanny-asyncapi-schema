@@ -4,16 +4,8 @@ import * as fs from 'fs';
 import YAML from 'yaml'
 
 const generator = new TypeScriptFileGenerator({
-  presets: [
-    {
-      preset: TS_DEFAULT_PRESET,
-      options: {
-        example: true,
-        renderTypes: true,
-        modelType: "interface"
-      }
-    }
-  ]
+  renderTypes: true,
+  modelType: "interface",
 });
 
 // Generated files will be written to typescript/src directory
@@ -22,7 +14,9 @@ const doc = YAML.parse(data)
 
 
 export async function generate(): Promise<void> {
-  const models = await generator.generateToFiles(doc, "typescript/src", { exportType: "named" });
+  const models = await generator.generateToFiles(doc, "typescript/src", {
+    exportType: "named",
+  });
   for (const model of models) {
     console.log(model.result);
   }
