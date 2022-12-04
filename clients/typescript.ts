@@ -6,6 +6,14 @@ import YAML from 'yaml'
 const generator = new TypeScriptFileGenerator({
   renderTypes: true,
   modelType: "interface",
+  presets: [
+    {
+      preset: TS_COMMON_PRESET,
+      options: {
+        marshalling: true
+      }
+    }
+  ]
 });
 
 // Generated files will be written to typescript/src directory
