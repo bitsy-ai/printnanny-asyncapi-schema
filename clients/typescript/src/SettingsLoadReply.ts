@@ -4,6 +4,6 @@ import {GitCommit} from './GitCommit';
 export interface SettingsLoadReply {
   app: SettingsApp;
   files: SettingsFile[];
-  gitHeadCommit: string;
-  gitHistory: GitCommit[];
+  git_head_commit: string;
+  git_history: GitCommit[];
 }

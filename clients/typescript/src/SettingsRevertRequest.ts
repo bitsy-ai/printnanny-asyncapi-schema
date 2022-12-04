@@ -3,5 +3,5 @@ import {SettingsFile} from './SettingsFile';
 export interface SettingsRevertRequest {
   app: SettingsApp;
   files: SettingsFile[];
-  gitCommit: string;
+  git_commit: string;
 }

@@ -1,6 +1,6 @@
 
 export interface PrintNannyCloudAuthRequest {
   email: string;
-  apiToken: string;
-  apiUrl: string;
+  api_token: string;
+  api_url: string;
 }

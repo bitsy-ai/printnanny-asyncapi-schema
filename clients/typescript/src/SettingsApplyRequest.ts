@@ -3,6 +3,6 @@ import {SettingsFile} from './SettingsFile';
 export interface SettingsApplyRequest {
   app: SettingsApp;
   files: SettingsFile[];
-  gitHeadCommit: string;
-  gitCommitMsg: string;
+  git_head_commit: string;
+  git_commit_msg: string;
 }
