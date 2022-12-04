@@ -1,4 +1,4 @@
-import { TypeScriptFileGenerator, TS_COMMON_PRESET, TS_DEFAULT_PRESET } from '@asyncapi/modelina';
+import { TypeScriptFileGenerator, TS_COMMON_PRESET, TS_DEFAULT_PRESET, typeScriptDefaultModelNameConstraints, typeScriptDefaultPropertyKeyConstraints } from '@asyncapi/modelina';
 import * as path from 'path';
 import * as fs from 'fs';
 import YAML from 'yaml'
@@ -6,14 +6,13 @@ import YAML from 'yaml'
 const generator = new TypeScriptFileGenerator({
   renderTypes: true,
   modelType: "interface",
-  presets: [
-    {
-      preset: TS_COMMON_PRESET,
-      options: {
-        marshalling: true
+  constraints: {
+    propertyKey: typeScriptDefaultPropertyKeyConstraints({
+      NAMING_FORMATTER: (name) => {
+        return name;
       }
-    }
-  ]
+    })
+  }
 });
 
 // Generated files will be written to typescript/src directory
