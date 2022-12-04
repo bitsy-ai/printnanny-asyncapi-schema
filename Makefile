@@ -21,6 +21,6 @@ typescript-client-build:
 	cd $(CLIENT_DIR) && npm run generate:typescript
 
 typescript-client-release:
-	cd $(CLIENT_DIR) && npm run publish
+	cd $(CLIENT_DIR) && npm publish
 
 clients-release: rust-client-release typescript-client-release
