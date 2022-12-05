@@ -6,6 +6,18 @@ info:
 defaultContentType: "application/json"
 
 channels:
+  # events
+  pi.{pi_id}.dbus.org.freedesktop.systemd1.Unit:
+    parameters:
+      pi_id:
+        $ref: "#/components/parameters/pi_id"
+    publish:
+      operationId: SystemdUnitPropertyChanged
+      message:
+        oneOf:
+          - $ref: "#/components/messages/SystemdUnitActiveStateChanged"
+          - $ref: "#/components/messages/SystemdUnitFileStateChanged"
+
   # begin dbus API request/reply channels
   pi.{pi_id}.dbus.org.freedesktop.systemd1.Manager.DisableUnit:
     parameters:
@@ -329,6 +341,36 @@ components:
           - files
           - git_head_commit
           - git_history
+
+    SystemdUnitActiveStateChanged:
+      summary: "Systemd Unit active state property changed"
+      payload:
+        x-parser-schema-id: SystemdUnitActiveStateChanged
+        type: object
+        additionalProperties: false
+        properties:
+          active_state:
+            $ref: "#/components/schemas/SystemdUnitActiveState"
+          unit:
+            $ref: "#/components/schemas/SystemdUnit"
+        required:
+          - active_state
+          - unit
+
+    SystemdUnitFileStateChanged:
+      summary: "Systemd Unit file state property changed"
+      payload:
+        x-parser-schema-id: SystemdUnitFileStateChanged
+        type: object
+        additionalProperties: false
+        properties:
+          unit_file_state:
+            $ref: "#/components/schemas/SystemdUnitFileState"
+          unit:
+            $ref: "#/components/schemas/SystemdUnit"
+        required:
+          - unit_file_state
+          - unit
 
     SystemdManagerDisableUnitsRequest:
       summary: "Disable one or more systemd unit files"
