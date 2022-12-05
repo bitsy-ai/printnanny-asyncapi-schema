@@ -358,7 +358,7 @@ components:
           - unit
 
     SystemdUnitFileStateChanged:
-      summary: "Systemd Unit active state property changed"
+      summary: "Systemd Unit file state property changed"
       payload:
         x-parser-schema-id: SystemdUnitFileStateChanged
         type: object
