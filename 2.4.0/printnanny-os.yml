@@ -105,7 +105,7 @@ channels:
       message:
         oneOf:
           - $ref: "#/components/messages/SystemdManagerStartUnitReply"
-          # - $ref: "#/components/messages/RequestError"
+          - $ref: "#/components/messages/SystemdManagerStartUnitError"
     publish:
       operationId: SystemdManagerStartUnitRequest
       message:
@@ -120,7 +120,7 @@ channels:
       message:
         oneOf:
           - $ref: "#/components/messages/SystemdManagerStopUnitReply"
-          # - $ref: "#/components/messages/RequestError"
+          - $ref: "#/components/messages/SystemdManagerStopUnitError"
     publish:
       operationId: SystemdManagerStopUnitRequest
       message:
@@ -687,6 +687,26 @@ components:
           - job
           - unit
 
+    SystemdManagerStartUnitError:
+      name: SystemdManagerStartUnitError
+      summary: "An error occurred while handling request"
+      payload:
+        x-parser-schema-id: SystemdManagerStartUnitError
+        type: object
+        additionalProperties: false
+        properties:
+          error:
+            type: string
+          subject_pattern:
+            type: string
+          request:
+            type: object
+            $ref: "#/components/messages/SystemdManagerStartUnitRequest"
+        required:
+          - error
+          - subject_pattern
+          - request
+
     SystemdManagerStopUnitRequest:
       summary: "Stop systemd unit"
       payload:
@@ -713,6 +733,26 @@ components:
         required:
           - job
           - unit
+
+    SystemdManagerStopUnitError:
+      name: SystemdManagerStopUnitError
+      summary: "An error occurred while handling request"
+      payload:
+        x-parser-schema-id: SystemdManagerStopUnitError
+        type: object
+        additionalProperties: false
+        properties:
+          error:
+            type: string
+          subject_pattern:
+            type: string
+          request:
+            type: object
+            $ref: "#/components/messages/SystemdManagerStopUnitRequest"
+        required:
+          - error
+          - subject_pattern
+          - request
 
   parameters:
     pi_id:
