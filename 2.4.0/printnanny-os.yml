@@ -231,7 +231,7 @@ components:
             type: string
             description: "Output of printnanny --version"
         required:
-          - issue:
+          - issue
           - os_release
           - printnanny_cli_version
 
