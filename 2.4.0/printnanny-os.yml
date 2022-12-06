@@ -127,6 +127,23 @@ channels:
         $ref: "#/components/messages/SystemdManagerStopUnitRequest"
   # end dbus api request/reply channels
 
+  # begin device_info request/reply channels
+  pi.{pi_id}.device_info.load:
+    parameters:
+      pi_id:
+        $ref: "#/components/parameters/pi_id"
+    subscribe:
+      operationId: DeviceInfoLoadReply
+      message:
+        oneOf:
+          - $ref: "#/components/messages/DeviceInfoLoadReply"
+          - $ref: "#/components/messages/DeviceInfoLoadError"
+
+    publish:
+      operationId: DeviceInfoLoadRequest
+      message:
+        $ref: "#/components/messages/DeviceInfoLoadRequest"
+
   # begin settings request/reply channels
   pi.{pi_id}.settings.cloud.auth:
     parameters:
@@ -193,6 +210,45 @@ channels:
 
 components:
   messages:
+    DeviceInfoLoadRequest:
+      name: DeviceInfoLoadRequest
+      summary: "Load metadata/info about the device and software running"
+      payload:
+        x-parser-schema-id: DeviceInfoLoadRequest
+        additionalProperties: false
+
+    DeviceInfoLoadReply:
+      name: DeviceInfoLoadReply
+      summary: "Load metadata/info about the device and software running"
+      payload:
+        x-parser-schema-id: DeviceInfoLoadReply
+        additionalProperties: false
+        properties:
+          issue:
+            type: string
+            description: "Contents of /etc/issue"
+          os_release:
+            type: string
+            description: "Contents of /etc/os-release"
+          printnanny_cli_version:
+            type: string
+            description: "Output of printnanny --version"
+
+    DeviceInfoLoadError:
+      name: DeviceInfoLoadError
+      summary: "Error loading metadata/info about the device and software running"
+      payload:
+        x-parser-schema-id: DeviceInfoLoadError
+        additionalProperties: false
+        properties:
+          error:
+            type: string
+          subject_pattern:
+            type: string
+          request:
+            type: object
+            $ref: "#/components/messages/DeviceInfoLoadRequest"
+
     SystemdManagerDisableUnitsError:
       name: SystemdManagerDisableUnitsError
       summary: "An error occurred while handling request"
