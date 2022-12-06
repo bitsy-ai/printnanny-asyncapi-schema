@@ -32,17 +32,26 @@ pub use self::systemd_unit_change::*;
 pub mod systemd_unit_change_state;
 pub use self::systemd_unit_change_state::*;
 
+pub mod systemd_manager_disable_units_error;
+pub use self::systemd_manager_disable_units_error::*;
+
 pub mod systemd_manager_enable_units_request;
 pub use self::systemd_manager_enable_units_request::*;
 
 pub mod systemd_manager_enable_units_reply;
 pub use self::systemd_manager_enable_units_reply::*;
 
+pub mod systemd_manager_enable_units_error;
+pub use self::systemd_manager_enable_units_error::*;
+
 pub mod systemd_manager_get_unit_request;
 pub use self::systemd_manager_get_unit_request::*;
 
 pub mod systemd_manager_get_unit_reply;
 pub use self::systemd_manager_get_unit_reply::*;
+
+pub mod systemd_manager_get_unit_error;
+pub use self::systemd_manager_get_unit_error::*;
 
 pub mod systemd_manager_reload_unit_request;
 pub use self::systemd_manager_reload_unit_request::*;
