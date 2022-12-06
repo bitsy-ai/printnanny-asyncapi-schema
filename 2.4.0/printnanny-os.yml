@@ -157,7 +157,7 @@ channels:
           # - $ref: "#/components/messages/RequestError"
 
     publish:
-      operationId: PrintNannyCloudAuthReques
+      operationId: PrintNannyCloudAuthRequest
       message:
         $ref: "#/components/messages/PrintNannyCloudAuthRequest"
 
@@ -213,9 +213,6 @@ components:
     DeviceInfoLoadRequest:
       name: DeviceInfoLoadRequest
       summary: "Load metadata/info about the device and software running"
-      payload:
-        x-parser-schema-id: DeviceInfoLoadRequest
-        additionalProperties: false
 
     DeviceInfoLoadReply:
       name: DeviceInfoLoadReply
@@ -233,6 +230,10 @@ components:
           printnanny_cli_version:
             type: string
             description: "Output of printnanny --version"
+        required:
+          - issue:
+          - os_release
+          - printnanny_cli_version
 
     DeviceInfoLoadError:
       name: DeviceInfoLoadError
@@ -248,6 +249,10 @@ components:
           request:
             type: object
             $ref: "#/components/messages/DeviceInfoLoadRequest"
+        required:
+          - error
+          - subject_pattern
+          - request
 
     SystemdManagerDisableUnitsError:
       name: SystemdManagerDisableUnitsError
@@ -264,6 +269,10 @@ components:
           request:
             type: object
             $ref: "#/components/messages/SystemdManagerDisableUnitsRequest"
+        required:
+          - error
+          - subject_pattern
+          - request
 
     SystemdManagerEnableUnitsError:
       name: SystemdManagerEnableUnitsError
@@ -280,6 +289,10 @@ components:
           request:
             type: object
             $ref: "#/components/messages/SystemdManagerEnableUnitsRequest"
+        required:
+          - error
+          - subject_pattern
+          - request
 
     SystemdManagerGetUnitError:
       name: SystemdManagerGetUnitError
@@ -296,6 +309,10 @@ components:
           request:
             type: object
             $ref: "#/components/messages/SystemdManagerGetUnitRequest"
+        required:
+          - error
+          - subject_pattern
+          - request
 
     PrintNannyCloudAuthRequest:
       name: PrintNannyCloudAuthRequest
