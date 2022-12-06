@@ -77,6 +77,15 @@ pub use self::systemd_manager_stop_unit_request::*;
 pub mod systemd_manager_stop_unit_reply;
 pub use self::systemd_manager_stop_unit_reply::*;
 
+pub mod device_info_load_request;
+pub use self::device_info_load_request::*;
+
+pub mod device_info_load_reply;
+pub use self::device_info_load_reply::*;
+
+pub mod device_info_load_error;
+pub use self::device_info_load_error::*;
+
 pub mod print_nanny_cloud_auth_request;
 pub use self::print_nanny_cloud_auth_request::*;
 
