@@ -23,6 +23,8 @@ export * from "./SystemdManagerStartUnitRequest";
 export * from "./SystemdManagerStartUnitReply";
 export * from "./SystemdManagerStopUnitRequest";
 export * from "./SystemdManagerStopUnitReply";
+export * from "./DeviceInfoLoadReply";
+export * from "./DeviceInfoLoadError";
 export * from "./PrintNannyCloudAuthRequest";
 export * from "./PrintNannyCloudAuthReply";
 export * from "./SettingsLoadRequest";
