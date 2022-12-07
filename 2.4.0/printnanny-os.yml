@@ -616,8 +616,8 @@ components:
         type: object
         additionalProperties: false
         properties:
-          unit:
-            $ref: "#/components/schemas/SystemdUnit"
+          unit_file_state:
+            $ref: "#/components/schemas/SystemdUnitFileState"
         required:
           - unit
 
