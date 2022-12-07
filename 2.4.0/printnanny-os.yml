@@ -600,7 +600,7 @@ components:
     SystemdManagerGetUnitFileStateRequest:
       summary: "Get systemd unit status/details, equivalent to dbus.org.freedesktop.systemd1.Manager.GetUnitFileState"
       payload:
-        x-parser-schema-id: SystemdManagerGetUnitRequest
+        x-parser-schema-id: SystemdManagerGetUnitFileStateRequest
         type: object
         additionalProperties: false
         properties:
