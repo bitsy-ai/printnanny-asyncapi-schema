@@ -619,7 +619,7 @@ components:
           unit_file_state:
             $ref: "#/components/schemas/SystemdUnitFileState"
         required:
-          - unit
+          - unit_file_state
 
     SystemdManagerGetUnitError:
       name: SystemdManagerGetUnitError
