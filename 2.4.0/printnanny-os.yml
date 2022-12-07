@@ -19,6 +19,21 @@ channels:
           - $ref: "#/components/messages/SystemdUnitFileStateChanged"
 
   # begin dbus API request/reply channels
+  pi.{pi_id}.dbus.org.freedesktop.systemd1.Manager.GetUnitFileState:
+    parameters:
+      pi_id:
+        $ref: "#/components/parameters/pi_id"
+    subscribe:
+      operationId: SystemdManagerGetUnitFileStateReply
+      message:
+        oneOf:
+          - $ref: "#/components/messages/SystemdManagerGetUnitFileStateReply"
+          - $ref: "#/components/messages/SystemdManagerGetUnitFileStateError"
+    publish:
+      operationId: SystemdManagerGetUnitFileStateRequest
+      message:
+        $ref: "#/components/messages/SystemdManagerGetUnitFileStateRequest"
+
   pi.{pi_id}.dbus.org.freedesktop.systemd1.Manager.DisableUnit:
     parameters:
       pi_id:
@@ -294,26 +309,6 @@ components:
           - subject_pattern
           - request
 
-    SystemdManagerGetUnitError:
-      name: SystemdManagerGetUnitError
-      summary: "An error occurred while handling request"
-      payload:
-        x-parser-schema-id: SystemdManagerGetUnitError
-        type: object
-        additionalProperties: false
-        properties:
-          error:
-            type: string
-          subject_pattern:
-            type: string
-          request:
-            type: object
-            $ref: "#/components/messages/SystemdManagerGetUnitRequest"
-        required:
-          - error
-          - subject_pattern
-          - request
-
     PrintNannyCloudAuthRequest:
       name: PrintNannyCloudAuthRequest
       summary: "Store authentication token obtained through 2fa"
@@ -581,6 +576,70 @@ components:
         required:
           - request
           - changes
+
+    SystemdManagerGetUnitFileStateError:
+      name: SystemdManagerGetUnitFileStateError
+      summary: "An error occurred while handling request"
+      payload:
+        x-parser-schema-id: SystemdManagerGetUnitFileStateError
+        type: object
+        additionalProperties: false
+        properties:
+          error:
+            type: string
+          subject_pattern:
+            type: string
+          request:
+            type: object
+            $ref: "#/components/messages/SystemdManagerGetUnitFileStateRequest"
+        required:
+          - error
+          - subject_pattern
+          - request
+
+    SystemdManagerGetUnitFileStateRequest:
+      summary: "Get systemd unit status/details, equivalent to dbus.org.freedesktop.systemd1.Manager.GetUnitFileState"
+      payload:
+        x-parser-schema-id: SystemdManagerGetUnitRequest
+        type: object
+        additionalProperties: false
+        properties:
+          unit_name:
+            type: string
+        required:
+          - unit_name
+
+    SystemdManagerGetUnitFileStateReply:
+      summary: "Get systemd unit status/details, equivalent to dbus.org.freedesktop.systemd1.Manager.GetUnitFileState"
+      payload:
+        x-parser-schema-id: SystemdManagerGetUnitFileStateReply
+        type: object
+        additionalProperties: false
+        properties:
+          unit:
+            $ref: "#/components/schemas/SystemdUnit"
+        required:
+          - unit
+
+    SystemdManagerGetUnitError:
+      name: SystemdManagerGetUnitError
+      summary: "An error occurred while handling request"
+      payload:
+        x-parser-schema-id: SystemdManagerGetUnitError
+        type: object
+        additionalProperties: false
+        properties:
+          error:
+            type: string
+          subject_pattern:
+            type: string
+          request:
+            type: object
+            $ref: "#/components/messages/SystemdManagerGetUnitRequest"
+        required:
+          - error
+          - subject_pattern
+          - request
 
     SystemdManagerGetUnitRequest:
       summary: "Get systemd unit status/details, equivalent to dbus.org.freedesktop.systemd1.Manager.GetUnit"
