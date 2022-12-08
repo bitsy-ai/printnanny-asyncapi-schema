@@ -1,6 +1,8 @@
 // SettingsFile represents a SettingsFile model.
 #[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
 pub struct SettingsFile {
+    #[serde(rename="app")]
+    pub app: Box<crate::SettingsApp>,
     #[serde(rename="content")]
     pub content: String,
     #[serde(rename="file_name")]
@@ -10,8 +12,9 @@ pub struct SettingsFile {
 }
 
 impl SettingsFile {
-    pub fn new(content: String, file_name: String, file_format: crate::SettingsFormat) -> SettingsFile {
+    pub fn new(app: crate::SettingsApp, content: String, file_name: String, file_format: crate::SettingsFormat) -> SettingsFile {
         SettingsFile {
+            app: Box::new(app),
             content,
             file_name,
             file_format: Box::new(file_format),
