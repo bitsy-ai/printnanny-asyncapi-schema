@@ -1,7 +1,7 @@
 asyncapi: 2.4.0
 info:
   title: PrintNanny OS Action & Command Service
-  version: 0.1.27
+  version: 0.1.26
   description: PrintNanny OS remote actions and command handler service
 defaultContentType: "application/json"
 
@@ -358,8 +358,11 @@ components:
         type: object
         additionalProperties: false
         properties:
-          file:
-            $ref: "#/components/schemas/SettingsFile"
+          files:
+            type: array
+            additionalItems: false
+            items:
+              $ref: "#/components/schemas/SettingsFile"
           git_head_commit:
             type: string
           git_history:
@@ -368,7 +371,7 @@ components:
             items:
               $ref: "#/components/schemas/GitCommit"
         required:
-          - file
+          - files
           - git_head_commit
           - git_history
 
@@ -397,13 +400,8 @@ components:
         type: object
         additionalProperties: false
         properties:
-          app:
-            $ref: "#/components/schemas/SettingsApp"
-          files:
-            type: array
-            additionalItems: false
-            items:
-              $ref: "#/components/schemas/SettingsFile"
+          file:
+            $ref: "#/components/schemas/SettingsFile"
           git_head_commit:
             type: string
           git_history:
@@ -413,7 +411,7 @@ components:
               $ref: "#/components/schemas/GitCommit"
         required:
           - app
-          - files
+          - file
           - git_head_commit
           - git_history
 
