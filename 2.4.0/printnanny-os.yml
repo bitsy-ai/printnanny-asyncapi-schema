@@ -348,16 +348,8 @@ components:
           - msg
 
     SettingsLoadRequest:
+      name: SettingsLoadRequest
       summary: "Load a settings file for browser editor"
-      payload:
-        x-parser-schema-id: SettingsLoadRequest
-        type: object
-        additionalProperties: false
-        properties:
-          app:
-            $ref: "#/components/schemas/SettingsApp"
-        required:
-          - app
 
     SettingsLoadReply:
       summary: "Load a settings file for browser editor"
@@ -393,8 +385,6 @@ components:
         type: object
         additionalProperties: false
         properties:
-          app:
-            $ref: "#/components/schemas/SettingsApp"
           files:
             type: array
             additionalItems: false
@@ -405,7 +395,6 @@ components:
           git_commit_msg:
             type: string
         required:
-          - app
           - files
           - git_head_commit
           - git_commit_msg
@@ -846,6 +835,8 @@ components:
       type: object
       additionalProperties: false
       properties:
+        app:
+          $ref: "#/components/schemas/SettingsApp"
         content:
           type: string
         file_name:
@@ -853,6 +844,7 @@ components:
         file_format:
           $ref: "#/components/schemas/SettingsFormat"
       required:
+        - app
         - content
         - file_name
         - file_format
