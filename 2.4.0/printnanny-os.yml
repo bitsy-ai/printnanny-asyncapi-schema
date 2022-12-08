@@ -358,11 +358,8 @@ components:
         type: object
         additionalProperties: false
         properties:
-          files:
-            type: array
-            additionalItems: false
-            items:
-              $ref: "#/components/schemas/SettingsFile"
+          file:
+            $ref: "#/components/schemas/SettingsFile"
           git_head_commit:
             type: string
           git_history:
@@ -371,7 +368,7 @@ components:
             items:
               $ref: "#/components/schemas/GitCommit"
         required:
-          - files
+          - file
           - git_head_commit
           - git_history
 
@@ -382,17 +379,14 @@ components:
         type: object
         additionalProperties: false
         properties:
-          files:
-            type: array
-            additionalItems: false
-            items:
-              $ref: "#/components/schemas/SettingsFile"
+          file:
+            $ref: "#/components/schemas/SettingsFile"
           git_head_commit:
             type: string
           git_commit_msg:
             type: string
         required:
-          - files
+          - file
           - git_head_commit
           - git_commit_msg
 
