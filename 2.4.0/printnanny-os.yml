@@ -358,8 +358,6 @@ components:
         type: object
         additionalProperties: false
         properties:
-          app:
-            $ref: "#/components/schemas/SettingsApp"
           files:
             type: array
             additionalItems: false
@@ -373,7 +371,6 @@ components:
             items:
               $ref: "#/components/schemas/GitCommit"
         required:
-          - app
           - files
           - git_head_commit
           - git_history

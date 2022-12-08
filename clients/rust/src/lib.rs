@@ -107,11 +107,11 @@ pub use self::print_nanny_cloud_auth_reply::*;
 pub mod settings_load_reply;
 pub use self::settings_load_reply::*;
 
-pub mod settings_app;
-pub use self::settings_app::*;
-
 pub mod settings_file;
 pub use self::settings_file::*;
+
+pub mod settings_app;
+pub use self::settings_app::*;
 
 pub mod settings_format;
 pub use self::settings_format::*;
