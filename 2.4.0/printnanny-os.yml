@@ -245,6 +245,12 @@ components:
           printnanny_cli_version:
             type: string
             description: "Output of printnanny --version"
+          tailscale_address_ipv4:
+            type: string
+            description: "tailscale ip -4"
+          tailscale_address_ipv6:
+            type: string
+            description: "tailscale ip -6"
         required:
           - issue
           - os_release
