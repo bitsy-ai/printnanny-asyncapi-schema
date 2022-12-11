@@ -104,6 +104,12 @@ pub use self::print_nanny_cloud_auth_request::*;
 pub mod print_nanny_cloud_auth_reply;
 pub use self::print_nanny_cloud_auth_reply::*;
 
+pub mod cameras_load_reply;
+pub use self::cameras_load_reply::*;
+
+pub mod camera;
+pub use self::camera::*;
+
 pub mod settings_load_reply;
 pub use self::settings_load_reply::*;
 

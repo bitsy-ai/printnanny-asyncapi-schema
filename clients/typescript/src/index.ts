@@ -32,6 +32,8 @@ export * from "./DeviceInfoLoadReply";
 export * from "./DeviceInfoLoadError";
 export * from "./PrintNannyCloudAuthRequest";
 export * from "./PrintNannyCloudAuthReply";
+export * from "./CamerasLoadReply";
+export * from "./Camera";
 export * from "./SettingsLoadReply";
 export * from "./SettingsFile";
 export * from "./SettingsApp";
