@@ -845,13 +845,13 @@ components:
       properties:
         index:
           type: integer
-        name:
+        device_name:
           type: string
         label:
           type: string
       required:
         - index
-        - name
+        - device_name
         - label
 
     GitCommit:
