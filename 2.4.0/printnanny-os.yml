@@ -176,6 +176,21 @@ channels:
       message:
         $ref: "#/components/messages/PrintNannyCloudAuthRequest"
 
+  pi.{pi_id}.cameras.load:
+    parameters:
+      pi_id:
+        $ref: "#/components/parameters/pi_id"
+    subscribe:
+      operationId: CamerasLoadReply
+      message:
+        oneOf:
+          - $ref: "#/components/messages/CamerasLoadReply"
+          # - $ref: "#/components/messages/RequestError"
+    publish:
+      operationId: CamerasLoadRequest
+      message:
+        $ref: "#/components/messages/CamerasLoadRequest"
+
   pi.{pi_id}.settings.vcs.load:
     parameters:
       pi_id:
@@ -225,6 +240,25 @@ channels:
 
 components:
   messages:
+    CamerasLoadRequest:
+      name: CamerasLoadRequest
+      summary: "Load list of available camera devices"
+
+    CamerasLoadReply:
+      name: CamerasLoadReply
+      summary: "Load list of available camera devices"
+      payload:
+        x-parser-schema-id: CamerasLoadReply
+        additionalProperties: false
+        properties:
+          cameras:
+            type: array
+            additionalItems: false
+            items:
+              $ref: "#/components/schemas/Camera"
+        required:
+          - cameras
+
     DeviceInfoLoadRequest:
       name: DeviceInfoLoadRequest
       summary: "Load metadata/info about the device and software running"
@@ -804,6 +838,22 @@ components:
         type: string
       location: "$message.header#/pi_id"
   schemas:
+    Camera:
+      name: Camera
+      type: object
+      additionalProperties: false
+      properties:
+        index:
+          type: integer
+        name:
+          type: string
+        label:
+          type: string
+      required:
+        - index
+        - name
+        - label
+
     GitCommit:
       name: GitHistory
       type: object
