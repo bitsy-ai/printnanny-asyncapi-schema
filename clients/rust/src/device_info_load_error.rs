@@ -5,16 +5,13 @@ pub struct DeviceInfoLoadError {
     pub error: String,
     #[serde(rename="subject_pattern")]
     pub subject_pattern: String,
-    #[serde(rename="request")]
-    pub request: String,
 }
 
 impl DeviceInfoLoadError {
-    pub fn new(error: String, subject_pattern: String, request: String) -> DeviceInfoLoadError {
+    pub fn new(error: String, subject_pattern: String) -> DeviceInfoLoadError {
         DeviceInfoLoadError {
             error,
             subject_pattern,
-            request,
         }
     }
 }
