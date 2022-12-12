@@ -319,7 +319,7 @@ components:
             type: string
           request:
             type: object
-            $ref: "#/components/schema/SystemdManagerUnitFilesRequest"
+            $ref: "#/components/schemas/SystemdManagerUnitFilesRequest"
         required:
           - error
           - subject_pattern
@@ -339,7 +339,7 @@ components:
             type: string
           request:
             type: object
-            $ref: "#/components/schema/SystemdManagerUnitFilesRequest"
+            $ref: "#/components/schemas/SystemdManagerUnitFilesRequest"
         required:
           - error
           - subject_pattern
@@ -543,7 +543,7 @@ components:
         type: object
         properties:
           request:
-            $ref: "#/components/schema/SystemdManagerUnitFilesRequest"
+            $ref: "#/components/schemas/SystemdManagerUnitFilesRequest"
           changes:
             type: array
             items:
@@ -556,7 +556,7 @@ components:
     SystemdManagerEnableUnitsRequest:
       summary: "Enable one or more systemd unit files"
       payload:
-        $ref: "#/components/schema/SystemdManagerUnitFilesRequest"
+        $ref: "#/components/schemas/SystemdManagerUnitFilesRequest"
 
     SystemdManagerEnableUnitsReply:
       summary: "Response to SystemdManagerEnableUnitsRequest"
@@ -566,7 +566,7 @@ components:
         type: object
         properties:
           request:
-            $ref: "#/components/schema/SystemdManagerUnitFilesRequest"
+            $ref: "#/components/schemas/SystemdManagerUnitFilesRequest"
           changes:
             type: array
             items:
@@ -590,7 +590,7 @@ components:
             type: string
           request:
             type: object
-            $ref: "#/components/messages/SystemdManagerGetUnitFileStateRequest"
+            $ref: "#/components/schemas/SystemdManagerGetUnitRequest"
         required:
           - error
           - subject_pattern
