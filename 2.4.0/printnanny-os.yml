@@ -634,9 +634,12 @@ components:
         type: object
         additionalProperties: false
         properties:
+          request:
+            $ref: "#/components/messages/SystemdManagerGetUnitFileStateRequest"
           unit_file_state:
             $ref: "#/components/schemas/SystemdUnitFileState"
         required:
+          - request
           - unit_file_state
 
     SystemdManagerGetUnitError:
