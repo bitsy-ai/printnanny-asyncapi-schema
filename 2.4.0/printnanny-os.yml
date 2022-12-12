@@ -301,13 +301,9 @@ components:
             type: string
           subject_pattern:
             type: string
-          request:
-            type: object
-            $ref: "#/components/messages/DeviceInfoLoadRequest"
         required:
           - error
           - subject_pattern
-          - request
 
     SystemdManagerDisableUnitsError:
       name: SystemdManagerDisableUnitsError
@@ -323,7 +319,7 @@ components:
             type: string
           request:
             type: object
-            $ref: "#/components/messages/SystemdManagerDisableUnitsRequest"
+            $ref: "#/components/schema/SystemdManagerUnitFilesRequest"
         required:
           - error
           - subject_pattern
@@ -343,7 +339,7 @@ components:
             type: string
           request:
             type: object
-            $ref: "#/components/messages/SystemdManagerEnableUnitsRequest"
+            $ref: "#/components/schema/SystemdManagerUnitFilesRequest"
         required:
           - error
           - subject_pattern
@@ -534,19 +530,10 @@ components:
           - unit
 
     SystemdManagerDisableUnitsRequest:
+      name: SystemdManagerDisableUnitsRequest
       summary: "Disable one or more systemd unit files"
       payload:
-        x-parser-schema-id: SystemdManagerDisableUnitsRequest
-        type: object
-        additionalProperties: false
-        properties:
-          files:
-            type: array
-            items:
-              type: string
-            additionalItems: false
-        required:
-          - files
+        $ref: "#/components/schemas/SystemdManagerUnitFilesRequest"
 
     SystemdManagerDisableUnitsReply:
       summary: "Response to SystemdManagerDisableUnitsRequest"
@@ -555,6 +542,8 @@ components:
         additionalProperties: false
         type: object
         properties:
+          request:
+            $ref: "#/components/schema/SystemdManagerUnitFilesRequest"
           changes:
             type: array
             items:
@@ -567,17 +556,7 @@ components:
     SystemdManagerEnableUnitsRequest:
       summary: "Enable one or more systemd unit files"
       payload:
-        x-parser-schema-id: SystemdManagerEnableUnitsRequest
-        type: object
-        additionalProperties: false
-        properties:
-          files:
-            type: array
-            items:
-              type: string
-            additionalItems: false
-        required:
-          - files
+        $ref: "#/components/schema/SystemdManagerUnitFilesRequest"
 
     SystemdManagerEnableUnitsReply:
       summary: "Response to SystemdManagerEnableUnitsRequest"
@@ -586,6 +565,8 @@ components:
         additionalProperties: false
         type: object
         properties:
+          request:
+            $ref: "#/components/schema/SystemdManagerUnitFilesRequest"
           changes:
             type: array
             items:
@@ -616,16 +597,10 @@ components:
           - request
 
     SystemdManagerGetUnitFileStateRequest:
+      name: SystemdManagerGetUnitFileStateRequest
       summary: "Get systemd unit status/details, equivalent to dbus.org.freedesktop.systemd1.Manager.GetUnitFileState"
       payload:
-        x-parser-schema-id: SystemdManagerGetUnitFileStateRequest
-        type: object
-        additionalProperties: false
-        properties:
-          unit_name:
-            type: string
-        required:
-          - unit_name
+        $ref: "#/components/schemas/SystemdManagerGetUnitRequest"
 
     SystemdManagerGetUnitFileStateReply:
       summary: "Get systemd unit status/details, equivalent to dbus.org.freedesktop.systemd1.Manager.GetUnitFileState"
@@ -635,7 +610,8 @@ components:
         additionalProperties: false
         properties:
           request:
-            $ref: "#/components/messages/SystemdManagerGetUnitFileStateRequest"
+            type: object
+            $ref: "#/components/schemas/SystemdManagerGetUnitRequest"
           unit_file_state:
             $ref: "#/components/schemas/SystemdUnitFileState"
         required:
@@ -656,7 +632,7 @@ components:
             type: string
           request:
             type: object
-            $ref: "#/components/messages/SystemdManagerGetUnitRequest"
+            $ref: "#/components/schemas/SystemdManagerGetUnitRequest"
         required:
           - error
           - subject_pattern
@@ -665,14 +641,7 @@ components:
     SystemdManagerGetUnitRequest:
       summary: "Get systemd unit status/details, equivalent to dbus.org.freedesktop.systemd1.Manager.GetUnit"
       payload:
-        x-parser-schema-id: SystemdManagerGetUnitRequest
-        type: object
-        additionalProperties: false
-        properties:
-          unit_name:
-            type: string
-        required:
-          - unit_name
+        $ref: "#/components/schemas/SystemdManagerGetUnitRequest"
 
     SystemdManagerGetUnitReply:
       summary: "Get systemd unit status/details, equivalent to dbus.org.freedesktop.systemd1.Manager.GetUnit"
@@ -987,3 +956,24 @@ components:
         - change
         - file
         - destination
+
+    SystemdManagerGetUnitRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        unit_name:
+          type: string
+      required:
+        - unit_name
+
+    SystemdManagerUnitFilesRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        files:
+          type: array
+          items:
+            type: string
+          additionalItems: false
+      required:
+        - files
