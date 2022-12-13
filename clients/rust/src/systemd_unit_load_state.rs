@@ -7,6 +7,8 @@ pub enum SystemdUnitLoadState {
     Error,
     #[serde(rename="masked")]
     Masked,
+    #[serde(rename="not-found")]
+    NotMinusFound,
 }
 impl Default for SystemdUnitLoadState {
     fn default() -> SystemdUnitLoadState {
