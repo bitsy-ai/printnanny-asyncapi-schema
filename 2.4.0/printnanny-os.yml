@@ -921,6 +921,7 @@ components:
         - "loaded"
         - "error"
         - "masked"
+        - "not-found"
     SystemdUnitFileState:
       type: string
       additionalProperties: false
