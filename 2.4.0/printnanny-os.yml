@@ -1,7 +1,7 @@
 asyncapi: 2.4.0
 info:
   title: PrintNanny OS Action & Command Service
-  version: 0.1.31
+  version: 0.1.32
   description: PrintNanny OS remote actions and command handler service
 defaultContentType: "application/json"
 
@@ -921,6 +921,7 @@ components:
         - "loaded"
         - "error"
         - "masked"
+        - "not-found"
     SystemdUnitFileState:
       type: string
       additionalProperties: false
