@@ -191,6 +191,21 @@ channels:
       message:
         $ref: "#/components/messages/CamerasLoadRequest"
 
+  pi.{pi_id}.settings.webrtc.apply:
+    parameters:
+      pi_id:
+        $ref: "#/components/parameters/pi_id"
+    subscribe:
+      operationId: WebrtcSettingsApplyReply
+      message:
+        oneOf:
+          - $ref: "#/components/messages/WebrtcSettingsApplyReply"
+          # - $ref: "#/components/messages/RequestError"
+    publish:
+      operationId: WebrtcSettingsApplyRequest
+      message:
+        $ref: "#/components/messages/WebrtcSettingsApplyRequest"
+
   pi.{pi_id}.settings.file.load:
     parameters:
       pi_id:
@@ -240,6 +255,22 @@ channels:
 
 components:
   messages:
+    WebrtcSettingsApplyRequest:
+      name: WebrtcSettingsApplyRequest
+      summary: "Apply webrtc video stream settings"
+      payload:
+        $ref: "#/components/schemas/WebrtcSettingsApplyRequest"
+
+    WebrtcSettingsApplyReply:
+      name: WebrtcSettingsApplyReply
+      summary: "Apply webrtc video stream settings"
+      payload:
+        x-parser-schema-id: WebrtcSettingsApplyReply
+        additionalProperties: false
+        properties:
+          request:
+            $ref: "#/components/schemas/WebrtcSettingsApplyRequest"
+
     CamerasLoadRequest:
       name: CamerasLoadRequest
       summary: "Load list of available camera devices"
@@ -379,7 +410,6 @@ components:
           msg:
             type: string
         required:
-          - request
           - status_code
           - msg
 
@@ -810,6 +840,24 @@ components:
         type: string
       location: "$message.header#/pi_id"
   schemas:
+    WebrtcSettingsApplyRequest:
+      name: WebrtcSettingsApplyRequest
+      type: object
+      additionalProperties: false
+      properties:
+        video_src:
+          oneOf:
+            - $ref: "#/components/schemas/Camera"
+            - $ref: "#/components/schemas/PlaybackVideo"
+
+    VideoSourceType:
+      type: string
+      enum:
+        - csi
+        - usb
+        - uri
+        - file
+
     Camera:
       name: Camera
       type: object
@@ -821,10 +869,27 @@ components:
           type: string
         label:
           type: string
+        video_src:
+          $ref: "#/components/schemas/VideoSourceType"
+
       required:
         - index
         - device_name
         - label
+        - video_src
+
+    PlaybackVideo:
+      name: PlaybackVideo
+      type: object
+      additionalProperties: false
+      properties:
+        uri:
+          type: string
+        video_src:
+          $ref: "#/components/schemas/VideoSourceType"
+      required:
+        - uri
+        - video_src_type
 
     GitCommit:
       name: GitHistory
