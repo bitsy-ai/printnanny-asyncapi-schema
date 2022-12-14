@@ -270,7 +270,8 @@ components:
         properties:
           request:
             $ref: "#/components/schemas/WebrtcSettingsApplyRequest"
-
+        required:
+          - request
     CamerasLoadRequest:
       name: CamerasLoadRequest
       summary: "Load list of available camera devices"
