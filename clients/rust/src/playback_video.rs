@@ -3,15 +3,15 @@
 pub struct PlaybackVideo {
     #[serde(rename="uri")]
     pub uri: String,
-    #[serde(rename="video_src", skip_serializing_if = "Option::is_none")]
-    pub video_src: Option<Box<crate::VideoSourceType>>,
+    #[serde(rename="src_type")]
+    pub src_type: Box<crate::PlaybackSourceType>,
 }
 
 impl PlaybackVideo {
-    pub fn new(uri: String, video_src: Option<crate::VideoSourceType>) -> PlaybackVideo {
+    pub fn new(uri: String, src_type: crate::PlaybackSourceType) -> PlaybackVideo {
         PlaybackVideo {
             uri,
-            video_src: video_src.map(Box::new),
+            src_type: Box::new(src_type),
         }
     }
 }

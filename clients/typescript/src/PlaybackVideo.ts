@@ -1,5 +1,5 @@
-import {VideoSourceType} from './VideoSourceType';
+import {PlaybackSourceType} from './PlaybackSourceType';
 export interface PlaybackVideo {
   uri: string;
-  video_src?: VideoSourceType;
+  src_type: PlaybackSourceType;
 }

@@ -104,8 +104,8 @@ pub use self::cameras_load_reply::*;
 pub mod camera;
 pub use self::camera::*;
 
-pub mod video_source_type;
-pub use self::video_source_type::*;
+pub mod camera_source_type;
+pub use self::camera_source_type::*;
 
 pub mod webrtc_settings_apply_request;
 pub use self::webrtc_settings_apply_request::*;
@@ -115,6 +115,9 @@ pub use self::video_source::*;
 
 pub mod playback_video;
 pub use self::playback_video::*;
+
+pub mod playback_source_type;
+pub use self::playback_source_type::*;
 
 pub mod webrtc_settings_apply_reply;
 pub use self::webrtc_settings_apply_reply::*;

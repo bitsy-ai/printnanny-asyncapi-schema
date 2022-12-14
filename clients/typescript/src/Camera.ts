@@ -1,7 +1,7 @@
-import {VideoSourceType} from './VideoSourceType';
+import {CameraSourceType} from './CameraSourceType';
 export interface Camera {
   index: number;
   device_name: string;
   label: string;
-  video_src: VideoSourceType;
+  src_type: CameraSourceType;
 }
