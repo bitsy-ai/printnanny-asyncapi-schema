@@ -191,7 +191,7 @@ channels:
       message:
         $ref: "#/components/messages/CamerasLoadRequest"
 
-  pi.{pi_id}.settings.vcs.load:
+  pi.{pi_id}.settings.file.load:
     parameters:
       pi_id:
         $ref: "#/components/parameters/pi_id"
@@ -207,7 +207,7 @@ channels:
       message:
         $ref: "#/components/messages/SettingsLoadRequest"
 
-  pi.{pi_id}.settings.vcs.apply:
+  pi.{pi_id}.settings.file.apply:
     parameters:
       pi_id:
         $ref: "#/components/parameters/pi_id"
@@ -222,7 +222,7 @@ channels:
       message:
         $ref: "#/components/messages/SettingsApplyRequest"
 
-  pi.{pi_id}.settings.vcs.revert:
+  pi.{pi_id}.settings.file.revert:
     parameters:
       pi_id:
         $ref: "#/components/parameters/pi_id"
