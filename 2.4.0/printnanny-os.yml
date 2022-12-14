@@ -846,9 +846,12 @@ components:
       additionalProperties: false
       properties:
         video_src:
+          x-parser-schema-id: VideoSource
           oneOf:
             - $ref: "#/components/schemas/Camera"
             - $ref: "#/components/schemas/PlaybackVideo"
+      required:
+        - video_src
 
     VideoSourceType:
       type: string

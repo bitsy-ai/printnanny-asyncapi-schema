@@ -110,8 +110,8 @@ pub use self::video_source_type::*;
 pub mod webrtc_settings_apply_request;
 pub use self::webrtc_settings_apply_request::*;
 
-pub mod anonymous_schema37;
-pub use self::anonymous_schema37::*;
+pub mod video_source;
+pub use self::video_source::*;
 
 pub mod playback_video;
 pub use self::playback_video::*;
