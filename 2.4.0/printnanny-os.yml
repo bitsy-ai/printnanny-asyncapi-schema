@@ -853,11 +853,15 @@ components:
       required:
         - video_src
 
-    VideoSourceType:
+    CameraSourceType:
       type: string
       enum:
         - csi
         - usb
+
+    PlaybackSourceType:
+      type: string
+      enum:
         - uri
         - file
 
@@ -872,14 +876,14 @@ components:
           type: string
         label:
           type: string
-        video_src:
-          $ref: "#/components/schemas/VideoSourceType"
+        src_type:
+          $ref: "#/components/schemas/CameraSourceType"
 
       required:
         - index
         - device_name
         - label
-        - video_src
+        - src_type
 
     PlaybackVideo:
       name: PlaybackVideo
@@ -888,11 +892,11 @@ components:
       properties:
         uri:
           type: string
-        video_src:
-          $ref: "#/components/schemas/VideoSourceType"
+        src_type:
+          $ref: "#/components/schemas/PlaybackSourceType"
       required:
         - uri
-        - video_src_type
+        - src_type
 
     GitCommit:
       name: GitHistory
