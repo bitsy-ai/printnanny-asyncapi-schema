@@ -1,7 +1,7 @@
 import {PlaybackSourceType} from './PlaybackSourceType';
 export interface PlaybackVideo {
   cover: string;
-  reserved_name: string;
+  display_name: string;
   uri: string;
   src_type: PlaybackSourceType;
 }
