@@ -891,11 +891,17 @@ components:
       type: object
       additionalProperties: false
       properties:
+        cover:
+          type: string
+        name:
+          type: string
         uri:
           type: string
         src_type:
           $ref: "#/components/schemas/PlaybackSourceType"
       required:
+        - cover
+        - name
         - uri
         - src_type
 
