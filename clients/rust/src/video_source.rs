@@ -1,5 +1,6 @@
 // VideoSource represents a union of types: Camera, PlaybackVideo
 #[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
+#[serde(tag = "src_type")]
 pub enum VideoSource {
     #[serde(rename="Camera")]
     Camera(crate::Camera),
