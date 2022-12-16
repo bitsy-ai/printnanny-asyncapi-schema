@@ -191,20 +191,35 @@ channels:
       message:
         $ref: "#/components/messages/CamerasLoadRequest"
 
-  pi.{pi_id}.settings.webrtc.apply:
+  pi.{pi_id}.settings.camera.load:
     parameters:
       pi_id:
         $ref: "#/components/parameters/pi_id"
     subscribe:
-      operationId: WebrtcSettingsApplyReply
+      operationId: CameraSettingsLoadReply
       message:
         oneOf:
-          - $ref: "#/components/messages/WebrtcSettingsApplyReply"
+          - $ref: "#/components/messages/CameraSettingsLoadReply"
           # - $ref: "#/components/messages/RequestError"
     publish:
-      operationId: WebrtcSettingsApplyRequest
+      operationId: CameraSettingsLoadRequest
       message:
-        $ref: "#/components/messages/WebrtcSettingsApplyRequest"
+        $ref: "#/components/messages/CameraSettingsLoadRequest"
+
+  pi.{pi_id}.settings.camera.apply:
+    parameters:
+      pi_id:
+        $ref: "#/components/parameters/pi_id"
+    subscribe:
+      operationId: CameraSettingsApplyReply
+      message:
+        oneOf:
+          - $ref: "#/components/messages/CameraSettingsApplyReply"
+          # - $ref: "#/components/messages/RequestError"
+    publish:
+      operationId: CameraSettingsApplyRequest
+      message:
+        $ref: "#/components/messages/CameraSettingsApplyRequest"
 
   pi.{pi_id}.settings.file.load:
     parameters:
@@ -255,23 +270,6 @@ channels:
 
 components:
   messages:
-    WebrtcSettingsApplyRequest:
-      name: WebrtcSettingsApplyRequest
-      summary: "Apply webrtc video stream settings"
-      payload:
-        $ref: "#/components/schemas/WebrtcSettingsApplyRequest"
-
-    WebrtcSettingsApplyReply:
-      name: WebrtcSettingsApplyReply
-      summary: "Apply webrtc video stream settings"
-      payload:
-        x-parser-schema-id: WebrtcSettingsApplyReply
-        additionalProperties: false
-        properties:
-          request:
-            $ref: "#/components/schemas/WebrtcSettingsApplyRequest"
-        required:
-          - request
     CamerasLoadRequest:
       name: CamerasLoadRequest
       summary: "Load list of available camera devices"
@@ -290,6 +288,34 @@ components:
               $ref: "#/components/schemas/Camera"
         required:
           - cameras
+
+    CameraSettingsApplyRequest:
+      name: CameraSettingsApplyRequest
+      summary: "Apply webrtc video stream settings"
+      payload:
+        $ref: "#/components/schemas/CameraSettingsApplyRequest"
+
+    CameraSettingsApplyReply:
+      name: CameraSettingsApplyReply
+      summary: "Apply webrtc video stream settings"
+      payload:
+        x-parser-schema-id: CameraSettingsApplyReply
+        additionalProperties: false
+        properties:
+          request:
+            $ref: "#/components/schemas/CameraSettingsApplyRequest"
+        required:
+          - request
+
+    CameraSettingsLoadRequest:
+      name: CameraSettingsLoadRequest
+      summary: "Load PrintNannySettings.camera settings fieldset"
+
+    CameraSettingsLoadReply:
+      name: CameraSettingsLoadReply
+      summary: "Load PrintNannySettings.camera settings fieldset"
+      payload:
+        $ref: "#/components/schemas/PrintNannyCameraSettings"
 
     DeviceInfoLoadRequest:
       name: DeviceInfoLoadRequest
@@ -841,8 +867,123 @@ components:
         type: string
       location: "$message.header#/pi_id"
   schemas:
-    WebrtcSettingsApplyRequest:
-      name: WebrtcSettingsApplyRequest
+    HlsSettings:
+      name: HlsSettings
+      type: object
+      additionalProperties: false
+      properties:
+        hls_segments:
+          type: string
+          default: "/var/run/printnanny-hls/segment%05d.ts"
+        hls_playlist:
+          type: string
+          default: "/var/run/printnanny-hls/playlist.m3u8"
+        hls_playlist_root:
+          type: string
+          default: "/printnanny-hls/"
+
+        hls_enabled:
+          description: "hls_enabled has 3 possible states: 1) Auto-detect based on detect_hls_http_enabled(), indicated by null value. 2) and 3) true/false"
+          type: boolean
+
+      required:
+        - hls_segments
+        - hls_playlist
+        - hls_playlist_root
+
+    PrintNannyDetectionSettings:
+      name: PrintNannyDetectionSettings
+      type: object
+      additionalProperties: false
+      properties:
+        nats_server_uri:
+          description: "Forward dataframe summary and detection events to NATs server"
+          type: string
+          default: "nats://127.0.0.1:4223"
+        label_file:
+          type: string
+          default: "/usr/share/printnanny/model/labels.txt"
+        model_file:
+          type: string
+          default: "/usr/share/printnanny/model/model.tflite"
+        nms_threshold:
+          type: integer
+          default: 50
+        tensor_batch_size:
+          type: integer
+          default: 40
+        tensor_framerate:
+          type: integer
+          default: 2
+        tensor_height:
+          type: integer
+          default: 320
+        tensor_width:
+          type: integer
+          default: 320
+      required:
+        - nats_server_uri
+        - label_file
+        - model_file
+        - nms_threshold
+        - tensor_framerate
+        - tensor_height
+        - tensor_width
+        - tensor_batch_size
+
+    PrintNannyCameraSettings:
+      name: PrintNannyCameraSettings
+      type: object
+      additionalProperties: false
+      required:
+        - overlay_udp_port
+        - preview
+        - video_framerate
+        - video_height
+        - video_width
+        - video_udp_port
+        - detection
+        - hls
+        - video_src
+      properties:
+        overlay_udp_port:
+          type: integer
+          default: 20002
+
+        preview:
+          description: "Show X-video preview, used for debugging purposes"
+          type: boolean
+          default: false
+
+        video_framerate:
+          type: integer
+          default: 16
+
+        video_height:
+          type: integer
+          default: 480
+
+        video_width:
+          type: integer
+          default: 640
+
+        video_udp_port:
+          type: integer
+          default: 20001
+        # complex types last, otherwise serde will raise TomlSerError(ValueAfterTable)
+        detection:
+          $ref: "#/components/schemas/PrintNannyDetectionSettings"
+        hls:
+          $ref: "#/components/schemas/HlsSettings"
+        video_src:
+          x-parser-schema-id: VideoSource
+          discriminator: src_type
+          oneOf:
+            - $ref: "#/components/schemas/Camera"
+            - $ref: "#/components/schemas/PlaybackVideo"
+
+    CameraSettingsApplyRequest:
+      name: CameraSettingsApplyRequest
       type: object
       additionalProperties: false
       properties:

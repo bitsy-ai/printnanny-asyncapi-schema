@@ -107,8 +107,14 @@ pub use self::camera::*;
 pub mod camera_source_type;
 pub use self::camera_source_type::*;
 
-pub mod webrtc_settings_apply_request;
-pub use self::webrtc_settings_apply_request::*;
+pub mod print_nanny_camera_settings;
+pub use self::print_nanny_camera_settings::*;
+
+pub mod print_nanny_detection_settings;
+pub use self::print_nanny_detection_settings::*;
+
+pub mod hls_settings;
+pub use self::hls_settings::*;
 
 pub mod video_source;
 pub use self::video_source::*;
@@ -119,8 +125,11 @@ pub use self::playback_video::*;
 pub mod playback_source_type;
 pub use self::playback_source_type::*;
 
-pub mod webrtc_settings_apply_reply;
-pub use self::webrtc_settings_apply_reply::*;
+pub mod camera_settings_apply_request;
+pub use self::camera_settings_apply_request::*;
+
+pub mod camera_settings_apply_reply;
+pub use self::camera_settings_apply_reply::*;
 
 pub mod settings_load_reply;
 pub use self::settings_load_reply::*;
