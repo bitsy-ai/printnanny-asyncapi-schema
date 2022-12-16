@@ -4,7 +4,7 @@ export interface PrintNannyDetectionSettings {
   label_file: string;
   model_file: string;
   nms_threshold: number;
-  tensor_batch_size?: number;
+  tensor_batch_size: number;
   tensor_framerate: number;
   tensor_height: number;
   tensor_width: number;

@@ -9,8 +9,8 @@ pub struct PrintNannyDetectionSettings {
     pub model_file: String,
     #[serde(rename="nms_threshold")]
     pub nms_threshold: i32,
-    #[serde(rename="tensor_batch_size", skip_serializing_if = "Option::is_none")]
-    pub tensor_batch_size: Option<i32>,
+    #[serde(rename="tensor_batch_size")]
+    pub tensor_batch_size: i32,
     #[serde(rename="tensor_framerate")]
     pub tensor_framerate: i32,
     #[serde(rename="tensor_height")]
@@ -20,7 +20,7 @@ pub struct PrintNannyDetectionSettings {
 }
 
 impl PrintNannyDetectionSettings {
-    pub fn new(nats_server_uri: String, label_file: String, model_file: String, nms_threshold: i32, tensor_batch_size: Option<i32>, tensor_framerate: i32, tensor_height: i32, tensor_width: i32) -> PrintNannyDetectionSettings {
+    pub fn new(nats_server_uri: String, label_file: String, model_file: String, nms_threshold: i32, tensor_batch_size: i32, tensor_framerate: i32, tensor_height: i32, tensor_width: i32) -> PrintNannyDetectionSettings {
         PrintNannyDetectionSettings {
             nats_server_uri,
             label_file,

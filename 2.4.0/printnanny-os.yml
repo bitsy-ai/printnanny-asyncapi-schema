@@ -929,6 +929,7 @@ components:
         - tensor_framerate
         - tensor_height
         - tensor_width
+        - tensor_batch_size
 
     PrintNannyCameraSettings:
       name: PrintNannyCameraSettings
