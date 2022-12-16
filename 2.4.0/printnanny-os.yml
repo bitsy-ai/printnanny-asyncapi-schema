@@ -219,7 +219,7 @@ channels:
     publish:
       operationId: CameraSettingsApplyRequest
       message:
-        $ref: "#/components/messages/CameraSettingsApplyRequest"
+        $ref: "#/components/schemas/PrintNannyCameraSettings"
 
   pi.{pi_id}.settings.file.load:
     parameters:
@@ -981,20 +981,6 @@ components:
           oneOf:
             - $ref: "#/components/schemas/Camera"
             - $ref: "#/components/schemas/PlaybackVideo"
-
-    CameraSettingsApplyRequest:
-      name: CameraSettingsApplyRequest
-      type: object
-      additionalProperties: false
-      properties:
-        video_src:
-          x-parser-schema-id: VideoSource
-          discriminator: src_type
-          oneOf:
-            - $ref: "#/components/schemas/Camera"
-            - $ref: "#/components/schemas/PlaybackVideo"
-      required:
-        - video_src
 
     CameraSourceType:
       type: string
