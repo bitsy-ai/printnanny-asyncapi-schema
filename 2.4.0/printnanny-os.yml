@@ -934,6 +934,16 @@ components:
       name: PrintNannyCameraSettings
       type: object
       additionalProperties: false
+      required:
+        - overlay_udp_port
+        - preview
+        - video_framerate
+        - video_height
+        - video_width
+        - video_udp_port
+        - detection
+        - hls
+        - video_src
       properties:
         overlay_udp_port:
           type: integer
