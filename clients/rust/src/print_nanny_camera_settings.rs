@@ -1,28 +1,28 @@
 // PrintNannyCameraSettings represents a PrintNannyCameraSettings model.
 #[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
 pub struct PrintNannyCameraSettings {
-    #[serde(rename="overlay_udp_port", skip_serializing_if = "Option::is_none")]
-    pub overlay_udp_port: Option<i32>,
-    #[serde(rename="preview", skip_serializing_if = "Option::is_none")]
-    pub preview: Option<bool>,
-    #[serde(rename="video_framerate", skip_serializing_if = "Option::is_none")]
-    pub video_framerate: Option<i32>,
-    #[serde(rename="video_height", skip_serializing_if = "Option::is_none")]
-    pub video_height: Option<i32>,
-    #[serde(rename="video_width", skip_serializing_if = "Option::is_none")]
-    pub video_width: Option<i32>,
-    #[serde(rename="video_udp_port", skip_serializing_if = "Option::is_none")]
-    pub video_udp_port: Option<i32>,
-    #[serde(rename="detection", skip_serializing_if = "Option::is_none")]
-    pub detection: Option<Box<crate::PrintNannyDetectionSettings>>,
-    #[serde(rename="hls", skip_serializing_if = "Option::is_none")]
-    pub hls: Option<Box<crate::HlsSettings>>,
-    #[serde(rename="video_src", skip_serializing_if = "Option::is_none")]
-    pub video_src: Option<Box<crate::VideoSource>>,
+    #[serde(rename="overlay_udp_port")]
+    pub overlay_udp_port: i32,
+    #[serde(rename="preview")]
+    pub preview: bool,
+    #[serde(rename="video_framerate")]
+    pub video_framerate: i32,
+    #[serde(rename="video_height")]
+    pub video_height: i32,
+    #[serde(rename="video_width")]
+    pub video_width: i32,
+    #[serde(rename="video_udp_port")]
+    pub video_udp_port: i32,
+    #[serde(rename="detection")]
+    pub detection: Box<crate::PrintNannyDetectionSettings>,
+    #[serde(rename="hls")]
+    pub hls: Box<crate::HlsSettings>,
+    #[serde(rename="video_src")]
+    pub video_src: Box<crate::VideoSource>,
 }
 
 impl PrintNannyCameraSettings {
-    pub fn new(overlay_udp_port: Option<i32>, preview: Option<bool>, video_framerate: Option<i32>, video_height: Option<i32>, video_width: Option<i32>, video_udp_port: Option<i32>, detection: Option<crate::PrintNannyDetectionSettings>, hls: Option<crate::HlsSettings>, video_src: Option<crate::VideoSource>) -> PrintNannyCameraSettings {
+    pub fn new(overlay_udp_port: i32, preview: bool, video_framerate: i32, video_height: i32, video_width: i32, video_udp_port: i32, detection: crate::PrintNannyDetectionSettings, hls: crate::HlsSettings, video_src: crate::VideoSource) -> PrintNannyCameraSettings {
         PrintNannyCameraSettings {
             overlay_udp_port,
             preview,
@@ -30,9 +30,9 @@ impl PrintNannyCameraSettings {
             video_height,
             video_width,
             video_udp_port,
-            detection: detection.map(Box::new),
-            hls: hls.map(Box::new),
-            video_src: video_src.map(Box::new),
+            detection: Box::new(detection),
+            hls: Box::new(hls),
+            video_src: Box::new(video_src),
         }
     }
 }
