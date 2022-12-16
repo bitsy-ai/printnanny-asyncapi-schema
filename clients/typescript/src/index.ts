@@ -38,8 +38,6 @@ export * from "./PrintNannyDetectionSettings";
 export * from "./HlsSettings";
 export * from "./PlaybackVideo";
 export * from "./PlaybackSourceType";
-export * from "./CameraSettingsApplyRequest";
-export * from "./CameraSettingsApplyReply";
 export * from "./SettingsLoadReply";
 export * from "./SettingsFile";
 export * from "./SettingsApp";

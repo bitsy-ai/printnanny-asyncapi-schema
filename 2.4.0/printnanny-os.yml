@@ -198,8 +198,8 @@ channels:
     subscribe:
       operationId: CameraSettingsLoadReply
       message:
-        oneOf:
-          - $ref: "#/components/messages/CameraSettingsLoadReply"
+        $ref:
+          "#/components/messages/CameraSettingsLoadReply"
           # - $ref: "#/components/messages/RequestError"
     publish:
       operationId: CameraSettingsLoadRequest
@@ -213,8 +213,8 @@ channels:
     subscribe:
       operationId: CameraSettingsApplyReply
       message:
-        oneOf:
-          - $ref: "#/components/messages/CameraSettingsApplyReply"
+        $ref:
+          "#/components/messages/CameraSettingsApplyReply"
           # - $ref: "#/components/messages/RequestError"
     publish:
       operationId: CameraSettingsApplyRequest
@@ -293,19 +293,13 @@ components:
       name: CameraSettingsApplyRequest
       summary: "Apply webrtc video stream settings"
       payload:
-        $ref: "#/components/schemas/CameraSettingsApplyRequest"
+        $ref: "#/components/schemas/PrintNannyCameraSettings"
 
     CameraSettingsApplyReply:
       name: CameraSettingsApplyReply
       summary: "Apply webrtc video stream settings"
       payload:
-        x-parser-schema-id: CameraSettingsApplyReply
-        additionalProperties: false
-        properties:
-          request:
-            $ref: "#/components/schemas/CameraSettingsApplyRequest"
-        required:
-          - request
+        $ref: "#/components/schemas/PrintNannyCameraSettings"
 
     CameraSettingsLoadRequest:
       name: CameraSettingsLoadRequest
@@ -981,20 +975,6 @@ components:
           oneOf:
             - $ref: "#/components/schemas/Camera"
             - $ref: "#/components/schemas/PlaybackVideo"
-
-    CameraSettingsApplyRequest:
-      name: CameraSettingsApplyRequest
-      type: object
-      additionalProperties: false
-      properties:
-        video_src:
-          x-parser-schema-id: VideoSource
-          discriminator: src_type
-          oneOf:
-            - $ref: "#/components/schemas/Camera"
-            - $ref: "#/components/schemas/PlaybackVideo"
-      required:
-        - video_src
 
     CameraSourceType:
       type: string
