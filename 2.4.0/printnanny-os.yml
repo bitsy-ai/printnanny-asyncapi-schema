@@ -848,6 +848,7 @@ components:
       properties:
         video_src:
           x-parser-schema-id: VideoSource
+          discriminator: src_type
           oneOf:
             - $ref: "#/components/schemas/Camera"
             - $ref: "#/components/schemas/PlaybackVideo"
