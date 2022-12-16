@@ -125,12 +125,6 @@ pub use self::playback_video::*;
 pub mod playback_source_type;
 pub use self::playback_source_type::*;
 
-pub mod camera_settings_apply_request;
-pub use self::camera_settings_apply_request::*;
-
-pub mod camera_settings_apply_reply;
-pub use self::camera_settings_apply_reply::*;
-
 pub mod settings_load_reply;
 pub use self::settings_load_reply::*;
 

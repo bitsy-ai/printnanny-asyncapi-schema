@@ -198,8 +198,8 @@ channels:
     subscribe:
       operationId: CameraSettingsLoadReply
       message:
-        oneOf:
-          - $ref: "#/components/messages/CameraSettingsLoadReply"
+        $ref:
+          "#/components/messages/CameraSettingsLoadReply"
           # - $ref: "#/components/messages/RequestError"
     publish:
       operationId: CameraSettingsLoadRequest
@@ -213,13 +213,13 @@ channels:
     subscribe:
       operationId: CameraSettingsApplyReply
       message:
-        oneOf:
-          - $ref: "#/components/messages/CameraSettingsApplyReply"
+        $ref:
+          "#/components/messages/CameraSettingsApplyReply"
           # - $ref: "#/components/messages/RequestError"
     publish:
       operationId: CameraSettingsApplyRequest
       message:
-        $ref: "#/components/schemas/PrintNannyCameraSettings"
+        $ref: "#/components/messages/CameraSettingsApplyRequest"
 
   pi.{pi_id}.settings.file.load:
     parameters:
@@ -293,19 +293,13 @@ components:
       name: CameraSettingsApplyRequest
       summary: "Apply webrtc video stream settings"
       payload:
-        $ref: "#/components/schemas/CameraSettingsApplyRequest"
+        $ref: "#/components/schemas/PrintNannyCameraSettings"
 
     CameraSettingsApplyReply:
       name: CameraSettingsApplyReply
       summary: "Apply webrtc video stream settings"
       payload:
-        x-parser-schema-id: CameraSettingsApplyReply
-        additionalProperties: false
-        properties:
-          request:
-            $ref: "#/components/schemas/CameraSettingsApplyRequest"
-        required:
-          - request
+        $ref: "#/components/schemas/PrintNannyCameraSettings"
 
     CameraSettingsLoadRequest:
       name: CameraSettingsLoadRequest
