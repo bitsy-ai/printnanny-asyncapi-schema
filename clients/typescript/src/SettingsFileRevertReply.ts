@@ -1,6 +1,6 @@
-import { SettingsApp } from './SettingsApp';
-import { SettingsFile } from './SettingsFile';
-import { GitCommit } from './GitCommit';
+import {SettingsApp} from './SettingsApp';
+import {SettingsFile} from './SettingsFile';
+import {GitCommit} from './GitCommit';
 export interface SettingsFileRevertReply {
   app: SettingsApp;
   files: SettingsFile[];

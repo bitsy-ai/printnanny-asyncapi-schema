@@ -1,4 +1,4 @@
-import { SettingsFile } from './SettingsFile';
+import {SettingsFile} from './SettingsFile';
 export interface SettingsFileApplyRequest {
   file: SettingsFile;
   git_head_commit: string;

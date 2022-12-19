@@ -125,8 +125,8 @@ pub use self::playback_video::*;
 pub mod playback_source_type;
 pub use self::playback_source_type::*;
 
-pub mod settings_load_reply;
-pub use self::settings_load_reply::*;
+pub mod settings_file_load_reply;
+pub use self::settings_file_load_reply::*;
 
 pub mod settings_file;
 pub use self::settings_file::*;
@@ -140,14 +140,14 @@ pub use self::settings_format::*;
 pub mod git_commit;
 pub use self::git_commit::*;
 
-pub mod settings_apply_request;
-pub use self::settings_apply_request::*;
+pub mod settings_file_apply_request;
+pub use self::settings_file_apply_request::*;
 
-pub mod settings_apply_reply;
-pub use self::settings_apply_reply::*;
+pub mod settings_file_apply_reply;
+pub use self::settings_file_apply_reply::*;
 
-pub mod settings_revert_request;
-pub use self::settings_revert_request::*;
+pub mod settings_file_revert_request;
+pub use self::settings_file_revert_request::*;
 
-pub mod settings_revert_reply;
-pub use self::settings_revert_reply::*;
+pub mod settings_file_revert_reply;
+pub use self::settings_file_revert_reply::*;
