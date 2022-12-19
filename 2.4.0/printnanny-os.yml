@@ -217,9 +217,9 @@ channels:
           "#/components/messages/CameraSettingsFileApplyReply"
           # - $ref: "#/components/messages/RequestError"
     publish:
-      operationId: CameraSettingsApplyRequest
+      operationId: CameraSettingsFileApplyRequest
       message:
-        $ref: "#/components/messages/CameraSettingsApplyRequest"
+        $ref: "#/components/messages/CameraSettingsFileApplyRequest"
 
   pi.{pi_id}.settings.file.load:
     parameters:
@@ -248,9 +248,9 @@ channels:
           - $ref: "#/components/messages/SettingsFileApplyReply"
           # - $ref: "#/components/messages/RequestError"
     publish:
-      operationId: VersionControlledSettingsApplyRequest
+      operationId: VersionControlledSettingsFileApplyRequest
       message:
-        $ref: "#/components/messages/SettingsApplyRequest"
+        $ref: "#/components/messages/SettingsFileApplyRequest"
 
   pi.{pi_id}.settings.file.revert:
     parameters:
@@ -289,8 +289,8 @@ components:
         required:
           - cameras
 
-    CameraSettingsApplyRequest:
-      name: CameraSettingsApplyRequest
+    CameraSettingsFileApplyRequest:
+      name: CameraSettingsFileApplyRequest
       summary: "Apply webrtc video stream settings"
       payload:
         $ref: "#/components/schemas/PrintNannyCameraSettings"
@@ -462,10 +462,10 @@ components:
           - git_head_commit
           - git_history
 
-    SettingsApplyRequest:
+    SettingsFileApplyRequest:
       summary: "Apply changes to a settings file and run pre/post save hooks"
       payload:
-        x-parser-schema-id: SettingsApplyRequest
+        x-parser-schema-id: SettingsFileApplyRequest
         type: object
         additionalProperties: false
         properties:

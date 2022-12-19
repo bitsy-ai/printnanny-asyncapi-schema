@@ -43,7 +43,7 @@ export * from "./SettingsFile";
 export * from "./SettingsApp";
 export * from "./SettingsFormat";
 export * from "./GitCommit";
-export * from "./SettingsApplyRequest";
+export * from "./SettingsFileApplyRequest";
 export * from "./SettingsFileApplyReply";
 export * from "./SettingsRevertRequest";
 export * from "./SettingsRevertReply";
