@@ -1,6 +1,6 @@
-// SettingsApplyReply represents a SettingsApplyReply model.
+// SettingsFileApplyReply represents a SettingsFileApplyReply model.
 #[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
-pub struct SettingsApplyReply {
+pub struct SettingsFileApplyReply {
     #[serde(rename="file")]
     pub file: Box<crate::SettingsFile>,
     #[serde(rename="git_head_commit")]
@@ -9,9 +9,9 @@ pub struct SettingsApplyReply {
     pub git_history: Vec<crate::GitCommit>,
 }
 
-impl SettingsApplyReply {
-    pub fn new(file: crate::SettingsFile, git_head_commit: String, git_history: Vec<crate::GitCommit>) -> SettingsApplyReply {
-        SettingsApplyReply {
+impl SettingsFileApplyReply {
+    pub fn new(file: crate::SettingsFile, git_head_commit: String, git_history: Vec<crate::GitCommit>) -> SettingsFileApplyReply {
+        SettingsFileApplyReply {
             file: Box::new(file),
             git_head_commit,
             git_history,

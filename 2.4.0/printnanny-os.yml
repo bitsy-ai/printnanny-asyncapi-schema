@@ -196,77 +196,77 @@ channels:
       pi_id:
         $ref: "#/components/parameters/pi_id"
     subscribe:
-      operationId: CameraSettingsLoadReply
+      operationId: CameraSettingsFileLoadReply
       message:
         $ref:
-          "#/components/messages/CameraSettingsLoadReply"
+          "#/components/messages/CameraSettingsFileLoadReply"
           # - $ref: "#/components/messages/RequestError"
     publish:
-      operationId: CameraSettingsLoadRequest
+      operationId: CameraSettingsFileLoadRequest
       message:
-        $ref: "#/components/messages/CameraSettingsLoadRequest"
+        $ref: "#/components/messages/CameraSettingsFileLoadRequest"
 
   pi.{pi_id}.settings.camera.apply:
     parameters:
       pi_id:
         $ref: "#/components/parameters/pi_id"
     subscribe:
-      operationId: CameraSettingsApplyReply
+      operationId: CameraSettingsFileApplyReply
       message:
         $ref:
-          "#/components/messages/CameraSettingsApplyReply"
+          "#/components/messages/CameraSettingsFileApplyReply"
           # - $ref: "#/components/messages/RequestError"
     publish:
-      operationId: CameraSettingsApplyRequest
+      operationId: CameraSettingsFileApplyRequest
       message:
-        $ref: "#/components/messages/CameraSettingsApplyRequest"
+        $ref: "#/components/messages/CameraSettingsFileApplyRequest"
 
   pi.{pi_id}.settings.file.load:
     parameters:
       pi_id:
         $ref: "#/components/parameters/pi_id"
     subscribe:
-      operationId: VersionControlledSettingsLoadReply
+      operationId: VersionControlledSettingsFileLoadReply
       message:
         oneOf:
-          - $ref: "#/components/messages/SettingsLoadReply"
+          - $ref: "#/components/messages/SettingsFileLoadReply"
           # - $ref: "#/components/messages/RequestError"
 
     publish:
       operationId: VersionControlledSettingsRequest
       message:
-        $ref: "#/components/messages/SettingsLoadRequest"
+        $ref: "#/components/messages/SettingsFileLoadRequest"
 
   pi.{pi_id}.settings.file.apply:
     parameters:
       pi_id:
         $ref: "#/components/parameters/pi_id"
     subscribe:
-      operationId: VersionControlledSettingsApplyReply
+      operationId: VersionControlledSettingsFileApplyReply
       message:
         oneOf:
-          - $ref: "#/components/messages/SettingsApplyReply"
+          - $ref: "#/components/messages/SettingsFileApplyReply"
           # - $ref: "#/components/messages/RequestError"
     publish:
-      operationId: VersionControlledSettingsApplyRequest
+      operationId: VersionControlledSettingsFileApplyRequest
       message:
-        $ref: "#/components/messages/SettingsApplyRequest"
+        $ref: "#/components/messages/SettingsFileApplyRequest"
 
   pi.{pi_id}.settings.file.revert:
     parameters:
       pi_id:
         $ref: "#/components/parameters/pi_id"
     subscribe:
-      operationId: VersionControlledSettingsRevertReply
+      operationId: VersionControlledSettingsFileRevertReply
       message:
         oneOf:
-          - $ref: "#/components/messages/SettingsRevertReply"
+          - $ref: "#/components/messages/SettingsFileRevertReply"
           # - $ref: "#/components/messages/RequestError"
 
     publish:
-      operationId: VersionControlledSettingsRevertRequest
+      operationId: VersionControlledSettingsFileRevertRequest
       message:
-        $ref: "#/components/messages/SettingsRevertRequest"
+        $ref: "#/components/messages/SettingsFileRevertRequest"
 
 components:
   messages:
@@ -289,24 +289,24 @@ components:
         required:
           - cameras
 
-    CameraSettingsApplyRequest:
-      name: CameraSettingsApplyRequest
+    CameraSettingsFileApplyRequest:
+      name: CameraSettingsFileApplyRequest
       summary: "Apply webrtc video stream settings"
       payload:
         $ref: "#/components/schemas/PrintNannyCameraSettings"
 
-    CameraSettingsApplyReply:
-      name: CameraSettingsApplyReply
+    CameraSettingsFileApplyReply:
+      name: CameraSettingsFileApplyReply
       summary: "Apply webrtc video stream settings"
       payload:
         $ref: "#/components/schemas/PrintNannyCameraSettings"
 
-    CameraSettingsLoadRequest:
-      name: CameraSettingsLoadRequest
+    CameraSettingsFileLoadRequest:
+      name: CameraSettingsFileLoadRequest
       summary: "Load PrintNannySettings.camera settings fieldset"
 
-    CameraSettingsLoadReply:
-      name: CameraSettingsLoadReply
+    CameraSettingsFileLoadReply:
+      name: CameraSettingsFileLoadReply
       summary: "Load PrintNannySettings.camera settings fieldset"
       payload:
         $ref: "#/components/schemas/PrintNannyCameraSettings"
@@ -434,14 +434,14 @@ components:
           - status_code
           - msg
 
-    SettingsLoadRequest:
-      name: SettingsLoadRequest
+    SettingsFileLoadRequest:
+      name: SettingsFileLoadRequest
       summary: "Load a settings file for browser editor"
 
-    SettingsLoadReply:
+    SettingsFileLoadReply:
       summary: "Load a settings file for browser editor"
       payload:
-        x-parser-schema-id: SettingsLoadReply
+        x-parser-schema-id: SettingsFileLoadReply
         type: object
         additionalProperties: false
         properties:
@@ -462,10 +462,10 @@ components:
           - git_head_commit
           - git_history
 
-    SettingsApplyRequest:
+    SettingsFileApplyRequest:
       summary: "Apply changes to a settings file and run pre/post save hooks"
       payload:
-        x-parser-schema-id: SettingsApplyRequest
+        x-parser-schema-id: SettingsFileApplyRequest
         type: object
         additionalProperties: false
         properties:
@@ -480,10 +480,10 @@ components:
           - git_head_commit
           - git_commit_msg
 
-    SettingsApplyReply:
+    SettingsFileApplyReply:
       summary: "Apply changes to a settings file and run pre/post save hooks"
       payload:
-        x-parser-schema-id: SettingsApplyReply
+        x-parser-schema-id: SettingsFileApplyReply
         type: object
         additionalProperties: false
         properties:
@@ -502,10 +502,10 @@ components:
           - git_head_commit
           - git_history
 
-    SettingsRevertRequest:
+    SettingsFileRevertRequest:
       summary: "Revert git commit and run pre/post save hooks associated with provided settings files."
       payload:
-        x-parser-schema-id: SettingsRevertRequest
+        x-parser-schema-id: SettingsFileRevertRequest
         type: object
         additionalProperties: false
         properties:
@@ -523,10 +523,10 @@ components:
           - files
           - git_commit
 
-    SettingsRevertReply:
+    SettingsFileRevertReply:
       summary: "Revert changes to a settings file and run pre/post save hooks"
       payload:
-        x-parser-schema-id: SettingsRevertReply
+        x-parser-schema-id: SettingsFileRevertReply
         type: object
         additionalProperties: false
         properties:

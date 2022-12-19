@@ -1,6 +1,6 @@
-// SettingsLoadReply represents a SettingsLoadReply model.
+// SettingsFileLoadReply represents a SettingsFileLoadReply model.
 #[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
-pub struct SettingsLoadReply {
+pub struct SettingsFileLoadReply {
     #[serde(rename="files")]
     pub files: Vec<crate::SettingsFile>,
     #[serde(rename="git_head_commit")]
@@ -9,9 +9,9 @@ pub struct SettingsLoadReply {
     pub git_history: Vec<crate::GitCommit>,
 }
 
-impl SettingsLoadReply {
-    pub fn new(files: Vec<crate::SettingsFile>, git_head_commit: String, git_history: Vec<crate::GitCommit>) -> SettingsLoadReply {
-        SettingsLoadReply {
+impl SettingsFileLoadReply {
+    pub fn new(files: Vec<crate::SettingsFile>, git_head_commit: String, git_history: Vec<crate::GitCommit>) -> SettingsFileLoadReply {
+        SettingsFileLoadReply {
             files,
             git_head_commit,
             git_history,
