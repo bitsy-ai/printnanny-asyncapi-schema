@@ -5,5 +5,6 @@ export interface Camera {
   device_name: string;
   label: string;
   src_type: CameraSourceType;
+  selectedCaps: GstreamerCaps;
   availableCaps: GstreamerCaps[];
 }
