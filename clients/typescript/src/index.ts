@@ -38,7 +38,7 @@ export * from "./PrintNannyDetectionSettings";
 export * from "./HlsSettings";
 export * from "./PlaybackVideo";
 export * from "./PlaybackSourceType";
-export * from "./SettingsLoadReply";
+export * from "./SettingsFileLoadReply";
 export * from "./SettingsFile";
 export * from "./SettingsApp";
 export * from "./SettingsFormat";
