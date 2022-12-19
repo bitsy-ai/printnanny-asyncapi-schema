@@ -933,8 +933,6 @@ components:
         - overlay_udp_port
         - preview
         - video_framerate
-        - video_height
-        - video_width
         - video_udp_port
         - detection
         - hls
@@ -952,14 +950,6 @@ components:
         video_framerate:
           type: integer
           default: 16
-
-        video_height:
-          type: integer
-          default: 480
-
-        video_width:
-          type: integer
-          default: 640
 
         video_udp_port:
           type: integer
