@@ -995,7 +995,7 @@ components:
         availableCaps:
           type: array
           items:
-            type: GstreamerCaps
+            $ref: "#/components/schemas/GstreamerCaps"
           additionalItems: false
         index:
           type: integer
@@ -1007,7 +1007,7 @@ components:
           $ref: "#/components/schemas/CameraSourceType"
 
       required:
-        - caps
+        - availableCaps
         - index
         - device_name
         - label
@@ -1016,7 +1016,7 @@ components:
     GstreamerCaps:
       name: GstreamerCaps
       type: object
-      additionalProperties: true
+      additionalProperties: false
       properties:
         media_type:
           type: string
