@@ -202,9 +202,9 @@ channels:
           "#/components/messages/CameraSettingsLoadReply"
           # - $ref: "#/components/messages/RequestError"
     publish:
-      operationId: CameraSettingsLoadRequest
+      operationId: CameraSettingsFileLoadRequest
       message:
-        $ref: "#/components/messages/CameraSettingsLoadRequest"
+        $ref: "#/components/messages/CameraSettingsFileLoadRequest"
 
   pi.{pi_id}.settings.camera.apply:
     parameters:
@@ -235,7 +235,7 @@ channels:
     publish:
       operationId: VersionControlledSettingsRequest
       message:
-        $ref: "#/components/messages/SettingsLoadRequest"
+        $ref: "#/components/messages/SettingsFileLoadRequest"
 
   pi.{pi_id}.settings.file.apply:
     parameters:
@@ -301,8 +301,8 @@ components:
       payload:
         $ref: "#/components/schemas/PrintNannyCameraSettings"
 
-    CameraSettingsLoadRequest:
-      name: CameraSettingsLoadRequest
+    CameraSettingsFileLoadRequest:
+      name: CameraSettingsFileLoadRequest
       summary: "Load PrintNannySettings.camera settings fieldset"
 
     CameraSettingsLoadReply:
@@ -434,8 +434,8 @@ components:
           - status_code
           - msg
 
-    SettingsLoadRequest:
-      name: SettingsLoadRequest
+    SettingsFileLoadRequest:
+      name: SettingsFileLoadRequest
       summary: "Load a settings file for browser editor"
 
     SettingsLoadReply:
