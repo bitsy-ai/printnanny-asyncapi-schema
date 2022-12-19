@@ -1,8 +1,6 @@
 // Camera represents a Camera model.
 #[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
 pub struct Camera {
-    #[serde(rename="availableCaps")]
-    pub available_caps: Vec<crate::GstreamerCaps>,
     #[serde(rename="index")]
     pub index: i32,
     #[serde(rename="device_name")]
@@ -11,16 +9,18 @@ pub struct Camera {
     pub label: String,
     #[serde(rename="src_type")]
     pub src_type: Box<crate::CameraSourceType>,
+    #[serde(rename="availableCaps")]
+    pub available_caps: Vec<crate::GstreamerCaps>,
 }
 
 impl Camera {
-    pub fn new(available_caps: Vec<crate::GstreamerCaps>, index: i32, device_name: String, label: String, src_type: crate::CameraSourceType) -> Camera {
+    pub fn new(index: i32, device_name: String, label: String, src_type: crate::CameraSourceType, available_caps: Vec<crate::GstreamerCaps>) -> Camera {
         Camera {
-            available_caps,
             index,
             device_name,
             label,
             src_type: Box::new(src_type),
+            available_caps,
         }
     }
 }
