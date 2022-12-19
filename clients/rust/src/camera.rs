@@ -9,17 +9,20 @@ pub struct Camera {
     pub label: String,
     #[serde(rename="src_type")]
     pub src_type: Box<crate::CameraSourceType>,
+    #[serde(rename="selectedCaps")]
+    pub selected_caps: Box<crate::GstreamerCaps>,
     #[serde(rename="availableCaps")]
     pub available_caps: Vec<crate::GstreamerCaps>,
 }
 
 impl Camera {
-    pub fn new(index: i32, device_name: String, label: String, src_type: crate::CameraSourceType, available_caps: Vec<crate::GstreamerCaps>) -> Camera {
+    pub fn new(index: i32, device_name: String, label: String, src_type: crate::CameraSourceType, selected_caps: crate::GstreamerCaps, available_caps: Vec<crate::GstreamerCaps>) -> Camera {
         Camera {
             index,
             device_name,
             label,
             src_type: Box::new(src_type),
+            selected_caps: Box::new(selected_caps),
             available_caps,
         }
     }
