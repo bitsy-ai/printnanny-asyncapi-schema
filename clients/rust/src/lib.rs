@@ -104,11 +104,11 @@ pub use self::cameras_load_reply::*;
 pub mod camera;
 pub use self::camera::*;
 
-pub mod gstreamer_caps;
-pub use self::gstreamer_caps::*;
-
 pub mod camera_source_type;
 pub use self::camera_source_type::*;
+
+pub mod gstreamer_caps;
+pub use self::gstreamer_caps::*;
 
 pub mod print_nanny_camera_settings;
 pub use self::print_nanny_camera_settings::*;
