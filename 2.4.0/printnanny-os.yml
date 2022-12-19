@@ -257,16 +257,16 @@ channels:
       pi_id:
         $ref: "#/components/parameters/pi_id"
     subscribe:
-      operationId: VersionControlledSettingsRevertReply
+      operationId: VersionControlledSettingsFileRevertReply
       message:
         oneOf:
-          - $ref: "#/components/messages/SettingsRevertReply"
+          - $ref: "#/components/messages/SettingsFileRevertReply"
           # - $ref: "#/components/messages/RequestError"
 
     publish:
-      operationId: VersionControlledSettingsRevertRequest
+      operationId: VersionControlledSettingsFileRevertRequest
       message:
-        $ref: "#/components/messages/SettingsRevertRequest"
+        $ref: "#/components/messages/SettingsFileRevertRequest"
 
 components:
   messages:
@@ -502,10 +502,10 @@ components:
           - git_head_commit
           - git_history
 
-    SettingsRevertRequest:
+    SettingsFileRevertRequest:
       summary: "Revert git commit and run pre/post save hooks associated with provided settings files."
       payload:
-        x-parser-schema-id: SettingsRevertRequest
+        x-parser-schema-id: SettingsFileRevertRequest
         type: object
         additionalProperties: false
         properties:
@@ -523,10 +523,10 @@ components:
           - files
           - git_commit
 
-    SettingsRevertReply:
+    SettingsFileRevertReply:
       summary: "Revert changes to a settings file and run pre/post save hooks"
       payload:
-        x-parser-schema-id: SettingsRevertReply
+        x-parser-schema-id: SettingsFileRevertReply
         type: object
         additionalProperties: false
         properties:

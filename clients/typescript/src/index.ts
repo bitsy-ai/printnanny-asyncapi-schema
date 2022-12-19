@@ -45,5 +45,5 @@ export * from "./SettingsFormat";
 export * from "./GitCommit";
 export * from "./SettingsFileApplyRequest";
 export * from "./SettingsFileApplyReply";
-export * from "./SettingsRevertRequest";
-export * from "./SettingsRevertReply";
+export * from "./SettingsFileRevertRequest";
+export * from "./SettingsFileRevertReply";
