@@ -1000,12 +1000,15 @@ components:
           type: string
         src_type:
           $ref: "#/components/schemas/CameraSourceType"
+        selectedCaps:
+          $ref: "#/components/schemas/GstreamerCaps"
         availableCaps:
           type: array
           items:
             $ref: "#/components/schemas/GstreamerCaps"
           additionalItems: false
       required:
+        - selectedCaps
         - availableCaps
         - index
         - device_name
