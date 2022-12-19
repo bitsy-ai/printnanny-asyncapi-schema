@@ -32,6 +32,7 @@ export * from "./PrintNannyCloudAuthRequest";
 export * from "./PrintNannyCloudAuthReply";
 export * from "./CamerasLoadReply";
 export * from "./Camera";
+export * from "./GstreamerCaps";
 export * from "./CameraSourceType";
 export * from "./PrintNannyCameraSettings";
 export * from "./PrintNannyDetectionSettings";

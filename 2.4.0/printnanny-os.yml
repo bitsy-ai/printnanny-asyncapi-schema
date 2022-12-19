@@ -992,6 +992,11 @@ components:
       type: object
       additionalProperties: false
       properties:
+        availableCaps:
+          type: array
+          items:
+            $ref: "#/components/schemas/GstreamerCaps"
+          additionalItems: false
         index:
           type: integer
         device_name:
@@ -1002,10 +1007,30 @@ components:
           $ref: "#/components/schemas/CameraSourceType"
 
       required:
+        - availableCaps
         - index
         - device_name
         - label
         - src_type
+
+    GstreamerCaps:
+      name: GstreamerCaps
+      type: object
+      additionalProperties: false
+      properties:
+        media_type:
+          type: string
+        format:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+      required:
+        - media_type
+        - format
+        - width
+        - height
 
     PlaybackVideo:
       name: PlaybackVideo
