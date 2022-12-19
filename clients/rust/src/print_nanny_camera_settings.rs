@@ -7,10 +7,6 @@ pub struct PrintNannyCameraSettings {
     pub preview: bool,
     #[serde(rename="video_framerate")]
     pub video_framerate: i32,
-    #[serde(rename="video_height")]
-    pub video_height: i32,
-    #[serde(rename="video_width")]
-    pub video_width: i32,
     #[serde(rename="video_udp_port")]
     pub video_udp_port: i32,
     #[serde(rename="detection")]
@@ -22,13 +18,11 @@ pub struct PrintNannyCameraSettings {
 }
 
 impl PrintNannyCameraSettings {
-    pub fn new(overlay_udp_port: i32, preview: bool, video_framerate: i32, video_height: i32, video_width: i32, video_udp_port: i32, detection: crate::PrintNannyDetectionSettings, hls: crate::HlsSettings, video_src: crate::VideoSource) -> PrintNannyCameraSettings {
+    pub fn new(overlay_udp_port: i32, preview: bool, video_framerate: i32, video_udp_port: i32, detection: crate::PrintNannyDetectionSettings, hls: crate::HlsSettings, video_src: crate::VideoSource) -> PrintNannyCameraSettings {
         PrintNannyCameraSettings {
             overlay_udp_port,
             preview,
             video_framerate,
-            video_height,
-            video_width,
             video_udp_port,
             detection: Box::new(detection),
             hls: Box::new(hls),
