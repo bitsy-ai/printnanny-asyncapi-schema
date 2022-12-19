@@ -211,10 +211,10 @@ channels:
       pi_id:
         $ref: "#/components/parameters/pi_id"
     subscribe:
-      operationId: CameraSettingsApplyReply
+      operationId: CameraSettingsFileApplyReply
       message:
         $ref:
-          "#/components/messages/CameraSettingsApplyReply"
+          "#/components/messages/CameraSettingsFileApplyReply"
           # - $ref: "#/components/messages/RequestError"
     publish:
       operationId: CameraSettingsApplyRequest
@@ -242,10 +242,10 @@ channels:
       pi_id:
         $ref: "#/components/parameters/pi_id"
     subscribe:
-      operationId: VersionControlledSettingsApplyReply
+      operationId: VersionControlledSettingsFileApplyReply
       message:
         oneOf:
-          - $ref: "#/components/messages/SettingsApplyReply"
+          - $ref: "#/components/messages/SettingsFileApplyReply"
           # - $ref: "#/components/messages/RequestError"
     publish:
       operationId: VersionControlledSettingsApplyRequest
@@ -295,8 +295,8 @@ components:
       payload:
         $ref: "#/components/schemas/PrintNannyCameraSettings"
 
-    CameraSettingsApplyReply:
-      name: CameraSettingsApplyReply
+    CameraSettingsFileApplyReply:
+      name: CameraSettingsFileApplyReply
       summary: "Apply webrtc video stream settings"
       payload:
         $ref: "#/components/schemas/PrintNannyCameraSettings"
@@ -480,10 +480,10 @@ components:
           - git_head_commit
           - git_commit_msg
 
-    SettingsApplyReply:
+    SettingsFileApplyReply:
       summary: "Apply changes to a settings file and run pre/post save hooks"
       payload:
-        x-parser-schema-id: SettingsApplyReply
+        x-parser-schema-id: SettingsFileApplyReply
         type: object
         additionalProperties: false
         properties:
