@@ -8,4 +8,6 @@ export interface PrintNannyDetectionSettings {
   tensor_framerate: number;
   tensor_height: number;
   tensor_width: number;
+  overlay: boolean;
+  graphs: boolean;
 }

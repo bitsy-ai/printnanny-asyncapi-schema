@@ -17,10 +17,14 @@ pub struct PrintNannyDetectionSettings {
     pub tensor_height: i32,
     #[serde(rename="tensor_width")]
     pub tensor_width: i32,
+    #[serde(rename="overlay")]
+    pub overlay: bool,
+    #[serde(rename="graphs")]
+    pub graphs: bool,
 }
 
 impl PrintNannyDetectionSettings {
-    pub fn new(nats_server_uri: String, label_file: String, model_file: String, nms_threshold: i32, tensor_batch_size: i32, tensor_framerate: i32, tensor_height: i32, tensor_width: i32) -> PrintNannyDetectionSettings {
+    pub fn new(nats_server_uri: String, label_file: String, model_file: String, nms_threshold: i32, tensor_batch_size: i32, tensor_framerate: i32, tensor_height: i32, tensor_width: i32, overlay: bool, graphs: bool) -> PrintNannyDetectionSettings {
         PrintNannyDetectionSettings {
             nats_server_uri,
             label_file,
@@ -30,6 +34,8 @@ impl PrintNannyDetectionSettings {
             tensor_framerate,
             tensor_height,
             tensor_width,
+            overlay,
+            graphs,
         }
     }
 }
