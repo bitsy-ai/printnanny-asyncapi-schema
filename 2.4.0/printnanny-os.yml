@@ -915,7 +915,16 @@ components:
         tensor_width:
           type: integer
           default: 320
+        overlay:
+          type: boolean
+          default: true
+        graphs:
+          type: boolean
+          default: true
+
       required:
+        - graphs
+        - overlay
         - nats_server_uri
         - label_file
         - model_file
@@ -990,16 +999,16 @@ components:
           type: string
         src_type:
           $ref: "#/components/schemas/CameraSourceType"
-        selectedCaps:
+        selected_caps:
           $ref: "#/components/schemas/GstreamerCaps"
-        availableCaps:
+        available_caps:
           type: array
           items:
             $ref: "#/components/schemas/GstreamerCaps"
           additionalItems: false
       required:
-        - selectedCaps
-        - availableCaps
+        - selected_caps
+        - available_caps
         - index
         - device_name
         - label

@@ -9,9 +9,9 @@ pub struct Camera {
     pub label: String,
     #[serde(rename="src_type")]
     pub src_type: Box<crate::CameraSourceType>,
-    #[serde(rename="selectedCaps")]
+    #[serde(rename="selected_caps")]
     pub selected_caps: Box<crate::GstreamerCaps>,
-    #[serde(rename="availableCaps")]
+    #[serde(rename="available_caps")]
     pub available_caps: Vec<crate::GstreamerCaps>,
 }
 
