@@ -1137,6 +1137,7 @@ components:
         - "active"
         - "activating"
         - "deactivating"
+        - "failed"
         - "inactive"
         - "reloading"
         - "loaded"
