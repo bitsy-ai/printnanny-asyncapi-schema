@@ -86,6 +86,9 @@ pub use self::systemd_manager_stop_unit_reply::*;
 pub mod systemd_manager_stop_unit_error;
 pub use self::systemd_manager_stop_unit_error::*;
 
+pub mod crash_report_os_logs_request;
+pub use self::crash_report_os_logs_request::*;
+
 pub mod device_info_load_reply;
 pub use self::device_info_load_reply::*;
 

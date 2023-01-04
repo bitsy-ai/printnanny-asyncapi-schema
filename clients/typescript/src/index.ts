@@ -26,6 +26,7 @@ export * from "./SystemdManagerStartUnitError";
 export * from "./SystemdManagerStopUnitRequest";
 export * from "./SystemdManagerStopUnitReply";
 export * from "./SystemdManagerStopUnitError";
+export * from "./CrashReportOsLogsRequest";
 export * from "./DeviceInfoLoadReply";
 export * from "./DeviceInfoLoadError";
 export * from "./PrintNannyCloudAuthRequest";

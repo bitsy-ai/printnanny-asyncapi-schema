@@ -330,20 +330,34 @@ components:
     CrashReportOsLogsRequest:
       name: CrashReportOsLogsRequest
       summary: "Enrich browser-based CrashReport with PrintNanny OS logs/data"
+      payload:
+        x-parser-schema-id: CrashReportOsLogsRequest
+        additionalProperties: false
+        properties:
+          id:
+            type: string
+            description: "CrashReport.id field"
+        required:
+          - id
 
     CrashReportOsLogsReply:
       name: CrashReportOsLogsReply
       summary: "Enrich browser-based CrashReport with PrintNanny OS logs/data"
       payload:
-        x-parser-schema-id: CrashReportOsLogsReply
+        x-parser-schema-id: CrashReportOsLogsRequest
         additionalProperties: false
         properties:
-          os_version:
+          id:
             type: string
-          os_logs:
-            type: binary
-          serial:
+            description: "CrashReport.id field"
+
+          updated_dt:
             type: string
+            description: "CrashReport.updated_dt field"
+
+        required:
+          - id
+          - updated_dt
 
     DeviceInfoLoadRequest:
       name: DeviceInfoLoadRequest
