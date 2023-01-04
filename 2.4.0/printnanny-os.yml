@@ -142,6 +142,22 @@ channels:
         $ref: "#/components/messages/SystemdManagerStopUnitRequest"
   # end dbus api request/reply channels
 
+  # begin crash_report
+  pi.{pi_id}.crash_reports.os:
+    parameters:
+      pi_id:
+        $ref: "#/components/parameters/pi_id"
+    subscribe:
+      operationId: CrashReportOsLogsReply
+      message:
+        $ref: "#/components/messages/CrashReportOsLogsReply"
+
+    publish:
+      operationId: CrashReportOsLogsRequest
+      message:
+        $ref: "#/components/messages/CrashReportOsLogsRequest"
+  # end crash_report
+
   # begin device_info request/reply channels
   pi.{pi_id}.device_info.load:
     parameters:
@@ -310,6 +326,24 @@ components:
       summary: "Load PrintNannySettings.camera settings fieldset"
       payload:
         $ref: "#/components/schemas/PrintNannyCameraSettings"
+
+    CrashReportOsLogsRequest:
+      name: CrashReportOsLogsRequest
+      summary: "Enrich browser-based CrashReport with PrintNanny OS logs/data"
+
+    CrashReportOsLogsReply:
+      name: CrashReportOsLogsReply
+      summary: "Enrich browser-based CrashReport with PrintNanny OS logs/data"
+      payload:
+        x-parser-schema-id: CrashReportOsLogsReply
+        additionalProperties: false
+        properties:
+          os_version:
+            type: string
+          os_logs:
+            type: binary
+          serial:
+            type: string
 
     DeviceInfoLoadRequest:
       name: DeviceInfoLoadRequest
