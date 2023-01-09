@@ -7,12 +7,12 @@ pub struct DeviceInfoLoadReply {
     pub os_release: String,
     #[serde(rename="printnanny_cli_version")]
     pub printnanny_cli_version: String,
-    #[serde(rename="ifaddrs", skip_serializing_if = "Option::is_none")]
-    pub ifaddrs: Option<String>,
+    #[serde(rename="ifaddrs")]
+    pub ifaddrs: String,
 }
 
 impl DeviceInfoLoadReply {
-    pub fn new(issue: String, os_release: String, printnanny_cli_version: String, ifaddrs: Option<String>) -> DeviceInfoLoadReply {
+    pub fn new(issue: String, os_release: String, printnanny_cli_version: String, ifaddrs: String) -> DeviceInfoLoadReply {
         DeviceInfoLoadReply {
             issue,
             os_release,
