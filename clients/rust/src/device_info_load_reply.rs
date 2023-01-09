@@ -8,11 +8,11 @@ pub struct DeviceInfoLoadReply {
     #[serde(rename="printnanny_cli_version")]
     pub printnanny_cli_version: String,
     #[serde(rename="ifaddrs")]
-    pub ifaddrs: String,
+    pub ifaddrs: Vec<crate::NetworkInterfaceAddress>,
 }
 
 impl DeviceInfoLoadReply {
-    pub fn new(issue: String, os_release: String, printnanny_cli_version: String, ifaddrs: String) -> DeviceInfoLoadReply {
+    pub fn new(issue: String, os_release: String, printnanny_cli_version: String, ifaddrs: Vec<crate::NetworkInterfaceAddress>) -> DeviceInfoLoadReply {
         DeviceInfoLoadReply {
             issue,
             os_release,

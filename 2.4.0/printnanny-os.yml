@@ -367,6 +367,7 @@ components:
       summary: "Load metadata/info about the device and software running"
       payload:
         x-parser-schema-id: DeviceInfoLoadReply
+        type: object
         additionalProperties: false
         properties:
           issue:
