@@ -379,12 +379,11 @@ components:
           printnanny_cli_version:
             type: string
             description: "Output of printnanny --version"
-          tailscale_address_ipv4:
-            type: string
-            description: "tailscale ip -4"
-          tailscale_address_ipv6:
-            type: string
-            description: "tailscale ip -6"
+          ifaddrs:
+            type: array
+            additionalItems: false
+            items:
+              $ref: "#/components/schemas/NetworkInterfaceAddress"
         required:
           - issue
           - os_release
@@ -909,6 +908,29 @@ components:
         type: string
       location: "$message.header#/pi_id"
   schemas:
+    NetworkInterfaceAddress:
+      name: NetworkInterfaceAddress
+      summary: "Describes a single address for an interface as returned by getifaddrs"
+      properties:
+        interface_name:
+          type: string
+        flags:
+          type: array
+          items:
+            type: string
+          additionalItems: false
+        address:
+          type: string
+        network:
+          type: string
+        broadcast:
+          type: string
+        destination:
+          type: string
+      required:
+        - interface_name
+        - flags
+
     HlsSettings:
       name: HlsSettings
       type: object
