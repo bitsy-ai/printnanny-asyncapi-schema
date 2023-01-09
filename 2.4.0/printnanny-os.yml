@@ -364,10 +364,10 @@ components:
       summary: "Load metadata/info about the device and software running"
 
     DeviceInfoLoadReply:
-      name: DeviceInfoLoadReply
       summary: "Load metadata/info about the device and software running"
       payload:
         x-parser-schema-id: DeviceInfoLoadReply
+        type: object
         additionalProperties: false
         properties:
           issue:
@@ -379,16 +379,17 @@ components:
           printnanny_cli_version:
             type: string
             description: "Output of printnanny --version"
-          tailscale_address_ipv4:
-            type: string
-            description: "tailscale ip -4"
-          tailscale_address_ipv6:
-            type: string
-            description: "tailscale ip -6"
+          ifaddrs:
+            description: "Describes a single address for an interface as returned by getifaddrs"
+            type: array
+            additionalItems: false
+            items:
+              $ref: "#/components/schemas/NetworkInterfaceAddress"
         required:
           - issue
           - os_release
           - printnanny_cli_version
+          - ifaddrs
 
     DeviceInfoLoadError:
       name: DeviceInfoLoadError
@@ -909,6 +910,31 @@ components:
         type: string
       location: "$message.header#/pi_id"
   schemas:
+    NetworkInterfaceAddress:
+      name: NetworkInterfaceAddress
+      type: object
+      additionalProperties: false
+      summary: "Describes a single address for an interface as returned by getifaddrs"
+      properties:
+        interface_name:
+          type: string
+        flags:
+          type: array
+          items:
+            type: string
+          additionalItems: false
+        address:
+          type: string
+        network:
+          type: string
+        broadcast:
+          type: string
+        destination:
+          type: string
+      required:
+        - interface_name
+        - flags
+
     HlsSettings:
       name: HlsSettings
       type: object

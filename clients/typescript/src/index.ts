@@ -29,6 +29,7 @@ export * from "./SystemdManagerStopUnitError";
 export * from "./CrashReportOsLogsRequest";
 export * from "./CrashReportOsLogsReply";
 export * from "./DeviceInfoLoadReply";
+export * from "./NetworkInterfaceAddress";
 export * from "./DeviceInfoLoadError";
 export * from "./PrintNannyCloudAuthRequest";
 export * from "./PrintNannyCloudAuthReply";

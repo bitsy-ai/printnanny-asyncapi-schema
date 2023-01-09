@@ -95,6 +95,9 @@ pub use self::crash_report_os_logs_reply::*;
 pub mod device_info_load_reply;
 pub use self::device_info_load_reply::*;
 
+pub mod network_interface_address;
+pub use self::network_interface_address::*;
+
 pub mod device_info_load_error;
 pub use self::device_info_load_error::*;
 
