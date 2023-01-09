@@ -3,7 +3,7 @@ export interface NetworkInterfaceAddress {
   interface_name: string;
   flags: string[];
   address?: string;
-  network?: string;
+  netmask?: string;
   broadcast?: string;
   destination?: string;
 }
