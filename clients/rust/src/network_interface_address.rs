@@ -7,8 +7,8 @@ pub struct NetworkInterfaceAddress {
     pub flags: Vec<String>,
     #[serde(rename="address", skip_serializing_if = "Option::is_none")]
     pub address: Option<String>,
-    #[serde(rename="network", skip_serializing_if = "Option::is_none")]
-    pub network: Option<String>,
+    #[serde(rename="netmask", skip_serializing_if = "Option::is_none")]
+    pub netmask: Option<String>,
     #[serde(rename="broadcast", skip_serializing_if = "Option::is_none")]
     pub broadcast: Option<String>,
     #[serde(rename="destination", skip_serializing_if = "Option::is_none")]
@@ -16,12 +16,12 @@ pub struct NetworkInterfaceAddress {
 }
 
 impl NetworkInterfaceAddress {
-    pub fn new(interface_name: String, flags: Vec<String>, address: Option<String>, network: Option<String>, broadcast: Option<String>, destination: Option<String>) -> NetworkInterfaceAddress {
+    pub fn new(interface_name: String, flags: Vec<String>, address: Option<String>, netmask: Option<String>, broadcast: Option<String>, destination: Option<String>) -> NetworkInterfaceAddress {
         NetworkInterfaceAddress {
             interface_name,
             flags,
             address,
-            network,
+            netmask,
             broadcast,
             destination,
         }
