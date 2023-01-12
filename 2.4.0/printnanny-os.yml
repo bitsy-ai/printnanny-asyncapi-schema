@@ -1053,11 +1053,8 @@ components:
           $ref: "#/components/schemas/PrintNannyDetectionSettings"
         hls:
           $ref: "#/components/schemas/HlsSettings"
-        video_src:
-          x-parser-schema-id: VideoSource
-          oneOf:
-            - $ref: "#/components/schemas/Camera"
-            - $ref: "#/components/schemas/PlaybackVideo"
+        camera:
+          $ref: "#/components/schemas/Camera"
 
     CameraSourceType:
       type: string

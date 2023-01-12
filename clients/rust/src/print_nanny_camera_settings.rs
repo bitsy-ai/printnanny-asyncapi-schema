@@ -17,12 +17,12 @@ pub struct PrintNannyCameraSettings {
     pub detection: Box<crate::PrintNannyDetectionSettings>,
     #[serde(rename="hls")]
     pub hls: Box<crate::HlsSettings>,
-    #[serde(rename="video_src")]
-    pub video_src: Box<crate::VideoSource>,
+    #[serde(rename="camera", skip_serializing_if = "Option::is_none")]
+    pub camera: Option<Box<crate::Camera>>,
 }
 
 impl PrintNannyCameraSettings {
-    pub fn new(overlay_udp_port: i32, record_video: bool, cloud_backup: bool, preview: bool, video_framerate: i32, video_udp_port: i32, detection: crate::PrintNannyDetectionSettings, hls: crate::HlsSettings, video_src: crate::VideoSource) -> PrintNannyCameraSettings {
+    pub fn new(overlay_udp_port: i32, record_video: bool, cloud_backup: bool, preview: bool, video_framerate: i32, video_udp_port: i32, detection: crate::PrintNannyDetectionSettings, hls: crate::HlsSettings, camera: Option<crate::Camera>) -> PrintNannyCameraSettings {
         PrintNannyCameraSettings {
             overlay_udp_port,
             record_video,
@@ -32,7 +32,7 @@ impl PrintNannyCameraSettings {
             video_udp_port,
             detection: Box::new(detection),
             hls: Box::new(hls),
-            video_src: Box::new(video_src),
+            camera: camera.map(Box::new),
         }
     }
 }
