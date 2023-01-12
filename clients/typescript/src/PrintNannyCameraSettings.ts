@@ -10,5 +10,5 @@ export interface PrintNannyCameraSettings {
   video_udp_port: number;
   detection: PrintNannyDetectionSettings;
   hls: HlsSettings;
-  camera?: Camera;
+  camera: Camera;
 }

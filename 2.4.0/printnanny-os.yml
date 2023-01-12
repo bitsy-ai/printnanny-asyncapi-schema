@@ -1020,7 +1020,7 @@ components:
         - video_udp_port
         - detection
         - hls
-        - video_src
+        - camera
       properties:
         overlay_udp_port:
           type: integer
