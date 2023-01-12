@@ -3,6 +3,10 @@
 pub struct PrintNannyCameraSettings {
     #[serde(rename="overlay_udp_port")]
     pub overlay_udp_port: i32,
+    #[serde(rename="record_video")]
+    pub record_video: bool,
+    #[serde(rename="cloud_backup")]
+    pub cloud_backup: bool,
     #[serde(rename="preview")]
     pub preview: bool,
     #[serde(rename="video_framerate")]
@@ -18,9 +22,11 @@ pub struct PrintNannyCameraSettings {
 }
 
 impl PrintNannyCameraSettings {
-    pub fn new(overlay_udp_port: i32, preview: bool, video_framerate: i32, video_udp_port: i32, detection: crate::PrintNannyDetectionSettings, hls: crate::HlsSettings, video_src: crate::VideoSource) -> PrintNannyCameraSettings {
+    pub fn new(overlay_udp_port: i32, record_video: bool, cloud_backup: bool, preview: bool, video_framerate: i32, video_udp_port: i32, detection: crate::PrintNannyDetectionSettings, hls: crate::HlsSettings, video_src: crate::VideoSource) -> PrintNannyCameraSettings {
         PrintNannyCameraSettings {
             overlay_udp_port,
+            record_video,
+            cloud_backup,
             preview,
             video_framerate,
             video_udp_port,
