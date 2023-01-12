@@ -1012,6 +1012,8 @@ components:
       required:
         - overlay_udp_port
         - preview
+        - record_video
+        - cloud_backup
         - video_framerate
         - video_udp_port
         - detection
@@ -1021,6 +1023,16 @@ components:
         overlay_udp_port:
           type: integer
           default: 20002
+
+        record_video:
+          description: "Save video recordings to Raspberry Pi SD Card"
+          type: boolean
+          default: true
+
+        cloud_backup:
+          description: "Backup video recordings to PrintNanny Cloud"
+          type: boolean
+          default: true
 
         preview:
           description: "Show X-video preview, used for debugging purposes"

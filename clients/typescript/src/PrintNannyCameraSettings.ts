@@ -1,7 +1,7 @@
-import {PrintNannyDetectionSettings} from './PrintNannyDetectionSettings';
-import {HlsSettings} from './HlsSettings';
-import {Camera} from './Camera';
-import {PlaybackVideo} from './PlaybackVideo';
+import { PrintNannyDetectionSettings } from './PrintNannyDetectionSettings';
+import { HlsSettings } from './HlsSettings';
+import { Camera } from './Camera';
+import { PlaybackVideo } from './PlaybackVideo';
 export interface PrintNannyCameraSettings {
   overlay_udp_port: number;
   preview: boolean;
