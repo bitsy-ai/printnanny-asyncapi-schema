@@ -948,13 +948,15 @@ components:
           default: "/printnanny-hls/"
 
         hls_enabled:
-          description: "hls_enabled has 3 possible states: 1) Auto-detect based on detect_hls_http_enabled(), indicated by null value. 2) and 3) true/false"
+          description: "Enable HLS stream. Required for OctoPrint compatibility"
           type: boolean
+          default: true
 
       required:
         - hls_segments
         - hls_playlist
         - hls_playlist_root
+        - hls_enabled
 
     PrintNannyDetectionSettings:
       name: PrintNannyDetectionSettings
