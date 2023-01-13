@@ -52,3 +52,7 @@ export * from "./SettingsFileRevertReply";
 export * from "./WebrtcRecordingFileNameReply";
 export * from "./WebrtcRecording";
 export * from "./WebrtcRecordingMedia";
+export * from "./OctoPrintCurrentJob";
+export * from "./OctoPrintJob";
+export * from "./OctoPrintFile";
+export * from "./OctoPrintJobProgress";

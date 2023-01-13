@@ -163,3 +163,15 @@ pub use self::webrtc_recording::*;
 
 pub mod webrtc_recording_media;
 pub use self::webrtc_recording_media::*;
+
+pub mod octo_print_current_job;
+pub use self::octo_print_current_job::*;
+
+pub mod octo_print_job;
+pub use self::octo_print_job::*;
+
+pub mod octo_print_file;
+pub use self::octo_print_file::*;
+
+pub mod octo_print_job_progress;
+pub use self::octo_print_job_progress::*;
