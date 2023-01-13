@@ -154,3 +154,9 @@ pub use self::settings_file_revert_request::*;
 
 pub mod settings_file_revert_reply;
 pub use self::settings_file_revert_reply::*;
+
+pub mod webrtc_recording;
+pub use self::webrtc_recording::*;
+
+pub mod webrtc_recording_media;
+pub use self::webrtc_recording_media::*;
