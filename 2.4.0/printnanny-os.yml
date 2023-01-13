@@ -965,6 +965,13 @@ components:
           - file_name
           - ts
 
+    # OctoPrintCurrentJob
+    OctoPrintCurrentJob:
+      name: OctoPrintCurrentJob
+      summary: "Get OctoPrint current job (if running)."
+      payload:
+        $ref: "#/components/schemas/OctoPrintCurrentJob"
+
   parameters:
     pi_id:
       description: The ID of the PrintNanny Pi/device
@@ -1413,16 +1420,16 @@ components:
         file:
           $ref: "#/components/schemas/OctoPrintFile"
         estimatedPrintTime:
-          type: float
+          type: number
         lastPrintType:
-          type: float
+          type: number
 
     OctoPrintJobProgress:
       type: object
       additionalProperties: false
       properties:
         completion:
-          type: float
+          type: number
         filepos:
           type: integer
         printTime:
