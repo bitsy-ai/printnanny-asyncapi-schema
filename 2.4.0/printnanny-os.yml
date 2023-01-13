@@ -289,7 +289,7 @@ channels:
       pi_id:
         $ref: "#/components/parameters/pi_id"
     publish:
-      operationId: CameraRecordingStarted
+      operationId: WebrtcRecordingStarted
       message:
         $ref: "#/components/messages/WebrtcRecordingStarted"
 
@@ -298,7 +298,7 @@ channels:
       pi_id:
         $ref: "#/components/parameters/pi_id"
     publish:
-      operationId: CameraRecordingStopped
+      operationId: WebrtcRecordingStopped
       message:
         $ref: "#/components/messages/WebrtcRecordingStopped"
 
