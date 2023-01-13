@@ -284,6 +284,19 @@ channels:
       message:
         $ref: "#/components/messages/SettingsFileRevertRequest"
 
+  pi.{pi_id}.webrtc.recording.file_name:
+    parameters:
+      pi_id:
+        $ref: "#/components/parameters/pi_id"
+    publish:
+      operationId: WebrtcRecordingFileNameRequest
+      message:
+        $ref: "#/components/messages/WebrtcRecordingFileNameRequest"
+    subscribe:
+      operationId: WebrtcRecordingFileNameResponse
+      message:
+        $ref: "#/components/messages/WebrtcRecordingFileNameResponse"
+
   pi.{pi_id}.webrtc.recording.started:
     parameters:
       pi_id:
@@ -322,18 +335,6 @@ components:
               $ref: "#/components/schemas/Camera"
         required:
           - cameras
-
-    WebrtcRecordingStarted:
-      name: WebrtcRecordingStarted
-      summary: "Janus WebRTC gateway has started saving RTP packets to .mjr"
-      payload:
-        $ref: "#/components/schemas/WebrtcRecording"
-
-    WebrtcRecordingStopped:
-      name: WebrtcRecordingStopped
-      summary: "Janus WebRTC gateway has stopped saving RTP packets to .mjr"
-      payload:
-        $ref: "#/components/schemas/WebrtcRecording"
 
     CameraSettingsFileApplyRequest:
       name: CameraSettingsFileApplyRequest
@@ -933,12 +934,44 @@ components:
           - subject_pattern
           - request
 
+    WebrtcRecordingStarted:
+      name: WebrtcRecordingStarted
+      summary: "Janus WebRTC gateway has started saving RTP packets to .mjr"
+      payload:
+        $ref: "#/components/schemas/WebrtcRecording"
+
+    WebrtcRecordingStopped:
+      name: WebrtcRecordingStopped
+      summary: "Janus WebRTC gateway has stopped saving RTP packets to .mjr"
+      payload:
+        $ref: "#/components/schemas/WebrtcRecording"
+
+    WebrtcRecordingFileNameRequest:
+      name: WebrtcRecordingFileNameRequest
+      summary: "Attempt to get file name of active print job. If no print job is active, camera name will be returned instead."
+
+    WebrtcRecordingFileNameResponse:
+      name: WebrtcRecordingFileNameResponse
+      summary: "File name of active print job, or camera name/display if no job is active"
+      payload:
+        x-parser-schema-id: WebrtcRecordingFileNameResponse
+        properties:
+          file_name:
+            type: string
+          ts:
+            type: integer
+            format: int64
+        required:
+          - file_name
+          - ts
+
   parameters:
     pi_id:
       description: The ID of the PrintNanny Pi/device
       schema:
         type: string
       location: "$message.header#/pi_id"
+
   schemas:
     NetworkInterfaceAddress:
       name: NetworkInterfaceAddress
