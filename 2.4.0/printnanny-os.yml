@@ -284,6 +284,24 @@ channels:
       message:
         $ref: "#/components/messages/SettingsFileRevertRequest"
 
+  pi.{pi_id}.webrtc.recording.started:
+    parameters:
+      pi_id:
+        $ref: "#/components/parameters/pi_id"
+    publish:
+      operationId: CameraRecordingStarted
+      message:
+        $ref: "#/components/messages/WebrtcRecordingStarted"
+
+  pi.{pi_id}.webrtc.recording.stopped:
+    parameters:
+      pi_id:
+        $ref: "#/components/parameters/pi_id"
+    publish:
+      operationId: CameraRecordingStopped
+      message:
+        $ref: "#/components/messages/WebrtcRecordingStopped"
+
 components:
   messages:
     CamerasLoadRequest:
@@ -304,6 +322,18 @@ components:
               $ref: "#/components/schemas/Camera"
         required:
           - cameras
+
+    WebrtcRecordingStarted:
+      name: WebrtcRecordingStarted
+      summary: "Janus WebRTC gateway has started saving RTP packets to .mjr"
+      payload:
+        $ref: "#/components/schemas/WebrtcRecording"
+
+    WebrtcRecordingStopped:
+      name: WebrtcRecordingStopped
+      summary: "Janus WebRTC gateway has stopped saving RTP packets to .mjr"
+      payload:
+        $ref: "#/components/schemas/WebrtcRecording"
 
     CameraSettingsFileApplyRequest:
       name: CameraSettingsFileApplyRequest
@@ -1287,3 +1317,27 @@ components:
           additionalItems: false
       required:
         - files
+
+    WebrtcRecording:
+      type: object
+      additionalProperties: false
+      properties:
+        media:
+          type: array
+          additionalItems: false
+          items:
+            $ref: "#/components/schemas/WebrtcRecordingMedia"
+        mountpoint:
+          type: string
+
+    WebrtcRecordingMedia:
+      type: object
+      additionalProperties: false
+      properties:
+        mid:
+          type: string
+        file_name:
+          type: string
+      required:
+        - mid
+        - file_name
