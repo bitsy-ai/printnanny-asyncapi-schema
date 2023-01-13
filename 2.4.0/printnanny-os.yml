@@ -293,9 +293,9 @@ channels:
       message:
         $ref: "#/components/messages/WebrtcRecordingFileNameRequest"
     subscribe:
-      operationId: WebrtcRecordingFileNameResponse
+      operationId: WebrtcRecordingFileNameReply
       message:
-        $ref: "#/components/messages/WebrtcRecordingFileNameResponse"
+        $ref: "#/components/messages/WebrtcRecordingFileNameReply"
 
   pi.{pi_id}.webrtc.recording.started:
     parameters:
@@ -667,7 +667,7 @@ components:
         $ref: "#/components/schemas/SystemdManagerUnitFilesRequest"
 
     SystemdManagerDisableUnitsReply:
-      summary: "Response to SystemdManagerDisableUnitsRequest"
+      summary: "Reply to SystemdManagerDisableUnitsRequest"
       payload:
         x-parser-schema-id: SystemdManagerDisableUnitsReply
         additionalProperties: false
@@ -690,7 +690,7 @@ components:
         $ref: "#/components/schemas/SystemdManagerUnitFilesRequest"
 
     SystemdManagerEnableUnitsReply:
-      summary: "Response to SystemdManagerEnableUnitsRequest"
+      summary: "Reply to SystemdManagerEnableUnitsRequest"
       payload:
         x-parser-schema-id: SystemdManagerEnableUnitsReply
         additionalProperties: false
@@ -950,11 +950,11 @@ components:
       name: WebrtcRecordingFileNameRequest
       summary: "Attempt to get file name of active print job. If no print job is active, camera name will be returned instead."
 
-    WebrtcRecordingFileNameResponse:
-      name: WebrtcRecordingFileNameResponse
+    WebrtcRecordingFileNameReply:
+      name: WebrtcRecordingFileNameReply
       summary: "File name of active print job, or camera name/display if no job is active"
       payload:
-        x-parser-schema-id: WebrtcRecordingFileNameResponse
+        x-parser-schema-id: WebrtcRecordingFileNameReply
         properties:
           file_name:
             type: string
