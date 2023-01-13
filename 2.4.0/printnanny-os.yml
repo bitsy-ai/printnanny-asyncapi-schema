@@ -1374,3 +1374,60 @@ components:
       required:
         - mid
         - file_name
+
+    # OctoPrint schemas, based on REST API: https://docs.octoprint.org/en/master/api/job.html#retrieve-information-about-the-current-job
+    OctoPrintCurrentJob:
+      type: object
+      additionalProperties: false
+      properties:
+        job:
+          $ref: "#/components/schemas/OctoPrintJob"
+        progress:
+          $ref: "#/components/schemas/OctoPrintJobProgress"
+        state:
+          type: string
+        error:
+          type: string
+      required:
+        - job
+        - progress
+        - state
+
+    OctoPrintFile:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+        display:
+          type: string
+        path:
+          type: string
+        origin:
+          type: string
+
+    OctoPrintJob:
+      type: object
+      additionalProperties: false
+      properties:
+        file:
+          $ref: "#/components/schemas/OctoPrintFile"
+        estimatedPrintTime:
+          type: float
+        lastPrintType:
+          type: float
+
+    OctoPrintJobProgress:
+      type: object
+      additionalProperties: false
+      properties:
+        completion:
+          type: float
+        filepos:
+          type: integer
+        printTime:
+          type: integer
+        printTimeLeft:
+          type: integer
+        printTimeLeftOrigin:
+          type: string
