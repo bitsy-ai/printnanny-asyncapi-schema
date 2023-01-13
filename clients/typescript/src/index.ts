@@ -49,6 +49,6 @@ export * from "./SettingsFileApplyRequest";
 export * from "./SettingsFileApplyReply";
 export * from "./SettingsFileRevertRequest";
 export * from "./SettingsFileRevertReply";
-export * from "./WebrtcRecordingFileNameResponse";
+export * from "./WebrtcRecordingFileNameReply";
 export * from "./WebrtcRecording";
 export * from "./WebrtcRecordingMedia";
