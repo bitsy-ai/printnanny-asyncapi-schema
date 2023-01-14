@@ -207,6 +207,20 @@ channels:
       message:
         $ref: "#/components/messages/CamerasLoadRequest"
 
+  pi.{pi_id}.settings.printnanny_os.load:
+    parameters:
+      pi_id:
+        $ref: "#/components/parameters/pi_id"
+    subscribe:
+      operationId: PrintNannyOsSettingsLoadReply
+      message:
+        $ref: "#/components/messages/PrintNannyOsSettingsLoadReply"
+
+    publish:
+      operationId: PrintNannyOsSettingsLoadRequest
+      message:
+        $ref: "#/components/messages/PrintNannyOsSettingsLoadRequest"
+
   pi.{pi_id}.settings.camera.load:
     parameters:
       pi_id:
@@ -513,6 +527,16 @@ components:
         required:
           - status_code
           - msg
+
+    PrintNannyOsSettingsLoadRequest:
+      name: PrintNannyOsSettingsLoadRequest
+      summary: "Load PrintNannyOsSettings"
+
+    PrintNannyOsSettingsLoadReply:
+      name: PrintNannyOsSettingsLoadReply
+      summary: "Load PrintNannyOsSettings"
+      payload:
+        $ref: "#/components/schemas/PrintNannyOsSettings"
 
     SettingsFileLoadRequest:
       name: SettingsFileLoadRequest
@@ -1438,3 +1462,152 @@ components:
           type: integer
         printTimeLeftOrigin:
           type: string
+
+    PrintNannyCloudApiConfig:
+      type: object
+      additionalProperties: false
+      properties:
+        api_base_path:
+          type: string
+        api_bearer_access_token:
+          type: string
+      required:
+        - api_base_path
+
+    GitSettings:
+      type: object
+      additionalProperties: false
+      properties:
+        remote:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+        default_branch:
+          type: string
+      required:
+        - remote
+        - email
+        - name
+        - default_branch
+
+    PathSettings:
+      type: object
+      additionalProperties: false
+      properties:
+        state_dir:
+          type: string
+        settings_dir:
+          type: string
+        log_dir:
+          type: string
+        run_dir:
+          type: string
+        issue_txt:
+          type: string
+        os_release:
+          type: string
+      required:
+        - state_dir
+        - settings_dir
+        - log_dir
+        - run_dir
+        - issue_txt
+        - os_release
+
+    OctoPrintSettings:
+      type: object
+      additionalProperties: false
+      properties:
+        enabled:
+          type: boolean
+        install_dir:
+          type: string
+        settings_file:
+          type: string
+        settings_format:
+          $ref: "#/components/schemas/SettingsFormat"
+        venv:
+          type: string
+      required:
+        - enabled
+        - install_dir
+        - settings_file
+        - settings_format
+        - venv
+
+    KlipperSettings:
+      type: object
+      additionalProperties: false
+      properties:
+        enabled:
+          type: boolean
+        install_dir:
+          type: string
+        settings_file:
+          type: string
+        settings_format:
+          $ref: "#/components/schemas/SettingsFormat"
+        venv:
+          type: string
+      required:
+        - enabled
+        - install_dir
+        - settings_file
+        - settings_format
+        - venv
+
+    MainsailSettings:
+      type: object
+      additionalProperties: false
+      properties:
+        enabled:
+          type: boolean
+        install_dir:
+          type: string
+      required:
+        - enabled
+        - install_dir
+
+    MoonrakerSettings:
+      type: object
+      additionalProperties: false
+      properties:
+        enabled:
+          type: boolean
+        install_dir:
+          type: string
+        settings_file:
+          type: string
+        settings_format:
+          $ref: "#/components/schemas/SettingsFormat"
+        venv:
+          type: string
+      required:
+        - enabled
+        - install_dir
+        - settings_file
+        - settings_format
+        - venv
+
+    PrintNannyOsSettings:
+      type: object
+      additionalProperties: false
+      properties:
+        camera:
+          $ref: "#/components/schemas/PrintNannyCameraSettings"
+        cloud:
+          $ref: "#/components/schemas/PrintNannyCloudApiConfig"
+        git:
+          $ref: "#/components/schemas/GitSettings"
+        paths:
+          $ref: "#/components/schemas/PathSettings"
+        klipper:
+          $ref: "#/components/schemas/KlipperSettings"
+        mainsail:
+          $ref: "#/components/schemas/MainsailSettings"
+        moonraker:
+          $ref: "#/components/schemas/MoonrakerSettings"
+        octoprint:
+          $ref: "#/components/schemas/OctoPrintSettings"
