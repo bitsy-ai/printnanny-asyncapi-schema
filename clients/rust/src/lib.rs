@@ -119,6 +119,9 @@ pub use self::camera_source_type::*;
 pub mod gstreamer_caps;
 pub use self::gstreamer_caps::*;
 
+pub mod print_nanny_os_settings;
+pub use self::print_nanny_os_settings::*;
+
 pub mod print_nanny_camera_settings;
 pub use self::print_nanny_camera_settings::*;
 
@@ -128,6 +131,30 @@ pub use self::print_nanny_detection_settings::*;
 pub mod hls_settings;
 pub use self::hls_settings::*;
 
+pub mod print_nanny_cloud_api_config;
+pub use self::print_nanny_cloud_api_config::*;
+
+pub mod git_settings;
+pub use self::git_settings::*;
+
+pub mod path_settings;
+pub use self::path_settings::*;
+
+pub mod klipper_settings;
+pub use self::klipper_settings::*;
+
+pub mod settings_format;
+pub use self::settings_format::*;
+
+pub mod mainsail_settings;
+pub use self::mainsail_settings::*;
+
+pub mod moonraker_settings;
+pub use self::moonraker_settings::*;
+
+pub mod octo_print_settings;
+pub use self::octo_print_settings::*;
+
 pub mod settings_file_load_reply;
 pub use self::settings_file_load_reply::*;
 
@@ -136,9 +163,6 @@ pub use self::settings_file::*;
 
 pub mod settings_app;
 pub use self::settings_app::*;
-
-pub mod settings_format;
-pub use self::settings_format::*;
 
 pub mod git_commit;
 pub use self::git_commit::*;
