@@ -1026,32 +1026,6 @@ components:
         - interface_name
         - flags
 
-    HlsSettings:
-      name: HlsSettings
-      type: object
-      additionalProperties: false
-      properties:
-        hls_segments:
-          type: string
-          default: "/var/run/printnanny-hls/segment%05d.ts"
-        hls_playlist:
-          type: string
-          default: "/var/run/printnanny-hls/playlist.m3u8"
-        hls_playlist_root:
-          type: string
-          default: "/printnanny-hls/"
-
-        hls_enabled:
-          description: "Enable HLS stream. Required for OctoPrint compatibility"
-          type: boolean
-          default: true
-
-      required:
-        - hls_segments
-        - hls_playlist
-        - hls_playlist_root
-        - hls_enabled
-
     PrintNannyDetectionSettings:
       name: PrintNannyDetectionSettings
       type: object
@@ -1113,7 +1087,12 @@ components:
         - video_framerate
         - video_udp_port
         - detection
-        - hls
+        - hls_segments
+        - hls_playlist
+        - hls_playlist_root
+        - hls_enabled
+        - snapshot_enabled
+        - snapshot_location
         - camera
       properties:
         overlay_udp_port:
@@ -1145,8 +1124,30 @@ components:
         # complex types last, otherwise serde will raise TomlSerError(ValueAfterTable)
         detection:
           $ref: "#/components/schemas/PrintNannyDetectionSettings"
-        hls:
-          $ref: "#/components/schemas/HlsSettings"
+
+        snapshot_enabled:
+          type: boolean
+          default: true
+          description: "Enable JPEG snapshot. Required for OctoPrint timelapse plugin compatibility"
+
+        snapshot_location:
+          type: string
+          default: "/var/run/printnanny-snapshot/%d.jpg"
+
+        hls_segments:
+          type: string
+          default: "/var/run/printnanny-hls/segment%05d.ts"
+        hls_playlist:
+          type: string
+          default: "/var/run/printnanny-hls/playlist.m3u8"
+        hls_playlist_root:
+          type: string
+          default: "/printnanny-hls/"
+
+        hls_enabled:
+          description: "Enable HLS stream. Required for OctoPrint compatibility"
+          type: boolean
+          default: true
         camera:
           $ref: "#/components/schemas/Camera"
 

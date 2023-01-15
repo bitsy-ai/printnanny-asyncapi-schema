@@ -1,5 +1,4 @@
 import {PrintNannyDetectionSettings} from './PrintNannyDetectionSettings';
-import {HlsSettings} from './HlsSettings';
 import {Camera} from './Camera';
 export interface PrintNannyCameraSettings {
   overlay_udp_port: number;
@@ -9,6 +8,11 @@ export interface PrintNannyCameraSettings {
   video_framerate: number;
   video_udp_port: number;
   detection: PrintNannyDetectionSettings;
-  hls: HlsSettings;
+  snapshot_enabled: boolean;
+  snapshot_location: string;
+  hls_segments: string;
+  hls_playlist: string;
+  hls_playlist_root: string;
+  hls_enabled: boolean;
   camera: Camera;
 }

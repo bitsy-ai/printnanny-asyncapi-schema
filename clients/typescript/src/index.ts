@@ -40,7 +40,6 @@ export * from "./GstreamerCaps";
 export * from "./PrintNannyOsSettings";
 export * from "./PrintNannyCameraSettings";
 export * from "./PrintNannyDetectionSettings";
-export * from "./HlsSettings";
 export * from "./PrintNannyCloudApiConfig";
 export * from "./GitSettings";
 export * from "./PathSettings";
