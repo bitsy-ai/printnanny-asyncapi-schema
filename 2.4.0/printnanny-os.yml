@@ -298,36 +298,23 @@ channels:
       message:
         $ref: "#/components/messages/SettingsFileRevertRequest"
 
-  pi.{pi_id}.webrtc.recording.file_name:
+  pi.{pi_id}.camera.recording.started:
     parameters:
       pi_id:
         $ref: "#/components/parameters/pi_id"
     publish:
-      operationId: WebrtcRecordingFileNameRequest
+      operationId: CameraRecordingStarted
       message:
-        $ref: "#/components/messages/WebrtcRecordingFileNameRequest"
-    subscribe:
-      operationId: WebrtcRecordingFileNameReply
-      message:
-        $ref: "#/components/messages/WebrtcRecordingFileNameReply"
+        $ref: "#/components/messages/CameraRecordingStarted"
 
-  pi.{pi_id}.webrtc.recording.started:
+  pi.{pi_id}.camera.recording.stopped:
     parameters:
       pi_id:
         $ref: "#/components/parameters/pi_id"
     publish:
-      operationId: WebrtcRecordingStarted
+      operationId: CameraRecordingStopped
       message:
-        $ref: "#/components/messages/WebrtcRecordingStarted"
-
-  pi.{pi_id}.webrtc.recording.stopped:
-    parameters:
-      pi_id:
-        $ref: "#/components/parameters/pi_id"
-    publish:
-      operationId: WebrtcRecordingStopped
-      message:
-        $ref: "#/components/messages/WebrtcRecordingStopped"
+        $ref: "#/components/messages/CameraRecordingStopped"
 
 components:
   messages:
@@ -354,13 +341,13 @@ components:
       name: CameraSettingsFileApplyRequest
       summary: "Apply webrtc video stream settings"
       payload:
-        $ref: "#/components/schemas/PrintNannyCameraSettings"
+        $ref: "#/components/schemas/VideoStreamSettings"
 
     CameraSettingsFileApplyReply:
       name: CameraSettingsFileApplyReply
       summary: "Apply webrtc video stream settings"
       payload:
-        $ref: "#/components/schemas/PrintNannyCameraSettings"
+        $ref: "#/components/schemas/VideoStreamSettings"
 
     CameraSettingsFileLoadRequest:
       name: CameraSettingsFileLoadRequest
@@ -370,7 +357,7 @@ components:
       name: CameraSettingsFileLoadReply
       summary: "Load PrintNannySettings.camera settings fieldset"
       payload:
-        $ref: "#/components/schemas/PrintNannyCameraSettings"
+        $ref: "#/components/schemas/VideoStreamSettings"
 
     CrashReportOsLogsRequest:
       name: CrashReportOsLogsRequest
@@ -958,36 +945,17 @@ components:
           - subject_pattern
           - request
 
-    WebrtcRecordingStarted:
-      name: WebrtcRecordingStarted
+    CameraRecordingStarted:
+      name: CameraRecordingStarted
       summary: "Janus WebRTC gateway has started saving RTP packets to .mjr"
       payload:
-        $ref: "#/components/schemas/WebrtcRecording"
+        $ref: "#/components/schemas/VideoRecording"
 
-    WebrtcRecordingStopped:
-      name: WebrtcRecordingStopped
+    CameraRecordingStopped:
+      name: CameraRecordingStopped
       summary: "Janus WebRTC gateway has stopped saving RTP packets to .mjr"
       payload:
-        $ref: "#/components/schemas/WebrtcRecording"
-
-    WebrtcRecordingFileNameRequest:
-      name: WebrtcRecordingFileNameRequest
-      summary: "Attempt to get file name of active print job. If no print job is active, camera name will be returned instead."
-
-    WebrtcRecordingFileNameReply:
-      name: WebrtcRecordingFileNameReply
-      summary: "File name of active print job, or camera name/display if no job is active"
-      payload:
-        x-parser-schema-id: WebrtcRecordingFileNameReply
-        properties:
-          file_name:
-            type: string
-          ts:
-            type: integer
-            format: int64
-        required:
-          - file_name
-          - ts
+        $ref: "#/components/schemas/VideoRecording"
 
     # OctoPrintCurrentJob
     OctoPrintCurrentJob:
@@ -1026,7 +994,7 @@ components:
         - interface_name
         - flags
 
-    PrintNannyDetectionSettings:
+    DetectionSettings:
       name: PrintNannyDetectionSettings
       type: object
       additionalProperties: false
@@ -1075,81 +1043,102 @@ components:
         - tensor_width
         - tensor_batch_size
 
-    PrintNannyCameraSettings:
-      name: PrintNannyCameraSettings
+    HlsSettings:
+      name: VideoStreamSettings
       type: object
       additionalProperties: false
-      required:
-        - overlay_udp_port
-        - preview
-        - record_video
-        - cloud_backup
-        - video_framerate
-        - video_udp_port
-        - detection
-        - hls_segments
-        - hls_playlist
-        - hls_playlist_root
-        - hls_enabled
-        - snapshot_enabled
-        - snapshot_location
-        - camera
       properties:
+        segments:
+          type: string
+          default: "/var/run/printnanny-hls/segment%05d.ts"
+        playlist:
+          type: string
+          default: "/var/run/printnanny-hls/playlist.m3u8"
+        playlist_root:
+          type: string
+          default: "/printnanny-hls/"
+        enabled:
+          description: "Enable HLS stream. Required for OctoPrint compatibility"
+          type: boolean
+          default: true
+      required:
+        - segments
+        - playlist
+        - playlist_root
+        - enabled
+
+    SnapshotSettings:
+      name: SnapshotSettings
+      type: object
+      additionalProperties: false
+      properties:
+        path:
+          type: string
+          default: "/var/run/printnanny-snapshot/%d.jpg"
+        enabled:
+          description: "Enable JPEG snapshot. Required for OctoPrint timelapse plugin compatibility."
+          type: boolean
+          default: true
+      required:
+        - segments
+        - playlist
+        - playlist_root
+        - enabled
+
+    RecordingSettings:
+      name: RecordingSettings
+      type: object
+      additionalProperties: false
+      properties:
+        path:
+          type: string
+          default: "~/.local/share/printnanny/video"
+        auto_start:
+          description: "Automatically start recordings when a print job begins"
+        cloud_sync:
+          description: "Backup recordings to PrintNanny Cloud"
+          type: boolean
+          default: true
+      required:
+        - auto_start
+        - cloud_sync
+
+    RtpSettings:
+      name: RtpSettings
+      type: object
+      additionalProperties: false
+      properties:
+        video_udp_port:
+          type: integer
+          default: 20001
         overlay_udp_port:
           type: integer
           default: 20002
 
-        record_video:
-          description: "Save video recordings to Raspberry Pi SD Card"
-          type: boolean
-          default: true
-
-        cloud_backup:
-          description: "Backup video recordings to PrintNanny Cloud"
-          type: boolean
-          default: true
-
-        preview:
-          description: "Show X-video preview, used for debugging purposes"
-          type: boolean
-          default: false
-
-        video_framerate:
-          type: integer
-          default: 16
-
-        video_udp_port:
-          type: integer
-          default: 20001
-        # complex types last, otherwise serde will raise TomlSerError(ValueAfterTable)
-        detection:
-          $ref: "#/components/schemas/PrintNannyDetectionSettings"
-
-        snapshot_enabled:
-          type: boolean
-          default: true
-          description: "Enable JPEG snapshot. Required for OctoPrint timelapse plugin compatibility"
-
-        snapshot_location:
-          type: string
-          default: "/var/run/printnanny-snapshot/%d.jpg"
-
-        hls_segments:
-          type: string
-          default: "/var/run/printnanny-hls/segment%05d.ts"
-        hls_playlist:
-          type: string
-          default: "/var/run/printnanny-hls/playlist.m3u8"
-        hls_playlist_root:
-          type: string
-          default: "/printnanny-hls/"
-
-        hls_enabled:
-          description: "Enable HLS stream. Required for OctoPrint compatibility"
-          type: boolean
-          default: true
+    VideoStreamSettings:
+      name: VideoStreamSettings
+      type: object
+      additionalProperties: false
+      required:
+        - camera
+        - detection
+        - hls
+        - recording
+        - rtp
+        - snapshot
+      properties:
         camera:
           $ref: "#/components/schemas/Camera"
+        detection:
+          $ref: "#/components/schemas/DetectionSettings"
+        hls:
+          $ref: "#/components/schemas/HlsSettings"
+        recording:
+          $ref: "#/components/schemas/RecordingSettings"
+        rtp:
+          $ref: "#/components/schemas/RtpSettings"
+        snapshot:
+          $ref: "#/components/schemas/SnapshotSettings"
 
     CameraSourceType:
       type: string
@@ -1172,6 +1161,11 @@ components:
           type: integer
         device_name:
           type: string
+
+        framerate:
+          type: integer
+          default: 16
+
         label:
           type: string
         src_type:
@@ -1383,29 +1377,27 @@ components:
       required:
         - files
 
-    WebrtcRecording:
+    VideoRecording:
       type: object
       additionalProperties: false
       properties:
-        media:
-          type: array
-          additionalItems: false
-          items:
-            $ref: "#/components/schemas/WebrtcRecordingMedia"
-        mountpoint:
+        id:
           type: string
+        recording_file_name:
+          type: string
+        gcode_file-name:
+          type: string
+        ts:
+          type: integer
+          format: int64
+        cloud_sync_done:
+          type: boolean
 
-    WebrtcRecordingMedia:
-      type: object
-      additionalProperties: false
-      properties:
-        mid:
-          type: string
-        file_name:
-          type: string
       required:
-        - mid
-        - file_name
+        - id
+        - recording_file_name
+        - ts
+        - cloud_sync_done
 
     # OctoPrint schemas, based on REST API: https://docs.octoprint.org/en/master/api/job.html#retrieve-information-about-the-current-job
     OctoPrintCurrentJob:
@@ -1597,7 +1589,7 @@ components:
       additionalProperties: false
       properties:
         camera:
-          $ref: "#/components/schemas/PrintNannyCameraSettings"
+          $ref: "#/components/schemas/VideoStreamSettings"
         cloud:
           $ref: "#/components/schemas/PrintNannyCloudApiConfig"
         git:

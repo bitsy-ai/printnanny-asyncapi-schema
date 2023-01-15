@@ -1,4 +1,4 @@
-import {PrintNannyCameraSettings} from './PrintNannyCameraSettings';
+import {VideoStreamSettings} from './VideoStreamSettings';
 import {PrintNannyCloudApiConfig} from './PrintNannyCloudApiConfig';
 import {GitSettings} from './GitSettings';
 import {PathSettings} from './PathSettings';
@@ -7,7 +7,7 @@ import {MainsailSettings} from './MainsailSettings';
 import {MoonrakerSettings} from './MoonrakerSettings';
 import {OctoPrintSettings} from './OctoPrintSettings';
 export interface PrintNannyOsSettings {
-  camera?: PrintNannyCameraSettings;
+  camera?: VideoStreamSettings;
   cloud?: PrintNannyCloudApiConfig;
   git?: GitSettings;
   paths?: PathSettings;
