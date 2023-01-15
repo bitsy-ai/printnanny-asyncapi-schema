@@ -128,9 +128,6 @@ pub use self::print_nanny_camera_settings::*;
 pub mod print_nanny_detection_settings;
 pub use self::print_nanny_detection_settings::*;
 
-pub mod hls_settings;
-pub use self::hls_settings::*;
-
 pub mod print_nanny_cloud_api_config;
 pub use self::print_nanny_cloud_api_config::*;
 
