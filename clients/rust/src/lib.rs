@@ -122,11 +122,23 @@ pub use self::gstreamer_caps::*;
 pub mod print_nanny_os_settings;
 pub use self::print_nanny_os_settings::*;
 
-pub mod print_nanny_camera_settings;
-pub use self::print_nanny_camera_settings::*;
+pub mod video_stream_settings;
+pub use self::video_stream_settings::*;
 
-pub mod print_nanny_detection_settings;
-pub use self::print_nanny_detection_settings::*;
+pub mod detection_settings;
+pub use self::detection_settings::*;
+
+pub mod hls_settings;
+pub use self::hls_settings::*;
+
+pub mod recording_settings;
+pub use self::recording_settings::*;
+
+pub mod rtp_settings;
+pub use self::rtp_settings::*;
+
+pub mod snapshot_settings;
+pub use self::snapshot_settings::*;
 
 pub mod print_nanny_cloud_api_config;
 pub use self::print_nanny_cloud_api_config::*;
@@ -176,14 +188,8 @@ pub use self::settings_file_revert_request::*;
 pub mod settings_file_revert_reply;
 pub use self::settings_file_revert_reply::*;
 
-pub mod webrtc_recording_file_name_reply;
-pub use self::webrtc_recording_file_name_reply::*;
-
-pub mod webrtc_recording;
-pub use self::webrtc_recording::*;
-
-pub mod webrtc_recording_media;
-pub use self::webrtc_recording_media::*;
+pub mod video_recording;
+pub use self::video_recording::*;
 
 pub mod octo_print_current_job;
 pub use self::octo_print_current_job::*;

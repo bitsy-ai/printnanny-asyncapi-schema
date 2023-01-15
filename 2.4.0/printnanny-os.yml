@@ -305,7 +305,7 @@ channels:
     publish:
       operationId: CameraRecordingStarted
       message:
-        $ref: "#/components/messages/CameraStarted"
+        $ref: "#/components/messages/CameraRecordingStarted"
 
   pi.{pi_id}.camera.recording.stopped:
     parameters:
@@ -314,7 +314,7 @@ channels:
     publish:
       operationId: CameraRecordingStopped
       message:
-        $ref: "#/components/messages/CameraStopped"
+        $ref: "#/components/messages/CameraRecordingStopped"
 
 components:
   messages:
@@ -341,13 +341,13 @@ components:
       name: CameraSettingsFileApplyRequest
       summary: "Apply webrtc video stream settings"
       payload:
-        $ref: "#/components/schemas/PrintNannyCameraSettings"
+        $ref: "#/components/schemas/VideoStreamSettings"
 
     CameraSettingsFileApplyReply:
       name: CameraSettingsFileApplyReply
       summary: "Apply webrtc video stream settings"
       payload:
-        $ref: "#/components/schemas/PrintNannyCameraSettings"
+        $ref: "#/components/schemas/VideoStreamSettings"
 
     CameraSettingsFileLoadRequest:
       name: CameraSettingsFileLoadRequest
@@ -357,7 +357,7 @@ components:
       name: CameraSettingsFileLoadReply
       summary: "Load PrintNannySettings.camera settings fieldset"
       payload:
-        $ref: "#/components/schemas/PrintNannyCameraSettings"
+        $ref: "#/components/schemas/VideoStreamSettings"
 
     CrashReportOsLogsRequest:
       name: CrashReportOsLogsRequest
@@ -946,16 +946,16 @@ components:
           - request
 
     CameraRecordingStarted:
-      name: WebrtcRecordingStarted
+      name: CameraRecordingStarted
       summary: "Janus WebRTC gateway has started saving RTP packets to .mjr"
       payload:
-        $ref: "#/components/schemas/WebrtcRecording"
+        $ref: "#/components/schemas/VideoRecording"
 
     CameraRecordingStopped:
-      name: WebrtcRecordingStopped
+      name: CameraRecordingStopped
       summary: "Janus WebRTC gateway has stopped saving RTP packets to .mjr"
       payload:
-        $ref: "#/components/schemas/WebrtcRecording"
+        $ref: "#/components/schemas/VideoRecording"
 
     # OctoPrintCurrentJob
     OctoPrintCurrentJob:
@@ -1044,7 +1044,7 @@ components:
         - tensor_batch_size
 
     HlsSettings:
-      name: PrintNannyCameraSettings
+      name: VideoStreamSettings
       type: object
       additionalProperties: false
       properties:
@@ -1072,7 +1072,7 @@ components:
       type: object
       additionalProperties: false
       properties:
-        location:
+        path:
           type: string
           default: "/var/run/printnanny-snapshot/%d.jpg"
         enabled:
@@ -1090,7 +1090,9 @@ components:
       type: object
       additionalProperties: false
       properties:
-        location: "~/.local/share/printnanny/video"
+        path:
+          type: string
+          default: "~/.local/share/printnanny/video"
         auto_start:
           description: "Automatically start recordings when a print job begins"
         cloud_sync:
@@ -1114,7 +1116,7 @@ components:
           default: 20002
 
     VideoStreamSettings:
-      name: PrintNannyCameraSettings
+      name: VideoStreamSettings
       type: object
       additionalProperties: false
       required:
@@ -1379,13 +1381,23 @@ components:
       type: object
       additionalProperties: false
       properties:
-        media:
-          type: array
-          additionalItems: false
-          items:
-            $ref: "#/components/schemas/WebrtcRecordingMedia"
-        mountpoint:
+        id:
           type: string
+        recording_file_name:
+          type: string
+        gcode_file-name:
+          type: string
+        ts:
+          type: integer
+          format: int64
+        cloud_sync_done:
+          type: boolean
+
+      required:
+        - id
+        - recording_file_name
+        - ts
+        - cloud_sync_done
 
     # OctoPrint schemas, based on REST API: https://docs.octoprint.org/en/master/api/job.html#retrieve-information-about-the-current-job
     OctoPrintCurrentJob:
@@ -1577,7 +1589,7 @@ components:
       additionalProperties: false
       properties:
         camera:
-          $ref: "#/components/schemas/PrintNannyCameraSettings"
+          $ref: "#/components/schemas/VideoStreamSettings"
         cloud:
           $ref: "#/components/schemas/PrintNannyCloudApiConfig"
         git:

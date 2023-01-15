@@ -2,7 +2,7 @@
 #[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
 pub struct PrintNannyOsSettings {
     #[serde(rename="camera", skip_serializing_if = "Option::is_none")]
-    pub camera: Option<Box<crate::PrintNannyCameraSettings>>,
+    pub camera: Option<Box<crate::VideoStreamSettings>>,
     #[serde(rename="cloud", skip_serializing_if = "Option::is_none")]
     pub cloud: Option<Box<crate::PrintNannyCloudApiConfig>>,
     #[serde(rename="git", skip_serializing_if = "Option::is_none")]
@@ -20,7 +20,7 @@ pub struct PrintNannyOsSettings {
 }
 
 impl PrintNannyOsSettings {
-    pub fn new(camera: Option<crate::PrintNannyCameraSettings>, cloud: Option<crate::PrintNannyCloudApiConfig>, git: Option<crate::GitSettings>, paths: Option<crate::PathSettings>, klipper: Option<crate::KlipperSettings>, mainsail: Option<crate::MainsailSettings>, moonraker: Option<crate::MoonrakerSettings>, octoprint: Option<crate::OctoPrintSettings>) -> PrintNannyOsSettings {
+    pub fn new(camera: Option<crate::VideoStreamSettings>, cloud: Option<crate::PrintNannyCloudApiConfig>, git: Option<crate::GitSettings>, paths: Option<crate::PathSettings>, klipper: Option<crate::KlipperSettings>, mainsail: Option<crate::MainsailSettings>, moonraker: Option<crate::MoonrakerSettings>, octoprint: Option<crate::OctoPrintSettings>) -> PrintNannyOsSettings {
         PrintNannyOsSettings {
             camera: camera.map(Box::new),
             cloud: cloud.map(Box::new),

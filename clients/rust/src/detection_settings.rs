@@ -1,6 +1,6 @@
-// PrintNannyDetectionSettings represents a PrintNannyDetectionSettings model.
+// DetectionSettings represents a DetectionSettings model.
 #[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
-pub struct PrintNannyDetectionSettings {
+pub struct DetectionSettings {
     #[serde(rename="nats_server_uri")]
     pub nats_server_uri: String,
     #[serde(rename="label_file")]
@@ -23,9 +23,9 @@ pub struct PrintNannyDetectionSettings {
     pub graphs: bool,
 }
 
-impl PrintNannyDetectionSettings {
-    pub fn new(nats_server_uri: String, label_file: String, model_file: String, nms_threshold: i32, tensor_batch_size: i32, tensor_framerate: i32, tensor_height: i32, tensor_width: i32, overlay: bool, graphs: bool) -> PrintNannyDetectionSettings {
-        PrintNannyDetectionSettings {
+impl DetectionSettings {
+    pub fn new(nats_server_uri: String, label_file: String, model_file: String, nms_threshold: i32, tensor_batch_size: i32, tensor_framerate: i32, tensor_height: i32, tensor_width: i32, overlay: bool, graphs: bool) -> DetectionSettings {
+        DetectionSettings {
             nats_server_uri,
             label_file,
             model_file,

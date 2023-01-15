@@ -1,5 +1,5 @@
 
-export interface PrintNannyDetectionSettings {
+export interface DetectionSettings {
   nats_server_uri: string;
   label_file: string;
   model_file: string;
