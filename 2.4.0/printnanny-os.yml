@@ -1094,6 +1094,7 @@ components:
           type: string
           default: "~/.local/share/printnanny/video"
         auto_start:
+          type: boolean
           description: "Automatically start recordings when a print job begins"
         cloud_sync:
           description: "Backup recordings to PrintNanny Cloud"
@@ -1588,10 +1589,10 @@ components:
       type: object
       additionalProperties: false
       properties:
-        camera:
-          $ref: "#/components/schemas/VideoStreamSettings"
         cloud:
           $ref: "#/components/schemas/PrintNannyCloudApiConfig"
+        video:
+          $ref: "#/components/schemas/VideoStreamSettings"
         git:
           $ref: "#/components/schemas/GitSettings"
         paths:
@@ -1604,3 +1605,12 @@ components:
           $ref: "#/components/schemas/MoonrakerSettings"
         octoprint:
           $ref: "#/components/schemas/OctoPrintSettings"
+      required:
+        - cloud
+        - video
+        - git
+        - paths
+        - klipper
+        - mainsail
+        - moonraker
+        - octoprint

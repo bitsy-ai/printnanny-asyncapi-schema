@@ -122,6 +122,9 @@ pub use self::gstreamer_caps::*;
 pub mod print_nanny_os_settings;
 pub use self::print_nanny_os_settings::*;
 
+pub mod print_nanny_cloud_api_config;
+pub use self::print_nanny_cloud_api_config::*;
+
 pub mod video_stream_settings;
 pub use self::video_stream_settings::*;
 
@@ -139,9 +142,6 @@ pub use self::rtp_settings::*;
 
 pub mod snapshot_settings;
 pub use self::snapshot_settings::*;
-
-pub mod print_nanny_cloud_api_config;
-pub use self::print_nanny_cloud_api_config::*;
 
 pub mod git_settings;
 pub use self::git_settings::*;
