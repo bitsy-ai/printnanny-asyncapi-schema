@@ -128,6 +128,9 @@ pub use self::print_nanny_cloud_api_config::*;
 pub mod video_stream_settings;
 pub use self::video_stream_settings::*;
 
+pub mod camera_settings;
+pub use self::camera_settings::*;
+
 pub mod detection_settings;
 pub use self::detection_settings::*;
 
