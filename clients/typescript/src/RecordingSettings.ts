@@ -1,6 +1,6 @@
 
 export interface RecordingSettings {
-  path?: string;
+  path: string;
   auto_start: boolean;
   cloud_sync: boolean;
 }
