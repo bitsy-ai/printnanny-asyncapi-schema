@@ -1123,10 +1123,13 @@ components:
       properties:
         height:
           type: integer
+          default: 480
         width:
           type: integer
+          default: 640
         framerate:
-          type: number
+          type: integer
+          default: 16
         device_name:
           type: string
           description: "Path to device, e.g. /base/soc/i2c0mux/i2c@1/imx219@10 for an imx219 camera sensor"
@@ -1188,11 +1191,6 @@ components:
           type: integer
         device_name:
           type: string
-
-        framerate:
-          type: integer
-          default: 16
-
         label:
           type: string
         src_type:
