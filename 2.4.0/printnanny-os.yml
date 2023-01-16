@@ -1080,9 +1080,7 @@ components:
           type: boolean
           default: true
       required:
-        - segments
-        - playlist
-        - playlist_root
+        - path
         - enabled
 
     RecordingSettings:
@@ -1101,6 +1099,7 @@ components:
           type: boolean
           default: true
       required:
+        - path
         - auto_start
         - cloud_sync
 
