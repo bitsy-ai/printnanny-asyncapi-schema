@@ -1116,6 +1116,32 @@ components:
           type: integer
           default: 20002
 
+    CameraSettings:
+      name: CameraSettings
+      type: object
+      additionalProperties: false
+      properties:
+        height:
+          type: integer
+        width:
+          type: integer
+        framerate:
+          type: number
+        device_name:
+          type: string
+          description: "Path to device, e.g. /base/soc/i2c0mux/i2c@1/imx219@10 for an imx219 camera sensor"
+          default: "/base/soc/i2c0mux/i2c@1/imx219@10"
+        label:
+          type: string
+          description: "Friendly human-readable label for camera"
+          default: "Raspberry Pi imx219"
+      required:
+        - height
+        - width
+        - framerate
+        - device_name
+        - label
+
     VideoStreamSettings:
       name: VideoStreamSettings
       type: object
@@ -1129,7 +1155,7 @@ components:
         - snapshot
       properties:
         camera:
-          $ref: "#/components/schemas/Camera"
+          $ref: "#/components/schemas/CameraSettings"
         detection:
           $ref: "#/components/schemas/DetectionSettings"
         hls:

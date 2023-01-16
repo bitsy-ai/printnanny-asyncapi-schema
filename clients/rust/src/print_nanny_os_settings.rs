@@ -1,26 +1,35 @@
 // PrintNannyOsSettings represents a PrintNannyOsSettings model.
-#[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
+#[derive(Clone, Debug, Deserialize, PartialEq, PartialOrd, Serialize)]
 pub struct PrintNannyOsSettings {
-    #[serde(rename="cloud")]
+    #[serde(rename = "cloud")]
     pub cloud: Box<crate::PrintNannyCloudApiConfig>,
-    #[serde(rename="video")]
+    #[serde(rename = "video")]
     pub video: Box<crate::VideoStreamSettings>,
-    #[serde(rename="git")]
+    #[serde(rename = "git")]
     pub git: Box<crate::GitSettings>,
-    #[serde(rename="paths")]
+    #[serde(rename = "paths")]
     pub paths: Box<crate::PathSettings>,
-    #[serde(rename="klipper")]
+    #[serde(rename = "klipper")]
     pub klipper: Box<crate::KlipperSettings>,
-    #[serde(rename="mainsail")]
+    #[serde(rename = "mainsail")]
     pub mainsail: Box<crate::MainsailSettings>,
-    #[serde(rename="moonraker")]
+    #[serde(rename = "moonraker")]
     pub moonraker: Box<crate::MoonrakerSettings>,
-    #[serde(rename="octoprint")]
+    #[serde(rename = "octoprint")]
     pub octoprint: Box<crate::OctoPrintSettings>,
 }
 
 impl PrintNannyOsSettings {
-    pub fn new(cloud: crate::PrintNannyCloudApiConfig, video: crate::VideoStreamSettings, git: crate::GitSettings, paths: crate::PathSettings, klipper: crate::KlipperSettings, mainsail: crate::MainsailSettings, moonraker: crate::MoonrakerSettings, octoprint: crate::OctoPrintSettings) -> PrintNannyOsSettings {
+    pub fn new(
+        cloud: crate::PrintNannyCloudApiConfig,
+        video: crate::VideoStreamSettings,
+        git: crate::GitSettings,
+        paths: crate::PathSettings,
+        klipper: crate::KlipperSettings,
+        mainsail: crate::MainsailSettings,
+        moonraker: crate::MoonrakerSettings,
+        octoprint: crate::OctoPrintSettings,
+    ) -> PrintNannyOsSettings {
         PrintNannyOsSettings {
             cloud: Box::new(cloud),
             video: Box::new(video),

@@ -40,6 +40,7 @@ export * from "./GstreamerCaps";
 export * from "./PrintNannyOsSettings";
 export * from "./PrintNannyCloudApiConfig";
 export * from "./VideoStreamSettings";
+export * from "./CameraSettings";
 export * from "./DetectionSettings";
 export * from "./HlsSettings";
 export * from "./RecordingSettings";
