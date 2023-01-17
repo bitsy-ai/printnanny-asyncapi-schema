@@ -197,6 +197,9 @@ pub use self::camera_recording_current_reply::*;
 pub mod video_recording;
 pub use self::video_recording::*;
 
+pub mod video_recording_status;
+pub use self::video_recording_status::*;
+
 pub mod octo_print_current_job;
 pub use self::octo_print_current_job::*;
 

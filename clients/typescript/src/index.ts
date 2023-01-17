@@ -63,6 +63,7 @@ export * from "./SettingsFileRevertRequest";
 export * from "./SettingsFileRevertReply";
 export * from "./CameraRecordingCurrentReply";
 export * from "./VideoRecording";
+export * from "./VideoRecordingStatus";
 export * from "./OctoPrintCurrentJob";
 export * from "./OctoPrintJob";
 export * from "./OctoPrintFile";
