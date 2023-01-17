@@ -61,6 +61,7 @@ export * from "./SettingsFileApplyRequest";
 export * from "./SettingsFileApplyReply";
 export * from "./SettingsFileRevertRequest";
 export * from "./SettingsFileRevertReply";
+export * from "./CameraRecordingCurrentReply";
 export * from "./VideoRecording";
 export * from "./OctoPrintCurrentJob";
 export * from "./OctoPrintJob";
