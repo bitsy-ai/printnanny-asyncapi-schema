@@ -1468,12 +1468,21 @@ components:
       required:
         - files
 
+    VideoRecordingStatus:
+      type: string
+      enum:
+        - pending
+        - inprogress
+        - done
+
     VideoRecording:
       type: object
       additionalProperties: false
       properties:
         id:
           type: string
+        recording_status:
+          $ref: "#/components/schemas/VideoRecordingStatus"
         recording_start:
           type: integer
           format: int64
@@ -1484,6 +1493,8 @@ components:
           type: string
         gcode_file-name:
           type: string
+        cloud_sync_status:
+          $ref: "#/components/schemas/VideoRecordingStatus"
         cloud_sync_start:
           type: integer
           format: int64
@@ -1493,6 +1504,8 @@ components:
       required:
         - id
         - recording_file_name
+        - recording_status
+        - cloud_sync_status
 
     # OctoPrint schemas, based on REST API: https://docs.octoprint.org/en/master/api/job.html#retrieve-information-about-the-current-job
     OctoPrintCurrentJob:
