@@ -309,7 +309,7 @@ channels:
         $ref: "#/components/messages/CameraRecordingStartRequest"
 
     subscribe:
-      operationId: CameraRecordingStopReply
+      operationId: CameraRecordingStartReply
       message:
         $ref: "#/components/messages/CameraRecordingStarted"
 
@@ -973,10 +973,6 @@ components:
           - error
           - subject_pattern
           - request
-
-    CameraRecordingStartRequest:
-      name: CameraRecordingStartRequest
-      summary: "Start recording active camera"
 
     CameraRecordingStopRequest:
       name: CameraRecordingStopRequest
