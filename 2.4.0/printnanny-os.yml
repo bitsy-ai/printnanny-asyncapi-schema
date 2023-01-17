@@ -1203,6 +1203,9 @@ components:
         framerate:
           type: integer
           default: 16
+        format:
+          description: "Gstreamer video format: https://gstreamer.freedesktop.org/documentation/video/video-format.html?gi-language=c"
+          type: string
         device_name:
           type: string
           description: "Path to device, e.g. /base/soc/i2c0mux/i2c@1/imx219@10 for an imx219 camera sensor"
@@ -1217,6 +1220,7 @@ components:
         - framerate
         - device_name
         - label
+        - format
 
     VideoStreamSettings:
       name: VideoStreamSettings
