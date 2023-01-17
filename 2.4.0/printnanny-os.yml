@@ -299,19 +299,19 @@ channels:
         $ref: "#/components/messages/SettingsFileRevertRequest"
 
   # commands follow request/reply pattern
-  pi.{pi_id}.command.camera.recording.current:
+  pi.{pi_id}.command.camera.recording.load:
     parameters:
       pi_id:
         $ref: "#/components/parameters/pi_id"
     publish:
-      operationId: CameraRecordingCurrentRequest
+      operationId: CameraRecordingLoadRequest
       message:
-        $ref: "#/components/messages/CameraRecordingCurrentRequest"
+        $ref: "#/components/messages/CameraRecordingLoadRequest"
 
     subscribe:
-      operationId: CameraRecordingStatus
+      operationId: CameraRecordingLoadReply
       message:
-        $ref: "#/components/messages/CameraRecordingCurrentReply"
+        $ref: "#/components/messages/CameraRecordingLoadReply"
 
   pi.{pi_id}.command.camera.recording.start:
     parameters:
@@ -988,18 +988,25 @@ components:
           - subject_pattern
           - request
 
-    CameraRecordingCurrentRequest:
-      name: CameraRecordingStatusRequest
+    CameraRecordingLoadRequest:
+      name: CameraRecordingLoadRequest
       summary: "Get current recording status"
 
-    CameraRecordingCurrentReply:
-      name: CameraRecordingCurrentReply
+    CameraRecordingLoadReply:
+      name: CameraRecordingLoadReply
       payload:
-        x-parser-schema-id: CameraRecordingCurrentReply
+        x-parser-schema-id: CameraRecordingLoadReply
         type: object
         properties:
-          current_recording:
+          recordings:
+            type: array
+            additionalItems: false
+            items:
+              $ref: "#/components/schemas/VideoRecording"
+          current:
             $ref: "#/components/schemas/VideoRecording"
+        required:
+          - recordings
 
     CameraRecordingStartRequest:
       name: CameraRecordingStartRequest
