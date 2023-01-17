@@ -299,6 +299,20 @@ channels:
         $ref: "#/components/messages/SettingsFileRevertRequest"
 
   # commands follow request/reply pattern
+  pi.{pi_id}.command.camera.recording.current:
+    parameters:
+      pi_id:
+        $ref: "#/components/parameters/pi_id"
+    publish:
+      operationId: CameraRecordingCurrentRequest
+      message:
+        $ref: "#/components/messages/CameraRecordingCurrentRequest"
+
+    subscribe:
+      operationId: CameraRecordingStatus
+      message:
+        $ref: "#/components/messages/CameraRecordingCurrentReply"
+
   pi.{pi_id}.command.camera.recording.start:
     parameters:
       pi_id:
@@ -973,6 +987,23 @@ components:
           - error
           - subject_pattern
           - request
+
+    CameraRecordingCurrentRequest:
+      name: CameraRecordingStatusRequest
+      summary: "Get current recording status"
+
+    CameraRecordingCurrentReply:
+      name: CameraRecordingCurrentReply
+      payload:
+        x-parser-schema-id: CameraRecordingCurrentReply
+        type: object
+        properties:
+          current_recording:
+            $ref: "#/components/schemas/VideoRecording"
+
+    CameraRecordingStartRequest:
+      name: CameraRecordingStartRequest
+      summary: "Start a new camera recording"
 
     CameraRecordingStopRequest:
       name: CameraRecordingStopRequest
