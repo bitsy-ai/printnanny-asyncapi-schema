@@ -191,8 +191,14 @@ pub use self::settings_file_revert_request::*;
 pub mod settings_file_revert_reply;
 pub use self::settings_file_revert_reply::*;
 
+pub mod camera_recording_current_reply;
+pub use self::camera_recording_current_reply::*;
+
 pub mod video_recording;
 pub use self::video_recording::*;
+
+pub mod video_recording_status;
+pub use self::video_recording_status::*;
 
 pub mod octo_print_current_job;
 pub use self::octo_print_current_job::*;

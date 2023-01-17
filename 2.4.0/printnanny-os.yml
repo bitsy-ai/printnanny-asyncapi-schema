@@ -298,7 +298,50 @@ channels:
       message:
         $ref: "#/components/messages/SettingsFileRevertRequest"
 
-  pi.{pi_id}.camera.recording.started:
+  # commands follow request/reply pattern
+  pi.{pi_id}.command.camera.recording.current:
+    parameters:
+      pi_id:
+        $ref: "#/components/parameters/pi_id"
+    publish:
+      operationId: CameraRecordingCurrentRequest
+      message:
+        $ref: "#/components/messages/CameraRecordingCurrentRequest"
+
+    subscribe:
+      operationId: CameraRecordingStatus
+      message:
+        $ref: "#/components/messages/CameraRecordingCurrentReply"
+
+  pi.{pi_id}.command.camera.recording.start:
+    parameters:
+      pi_id:
+        $ref: "#/components/parameters/pi_id"
+    publish:
+      operationId: CameraRecordingStartRequest
+      message:
+        $ref: "#/components/messages/CameraRecordingStartRequest"
+
+    subscribe:
+      operationId: CameraRecordingStartReply
+      message:
+        $ref: "#/components/messages/CameraRecordingStarted"
+
+  pi.{pi_id}.command.camera.recording.stop:
+    parameters:
+      pi_id:
+        $ref: "#/components/parameters/pi_id"
+    publish:
+      operationId: CameraRecordingStopRequest
+      message:
+        $ref: "#/components/messages/CameraRecordingStopRequest"
+    subscribe:
+      operationId: CameraRecordingStopReply
+      message:
+        $ref: "#/components/messages/CameraRecordingStopped"
+
+  # events are emitted in one direction
+  pi.{pi_id}.event.camera.recording.started:
     parameters:
       pi_id:
         $ref: "#/components/parameters/pi_id"
@@ -307,7 +350,7 @@ channels:
       message:
         $ref: "#/components/messages/CameraRecordingStarted"
 
-  pi.{pi_id}.camera.recording.stopped:
+  pi.{pi_id}.event.camera.recording.stopped:
     parameters:
       pi_id:
         $ref: "#/components/parameters/pi_id"
@@ -945,15 +988,36 @@ components:
           - subject_pattern
           - request
 
+    CameraRecordingCurrentRequest:
+      name: CameraRecordingStatusRequest
+      summary: "Get current recording status"
+
+    CameraRecordingCurrentReply:
+      name: CameraRecordingCurrentReply
+      payload:
+        x-parser-schema-id: CameraRecordingCurrentReply
+        type: object
+        properties:
+          current_recording:
+            $ref: "#/components/schemas/VideoRecording"
+
+    CameraRecordingStartRequest:
+      name: CameraRecordingStartRequest
+      summary: "Start a new camera recording"
+
+    CameraRecordingStopRequest:
+      name: CameraRecordingStopRequest
+      summary: "Stop recording and begin cloud sync (if enabled)"
+
     CameraRecordingStarted:
       name: CameraRecordingStarted
-      summary: "Janus WebRTC gateway has started saving RTP packets to .mjr"
+      summary: "Camera recording was started"
       payload:
         $ref: "#/components/schemas/VideoRecording"
 
     CameraRecordingStopped:
       name: CameraRecordingStopped
-      summary: "Janus WebRTC gateway has stopped saving RTP packets to .mjr"
+      summary: "Camera recording was stopped"
       payload:
         $ref: "#/components/schemas/VideoRecording"
 
@@ -1404,27 +1468,44 @@ components:
       required:
         - files
 
+    VideoRecordingStatus:
+      type: string
+      enum:
+        - pending
+        - inprogress
+        - done
+
     VideoRecording:
       type: object
       additionalProperties: false
       properties:
         id:
           type: string
+        recording_status:
+          $ref: "#/components/schemas/VideoRecordingStatus"
+        recording_start:
+          type: integer
+          format: int64
+        recording_end:
+          type: integer
+          format: int64
         recording_file_name:
           type: string
         gcode_file-name:
           type: string
-        ts:
+        cloud_sync_status:
+          $ref: "#/components/schemas/VideoRecordingStatus"
+        cloud_sync_start:
           type: integer
           format: int64
-        cloud_sync_done:
-          type: boolean
-
+        cloud_sync_end:
+          type: integer
+          format: int64
       required:
         - id
         - recording_file_name
-        - ts
-        - cloud_sync_done
+        - recording_status
+        - cloud_sync_status
 
     # OctoPrint schemas, based on REST API: https://docs.octoprint.org/en/master/api/job.html#retrieve-information-about-the-current-job
     OctoPrintCurrentJob:
