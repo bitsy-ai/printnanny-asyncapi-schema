@@ -557,11 +557,10 @@ components:
           - api_url
 
     PrintNannyCloudSyncRequest:
-      name: PrintNannyCloudAuthRequest
+      name: PrintNannyCloudSyncRequest
       summary: "Sync device state to/from PrintNanny Cloud"
 
     PrintNannyCloudSyncReply:
-      name: PrintNannyCloudAuthRequest
       summary: "Sync device state to/from PrintNanny Cloud"
       payload:
         x-parser-schema-id: PrintNannyCloudSyncReply
