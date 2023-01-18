@@ -186,11 +186,26 @@ channels:
         oneOf:
           - $ref: "#/components/messages/PrintNannyCloudAuthReply"
           # - $ref: "#/components/messages/RequestError"
-
     publish:
       operationId: PrintNannyCloudAuthRequest
       message:
         $ref: "#/components/messages/PrintNannyCloudAuthRequest"
+
+  pi.{pi_id}.command.cloud.sync:
+    parameters:
+      pi_id:
+        $ref: "#/components/parameters/pi_id"
+    subscribe:
+      operationId: PrintNannyCloudSyncReply
+      message:
+        oneOf:
+          - $ref: "#/components/messages/PrintNannyCloudSyncReply"
+          - $ref: "#/components/messages/PrintNannyCloudSyncError"
+
+    publish:
+      operationId: PrintNannyCloudSyncRequest
+      message:
+        $ref: "#/components/messages/PrintNannyCloudSyncRequest"
 
   pi.{pi_id}.cameras.load:
     parameters:
@@ -540,6 +555,40 @@ components:
           - email
           - api_token
           - api_url
+
+    PrintNannyCloudSyncRequest:
+      name: PrintNannyCloudAuthRequest
+      summary: "Sync device state to/from PrintNanny Cloud"
+
+    PrintNannyCloudSyncReply:
+      name: PrintNannyCloudAuthRequest
+      summary: "Sync device state to/from PrintNanny Cloud"
+      payload:
+        x-parser-schema-id: PrintNannyCloudAuthReply
+        type: object
+        additionalProperties: false
+        properties:
+          start:
+            type: integer
+            format: int64
+          end:
+            type: integer
+            format: int64
+
+    PrintNannyCloudSyncError:
+      name: PrintNannyCloudSyncError
+      summary: "Error syncing device state with PrintNanny Cloud"
+      payload:
+        x-parser-schema-id: PrintNannyCloudSyncError
+        additionalProperties: false
+        properties:
+          error:
+            type: string
+          subject_pattern:
+            type: string
+        required:
+          - error
+          - subject_pattern
 
     PrintNannyCloudAuthReply:
       name: PrintNannyCloudAuthReply
