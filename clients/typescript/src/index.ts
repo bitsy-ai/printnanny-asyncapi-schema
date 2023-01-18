@@ -33,6 +33,7 @@ export * from "./NetworkInterfaceAddress";
 export * from "./DeviceInfoLoadError";
 export * from "./PrintNannyCloudAuthRequest";
 export * from "./PrintNannyCloudAuthReply";
+export * from "./PrintNannyCloudSyncReply";
 export * from "./PrintNannyCloudSyncError";
 export * from "./CamerasLoadReply";
 export * from "./Camera";

@@ -564,7 +564,7 @@ components:
       name: PrintNannyCloudAuthRequest
       summary: "Sync device state to/from PrintNanny Cloud"
       payload:
-        x-parser-schema-id: PrintNannyCloudAuthReply
+        x-parser-schema-id: PrintNannyCloudSyncReply
         type: object
         additionalProperties: false
         properties:

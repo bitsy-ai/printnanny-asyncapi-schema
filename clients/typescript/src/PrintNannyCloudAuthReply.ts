@@ -1,5 +1,5 @@
 
 export interface PrintNannyCloudAuthReply {
-  start?: number;
-  end?: number;
+  status_code: number;
+  msg: string;
 }

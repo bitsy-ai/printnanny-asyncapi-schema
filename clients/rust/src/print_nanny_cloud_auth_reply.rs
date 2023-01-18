@@ -1,17 +1,17 @@
 // PrintNannyCloudAuthReply represents a PrintNannyCloudAuthReply model.
-#[derive(Clone, Copy, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
 pub struct PrintNannyCloudAuthReply {
-    #[serde(rename="start", skip_serializing_if = "Option::is_none")]
-    pub start: Option<i64>,
-    #[serde(rename="end", skip_serializing_if = "Option::is_none")]
-    pub end: Option<i64>,
+    #[serde(rename="status_code")]
+    pub status_code: i32,
+    #[serde(rename="msg")]
+    pub msg: String,
 }
 
 impl PrintNannyCloudAuthReply {
-    pub fn new(start: Option<i64>, end: Option<i64>) -> PrintNannyCloudAuthReply {
+    pub fn new(status_code: i32, msg: String) -> PrintNannyCloudAuthReply {
         PrintNannyCloudAuthReply {
-            start,
-            end,
+            status_code,
+            msg,
         }
     }
 }
