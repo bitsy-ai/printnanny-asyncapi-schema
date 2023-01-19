@@ -568,11 +568,14 @@ components:
         additionalProperties: false
         properties:
           start:
-            type: integer
-            format: int64
+            type: string
+            format: dateTime
           end:
-            type: integer
-            format: int64
+            type: string
+            format: dateTime
+        required:
+          - start
+          - end
 
     PrintNannyCloudSyncError:
       name: PrintNannyCloudSyncError
