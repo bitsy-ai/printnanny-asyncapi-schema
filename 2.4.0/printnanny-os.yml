@@ -1547,11 +1547,11 @@ components:
         recording_status:
           $ref: "#/components/schemas/VideoRecordingStatus"
         recording_start:
-          type: integer
-          format: int64
+          type: string
+          format: dateTime
         recording_end:
-          type: integer
-          format: int64
+          type: string
+          format: dateTime
         recording_file_name:
           type: string
         gcode_file-name:
@@ -1559,11 +1559,11 @@ components:
         cloud_sync_status:
           $ref: "#/components/schemas/VideoRecordingStatus"
         cloud_sync_start:
-          type: integer
-          format: int64
+          type: string
+          format: dateTime
         cloud_sync_end:
-          type: integer
-          format: int64
+          type: string
+          format: dateTime
       required:
         - id
         - recording_file_name
