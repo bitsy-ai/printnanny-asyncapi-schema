@@ -1554,6 +1554,10 @@ components:
           format: dateTime
         mp4_file_name:
           type: string
+        mp4_download_url:
+          type: string
+        mp4_upload_url:
+          type: string
         gcode_file_name:
           type: string
         cloud_sync_status:
