@@ -1554,7 +1554,7 @@ components:
           format: dateTime
         mp4_file_name:
           type: string
-        gcode_file-name:
+        gcode_file_name:
           type: string
         cloud_sync_status:
           $ref: "#/components/schemas/VideoRecordingStatus"
