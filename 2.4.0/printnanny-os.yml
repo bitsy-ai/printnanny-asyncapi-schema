@@ -1048,6 +1048,7 @@ components:
       payload:
         x-parser-schema-id: CameraRecordingLoadReply
         type: object
+        additionalProperties: false
         properties:
           recordings:
             type: array
