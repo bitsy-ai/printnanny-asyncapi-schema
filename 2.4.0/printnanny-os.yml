@@ -1552,7 +1552,7 @@ components:
         recording_end:
           type: string
           format: dateTime
-        recording_file_name:
+        mp4_file_name:
           type: string
         gcode_file-name:
           type: string
@@ -1566,7 +1566,7 @@ components:
           format: dateTime
       required:
         - id
-        - recording_file_name
+        - mp4_file_name
         - recording_status
         - cloud_sync_status
 
