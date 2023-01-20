@@ -1078,7 +1078,7 @@ components:
           recording:
             $ref: "#/components/schemas/VideoRecording"
         required:
-          - required
+          - recording
 
     CameraRecordingStopped:
       summary: "Camera recording was stopped"
