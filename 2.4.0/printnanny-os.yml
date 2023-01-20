@@ -1069,16 +1069,26 @@ components:
       summary: "Stop recording and begin cloud sync (if enabled)"
 
     CameraRecordingStarted:
-      name: CameraRecordingStarted
       summary: "Camera recording was started"
       payload:
-        $ref: "#/components/schemas/VideoRecording"
+        x-parser-schema-id: CameraRecordingStarted
+        type: object
+        additionalProperties: false
+        properties:
+          recording:
+            $ref: "#/components/schemas/VideoRecording"
+        required:
+          - required
 
     CameraRecordingStopped:
-      name: CameraRecordingStopped
       summary: "Camera recording was stopped"
       payload:
-        $ref: "#/components/schemas/VideoRecording"
+        x-parser-schema-id: CameraRecordingStopped
+        type: object
+        additionalProperties: false
+        properties:
+          recording:
+            $ref: "#/components/schemas/VideoRecording"
 
     # OctoPrintCurrentJob
     OctoPrintCurrentJob:
