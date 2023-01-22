@@ -1262,9 +1262,12 @@ components:
         width:
           type: integer
           default: 640
-        framerate:
+        framerate_n:
           type: integer
           default: 16
+        framerate_d:
+          type: integer
+          default: 1
         format:
           description: "Gstreamer video format: https://gstreamer.freedesktop.org/documentation/video/video-format.html?gi-language=c"
           type: string
@@ -1279,7 +1282,8 @@ components:
       required:
         - height
         - width
-        - framerate
+        - framerate_n
+        - framerate_d
         - device_name
         - label
         - format
