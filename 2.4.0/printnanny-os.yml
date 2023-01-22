@@ -1581,8 +1581,6 @@ components:
       required:
         - id
         - mp4_file_name
-        - recording_status
-        - cloud_sync_status
 
     # OctoPrint schemas, based on REST API: https://docs.octoprint.org/en/master/api/job.html#retrieve-information-about-the-current-job
     OctoPrintCurrentJob:
