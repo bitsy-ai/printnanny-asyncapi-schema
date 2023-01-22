@@ -5,8 +5,10 @@ pub struct CameraSettings {
     pub height: i32,
     #[serde(rename="width")]
     pub width: i32,
-    #[serde(rename="framerate")]
-    pub framerate: i32,
+    #[serde(rename="framerate_n")]
+    pub framerate_n: i32,
+    #[serde(rename="framerate_d")]
+    pub framerate_d: i32,
     #[serde(rename="format")]
     pub format: String,
     #[serde(rename="device_name")]
@@ -16,11 +18,12 @@ pub struct CameraSettings {
 }
 
 impl CameraSettings {
-    pub fn new(height: i32, width: i32, framerate: i32, format: String, device_name: String, label: String) -> CameraSettings {
+    pub fn new(height: i32, width: i32, framerate_n: i32, framerate_d: i32, format: String, device_name: String, label: String) -> CameraSettings {
         CameraSettings {
             height,
             width,
-            framerate,
+            framerate_n,
+            framerate_d,
             format,
             device_name,
             label,
