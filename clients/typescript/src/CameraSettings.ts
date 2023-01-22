@@ -2,7 +2,8 @@
 export interface CameraSettings {
   height: number;
   width: number;
-  reserved_framerate: number;
+  framerate_n: number;
+  framerate_d: number;
   format: string;
   device_name: string;
   label: string;
