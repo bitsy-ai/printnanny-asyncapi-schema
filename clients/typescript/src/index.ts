@@ -20,6 +20,7 @@ export * from "./SystemdManagerReloadUnitRequest";
 export * from "./SystemdManagerReloadUnitReply";
 export * from "./SystemdManagerRestartUnitRequest";
 export * from "./SystemdManagerRestartUnitReply";
+export * from "./SystemdManagerRestartUnitError";
 export * from "./SystemdManagerStartUnitRequest";
 export * from "./SystemdManagerStartUnitReply";
 export * from "./SystemdManagerStartUnitError";

@@ -104,7 +104,7 @@ channels:
       message:
         oneOf:
           - $ref: "#/components/messages/SystemdManagerRestartUnitReply"
-          # - $ref: "#/components/messages/RequestError"
+          - $ref: "#/components/messages/SystemdManagerRestartUnitError"
 
     publish:
       operationId: SystemdManagerRestartUnitRequest
@@ -944,6 +944,26 @@ components:
         required:
           - job
           - unit
+
+    SystemdManagerRestartUnitError:
+      name: SystemdManageRestartUnitError
+      summary: "An error occurred while handling request"
+      payload:
+        x-parser-schema-id: SystemdManagerRestartUnitError
+        type: object
+        additionalProperties: false
+        properties:
+          error:
+            type: string
+          subject_pattern:
+            type: string
+          request:
+            type: object
+            $ref: "#/components/messages/SystemdManagerRestartUnitRequest"
+        required:
+          - error
+          - subject_pattern
+          - request
 
     SystemdManagerStartUnitRequest:
       summary: "Start systemd unit"

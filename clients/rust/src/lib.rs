@@ -68,6 +68,9 @@ pub use self::systemd_manager_restart_unit_request::*;
 pub mod systemd_manager_restart_unit_reply;
 pub use self::systemd_manager_restart_unit_reply::*;
 
+pub mod systemd_manager_restart_unit_error;
+pub use self::systemd_manager_restart_unit_error::*;
+
 pub mod systemd_manager_start_unit_request;
 pub use self::systemd_manager_start_unit_request::*;
 
