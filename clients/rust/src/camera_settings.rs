@@ -1,6 +1,8 @@
 // CameraSettings represents a CameraSettings model.
 #[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
 pub struct CameraSettings {
+    #[serde(rename="colorimetry")]
+    pub colorimetry: String,
     #[serde(rename="height")]
     pub height: i32,
     #[serde(rename="width")]
@@ -18,8 +20,9 @@ pub struct CameraSettings {
 }
 
 impl CameraSettings {
-    pub fn new(height: i32, width: i32, framerate_n: i32, framerate_d: i32, format: String, device_name: String, label: String) -> CameraSettings {
+    pub fn new(colorimetry: String, height: i32, width: i32, framerate_n: i32, framerate_d: i32, format: String, device_name: String, label: String) -> CameraSettings {
         CameraSettings {
+            colorimetry,
             height,
             width,
             framerate_n,
