@@ -4,4 +4,5 @@ export interface GstreamerCaps {
   format: string;
   width: number;
   height: number;
+  colorimetry: string;
 }

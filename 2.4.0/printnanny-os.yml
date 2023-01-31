@@ -1390,7 +1390,10 @@ components:
           type: integer
         height:
           type: integer
+        colorimetry:
+          type: string
       required:
+        - colorimetry
         - media_type
         - format
         - width

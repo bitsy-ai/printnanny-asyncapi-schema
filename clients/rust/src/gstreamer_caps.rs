@@ -9,15 +9,18 @@ pub struct GstreamerCaps {
     pub width: i32,
     #[serde(rename="height")]
     pub height: i32,
+    #[serde(rename="colorimetry")]
+    pub colorimetry: String,
 }
 
 impl GstreamerCaps {
-    pub fn new(media_type: String, format: String, width: i32, height: i32) -> GstreamerCaps {
+    pub fn new(media_type: String, format: String, width: i32, height: i32, colorimetry: String) -> GstreamerCaps {
         GstreamerCaps {
             media_type,
             format,
             width,
             height,
+            colorimetry,
         }
     }
 }
