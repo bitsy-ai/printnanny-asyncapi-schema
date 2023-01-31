@@ -1276,6 +1276,9 @@ components:
       type: object
       additionalProperties: false
       properties:
+        colorimetry:
+          type: string
+          default: bt709
         height:
           type: integer
           default: 480
@@ -1300,6 +1303,7 @@ components:
           description: "Friendly human-readable label for camera"
           default: "Raspberry Pi imx219"
       required:
+        - colorimetry
         - height
         - width
         - framerate_n
