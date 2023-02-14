@@ -314,6 +314,20 @@ channels:
         $ref: "#/components/messages/SettingsFileRevertRequest"
 
   # commands follow request/reply pattern
+  pi.{pi_id}.command.camera.status:
+    parameters:
+      pi_id:
+        $ref: "#/components/parameters/pi_id"
+    publish:
+      operationId: CameraStatusRequest
+      message:
+        $ref: "#/components/messages/CameraStatusRequest"
+
+    subscribe:
+      operationId: CameraStatusReply
+      message:
+        $ref: "#/components/messages/CameraStatusReply"
+
   pi.{pi_id}.command.camera.recording.load:
     parameters:
       pi_id:
@@ -394,6 +408,16 @@ components:
               $ref: "#/components/schemas/Camera"
         required:
           - cameras
+
+    CameraStatusRequest:
+      name: CameraStatusRequest
+      summary: "Load current camera/recording status"
+
+    CameraStatusReply:
+      name: CameraStatusReply
+      summary: "Load current camera/recording status"
+      payload:
+        $ref: "#/components/schemas/CameraStatus"
 
     CameraSettingsFileApplyRequest:
       name: CameraSettingsFileApplyRequest
@@ -1270,6 +1294,19 @@ components:
       required:
         - video_udp_port
         - overlay_udp_port
+
+    CameraStatus:
+      name: CameraStatus
+      type: object
+      additionalProperties: false
+      properties:
+        streaming:
+          type: boolean
+        recording:
+          type: boolean
+      required:
+        - streaming
+        - recording
 
     CameraSettings:
       name: CameraSettings
