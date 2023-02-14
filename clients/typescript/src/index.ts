@@ -64,6 +64,7 @@ export * from "./SettingsFileApplyRequest";
 export * from "./SettingsFileApplyReply";
 export * from "./SettingsFileRevertRequest";
 export * from "./SettingsFileRevertReply";
+export * from "./CameraStatus";
 export * from "./CameraRecordingLoadReply";
 export * from "./VideoRecording";
 export * from "./VideoRecordingStatus";
