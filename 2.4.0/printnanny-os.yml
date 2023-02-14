@@ -314,7 +314,7 @@ channels:
         $ref: "#/components/messages/SettingsFileRevertRequest"
 
   # commands follow request/reply pattern
-  pi.{pi_id}.command.camera.status:
+  pi.{pi_id}.settings.camera.status:
     parameters:
       pi_id:
         $ref: "#/components/parameters/pi_id"
