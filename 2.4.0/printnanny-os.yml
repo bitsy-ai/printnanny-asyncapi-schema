@@ -356,6 +356,20 @@ channels:
       message:
         $ref: "#/components/messages/CameraRecordingStarted"
 
+  pi.{pi_id}.command.camera.recording.load_parts:
+    parameters:
+      pi_id:
+        $ref: "#/components/parameters/pi_id"
+    publish:
+      operationId: CameraRecordingLoadPartsRequest
+      message:
+        $ref: "#/components/messages/CameraRecordingLoadPartsRequest"
+
+    subscribe:
+      operationId: CameraRecordingStartReply
+      message:
+        $ref: "#/components/messages/CameraRecordingStarted"
+
   pi.{pi_id}.command.camera.recording.stop:
     parameters:
       pi_id:
@@ -1104,6 +1118,38 @@ components:
         required:
           - recordings
 
+    CameraRecordingLoadPartsRequest:
+      name: CameraRecordingLoadPartsRequest
+      summary: "Load video recording metadata and list all file parts"
+      payload:
+        x-parser-schema-id: CameraRecordingLoadPartsRequest
+        type: object
+        additionalProperties: false
+        properties:
+          video_recording_id:
+            type: string
+        required:
+          - video_recording_id
+
+    CameraRecordingLoadPartsReply:
+      name: CameraRecordingLoadPartsReply
+      summary: "Start a new camera recording"
+      payload:
+        x-parser-schema-id: CameraRecordingLoadPartsReply
+        type: object
+        additionalProperties: false
+        properties:
+          recording:
+            $ref: "#/components/schemas/VideoRecording"
+          parts:
+            type: array
+            additionalItems: false
+            items:
+              $ref: "#/components/schemas/VideoRecordingPart"
+        required:
+          - recording
+          - parts
+
     CameraRecordingStartRequest:
       name: CameraRecordingStartRequest
       summary: "Start a new camera recording"
@@ -1609,46 +1655,52 @@ components:
       required:
         - files
 
-    VideoRecordingStatus:
-      type: string
-      enum:
-        - pending
-        - inprogress
-        - done
-
     VideoRecording:
       type: object
       additionalProperties: false
       properties:
         id:
           type: string
-        recording_status:
-          $ref: "#/components/schemas/VideoRecordingStatus"
-        recording_start:
-          type: string
-          format: dateTime
-        recording_end:
-          type: string
-          format: dateTime
-        mp4_file_name:
-          type: string
-        mp4_download_url:
-          type: string
-        mp4_upload_url:
+        capture_done:
+          type: boolean
+        cloud_sync_done:
+          type: boolean
+        dir:
           type: string
         gcode_file_name:
           type: string
-        cloud_sync_status:
-          $ref: "#/components/schemas/VideoRecordingStatus"
-        cloud_sync_start:
-          type: string
-          format: dateTime
-        cloud_sync_end:
-          type: string
-          format: dateTime
       required:
         - id
-        - mp4_file_name
+        - capture_done
+        - cloud_sync_done
+        - dir
+
+    VideoRecordingPart:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+        part:
+          type: integer
+        size:
+          type: integer
+        deleted:
+          type: boolean
+        cloud_sync_done:
+          type: boolean
+        file_name:
+          type: string
+        video_recording_id:
+          type: string
+      required:
+        - id
+        - part
+        - size
+        - deleted
+        - cloud_sync_done
+        - file_name
+        - video_recording_id
 
     # OctoPrint schemas, based on REST API: https://docs.octoprint.org/en/master/api/job.html#retrieve-information-about-the-current-job
     OctoPrintCurrentJob:
