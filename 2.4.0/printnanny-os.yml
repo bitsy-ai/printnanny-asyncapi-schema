@@ -1084,10 +1084,10 @@ components:
           - request
 
     CameraRecordingLoadRequest:
-      name: CameraRecordingLoadPartsRequest
+      name: CameraRecordingLoadRequest
       summary: "Load recording and parts by video_recording_id. Will attempt to get current recording if no video_recording_id is specified."
       payload:
-        x-parser-schema-id: CameraRecordingLoadPartsRequest
+        x-parser-schema-id: CameraRecordingLoadRequest
         type: object
         additionalProperties: false
         properties:
@@ -1098,7 +1098,7 @@ components:
       name: CameraRecordingLoadReply
       summary: "Load recording and parts by video_recording_id. Will attempt to get current recording if no video_recording_id is specified."
       payload:
-        x-parser-schema-id: CameraRecordingLoadPartsReply
+        x-parser-schema-id: CameraRecordingLoadReply
         type: object
         additionalProperties: false
         properties:
