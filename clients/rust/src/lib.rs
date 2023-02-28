@@ -209,11 +209,17 @@ pub use self::camera_recording_load_reply::*;
 pub mod video_recording;
 pub use self::video_recording::*;
 
-pub mod video_recording_status;
-pub use self::video_recording_status::*;
-
 pub mod camera_recording_started;
 pub use self::camera_recording_started::*;
+
+pub mod camera_recording_load_parts_request;
+pub use self::camera_recording_load_parts_request::*;
+
+pub mod camera_recording_load_parts_reply;
+pub use self::camera_recording_load_parts_reply::*;
+
+pub mod video_recording_part;
+pub use self::video_recording_part::*;
 
 pub mod camera_recording_stopped;
 pub use self::camera_recording_stopped::*;
