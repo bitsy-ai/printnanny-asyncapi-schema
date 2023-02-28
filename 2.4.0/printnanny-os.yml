@@ -1,7 +1,7 @@
 asyncapi: 2.4.0
 info:
   title: PrintNanny OS Action & Command Service
-  version: 0.3.18
+  version: 0.4.0
   description: PrintNanny OS remote actions and command handler service
 defaultContentType: "application/json"
 

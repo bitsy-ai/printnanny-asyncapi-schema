@@ -26,7 +26,7 @@ export async function generate(): Promise<void> {
     supportFiles: true, // generate Cargo.toml and lib.rs
     package: {
       packageName: 'printnanny-asyncapi-models',
-      packageVersion: '0.3.18',
+      packageVersion: '0.4.0',
       // set authors, homepage, repository, and license
       authors: ['Leigh Johnson <leigh@printnanny.ai>'],
       homepage: 'https://github.com/bitsy-ai/printnanny-asyncapi-schema',
