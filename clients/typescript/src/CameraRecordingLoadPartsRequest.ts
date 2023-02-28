@@ -1,4 +1,4 @@
 
 export interface CameraRecordingLoadPartsRequest {
-  video_recording_id: string;
+  video_recording_id?: string;
 }
