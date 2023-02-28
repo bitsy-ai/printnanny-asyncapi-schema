@@ -366,9 +366,9 @@ channels:
         $ref: "#/components/messages/CameraRecordingLoadPartsRequest"
 
     subscribe:
-      operationId: CameraRecordingStartReply
+      operationId: CameraRecordingLoadPartsReply
       message:
-        $ref: "#/components/messages/CameraRecordingStarted"
+        $ref: "#/components/messages/CameraRecordingLoadPartsReply"
 
   pi.{pi_id}.command.camera.recording.stop:
     parameters:
