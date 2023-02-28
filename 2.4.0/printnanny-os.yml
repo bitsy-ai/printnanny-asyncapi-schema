@@ -1669,6 +1669,12 @@ components:
           type: string
         gcode_file_name:
           type: string
+        recording_start:
+          type: string
+          format: dateTime
+        recording_end:
+          type: string
+          format: dateTime
       required:
         - id
         - capture_done
