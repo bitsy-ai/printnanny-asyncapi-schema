@@ -1,17 +1,17 @@
 // CameraRecordingLoadReply represents a CameraRecordingLoadReply model.
 #[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
 pub struct CameraRecordingLoadReply {
-    #[serde(rename="recordings")]
-    pub recordings: Vec<crate::VideoRecording>,
-    #[serde(rename="current", skip_serializing_if = "Option::is_none")]
-    pub current: Option<Box<crate::VideoRecording>>,
+    #[serde(rename="recording", skip_serializing_if = "Option::is_none")]
+    pub recording: Option<Box<crate::VideoRecording>>,
+    #[serde(rename="parts", skip_serializing_if = "Option::is_none")]
+    pub parts: Option<Vec<crate::VideoRecordingPart>>,
 }
 
 impl CameraRecordingLoadReply {
-    pub fn new(recordings: Vec<crate::VideoRecording>, current: Option<crate::VideoRecording>) -> CameraRecordingLoadReply {
+    pub fn new(recording: Option<crate::VideoRecording>, parts: Option<Vec<crate::VideoRecordingPart>>) -> CameraRecordingLoadReply {
         CameraRecordingLoadReply {
-            recordings,
-            current: current.map(Box::new),
+            recording: recording.map(Box::new),
+            parts,
         }
     }
 }
