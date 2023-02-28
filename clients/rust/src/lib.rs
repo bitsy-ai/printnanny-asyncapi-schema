@@ -203,11 +203,11 @@ pub use self::settings_file_revert_reply::*;
 pub mod camera_status;
 pub use self::camera_status::*;
 
-pub mod camera_recording_load_parts_request;
-pub use self::camera_recording_load_parts_request::*;
+pub mod camera_recording_load_request;
+pub use self::camera_recording_load_request::*;
 
-pub mod camera_recording_load_parts_reply;
-pub use self::camera_recording_load_parts_reply::*;
+pub mod camera_recording_load_reply;
+pub use self::camera_recording_load_reply::*;
 
 pub mod video_recording;
 pub use self::video_recording::*;

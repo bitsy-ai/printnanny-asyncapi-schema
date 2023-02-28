@@ -1,6 +1,6 @@
 import {VideoRecording} from './VideoRecording';
 import {VideoRecordingPart} from './VideoRecordingPart';
-export interface CameraRecordingLoadPartsReply {
+export interface CameraRecordingLoadReply {
   recording?: VideoRecording;
   parts?: VideoRecordingPart[];
 }
