@@ -356,20 +356,6 @@ channels:
       message:
         $ref: "#/components/messages/CameraRecordingStarted"
 
-  pi.{pi_id}.command.camera.recording.load_parts:
-    parameters:
-      pi_id:
-        $ref: "#/components/parameters/pi_id"
-    publish:
-      operationId: CameraRecordingLoadPartsRequest
-      message:
-        $ref: "#/components/messages/CameraRecordingLoadPartsRequest"
-
-    subscribe:
-      operationId: CameraRecordingLoadPartsReply
-      message:
-        $ref: "#/components/messages/CameraRecordingLoadPartsReply"
-
   pi.{pi_id}.command.camera.recording.stop:
     parameters:
       pi_id:
@@ -1098,29 +1084,8 @@ components:
           - request
 
     CameraRecordingLoadRequest:
-      name: CameraRecordingLoadRequest
-      summary: "Get current recording status"
-
-    CameraRecordingLoadReply:
-      name: CameraRecordingLoadReply
-      payload:
-        x-parser-schema-id: CameraRecordingLoadReply
-        type: object
-        additionalProperties: false
-        properties:
-          recordings:
-            type: array
-            additionalItems: false
-            items:
-              $ref: "#/components/schemas/VideoRecording"
-          current:
-            $ref: "#/components/schemas/VideoRecording"
-        required:
-          - recordings
-
-    CameraRecordingLoadPartsRequest:
       name: CameraRecordingLoadPartsRequest
-      summary: "Load video recording metadata and list all file parts"
+      summary: "Load recording and parts by video_recording_id. Will attempt to get current recording if no video_recording_id is specified."
       payload:
         x-parser-schema-id: CameraRecordingLoadPartsRequest
         type: object
@@ -1128,12 +1093,10 @@ components:
         properties:
           video_recording_id:
             type: string
-        required:
-          - video_recording_id
 
-    CameraRecordingLoadPartsReply:
-      name: CameraRecordingLoadPartsReply
-      summary: "Start a new camera recording"
+    CameraRecordingLoadReply:
+      name: CameraRecordingLoadReply
+      summary: "Load recording and parts by video_recording_id. Will attempt to get current recording if no video_recording_id is specified."
       payload:
         x-parser-schema-id: CameraRecordingLoadPartsReply
         type: object
@@ -1146,9 +1109,6 @@ components:
             additionalItems: false
             items:
               $ref: "#/components/schemas/VideoRecordingPart"
-        required:
-          - recording
-          - parts
 
     CameraRecordingStartRequest:
       name: CameraRecordingStartRequest
