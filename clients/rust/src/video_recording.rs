@@ -3,8 +3,6 @@
 pub struct VideoRecording {
     #[serde(rename="id")]
     pub id: String,
-    #[serde(rename="capture_done")]
-    pub capture_done: bool,
     #[serde(rename="cloud_sync_done")]
     pub cloud_sync_done: bool,
     #[serde(rename="dir")]
@@ -18,10 +16,9 @@ pub struct VideoRecording {
 }
 
 impl VideoRecording {
-    pub fn new(id: String, capture_done: bool, cloud_sync_done: bool, dir: String, gcode_file_name: Option<String>, recording_start: Option<String>, recording_end: Option<String>) -> VideoRecording {
+    pub fn new(id: String, cloud_sync_done: bool, dir: String, gcode_file_name: Option<String>, recording_start: Option<String>, recording_end: Option<String>) -> VideoRecording {
         VideoRecording {
             id,
-            capture_done,
             cloud_sync_done,
             dir,
             gcode_file_name,

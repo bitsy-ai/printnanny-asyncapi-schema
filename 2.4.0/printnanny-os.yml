@@ -1621,8 +1621,6 @@ components:
       properties:
         id:
           type: string
-        capture_done:
-          type: boolean
         cloud_sync_done:
           type: boolean
         dir:
