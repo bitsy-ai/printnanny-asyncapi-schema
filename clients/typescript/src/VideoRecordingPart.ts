@@ -4,7 +4,8 @@ export interface VideoRecordingPart {
   part: number;
   size: number;
   deleted: boolean;
-  cloud_sync_done: boolean;
+  sync_start?: string;
+  sync_end?: string;
   file_name: string;
   video_recording_id: string;
 }
