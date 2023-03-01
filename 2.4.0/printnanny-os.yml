@@ -1651,6 +1651,7 @@ components:
           type: integer
         size:
           type: integer
+          format: long
         deleted:
           type: boolean
         sync_start:
