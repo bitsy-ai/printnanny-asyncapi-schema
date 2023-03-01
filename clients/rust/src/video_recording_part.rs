@@ -6,7 +6,7 @@ pub struct VideoRecordingPart {
     #[serde(rename="part")]
     pub part: i32,
     #[serde(rename="size")]
-    pub size: i32,
+    pub size: i64,
     #[serde(rename="deleted")]
     pub deleted: bool,
     #[serde(rename="sync_start", skip_serializing_if = "Option::is_none")]
@@ -20,7 +20,7 @@ pub struct VideoRecordingPart {
 }
 
 impl VideoRecordingPart {
-    pub fn new(id: String, part: i32, size: i32, deleted: bool, sync_start: Option<String>, sync_end: Option<String>, file_name: String, video_recording_id: String) -> VideoRecordingPart {
+    pub fn new(id: String, part: i32, size: i64, deleted: bool, sync_start: Option<String>, sync_end: Option<String>, file_name: String, video_recording_id: String) -> VideoRecordingPart {
         VideoRecordingPart {
             id,
             part,
