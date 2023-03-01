@@ -1653,8 +1653,12 @@ components:
           type: integer
         deleted:
           type: boolean
-        cloud_sync_done:
-          type: boolean
+        sync_start:
+          type: string
+          format: dateTime
+        sync_end:
+          type: string
+          format: dateTime
         file_name:
           type: string
         video_recording_id:
@@ -1664,7 +1668,6 @@ components:
         - part
         - size
         - deleted
-        - cloud_sync_done
         - file_name
         - video_recording_id
 
