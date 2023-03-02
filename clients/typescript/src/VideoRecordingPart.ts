@@ -1,7 +1,13 @@
 
 export interface VideoRecordingPart {
   id: string;
-  part: number;
+  buffer_index?: number;
+  buffer_ts: number;
+  buffer_streamtime: number;
+  buffer_runningtime: number;
+  buffer_duration: number;
+  buffer_offset: number;
+  buffer_offset_end: number;
   size: number;
   deleted: boolean;
   sync_start?: string;
