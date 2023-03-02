@@ -1682,6 +1682,7 @@ components:
           type: string
       required:
         - id
+        - buffer_index
         - buffer_ts
         - buffer_streamtime
         - buffer_runningtime

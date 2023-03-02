@@ -1,7 +1,7 @@
 
 export interface VideoRecordingPart {
   id: string;
-  buffer_index?: number;
+  buffer_index: number;
   buffer_ts: number;
   buffer_streamtime: number;
   buffer_runningtime: number;
