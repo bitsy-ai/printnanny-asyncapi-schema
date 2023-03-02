@@ -1645,8 +1645,26 @@ components:
       properties:
         id:
           type: string
-        part:
+        buffer_index:
           type: integer
+        buffer_ts:
+          type: integer
+          format: long
+        buffer_streamtime:
+          type: integer
+          format: long
+        buffer_runningtime:
+          type: integer
+          format: long
+        buffer_duration:
+          type: integer
+          format: long
+        buffer_offset:
+          type: integer
+          format: long
+        buffer_offset_end:
+          type: integer
+          format: long
         size:
           type: integer
           format: long
@@ -1664,7 +1682,12 @@ components:
           type: string
       required:
         - id
-        - part
+        - buffer_ts
+        - buffer_streamtime
+        - buffer_runningtime
+        - buffer_duration
+        - buffer_offset
+        - buffer_offset_end
         - size
         - deleted
         - file_name
