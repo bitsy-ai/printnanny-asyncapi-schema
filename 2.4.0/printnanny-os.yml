@@ -7,6 +7,7 @@ defaultContentType: "application/json"
 
 channels:
   # events
+
   pi.{pi_id}.dbus.org.freedesktop.systemd1.Unit:
     parameters:
       pi_id:
@@ -388,6 +389,14 @@ channels:
       message:
         $ref: "#/components/messages/CameraRecordingStopped"
 
+  pi.{pi_id}.event.camera.recording.part:
+    parameters:
+      pi_id:
+        $ref: "#/components/parameters/pi_id"
+    publish:
+      operationId: CameraRecordingPart
+      message:
+        $ref: "#/components/messages/CameraRecordingPart"
 components:
   messages:
     CamerasLoadRequest:
@@ -408,6 +417,12 @@ components:
               $ref: "#/components/schemas/Camera"
         required:
           - cameras
+
+    CameraRecordingPart:
+      name: CameraRecordingPart
+      summary: "New camera recording file part was written"
+      payload:
+        $ref: "#/components/schemas/VideoRecordingPart"
 
     CameraStatusRequest:
       name: CameraStatusRequest
