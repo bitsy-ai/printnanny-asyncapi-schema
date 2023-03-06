@@ -396,8 +396,7 @@ channels:
     publish:
       operationId: CameraRecordingPart
       message:
-        oneOf:
-          - $ref: "#/components/messages/CameraRecordingPart"
+        $ref: "#/components/messages/CameraRecordingPart"
 components:
   messages:
     CamerasLoadRequest:
