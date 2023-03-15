@@ -5,18 +5,8 @@ pub struct VideoRecordingPart {
     pub id: String,
     #[serde(rename="buffer_index")]
     pub buffer_index: i32,
-    #[serde(rename="buffer_ts")]
-    pub buffer_ts: i64,
-    #[serde(rename="buffer_streamtime")]
-    pub buffer_streamtime: i64,
     #[serde(rename="buffer_runningtime")]
     pub buffer_runningtime: i64,
-    #[serde(rename="buffer_duration")]
-    pub buffer_duration: i64,
-    #[serde(rename="buffer_offset")]
-    pub buffer_offset: i64,
-    #[serde(rename="buffer_offset_end")]
-    pub buffer_offset_end: i64,
     #[serde(rename="size")]
     pub size: i64,
     #[serde(rename="deleted")]
@@ -32,16 +22,11 @@ pub struct VideoRecordingPart {
 }
 
 impl VideoRecordingPart {
-    pub fn new(id: String, buffer_index: i32, buffer_ts: i64, buffer_streamtime: i64, buffer_runningtime: i64, buffer_duration: i64, buffer_offset: i64, buffer_offset_end: i64, size: i64, deleted: bool, sync_start: Option<String>, sync_end: Option<String>, file_name: String, video_recording_id: String) -> VideoRecordingPart {
+    pub fn new(id: String, buffer_index: i32, buffer_runningtime: i64, size: i64, deleted: bool, sync_start: Option<String>, sync_end: Option<String>, file_name: String, video_recording_id: String) -> VideoRecordingPart {
         VideoRecordingPart {
             id,
             buffer_index,
-            buffer_ts,
-            buffer_streamtime,
             buffer_runningtime,
-            buffer_duration,
-            buffer_offset,
-            buffer_offset_end,
             size,
             deleted,
             sync_start,
