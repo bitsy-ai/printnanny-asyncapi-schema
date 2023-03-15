@@ -1662,22 +1662,7 @@ components:
           type: string
         buffer_index:
           type: integer
-        buffer_ts:
-          type: integer
-          format: long
-        buffer_streamtime:
-          type: integer
-          format: long
         buffer_runningtime:
-          type: integer
-          format: long
-        buffer_duration:
-          type: integer
-          format: long
-        buffer_offset:
-          type: integer
-          format: long
-        buffer_offset_end:
           type: integer
           format: long
         size:
