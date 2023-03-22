@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        "outDir": "./typescript/dist",
+        "declaration": true,
+        "target": "esnext",
+        "lib": [
+            "esnext"
+        ],
+        "noImplicitAny": true,
+        "sourceMap": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "noFallthroughCasesInSwitch": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "typeRoots": [
+            "node_modules/@types"
+        ]
+    },
+    "include": [
+        "typescript/src/**/*.ts",
+    ],
+    "exclude": [
+        "node_modules",
+        "typescript/dist",
+        "**/*.spec.ts"
+    ]
+}
