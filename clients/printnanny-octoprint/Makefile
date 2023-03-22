@@ -4,7 +4,7 @@ CLIENT_DIR ?= $(PWD)
 
 RUST_CLIENT_DIR ?= $(CLIENT_DIR)/rust
 TYPESCRIPT_CLIENT_DIR ?= $(CLIENT_DIR)/typescript
-PYTHON_CLIENT_SRC_DIR ?= $(CLIENT_DIR)/python/src
+PYTHON_CLIENT_SRC_DIR ?= $(CLIENT_DIR)/python/printnanny_octoprint_models
 PYTHON_CLIENT_DIST_DIR ?= $(CLIENT_DIR)/python/dist
 
 $(TYPESCRIPT_CLIENT_DIR):
@@ -22,7 +22,7 @@ python-clean:
 
 python-client-build: python-clean $(PYTHON_CLIENT_SRC_DIR)
 	npm run generate:python
-	cd python && python3 -m build
+	cd python && touch $(PYTHON_CLIENT_SRC_DIR)/__init__.py && python3 -m build
 
 python-client-release: python-client-build
 	twine check $(CLIENT_DIR)/python/dist/*
