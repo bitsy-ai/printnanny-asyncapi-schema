@@ -4,12 +4,23 @@ CLIENT_DIR ?= $(PWD)
 
 RUST_CLIENT_DIR ?= $(CLIENT_DIR)/rust
 TYPESCRIPT_CLIENT_DIR ?= $(CLIENT_DIR)/typescript
+PYTHON_CLIENT_DIR ?= $(CLIENT_DIR)/python/src
 
 $(TYPESCRIPT_CLIENT_DIR):
 	mkdir -p $(TYPESCRIPT_CLIENT_DIR)
 
 $(RUST_CLIENT_DIR):
 	mkdir -p $(RUST_CLIENT_DIR)
+
+$(PYTHON_CLIENT_DIR):
+	mkdir -p $()
+
+
+python-clean:
+	rm -rf $(PYTHON_CLIENT_DIR)
+
+python-client-build: python-clean
+	npm run generate:python
 
 rust-clean:
 	rm -rf $(RUST_CLIENT_DIR)
