@@ -29,6 +29,9 @@ pub use self::job::*;
 pub mod gcode_file;
 pub use self::gcode_file::*;
 
+pub mod job_status_changed;
+pub use self::job_status_changed::*;
+
 pub mod job_status;
 pub use self::job_status::*;
 

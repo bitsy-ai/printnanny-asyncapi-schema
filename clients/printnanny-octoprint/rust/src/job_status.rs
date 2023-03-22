@@ -1,14 +1,23 @@
 // JobStatus represents a JobStatus model.
-#[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
-pub struct JobStatus {
-    #[serde(rename="status")]
-    pub status: Box<crate::JobStatus>,
+#[derive(Clone, Copy, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
+pub enum JobStatus {
+    #[serde(rename="PrintStarted")]
+    PrintStarted,
+    #[serde(rename="PrintFailed")]
+    PrintFailed,
+    #[serde(rename="PrintDone")]
+    PrintDone,
+    #[serde(rename="PrintCancelling")]
+    PrintCancelling,
+    #[serde(rename="PrintCanelled")]
+    PrintCanelled,
+    #[serde(rename="PrintPaused")]
+    PrintPaused,
+    #[serde(rename="PrintResumed")]
+    PrintResumed,
 }
-
-impl JobStatus {
-    pub fn new(status: crate::JobStatus) -> JobStatus {
-        JobStatus {
-            status: Box::new(status),
-        }
+impl Default for JobStatus {
+    fn default() -> JobStatus {
+        JobStatus::PrintStarted
     }
 }
