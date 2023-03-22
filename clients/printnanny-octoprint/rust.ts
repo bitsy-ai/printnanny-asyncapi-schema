@@ -17,7 +17,7 @@ export async function generate(): Promise<void> {
   });
   // Generated files will be written to rust/ directory
   const outDir = path.join(__dirname, 'rust');
-  const data = fs.readFileSync('../2.4.0/printnanny-octoprint.yml').toString();
+  const data = fs.readFileSync('../../2.4.0/printnanny-octoprint.yml').toString();
   const doc = YAML.parse(data)
 
   // Run the file generator with options
