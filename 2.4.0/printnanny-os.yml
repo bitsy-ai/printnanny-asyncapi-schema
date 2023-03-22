@@ -1,7 +1,7 @@
 asyncapi: 2.4.0
 info:
   title: PrintNanny OS Action & Command Service
-  version: 0.5.0
+  version: 0.1.0
   description: PrintNanny OS remote actions and command handler service
 defaultContentType: "application/json"
 
@@ -1685,63 +1685,6 @@ components:
         - deleted
         - file_name
         - video_recording_id
-
-    # OctoPrint schemas, based on REST API: https://docs.octoprint.org/en/master/api/job.html#retrieve-information-about-the-current-job
-    OctoPrintCurrentJob:
-      type: object
-      additionalProperties: false
-      properties:
-        job:
-          $ref: "#/components/schemas/OctoPrintJob"
-        progress:
-          $ref: "#/components/schemas/OctoPrintJobProgress"
-        state:
-          type: string
-        error:
-          type: string
-      required:
-        - job
-        - progress
-        - state
-
-    OctoPrintFile:
-      type: object
-      additionalProperties: false
-      properties:
-        name:
-          type: string
-        display:
-          type: string
-        path:
-          type: string
-        origin:
-          type: string
-
-    OctoPrintJob:
-      type: object
-      additionalProperties: false
-      properties:
-        file:
-          $ref: "#/components/schemas/OctoPrintFile"
-        estimatedPrintTime:
-          type: number
-        lastPrintType:
-          type: number
-
-    OctoPrintJobProgress:
-      type: object
-      additionalProperties: false
-      properties:
-        completion:
-          type: number
-        filepos:
-          type: integer
-        printTime:
-          type: integer
-        printTimeLeft:
-          type: integer
-        printTimeLeftOrigin:
-          type: string
 
     PrintNannyCloudApiConfig:
       type: object

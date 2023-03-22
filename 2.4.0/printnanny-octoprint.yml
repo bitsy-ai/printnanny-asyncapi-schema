@@ -68,41 +68,56 @@ components:
       name: OctoPrintCurrentJob
       summary: "Get OctoPrint current job (if running)."
       payload:
+        additionalProperties: false
         $ref: "#/components/schemas/CurrentJob"
 
     JobStatus:
       name: JobStatus
       summary: "OctoPrint job status changed"
       payload:
-        status:
-          $ref: "#/components/schemas/JobStatus"
+        x-parser-schema-id: JobStatus
+        additionalProperties: false
+        properties:
+          status:
+            $ref: "#/components/schemas/JobStatus"
 
     JobProgress:
       name: JobProgress
       summary: "Current job progress. Ref: https://docs.octoprint.org/en/master/plugins/mixins.html?highlight=on_print_progress#octoprint.plugin.ProgressPlugin"
       payload:
-        job: "#/components/schemas/Job"
-        storage:
-          type: string
-          description: "Drive location of the gcode file"
-        path:
-          type: string
-          description: "Path of the gcode file"
-        progress:
-          type: integer
+        x-parser-schema-id: JobProgress
+        additionalProperties: false
+        properties:
+          job:
+            $ref: "#/components/schemas/Job"
+          storage:
+            type: string
+            description: "Drive location of the gcode file"
+          path:
+            type: string
+            description: "Path of the gcode file"
+          progress:
+            type: integer
 
     OctoPrintGcode:
       name: OctoPrintGcode
       summary: "A gcode command was sent from OctoPrint to printer"
       payload:
-        gcode: "#/components/schemas/GcodeEvent"
+        x-parser-schema-id: OctoPrintGcode
+        additionalProperties: false
+        properties:
+          gcode:
+            $ref: "#/components/schemas/GcodeEvent"
 
     OctoPrintServerStatus:
       name: OctoPrintServerStatus
       summary: "OctoPrint server status changed"
       payload:
-        status:
-          $ref: "#/components/schemas/OctoPrintServerStatus"
+        x-parser-schema-id: OctoPrintServerStatus
+        properties:
+          additionalProperties: false
+          status:
+            $ref: "#/components/schemas/OctoPrintServerStatus"
 
     PrinterStatus:
       name: PrinterStatus
