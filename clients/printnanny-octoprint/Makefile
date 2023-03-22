@@ -22,7 +22,7 @@ python-clean:
 
 python-client-build: python-clean $(PYTHON_CLIENT_SRC_DIR)
 	npm run generate:python
-	cd $(PYTHON_CLIENT_DIR) && cd .. && python3 -m build
+	cd python && python3 -m build
 
 python-client-release: python-client-build
 	twine check $(CLIENT_DIR)/python/dist/*
