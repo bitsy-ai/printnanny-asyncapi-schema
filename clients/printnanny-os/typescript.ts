@@ -16,7 +16,7 @@ const generator = new TypeScriptFileGenerator({
 });
 
 // Generated files will be written to typescript/src directory
-const data = fs.readFileSync('../2.4.0/printnanny-os.yml').toString();
+const data = fs.readFileSync('../../2.4.0/printnanny-os.yml').toString();
 const doc = YAML.parse(data)
 
 

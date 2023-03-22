@@ -71,7 +71,3 @@ export * from "./VideoRecording";
 export * from "./VideoRecordingPart";
 export * from "./CameraRecordingStarted";
 export * from "./CameraRecordingStopped";
-export * from "./OctoPrintCurrentJob";
-export * from "./OctoPrintJob";
-export * from "./OctoPrintFile";
-export * from "./OctoPrintJobProgress";

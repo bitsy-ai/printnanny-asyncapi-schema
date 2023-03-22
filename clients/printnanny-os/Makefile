@@ -32,4 +32,6 @@ typescript-client-build: typescript-clean $(TYPESCRIPT_CLIENT_DIR)
 typescript-client-release: typescript-client-build
 	cd $(CLIENT_DIR) && npm publish
 
+clients-build: typescript-client-build rust-client-build
+
 clients-release: rust-client-release typescript-client-release
