@@ -1,13 +1,12 @@
 asyncapi: 2.4.0
 info:
   title: PrintNanny OS Action & Command Service
-  version: 0.5.0
+  version: 0.1.0
   description: PrintNanny OS remote actions and command handler service
 defaultContentType: "application/json"
 
 channels:
-  # events
-
+  # systemd
   pi.{pi_id}.dbus.org.freedesktop.systemd1.Unit:
     parameters:
       pi_id:
@@ -1155,13 +1154,6 @@ components:
           recording:
             $ref: "#/components/schemas/VideoRecording"
 
-    # OctoPrintCurrentJob
-    OctoPrintCurrentJob:
-      name: OctoPrintCurrentJob
-      summary: "Get OctoPrint current job (if running)."
-      payload:
-        $ref: "#/components/schemas/OctoPrintCurrentJob"
-
   parameters:
     pi_id:
       description: The ID of the PrintNanny Pi/device
@@ -1694,63 +1686,6 @@ components:
         - file_name
         - video_recording_id
 
-    # OctoPrint schemas, based on REST API: https://docs.octoprint.org/en/master/api/job.html#retrieve-information-about-the-current-job
-    OctoPrintCurrentJob:
-      type: object
-      additionalProperties: false
-      properties:
-        job:
-          $ref: "#/components/schemas/OctoPrintJob"
-        progress:
-          $ref: "#/components/schemas/OctoPrintJobProgress"
-        state:
-          type: string
-        error:
-          type: string
-      required:
-        - job
-        - progress
-        - state
-
-    OctoPrintFile:
-      type: object
-      additionalProperties: false
-      properties:
-        name:
-          type: string
-        display:
-          type: string
-        path:
-          type: string
-        origin:
-          type: string
-
-    OctoPrintJob:
-      type: object
-      additionalProperties: false
-      properties:
-        file:
-          $ref: "#/components/schemas/OctoPrintFile"
-        estimatedPrintTime:
-          type: number
-        lastPrintType:
-          type: number
-
-    OctoPrintJobProgress:
-      type: object
-      additionalProperties: false
-      properties:
-        completion:
-          type: number
-        filepos:
-          type: integer
-        printTime:
-          type: integer
-        printTimeLeft:
-          type: integer
-        printTimeLeftOrigin:
-          type: string
-
     PrintNannyCloudApiConfig:
       type: object
       additionalProperties: false
@@ -1779,51 +1714,6 @@ components:
         - email
         - name
         - default_branch
-
-    PathSettings:
-      type: object
-      additionalProperties: false
-      properties:
-        state_dir:
-          type: string
-        settings_dir:
-          type: string
-        log_dir:
-          type: string
-        run_dir:
-          type: string
-        issue_txt:
-          type: string
-        os_release:
-          type: string
-      required:
-        - state_dir
-        - settings_dir
-        - log_dir
-        - run_dir
-        - issue_txt
-        - os_release
-
-    OctoPrintSettings:
-      type: object
-      additionalProperties: false
-      properties:
-        enabled:
-          type: boolean
-        install_dir:
-          type: string
-        settings_file:
-          type: string
-        settings_format:
-          $ref: "#/components/schemas/SettingsFormat"
-        venv:
-          type: string
-      required:
-        - enabled
-        - install_dir
-        - settings_file
-        - settings_format
-        - venv
 
     KlipperSettings:
       type: object
@@ -1878,6 +1768,51 @@ components:
         - settings_file
         - settings_format
         - venv
+
+    OctoPrintSettings:
+      type: object
+      additionalProperties: false
+      properties:
+        enabled:
+          type: boolean
+        install_dir:
+          type: string
+        settings_file:
+          type: string
+        settings_format:
+          $ref: "#/components/schemas/SettingsFormat"
+        venv:
+          type: string
+      required:
+        - enabled
+        - install_dir
+        - settings_file
+        - settings_format
+        - venv
+
+    PathSettings:
+      type: object
+      additionalProperties: false
+      properties:
+        state_dir:
+          type: string
+        settings_dir:
+          type: string
+        log_dir:
+          type: string
+        run_dir:
+          type: string
+        issue_txt:
+          type: string
+        os_release:
+          type: string
+      required:
+        - state_dir
+        - settings_dir
+        - log_dir
+        - run_dir
+        - issue_txt
+        - os_release
 
     PrintNannyOsSettings:
       type: object

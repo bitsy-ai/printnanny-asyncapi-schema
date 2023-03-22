@@ -1,6 +1,6 @@
 .PHONY: clients-release
 
-CLIENT_DIR ?= $(PWD)/clients/
+CLIENT_DIR ?= $(PWD)
 
 RUST_CLIENT_DIR ?= $(CLIENT_DIR)rust
 TYPESCRIPT_CLIENT_DIR ?= $(CLIENT_DIR)typescript
