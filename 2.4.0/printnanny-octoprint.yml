@@ -1,0 +1,217 @@
+asyncapi: 2.4.0
+info:
+  title: PrintNanny x OctoPrint
+  version: 0.1.0
+  description: PrintNanny + OctoPrint
+defaultContentType: "application/json"
+
+# begin channels
+channels:
+  pi.{pi_id}.octoprint.event.server.status:
+    parameters:
+      pi_id:
+        $ref: "#/components/parameters/pi_id"
+    publish:
+      operationId: OctoPrintServerStatus
+      message:
+        $ref: "#/components/messages/OctoPrintServerStatus"
+
+  pi.{pi_id}.octoprint.event.printer.gcode:
+    parameters:
+      pi_id:
+        $ref: "#/components/parameters/pi_id"
+    publish:
+      operationId: OctoPrintGcode
+      message:
+        $ref: "#/components/messages/OctoPrintGcode"
+
+  pi.{pi_id}.octoprint.event.printer.status:
+    parameters:
+      pi_id:
+        $ref: "#/components/parameters/pi_id"
+    publish:
+      operationId: OctoPrintPrinterStatus
+      message:
+        $ref: "#/components/messages/OctoPrintPrinterStatus"
+
+  pi.{pi_id}.octoprint.event.printer.job_progress:
+    parameters:
+      pi_id:
+        $ref: "#/components/parameters/pi_id"
+    publish:
+      operationId: OctoPrintJobProgress
+      message:
+        $ref: "#/components/messages/JobProgress"
+
+  pi.{pi_id}.octoprint.event.printer.job_status:
+    parameters:
+      pi_id:
+        $ref: "#/components/parameters/pi_id"
+    publish:
+      operationId: OctoPrintJobStatus
+      message:
+        $ref: "#/components/messages/OctoPrintJobStatus"
+
+# end channels
+components:
+  # begin message parameters
+  parameters:
+    pi_id:
+      description: The ID of the PrintNanny Pi/device
+      schema:
+        type: string
+      location: "$message.header#/pi_id"
+  # end message parameters
+
+  messages:
+    CurrentJob:
+      name: OctoPrintCurrentJob
+      summary: "Get OctoPrint current job (if running)."
+      payload:
+        $ref: "#/components/schemas/CurrentJob"
+
+    JobProgress:
+      name: JobProgress
+      summary: "Current job progress. Ref: https://docs.octoprint.org/en/master/plugins/mixins.html?highlight=on_print_progress#octoprint.plugin.ProgressPlugin"
+      payload:
+        job: "#/components/schemas/Job"
+        storage:
+          type: string
+          description: "Drive location of the gcode file"
+        path:
+          type: string
+          description: "Path of the gcode file"
+        progress:
+          type: integer
+
+    OctoPrintGcode:
+      name: OctoPrintGcode
+      summary: "A gcode command was sent from OctoPrint to printer"
+      payload:
+        gcode: "#/components/schemas/GcodeEvent"
+
+    OctoPrintServerStatus:
+      name: OctoPrintServerStatus
+      summary: "OctoPrint server status changed"
+      payload:
+        gcode: "#/components/schemas/OctoPrintServerStatus"
+
+schemas:
+  GcodeEvent:
+    type: string
+    enum:
+      - "Alert__M300"
+      - "Cooling__M245"
+      - "Dwell__G4"
+      - "Estop__M112"
+      - "FilamentChange__M600"
+      - "FilamentChange__M701"
+      - "FilamentChange__M702"
+      - "Home__G28"
+      - "PowerOn__M80"
+      - "PowerOff__M81"
+
+  Job:
+    type: object
+    additionalProperties: false
+    summary: "OctoPrint job data, ref: https://github.com/OctoPrint/OctoPrint/blob/0fcb15d875c504f3186dd11496d7b9ef77afca3b/src/octoprint/printer/standard.py#L141"
+    properties:
+      file: "#/components/schemas/GcodeFile"
+      estimated_print_time:
+        type: string
+      last_print_time:
+        type: string
+      filament_length:
+        type: string
+      filament_volume:
+        type: string
+
+  JobStatus:
+    type: string
+    additionalProperties: false
+    enum:
+      - PrintStarted
+      - PrintFailed
+      - PrintDone
+      - PrintCancelling
+      - PrintCanelled
+      - PrintPaused
+      - PrintResumed
+
+  PrinterStatus:
+    type: string
+    additionalProperties: false
+    enum:
+      - "OPEN_SERIAL"
+      - "CONNECTING"
+      - "OPERATIONAL"
+      - "PRINTING"
+      - "PAUSED"
+      - "CLOSED"
+      - "ERROR"
+      - "UNKNOWN"
+      - "CLOSED_WITH_ERROR"
+
+  # OctoPrint schemas, based on REST API: https://docs.octoprint.org/en/master/api/job.html#retrieve-information-about-the-current-job
+  CurrentJob:
+    type: object
+    additionalProperties: false
+    properties:
+      job:
+        $ref: "#/components/schemas/OctoPrintJob"
+      progress:
+        $ref: "#/components/schemas/OctoPrintJobProgress"
+      state:
+        type: string
+      error:
+        type: string
+    required:
+      - job
+      - progress
+      - state
+
+  OctoPrintServerStatus:
+    additionalProperties: false
+    type: string
+    enum:
+      - "Startup"
+      - "Shutdown"
+
+  GcodeFile:
+    type: object
+    additionalProperties: false
+    properties:
+      name:
+        type: string
+      display:
+        type: string
+      path:
+        type: string
+      origin:
+        type: string
+
+  OctoPrintJob:
+    type: object
+    additionalProperties: false
+    properties:
+      file:
+        $ref: "#/components/schemas/OctoPrintFile"
+      estimatedPrintTime:
+        type: number
+      lastPrintType:
+        type: number
+
+  JobProgress:
+    type: object
+    additionalProperties: false
+    properties:
+      completion:
+        type: number
+      filepos:
+        type: integer
+      printTime:
+        type: integer
+      printTimeLeft:
+        type: integer
+      printTimeLeftOrigin:
+        type: string
