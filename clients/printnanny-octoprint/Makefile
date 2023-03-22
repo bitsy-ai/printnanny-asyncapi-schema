@@ -21,6 +21,7 @@ python-clean:
 
 python-client-build: python-clean
 	npm run generate:python
+	cd $(PYTHON_CLIENT_DIR) && cd .. && python3 -m build
 
 rust-clean:
 	rm -rf $(RUST_CLIENT_DIR)
