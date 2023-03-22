@@ -4,7 +4,8 @@ CLIENT_DIR ?= $(PWD)
 
 RUST_CLIENT_DIR ?= $(CLIENT_DIR)/rust
 TYPESCRIPT_CLIENT_DIR ?= $(CLIENT_DIR)/typescript
-PYTHON_CLIENT_DIR ?= $(CLIENT_DIR)/python/src
+PYTHON_CLIENT_SRC_DIR ?= $(CLIENT_DIR)/python/src
+PYTHON_CLIENT_DIST_DIR ?= $(CLIENT_DIR)/python/dist
 
 $(TYPESCRIPT_CLIENT_DIR):
 	mkdir -p $(TYPESCRIPT_CLIENT_DIR)
@@ -12,14 +13,14 @@ $(TYPESCRIPT_CLIENT_DIR):
 $(RUST_CLIENT_DIR):
 	mkdir -p $(RUST_CLIENT_DIR)
 
-$(PYTHON_CLIENT_DIR):
-	mkdir -p $()
-
+$(PYTHON_CLIENT_SRC_DIR):
+	mkdir -p $(PYTHON_CLIENT_SRC_DIR)
 
 python-clean:
-	rm -rf $(PYTHON_CLIENT_DIR)
+	rm -rf $(PYTHON_CLIENT_SRC_DIR)
+	rm -rf $(PYTHON_CLIENT_DIST_DIR)
 
-python-client-build: python-clean
+python-client-build: python-clean $(PYTHON_CLIENT_SRC_DIR)
 	npm run generate:python
 	cd $(PYTHON_CLIENT_DIR) && cd .. && python3 -m build
 
