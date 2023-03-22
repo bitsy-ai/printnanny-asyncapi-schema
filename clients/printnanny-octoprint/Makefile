@@ -49,6 +49,6 @@ typescript-client-release: typescript-client-build
 	cd $(CLIENT_DIR) && npm publish
 
 
-clients-build: typescript-client-build rust-client-build python-client-build
+clients-build: typescript-client-build python-client-build rust-client-build 
 
 clients-release: rust-client-release typescript-client-release python-client-release

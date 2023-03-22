@@ -1,4 +1,4 @@
 
 export interface JobStatus {
-  reserved_status?: JobStatus;
+  reserved_status: JobStatus;
 }

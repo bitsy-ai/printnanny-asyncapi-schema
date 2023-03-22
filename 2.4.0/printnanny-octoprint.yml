@@ -80,6 +80,8 @@ components:
         properties:
           status:
             $ref: "#/components/schemas/JobStatus"
+        required:
+          - status
 
     JobProgress:
       name: JobProgress
@@ -127,7 +129,8 @@ components:
       name: PrinterStatusChanged
       summary: "OctoPrint printer status/state changed"
       payload:
-        dditionalProperties: false
+        x-parser-schema-id: PrinterStatusChanged
+        additionalProperties: false
         properties:
           status:
             $ref: "#/components/schemas/PrinterStatus"
