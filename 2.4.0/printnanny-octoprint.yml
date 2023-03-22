@@ -32,7 +32,7 @@ channels:
     publish:
       operationId: OctoPrintPrinterStatus
       message:
-        $ref: "#/components/messages/OctoPrintPrinterStatus"
+        $ref: "#/components/messages/PrinterStatus"
 
   pi.{pi_id}.octoprint.event.printer.job_progress:
     parameters:
@@ -50,7 +50,7 @@ channels:
     publish:
       operationId: OctoPrintJobStatus
       message:
-        $ref: "#/components/messages/OctoPrintJobStatus"
+        $ref: "#/components/messages/JobStatus"
 
 # end channels
 components:
@@ -69,6 +69,13 @@ components:
       summary: "Get OctoPrint current job (if running)."
       payload:
         $ref: "#/components/schemas/CurrentJob"
+
+    JobStatus:
+      name: JobStatus
+      summary: "OctoPrint job status changed"
+      payload:
+        status:
+          $ref: "#/components/schemas/JobStatus"
 
     JobProgress:
       name: JobProgress
@@ -94,124 +101,121 @@ components:
       name: OctoPrintServerStatus
       summary: "OctoPrint server status changed"
       payload:
-        gcode: "#/components/schemas/OctoPrintServerStatus"
+        status:
+          $ref: "#/components/schemas/OctoPrintServerStatus"
 
-schemas:
-  GcodeEvent:
-    type: string
-    enum:
-      - "Alert__M300"
-      - "Cooling__M245"
-      - "Dwell__G4"
-      - "Estop__M112"
-      - "FilamentChange__M600"
-      - "FilamentChange__M701"
-      - "FilamentChange__M702"
-      - "Home__G28"
-      - "PowerOn__M80"
-      - "PowerOff__M81"
+    PrinterStatus:
+      name: PrinterStatus
+      summary: "OctoPrint printer status/state changed"
+      payload:
+        $ref: "#/components/schemas/PrinterStatus"
 
-  Job:
-    type: object
-    additionalProperties: false
-    summary: "OctoPrint job data, ref: https://github.com/OctoPrint/OctoPrint/blob/0fcb15d875c504f3186dd11496d7b9ef77afca3b/src/octoprint/printer/standard.py#L141"
-    properties:
-      file: "#/components/schemas/GcodeFile"
-      estimated_print_time:
-        type: string
-      last_print_time:
-        type: string
-      filament_length:
-        type: string
-      filament_volume:
-        type: string
+  schemas:
+    GcodeEvent:
+      type: string
+      enum:
+        - "Alert__M300"
+        - "Cooling__M245"
+        - "Dwell__G4"
+        - "Estop__M112"
+        - "FilamentChange__M600"
+        - "FilamentChange__M701"
+        - "FilamentChange__M702"
+        - "Home__G28"
+        - "PowerOn__M80"
+        - "PowerOff__M81"
 
-  JobStatus:
-    type: string
-    additionalProperties: false
-    enum:
-      - PrintStarted
-      - PrintFailed
-      - PrintDone
-      - PrintCancelling
-      - PrintCanelled
-      - PrintPaused
-      - PrintResumed
+    Job:
+      type: object
+      additionalProperties: false
+      summary: "OctoPrint job data, ref: https://github.com/OctoPrint/OctoPrint/blob/0fcb15d875c504f3186dd11496d7b9ef77afca3b/src/octoprint/printer/standard.py#L141"
+      properties:
+        file:
+          $ref: "#/components/schemas/GcodeFile"
+        estimated_print_time:
+          type: string
+        last_print_time:
+          type: string
+        filament_length:
+          type: string
+        filament_volume:
+          type: string
 
-  PrinterStatus:
-    type: string
-    additionalProperties: false
-    enum:
-      - "OPEN_SERIAL"
-      - "CONNECTING"
-      - "OPERATIONAL"
-      - "PRINTING"
-      - "PAUSED"
-      - "CLOSED"
-      - "ERROR"
-      - "UNKNOWN"
-      - "CLOSED_WITH_ERROR"
+    JobStatus:
+      type: string
+      additionalProperties: false
+      enum:
+        - PrintStarted
+        - PrintFailed
+        - PrintDone
+        - PrintCancelling
+        - PrintCanelled
+        - PrintPaused
+        - PrintResumed
 
-  # OctoPrint schemas, based on REST API: https://docs.octoprint.org/en/master/api/job.html#retrieve-information-about-the-current-job
-  CurrentJob:
-    type: object
-    additionalProperties: false
-    properties:
-      job:
-        $ref: "#/components/schemas/OctoPrintJob"
-      progress:
-        $ref: "#/components/schemas/OctoPrintJobProgress"
-      state:
-        type: string
-      error:
-        type: string
-    required:
-      - job
-      - progress
-      - state
+    PrinterStatus:
+      type: string
+      additionalProperties: false
+      enum:
+        - "OPEN_SERIAL"
+        - "CONNECTING"
+        - "OPERATIONAL"
+        - "PRINTING"
+        - "PAUSED"
+        - "CLOSED"
+        - "ERROR"
+        - "UNKNOWN"
+        - "CLOSED_WITH_ERROR"
 
-  OctoPrintServerStatus:
-    additionalProperties: false
-    type: string
-    enum:
-      - "Startup"
-      - "Shutdown"
+    # OctoPrint schemas, based on REST API: https://docs.octoprint.org/en/master/api/job.html#retrieve-information-about-the-current-job
+    CurrentJob:
+      type: object
+      additionalProperties: false
+      properties:
+        job:
+          $ref: "#/components/schemas/Job"
+        progress:
+          $ref: "#/components/schemas/JobProgress"
+        state:
+          type: string
+        error:
+          type: string
+      required:
+        - job
+        - progress
+        - state
 
-  GcodeFile:
-    type: object
-    additionalProperties: false
-    properties:
-      name:
-        type: string
-      display:
-        type: string
-      path:
-        type: string
-      origin:
-        type: string
+    OctoPrintServerStatus:
+      additionalProperties: false
+      type: string
+      enum:
+        - "Startup"
+        - "Shutdown"
 
-  OctoPrintJob:
-    type: object
-    additionalProperties: false
-    properties:
-      file:
-        $ref: "#/components/schemas/OctoPrintFile"
-      estimatedPrintTime:
-        type: number
-      lastPrintType:
-        type: number
+    GcodeFile:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+        display:
+          type: string
+        path:
+          type: string
+        origin:
+          type: string
 
-  JobProgress:
-    type: object
-    additionalProperties: false
-    properties:
-      completion:
-        type: number
-      filepos:
-        type: integer
-      printTime:
-        type: integer
-      printTimeLeft:
-        type: integer
-      printTimeLeftOrigin:
-        type: string
+    JobProgress:
+      type: object
+      additionalProperties: false
+      properties:
+        completion:
+          type: number
+        filepos:
+          type: integer
+        printTime:
+          type: integer
+        printTimeLeft:
+          type: integer
+        printTimeLeftOrigin:
+          type: string
