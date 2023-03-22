@@ -7,5 +7,6 @@ export * from "./PrinterStatus";
 export * from "./JobProgress";
 export * from "./Job";
 export * from "./GcodeFile";
+export * from "./JobStatusChanged";
 export * from "./JobStatus";
 export * from "./CurrentJob";
