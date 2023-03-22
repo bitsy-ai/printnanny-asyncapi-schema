@@ -1,7 +1,7 @@
 asyncapi: 2.4.0
 info:
   title: PrintNanny x OctoPrint
-  version: 0.1.0
+  version: 0.1.1
   description: PrintNanny + OctoPrint
 defaultContentType: "application/json"
 
@@ -12,9 +12,9 @@ channels:
       pi_id:
         $ref: "#/components/parameters/pi_id"
     publish:
-      operationId: OctoPrintServerStatus
+      operationId: OctoPrintServerStatusChanged
       message:
-        $ref: "#/components/messages/OctoPrintServerStatus"
+        $ref: "#/components/messages/OctoPrintServerStatusChanged"
 
   pi.{pi_id}.octoprint.event.printer.gcode:
     parameters:
@@ -30,16 +30,16 @@ channels:
       pi_id:
         $ref: "#/components/parameters/pi_id"
     publish:
-      operationId: OctoPrintPrinterStatus
+      operationId: PrinterStatusChanged
       message:
-        $ref: "#/components/messages/PrinterStatus"
+        $ref: "#/components/messages/PrinterStatusChanged"
 
   pi.{pi_id}.octoprint.event.printer.job_progress:
     parameters:
       pi_id:
         $ref: "#/components/parameters/pi_id"
     publish:
-      operationId: OctoPrintJobProgress
+      operationId: JobProgress
       message:
         $ref: "#/components/messages/JobProgress"
 
@@ -48,7 +48,7 @@ channels:
       pi_id:
         $ref: "#/components/parameters/pi_id"
     publish:
-      operationId: OctoPrintJobStatus
+      operationId: JobStatusChanged
       message:
         $ref: "#/components/messages/JobStatus"
 
@@ -80,6 +80,8 @@ components:
         properties:
           status:
             $ref: "#/components/schemas/JobStatus"
+        required:
+          - status
 
     JobProgress:
       name: JobProgress
@@ -108,22 +110,32 @@ components:
         properties:
           gcode:
             $ref: "#/components/schemas/GcodeEvent"
+        required:
+          - gcode
 
-    OctoPrintServerStatus:
-      name: OctoPrintServerStatus
+    OctoPrintServerStatusChanged:
+      name: OctoPrintServerStatusChanged
       summary: "OctoPrint server status changed"
       payload:
-        x-parser-schema-id: OctoPrintServerStatus
+        x-parser-schema-id: OctoPrintServerStatusChanged
+        additionalProperties: false
         properties:
-          additionalProperties: false
           status:
             $ref: "#/components/schemas/OctoPrintServerStatus"
+        required:
+          - status
 
-    PrinterStatus:
-      name: PrinterStatus
+    PrinterStatusChanged:
+      name: PrinterStatusChanged
       summary: "OctoPrint printer status/state changed"
       payload:
-        $ref: "#/components/schemas/PrinterStatus"
+        x-parser-schema-id: PrinterStatusChanged
+        additionalProperties: false
+        properties:
+          status:
+            $ref: "#/components/schemas/PrinterStatus"
+        required:
+          - status
 
   schemas:
     GcodeEvent:

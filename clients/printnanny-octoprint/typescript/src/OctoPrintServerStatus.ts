@@ -1,5 +1,5 @@
 
-export interface OctoPrintServerStatus {
-  additionalProperties?: any;
-  reserved_status?: OctoPrintServerStatus;
+export enum OctoPrintServerStatus {
+  STARTUP = "Startup",
+  SHUTDOWN = "Shutdown",
 }
