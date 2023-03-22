@@ -12,7 +12,6 @@ readme = "README.md"
 authors = [{ name = "Leigh Johnson", email = "leigh@printnanny.ai" }]
 license = { file = "AGPL-3.0-or-later" }
 classifiers = [
-    "License :: OSI Approved :: GNU Affero General Public License version 3",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
 ]
