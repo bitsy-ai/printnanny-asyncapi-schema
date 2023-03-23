@@ -8,7 +8,8 @@ import YAML from 'yaml'
 export async function generate(): Promise<void> {
   // initialize the generator from a preset
   const generator = new PythonFileGenerator({
-    presets: [PYTHON_PYDANTIC_PRESET, PYTHON_JSON_SERIALIZER_PRESET]
+    presets: [PYTHON_PYDANTIC_PRESET, PYTHON_JSON_SERIALIZER_PRESET],
+    importsStyle: 'explicit'
   });
   // Generated files will be written to rust/ directory
   const outDir = path.join(__dirname, 'python/printnanny_octoprint_models');
@@ -18,7 +19,7 @@ export async function generate(): Promise<void> {
 
   // Run the file generator with options
   let initModule = "";
-  const models = await generator.generateToFiles(doc, outDir, { importsStyle: 'explicit' });
+  const models = await generator.generateToFiles(doc, outDir, { importsStyle: 'explicit' }, true);
   for (const model of models) {
     initModule += `from .${model.modelName} import *`;
     initModule += "\n";

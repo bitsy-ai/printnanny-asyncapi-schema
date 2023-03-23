@@ -1,5 +1,5 @@
 
-export enum GcodeEvent {
+enum GcodeEvent {
   ALERT_M300 = "Alert__M300",
   COOLING_M245 = "Cooling__M245",
   DWELL_G4 = "Dwell__G4",
@@ -11,3 +11,4 @@ export enum GcodeEvent {
   POWER_ON_M80 = "PowerOn__M80",
   POWER_OFF_M81 = "PowerOff__M81",
 }
+export { GcodeEvent };

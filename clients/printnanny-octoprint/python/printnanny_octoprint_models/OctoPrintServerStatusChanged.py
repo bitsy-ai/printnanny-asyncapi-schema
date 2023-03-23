@@ -1,4 +1,4 @@
-from OctoPrintServerStatus import OctoPrintServerStatus
+from .OctoPrintServerStatus import OctoPrintServerStatus
 import json
 from typing import Optional, Any
 from pydantic import BaseModel, Field

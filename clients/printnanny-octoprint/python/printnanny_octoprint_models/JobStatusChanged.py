@@ -1,4 +1,4 @@
-from JobStatus import JobStatus
+from .JobStatus import JobStatus
 import json
 from typing import Optional, Any
 from pydantic import BaseModel, Field

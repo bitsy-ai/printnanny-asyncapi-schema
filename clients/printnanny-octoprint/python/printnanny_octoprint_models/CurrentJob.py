@@ -1,5 +1,5 @@
-from Job import Job
-from JobProgress import JobProgress
+from .Job import Job
+from .JobProgress import JobProgress
 import json
 from typing import Optional, Any
 from pydantic import BaseModel, Field

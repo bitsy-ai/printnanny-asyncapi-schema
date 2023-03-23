@@ -1,4 +1,5 @@
 import {JobStatus} from './JobStatus';
-export interface JobStatusChanged {
+interface JobStatusChanged {
   reserved_status: JobStatus;
 }
+export { JobStatusChanged };

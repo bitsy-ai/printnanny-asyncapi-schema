@@ -1,8 +1,9 @@
 
-export interface JobProgress {
+interface JobProgress {
   completion?: number;
   filepos?: number;
   printTime?: number;
   printTimeLeft?: number;
   printTimeLeftOrigin?: string;
 }
+export { JobProgress };

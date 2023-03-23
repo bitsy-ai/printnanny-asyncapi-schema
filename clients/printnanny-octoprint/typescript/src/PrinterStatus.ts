@@ -1,5 +1,5 @@
 
-export enum PrinterStatus {
+enum PrinterStatus {
   OPEN_SERIAL = "OPEN_SERIAL",
   CONNECTING = "CONNECTING",
   OPERATIONAL = "OPERATIONAL",
@@ -10,3 +10,4 @@ export enum PrinterStatus {
   UNKNOWN = "UNKNOWN",
   CLOSED_WITH_ERROR = "CLOSED_WITH_ERROR",
 }
+export { PrinterStatus };

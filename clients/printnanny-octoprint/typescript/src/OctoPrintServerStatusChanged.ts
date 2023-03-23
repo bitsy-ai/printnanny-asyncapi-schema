@@ -1,4 +1,5 @@
 import {OctoPrintServerStatus} from './OctoPrintServerStatus';
-export interface OctoPrintServerStatusChanged {
+interface OctoPrintServerStatusChanged {
   reserved_status: OctoPrintServerStatus;
 }
+export { OctoPrintServerStatusChanged };

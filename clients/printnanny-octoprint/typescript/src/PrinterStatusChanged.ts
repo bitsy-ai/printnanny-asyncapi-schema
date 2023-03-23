@@ -1,4 +1,5 @@
 import {PrinterStatus} from './PrinterStatus';
-export interface PrinterStatusChanged {
+interface PrinterStatusChanged {
   reserved_status: PrinterStatus;
 }
+export { PrinterStatusChanged };

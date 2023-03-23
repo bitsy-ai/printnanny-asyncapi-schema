@@ -1,4 +1,5 @@
 import {GcodeEvent} from './GcodeEvent';
-export interface OctoPrintGcode {
+interface OctoPrintGcode {
   gcode: GcodeEvent;
 }
+export { OctoPrintGcode };
