@@ -1,7 +1,7 @@
 asyncapi: 2.4.0
 info:
   title: PrintNanny x OctoPrint
-  version: version: 0.1.3
+  version: 0.1.3
   description: PrintNanny + OctoPrint
 defaultContentType: "application/json"
 
