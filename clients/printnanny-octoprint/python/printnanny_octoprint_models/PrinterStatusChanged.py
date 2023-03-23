@@ -1,4 +1,4 @@
-from PrinterStatus import PrinterStatus
+from .PrinterStatus import PrinterStatus
 import json
 from typing import Optional, Any
 from pydantic import BaseModel, Field

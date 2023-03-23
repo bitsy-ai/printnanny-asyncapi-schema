@@ -1,4 +1,4 @@
-from GcodeEvent import GcodeEvent
+from .GcodeEvent import GcodeEvent
 import json
 from typing import Optional, Any
 from pydantic import BaseModel, Field

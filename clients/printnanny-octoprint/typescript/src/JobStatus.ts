@@ -1,5 +1,5 @@
 
-export enum JobStatus {
+enum JobStatus {
   PRINT_STARTED = "PrintStarted",
   PRINT_FAILED = "PrintFailed",
   PRINT_DONE = "PrintDone",
@@ -8,3 +8,4 @@ export enum JobStatus {
   PRINT_PAUSED = "PrintPaused",
   PRINT_RESUMED = "PrintResumed",
 }
+export { JobStatus };
