@@ -182,17 +182,23 @@ components:
 
     PrinterStatus:
       type: string
+      summary: "Printer status returned by PrinterInterface.get_state_id https://docs.octoprint.org/en/maintenance/modules/printer.html#octoprint.printer.PrinterInterface.get_state_id"
       additionalProperties: false
       enum:
-        - "OPEN_SERIAL"
-        - "CONNECTING"
-        - "OPERATIONAL"
-        - "PRINTING"
-        - "PAUSED"
-        - "CLOSED"
-        - "ERROR"
-        - "UNKNOWN"
         - "CLOSED_WITH_ERROR"
+        - "CLOSED"
+        - "CONNECTING"
+        - "DETECT_BAUDRATE"
+        - "DETECT_SERIAL"
+        - "ERROR"
+        - "NONE"
+        - "OFFLINE"
+        - "OPEN_SERIAL"
+        - "OPERATIONAL"
+        - "PAUSED"
+        - "PRINTING"
+        - "TRANSFERING_FILE"
+        - "UNKNOWN"
 
     # OctoPrint schemas, based on REST API: https://docs.octoprint.org/en/master/api/job.html#retrieve-information-about-the-current-job
     CurrentJob:
