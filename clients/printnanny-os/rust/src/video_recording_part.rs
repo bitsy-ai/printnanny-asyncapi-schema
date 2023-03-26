@@ -4,7 +4,7 @@ pub struct VideoRecordingPart {
     #[serde(rename="id")]
     pub id: String,
     #[serde(rename="buffer_index")]
-    pub buffer_index: i32,
+    pub buffer_index: i64,
     #[serde(rename="buffer_runningtime")]
     pub buffer_runningtime: i64,
     #[serde(rename="size")]
@@ -22,7 +22,7 @@ pub struct VideoRecordingPart {
 }
 
 impl VideoRecordingPart {
-    pub fn new(id: String, buffer_index: i32, buffer_runningtime: i64, size: i64, deleted: bool, sync_start: Option<String>, sync_end: Option<String>, file_name: String, video_recording_id: String) -> VideoRecordingPart {
+    pub fn new(id: String, buffer_index: i64, buffer_runningtime: i64, size: i64, deleted: bool, sync_start: Option<String>, sync_end: Option<String>, file_name: String, video_recording_id: String) -> VideoRecordingPart {
         VideoRecordingPart {
             id,
             buffer_index,

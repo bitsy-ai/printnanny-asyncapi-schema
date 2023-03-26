@@ -1,5 +1,5 @@
 
-export interface NetworkInterfaceAddress {
+interface NetworkInterfaceAddress {
   interface_name: string;
   flags: number;
   address?: string;
@@ -7,3 +7,4 @@ export interface NetworkInterfaceAddress {
   broadcast?: string;
   destination?: string;
 }
+export { NetworkInterfaceAddress };

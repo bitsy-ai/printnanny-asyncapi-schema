@@ -1,5 +1,5 @@
 
-export interface CameraSettings {
+interface CameraSettings {
   colorimetry: string;
   height: number;
   width: number;
@@ -9,3 +9,4 @@ export interface CameraSettings {
   device_name: string;
   label: string;
 }
+export { CameraSettings };

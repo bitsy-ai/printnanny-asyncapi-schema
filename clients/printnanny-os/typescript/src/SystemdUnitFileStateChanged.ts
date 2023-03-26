@@ -1,6 +1,7 @@
 import {SystemdUnitFileState} from './SystemdUnitFileState';
 import {SystemdUnit} from './SystemdUnit';
-export interface SystemdUnitFileStateChanged {
+interface SystemdUnitFileStateChanged {
   unit_file_state: SystemdUnitFileState;
   unit: SystemdUnit;
 }
+export { SystemdUnitFileStateChanged };

@@ -1,4 +1,5 @@
 
-export interface SystemdManagerUnitFilesRequest {
+interface SystemdManagerUnitFilesRequest {
   files: string[];
 }
+export { SystemdManagerUnitFilesRequest };

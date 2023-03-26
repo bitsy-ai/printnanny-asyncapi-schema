@@ -1,5 +1,5 @@
 
-export enum SystemdUnitActiveState {
+enum SystemdUnitActiveState {
   ACTIVE = "active",
   ACTIVATING = "activating",
   DEACTIVATING = "deactivating",
@@ -8,3 +8,4 @@ export enum SystemdUnitActiveState {
   RELOADING = "reloading",
   LOADED = "loaded",
 }
+export { SystemdUnitActiveState };

@@ -1,6 +1,6 @@
 import {CameraSourceType} from './CameraSourceType';
 import {GstreamerCaps} from './GstreamerCaps';
-export interface Camera {
+interface Camera {
   index: number;
   device_name: string;
   label: string;
@@ -8,3 +8,4 @@ export interface Camera {
   selected_caps: GstreamerCaps;
   available_caps: GstreamerCaps[];
 }
+export { Camera };

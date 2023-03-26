@@ -1,5 +1,5 @@
 
-export interface VideoRecordingPart {
+interface VideoRecordingPart {
   id: string;
   buffer_index: number;
   buffer_runningtime: number;
@@ -10,3 +10,4 @@ export interface VideoRecordingPart {
   file_name: string;
   video_recording_id: string;
 }
+export { VideoRecordingPart };

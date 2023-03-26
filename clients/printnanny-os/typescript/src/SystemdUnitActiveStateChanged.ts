@@ -1,6 +1,7 @@
 import {SystemdUnitActiveState} from './SystemdUnitActiveState';
 import {SystemdUnit} from './SystemdUnit';
-export interface SystemdUnitActiveStateChanged {
+interface SystemdUnitActiveStateChanged {
   active_state: SystemdUnitActiveState;
   unit: SystemdUnit;
 }
+export { SystemdUnitActiveStateChanged };

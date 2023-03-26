@@ -1,5 +1,6 @@
 
-export interface PrintNannyCloudSyncError {
+interface PrintNannyCloudSyncError {
   error: string;
   subject_pattern: string;
 }
+export { PrintNannyCloudSyncError };

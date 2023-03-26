@@ -1,5 +1,5 @@
 
-export enum SystemdUnitFileState {
+enum SystemdUnitFileState {
   ENABLED = "enabled",
   ENABLED_MINUS_RUNTIME = "enabled-runtime",
   LINKED = "linked",
@@ -10,3 +10,4 @@ export enum SystemdUnitFileState {
   DISABLED = "disabled",
   INVALID = "invalid",
 }
+export { SystemdUnitFileState };

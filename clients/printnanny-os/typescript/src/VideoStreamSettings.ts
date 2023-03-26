@@ -4,7 +4,7 @@ import {HlsSettings} from './HlsSettings';
 import {RecordingSettings} from './RecordingSettings';
 import {RtpSettings} from './RtpSettings';
 import {SnapshotSettings} from './SnapshotSettings';
-export interface VideoStreamSettings {
+interface VideoStreamSettings {
   camera: CameraSettings;
   detection: DetectionSettings;
   hls: HlsSettings;
@@ -12,3 +12,4 @@ export interface VideoStreamSettings {
   rtp: RtpSettings;
   snapshot: SnapshotSettings;
 }
+export { VideoStreamSettings };

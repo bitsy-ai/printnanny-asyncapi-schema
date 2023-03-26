@@ -1,5 +1,5 @@
 
-export interface DetectionSettings {
+interface DetectionSettings {
   nats_server_uri: string;
   label_file: string;
   model_file: string;
@@ -11,3 +11,4 @@ export interface DetectionSettings {
   overlay: boolean;
   graphs: boolean;
 }
+export { DetectionSettings };

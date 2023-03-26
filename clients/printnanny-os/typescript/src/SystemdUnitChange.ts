@@ -1,6 +1,7 @@
 import {SystemdUnitChangeState} from './SystemdUnitChangeState';
-export interface SystemdUnitChange {
+interface SystemdUnitChange {
   change: SystemdUnitChangeState;
   file: string;
   destination: string;
 }
+export { SystemdUnitChange };
