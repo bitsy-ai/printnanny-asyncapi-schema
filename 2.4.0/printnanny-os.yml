@@ -1654,6 +1654,7 @@ components:
           type: string
         buffer_index:
           type: integer
+          format: long
         buffer_runningtime:
           type: integer
           format: long
