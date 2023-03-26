@@ -1,6 +1,6 @@
 {
   "name": "@bitsy-ai/printnanny-octoprint-models",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Printnanny.ai OctoPrint AsyncAPI (Modelina) Generated Models",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
