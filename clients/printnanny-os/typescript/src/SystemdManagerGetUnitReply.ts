@@ -1,4 +1,5 @@
 import {SystemdUnit} from './SystemdUnit';
-export interface SystemdManagerGetUnitReply {
+interface SystemdManagerGetUnitReply {
   unit: SystemdUnit;
 }
+export { SystemdManagerGetUnitReply };

@@ -1,5 +1,6 @@
 
-export interface SnapshotSettings {
+interface SnapshotSettings {
   path: string;
   enabled: boolean;
 }
+export { SnapshotSettings };

@@ -1,5 +1,6 @@
 
-export enum SystemdUnitChangeState {
+enum SystemdUnitChangeState {
   SYMLINK = "symlink",
   UNLINK = "unlink",
 }
+export { SystemdUnitChangeState };

@@ -1,8 +1,9 @@
 
-export interface GstreamerCaps {
+interface GstreamerCaps {
   media_type: string;
   format: string;
   width: number;
   height: number;
   colorimetry: string;
 }
+export { GstreamerCaps };

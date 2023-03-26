@@ -1,7 +1,8 @@
 
-export interface HlsSettings {
+interface HlsSettings {
   segments: string;
   playlist: string;
   playlist_root: string;
   enabled: boolean;
 }
+export { HlsSettings };

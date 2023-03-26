@@ -6,7 +6,7 @@ import {KlipperSettings} from './KlipperSettings';
 import {MainsailSettings} from './MainsailSettings';
 import {MoonrakerSettings} from './MoonrakerSettings';
 import {OctoPrintSettings} from './OctoPrintSettings';
-export interface PrintNannyOsSettings {
+interface PrintNannyOsSettings {
   cloud: PrintNannyCloudApiConfig;
   video: VideoStreamSettings;
   git: GitSettings;
@@ -16,3 +16,4 @@ export interface PrintNannyOsSettings {
   moonraker: MoonrakerSettings;
   octoprint: OctoPrintSettings;
 }
+export { PrintNannyOsSettings };

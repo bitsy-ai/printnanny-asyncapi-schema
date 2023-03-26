@@ -1,4 +1,5 @@
 import {Camera} from './Camera';
-export interface CamerasLoadReply {
+interface CamerasLoadReply {
   cameras: Camera[];
 }
+export { CamerasLoadReply };

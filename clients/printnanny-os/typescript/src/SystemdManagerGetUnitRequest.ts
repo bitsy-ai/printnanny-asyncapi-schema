@@ -1,4 +1,5 @@
 
-export interface SystemdManagerGetUnitRequest {
+interface SystemdManagerGetUnitRequest {
   unit_name: string;
 }
+export { SystemdManagerGetUnitRequest };

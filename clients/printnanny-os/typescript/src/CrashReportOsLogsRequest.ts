@@ -1,4 +1,5 @@
 
-export interface CrashReportOsLogsRequest {
+interface CrashReportOsLogsRequest {
   id: string;
 }
+export { CrashReportOsLogsRequest };

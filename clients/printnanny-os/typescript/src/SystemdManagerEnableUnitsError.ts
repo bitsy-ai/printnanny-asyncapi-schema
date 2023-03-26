@@ -1,6 +1,7 @@
 import {SystemdManagerUnitFilesRequest} from './SystemdManagerUnitFilesRequest';
-export interface SystemdManagerEnableUnitsError {
+interface SystemdManagerEnableUnitsError {
   error: string;
   subject_pattern: string;
   request: SystemdManagerUnitFilesRequest;
 }
+export { SystemdManagerEnableUnitsError };

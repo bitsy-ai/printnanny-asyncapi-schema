@@ -1,4 +1,5 @@
 import {VideoRecording} from './VideoRecording';
-export interface CameraRecordingStarted {
+interface CameraRecordingStarted {
   recording: VideoRecording;
 }
+export { CameraRecordingStarted };

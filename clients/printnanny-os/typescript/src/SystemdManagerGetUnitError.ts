@@ -1,6 +1,7 @@
 import {SystemdManagerGetUnitRequest} from './SystemdManagerGetUnitRequest';
-export interface SystemdManagerGetUnitError {
+interface SystemdManagerGetUnitError {
   error: string;
   subject_pattern: string;
   request: SystemdManagerGetUnitRequest;
 }
+export { SystemdManagerGetUnitError };

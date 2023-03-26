@@ -1,5 +1,5 @@
 
-export interface PathSettings {
+interface PathSettings {
   state_dir: string;
   settings_dir: string;
   log_dir: string;
@@ -7,3 +7,4 @@ export interface PathSettings {
   issue_txt: string;
   os_release: string;
 }
+export { PathSettings };

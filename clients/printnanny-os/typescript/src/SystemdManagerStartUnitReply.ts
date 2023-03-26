@@ -1,5 +1,6 @@
 import {SystemdUnit} from './SystemdUnit';
-export interface SystemdManagerStartUnitReply {
+interface SystemdManagerStartUnitReply {
   job: string;
   unit: SystemdUnit;
 }
+export { SystemdManagerStartUnitReply };

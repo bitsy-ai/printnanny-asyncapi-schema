@@ -1,5 +1,5 @@
 
-export interface VideoRecording {
+interface VideoRecording {
   id: string;
   cloud_sync_done: boolean;
   dir: string;
@@ -7,3 +7,4 @@ export interface VideoRecording {
   recording_start?: string;
   recording_end?: string;
 }
+export { VideoRecording };
