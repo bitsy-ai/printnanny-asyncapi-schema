@@ -197,6 +197,7 @@ components:
         - "OPERATIONAL"
         - "PAUSED"
         - "PRINTING"
+        - "STARTING"
         - "TRANSFERING_FILE"
         - "UNKNOWN"
 
