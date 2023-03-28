@@ -1,7 +1,7 @@
 {
   "name": "@bitsy-ai/printnanny-os-models",
-  "version": "0.1.1",
-  "description": "PrintNanny.ai OS AsyncAPI (Modelina) Generated Models",
+  "version": "0.1.0",
+  "description": "Printnanny.ai OS AsyncAPI (Modelina) Generated Models",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean:rust": "rm -rf rust/",
