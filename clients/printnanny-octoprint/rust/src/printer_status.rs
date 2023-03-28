@@ -25,6 +25,8 @@ pub enum PrinterStatus {
     Paused,
     #[serde(rename="PRINTING")]
     Printing,
+    #[serde(rename="STARTING")]
+    Starting,
     #[serde(rename="TRANSFERING_FILE")]
     TransferingFile,
     #[serde(rename="UNKNOWN")]
