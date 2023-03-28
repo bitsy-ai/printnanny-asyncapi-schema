@@ -39,9 +39,9 @@ channels:
       pi_id:
         $ref: "#/components/parameters/pi_id"
     publish:
-      operationId: JobProgress
+      operationId: JobProgressChanged
       message:
-        $ref: "#/components/messages/JobProgress"
+        $ref: "#/components/messages/JobProgressChanged"
 
   pi.{pi_id}.octoprint.event.printer.job_status:
     parameters:
@@ -83,11 +83,11 @@ components:
         required:
           - status
 
-    JobProgress:
-      name: JobProgress
+    JobProgressChanged:
+      name: JobProgressChanged
       summary: "Current job progress. Ref: https://docs.octoprint.org/en/master/plugins/mixins.html?highlight=on_print_progress#octoprint.plugin.ProgressPlugin"
       payload:
-        x-parser-schema-id: JobProgress
+        x-parser-schema-id: JobProgressChanged
         additionalProperties: false
         properties:
           job:
@@ -99,7 +99,7 @@ components:
             type: string
             description: "Path of the gcode file"
           progress:
-            type: integer
+            $ref: "#/components/schemas/JobProgress"
 
     OctoPrintGcode:
       name: OctoPrintGcode
@@ -197,6 +197,7 @@ components:
         - "OPERATIONAL"
         - "PAUSED"
         - "PRINTING"
+        - "STARTING"
         - "TRANSFERING_FILE"
         - "UNKNOWN"
 

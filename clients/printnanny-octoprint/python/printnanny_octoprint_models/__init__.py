@@ -4,9 +4,10 @@ from .OctoPrintGcode import *
 from .GcodeEvent import *
 from .PrinterStatusChanged import *
 from .PrinterStatus import *
-from .JobProgress import *
+from .JobProgressChanged import *
 from .Job import *
 from .GcodeFile import *
+from .JobProgress import *
 from .JobStatusChanged import *
 from .JobStatus import *
 from .CurrentJob import *

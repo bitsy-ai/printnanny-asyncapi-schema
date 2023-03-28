@@ -6,7 +6,7 @@
             "name": "Run generate:rust",
             "request": "launch",
             "type": "node-terminal",
-            "cwd": "${workspaceFolder}/clients",
+            "cwd": "${workspaceFolder}/clients/printnanny-octoprint",
         }
     ]
 }
