@@ -1,15 +1,15 @@
-from .Job import Job
-from .PrinterStatus import PrinterStatus
+
 import json
 from typing import Optional, Any
 from pydantic import BaseModel, Field
-class PrinterStatusChanged(BaseModel): 
-  job: Optional[Job] = Field()
-  status: PrinterStatus = Field()
+class Filament(BaseModel): 
+  length: float = Field()
+  volume: float = Field()
+  toolName: str = Field()
 
   def serializeToJson(self):
     return json.dumps(self.__dict__, default=lambda o: o.__dict__, indent=2)
 
   @staticmethod
   def deserializeFromJson(json_string):
-    return PrinterStatusChanged(**json.loads(json_string))
+    return Filament(**json.loads(json_string))

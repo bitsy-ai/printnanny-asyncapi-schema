@@ -190,7 +190,7 @@ components:
           type: array
           additionalItems: false
           items:
-            $ref: "/components/schemas/Filament"
+            $ref: "#/components/schemas/Filament"
       required:
         - file
         - estimatedPrintTime

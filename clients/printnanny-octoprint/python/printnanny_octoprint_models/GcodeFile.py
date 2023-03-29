@@ -3,10 +3,12 @@ import json
 from typing import Optional, Any
 from pydantic import BaseModel, Field
 class GcodeFile(BaseModel): 
-  name: Optional[str] = Field()
+  fileName: str = Field()
   display: Optional[str] = Field()
-  path: Optional[str] = Field()
+  filePath: str = Field()
   origin: Optional[str] = Field()
+  size: Optional[int] = Field()
+  timestamp: Optional[int] = Field()
 
   def serializeToJson(self):
     return json.dumps(self.__dict__, default=lambda o: o.__dict__, indent=2)

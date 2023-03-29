@@ -1,8 +1,10 @@
 
 interface GcodeFile {
-  reserved_name?: string;
+  file_name: string;
   display?: string;
-  path?: string;
+  file_path: string;
   origin?: string;
+  size?: number;
+  timestamp?: number;
 }
 export { GcodeFile };
