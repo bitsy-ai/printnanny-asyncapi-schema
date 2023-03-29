@@ -2,8 +2,8 @@
 interface JobProgress {
   completion?: number;
   filepos?: number;
-  printTime?: number;
-  printTimeLeft?: number;
-  printTimeLeftOrigin?: string;
+  print_time?: number;
+  print_time_left?: number;
+  print_time_left_origin?: string;
 }
 export { JobProgress };
