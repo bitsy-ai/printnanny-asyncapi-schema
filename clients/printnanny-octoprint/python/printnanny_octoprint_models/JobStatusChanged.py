@@ -1,8 +1,10 @@
+from .Job import Job
 from .JobStatus import JobStatus
 import json
 from typing import Optional, Any
 from pydantic import BaseModel, Field
 class JobStatusChanged(BaseModel): 
+  job: Optional[Job] = Field()
   status: JobStatus = Field()
 
   def serializeToJson(self):

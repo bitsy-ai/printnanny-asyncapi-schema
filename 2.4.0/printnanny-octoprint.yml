@@ -78,6 +78,8 @@ components:
         x-parser-schema-id: JobStatusChanged
         additionalProperties: false
         properties:
+          job:
+            $ref: "#/components/schemas/Job"
           status:
             $ref: "#/components/schemas/JobStatus"
         required:
