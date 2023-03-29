@@ -185,17 +185,20 @@ components:
       summary: "Printer status returned by PrinterInterface.get_state_id https://docs.octoprint.org/en/maintenance/modules/printer.html#octoprint.printer.PrinterInterface.get_state_id"
       additionalProperties: false
       enum:
+        - "CANCELLING"
         - "CLOSED_WITH_ERROR"
         - "CLOSED"
         - "CONNECTING"
         - "DETECT_BAUDRATE"
         - "DETECT_SERIAL"
         - "ERROR"
+        - "FINISHING"
         - "NONE"
         - "OFFLINE"
         - "OPEN_SERIAL"
         - "OPERATIONAL"
         - "PAUSED"
+        - "PAUSING"
         - "PRINTING"
         - "STARTING"
         - "TRANSFERING_FILE"
@@ -247,9 +250,9 @@ components:
           type: number
         filepos:
           type: integer
-        printTime:
+        print_time:
           type: integer
-        printTimeLeft:
+        print_time_left:
           type: integer
-        printTimeLeftOrigin:
+        print_time_left_origin:
           type: string
