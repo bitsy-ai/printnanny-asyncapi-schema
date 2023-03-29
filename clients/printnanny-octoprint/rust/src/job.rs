@@ -3,13 +3,13 @@
 pub struct Job {
     #[serde(rename="file", skip_serializing_if = "Option::is_none")]
     pub file: Option<Box<crate::GcodeFile>>,
-    #[serde(rename="estimated_print_time", skip_serializing_if = "Option::is_none")]
+    #[serde(rename="estimatedPrintTime", skip_serializing_if = "Option::is_none")]
     pub estimated_print_time: Option<String>,
-    #[serde(rename="last_print_time", skip_serializing_if = "Option::is_none")]
+    #[serde(rename="lastPrintTime", skip_serializing_if = "Option::is_none")]
     pub last_print_time: Option<String>,
-    #[serde(rename="filament_length", skip_serializing_if = "Option::is_none")]
+    #[serde(rename="filamentLength", skip_serializing_if = "Option::is_none")]
     pub filament_length: Option<String>,
-    #[serde(rename="filament_volume", skip_serializing_if = "Option::is_none")]
+    #[serde(rename="filamentVolume", skip_serializing_if = "Option::is_none")]
     pub filament_volume: Option<String>,
 }
 
