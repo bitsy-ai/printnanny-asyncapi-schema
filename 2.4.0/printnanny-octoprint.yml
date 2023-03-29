@@ -1,7 +1,7 @@
 asyncapi: 2.4.0
 info:
   title: PrintNanny x OctoPrint
-  version: 0.1.7
+  version: 0.1.8
   description: PrintNanny + OctoPrint
 defaultContentType: "application/json"
 
@@ -132,6 +132,8 @@ components:
         x-parser-schema-id: PrinterStatusChanged
         additionalProperties: false
         properties:
+          job:
+            $ref: "#/components/schemas/Job"
           status:
             $ref: "#/components/schemas/PrinterStatus"
         required:
@@ -152,6 +154,22 @@ components:
         - "PowerOn__M80"
         - "PowerOff__M81"
 
+    Filament:
+      type: object
+      additionalProperties: false
+      properties:
+        length:
+          type: number
+          format: float
+        volume:
+          type: number
+          format: float
+        toolName:
+          type: string
+      required:
+        - length
+        - volume
+        - toolName
     Job:
       type: object
       additionalProperties: false
@@ -159,14 +177,24 @@ components:
       properties:
         file:
           $ref: "#/components/schemas/GcodeFile"
+        averagePrintTime:
+          type: number
+          format: float
         estimatedPrintTime:
-          type: string
+          type: number
+          format: float
         lastPrintTime:
-          type: string
-        filamentLength:
-          type: string
-        filamentVolume:
-          type: string
+          type: number
+          format: float
+        filaments:
+          type: array
+          additionalItems: false
+          items:
+            $ref: "#/components/schemas/Filament"
+      required:
+        - file
+        - estimatedPrintTime
+        - lastPrintTime
 
     JobStatus:
       type: string
@@ -233,14 +261,23 @@ components:
       type: object
       additionalProperties: false
       properties:
-        name:
+        file_name:
           type: string
         display:
           type: string
-        path:
+        file_path:
           type: string
         origin:
           type: string
+        size:
+          type: integer
+          format: long
+        timestamp:
+          type: integer
+          format: long
+      required:
+        - file_name
+        - file_path
 
     JobProgress:
       type: object
@@ -248,6 +285,7 @@ components:
       properties:
         completion:
           type: number
+          format: float
         filepos:
           type: integer
         printTime:

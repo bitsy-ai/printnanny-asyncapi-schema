@@ -17,17 +17,20 @@ pub use self::gcode_event::*;
 pub mod printer_status_changed;
 pub use self::printer_status_changed::*;
 
-pub mod printer_status;
-pub use self::printer_status::*;
-
-pub mod job_progress_changed;
-pub use self::job_progress_changed::*;
-
 pub mod job;
 pub use self::job::*;
 
 pub mod gcode_file;
 pub use self::gcode_file::*;
+
+pub mod filament;
+pub use self::filament::*;
+
+pub mod printer_status;
+pub use self::printer_status::*;
+
+pub mod job_progress_changed;
+pub use self::job_progress_changed::*;
 
 pub mod job_progress;
 pub use self::job_progress::*;
