@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "printnanny-octoprint-models"
-version = "0.1.7"
+version = "0.1.8"
 description = "PrintNanny x OctoPrint event models"
 readme = "README.md"
 authors = [{ name = "Leigh Johnson", email = "leigh@printnanny.ai" }]
