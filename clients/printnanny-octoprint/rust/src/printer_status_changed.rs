@@ -1,9 +1,9 @@
 // PrinterStatusChanged represents a PrinterStatusChanged model.
-#[derive(Clone, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
+#[derive(Clone, Debug, Deserialize, PartialEq, PartialOrd, Serialize)]
 pub struct PrinterStatusChanged {
-    #[serde(rename="job", skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "job", skip_serializing_if = "Option::is_none")]
     pub job: Option<Box<crate::Job>>,
-    #[serde(rename="status")]
+    #[serde(rename = "status")]
     pub status: Box<crate::PrinterStatus>,
 }
 
