@@ -1,6 +1,8 @@
 // PrinterStatus represents a PrinterStatus model.
 #[derive(Clone, Copy, Debug, Deserialize, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
 pub enum PrinterStatus {
+    #[serde(rename="CANCELLING")]
+    Cancelling,
     #[serde(rename="CLOSED_WITH_ERROR")]
     ClosedWithError,
     #[serde(rename="CLOSED")]
@@ -13,6 +15,8 @@ pub enum PrinterStatus {
     DetectSerial,
     #[serde(rename="ERROR")]
     Error,
+    #[serde(rename="FINISHING")]
+    Finishing,
     #[serde(rename="NONE")]
     None,
     #[serde(rename="OFFLINE")]
@@ -23,6 +27,8 @@ pub enum PrinterStatus {
     Operational,
     #[serde(rename="PAUSED")]
     Paused,
+    #[serde(rename="PAUSING")]
+    Pausing,
     #[serde(rename="PRINTING")]
     Printing,
     #[serde(rename="STARTING")]
@@ -34,6 +40,6 @@ pub enum PrinterStatus {
 }
 impl Default for PrinterStatus {
     fn default() -> PrinterStatus {
-        PrinterStatus::ClosedWithError
+        PrinterStatus::Cancelling
     }
 }

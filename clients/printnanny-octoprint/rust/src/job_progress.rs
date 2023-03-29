@@ -5,11 +5,11 @@ pub struct JobProgress {
     pub completion: Option<f64>,
     #[serde(rename="filepos", skip_serializing_if = "Option::is_none")]
     pub filepos: Option<i32>,
-    #[serde(rename="printTime", skip_serializing_if = "Option::is_none")]
+    #[serde(rename="print_time", skip_serializing_if = "Option::is_none")]
     pub print_time: Option<i32>,
-    #[serde(rename="printTimeLeft", skip_serializing_if = "Option::is_none")]
+    #[serde(rename="print_time_left", skip_serializing_if = "Option::is_none")]
     pub print_time_left: Option<i32>,
-    #[serde(rename="printTimeLeftOrigin", skip_serializing_if = "Option::is_none")]
+    #[serde(rename="print_time_left_origin", skip_serializing_if = "Option::is_none")]
     pub print_time_left_origin: Option<String>,
 }
 
