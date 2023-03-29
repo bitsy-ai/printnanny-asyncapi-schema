@@ -159,13 +159,13 @@ components:
       properties:
         file:
           $ref: "#/components/schemas/GcodeFile"
-        estimated_print_time:
+        estimatedPrintTime:
           type: string
-        last_print_time:
+        lastPrintTime:
           type: string
-        filament_length:
+        filamentLength:
           type: string
-        filament_volume:
+        filamentVolume:
           type: string
 
     JobStatus:
@@ -250,9 +250,9 @@ components:
           type: number
         filepos:
           type: integer
-        print_time:
+        printTime:
           type: integer
-        print_time_left:
+        printTimeLeft:
           type: integer
-        print_time_left_origin:
+        printTimeLeftOrigin:
           type: string
